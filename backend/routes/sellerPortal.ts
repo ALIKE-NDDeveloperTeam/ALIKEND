@@ -1,6 +1,10 @@
 import { Router, Request, Response, NextFunction } from "express";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
 import rateLimit from "express-rate-limit";
 import Seller, {
   ISeller,
@@ -48,6 +52,17 @@ function sanitizeSellerRichHtml(input: any): string {
     .replace(/\son\w+\s*=\s*(?:"[^"]*"|'[^']*'|[^\s>]+)/gi, "")
     .replace(/javascript\s*:/gi, "");
 }
+<<<<<<< HEAD
+=======
+=======
+import Seller, { ISeller, SellerStatus } from "../models/Seller";
+import Product from "../models/Product";
+import Order from "../models/Order";
+import SellerWithdrawal from "../models/SellerWithdrawal";
+import { isMongoConnected, memoryStore } from "../store";
+import { getJwtSecret } from "../config/jwt";
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
 
 export interface SellerAuthedRequest extends Request {
   sellerId?: string;
@@ -59,6 +74,10 @@ export interface SellerAuthedRequest extends Request {
     email: string;
     mobileNumber: string;
     businessAddress: string;
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
     shopAddress?: string;
     category?: string;
     logo?: string;
@@ -332,11 +351,30 @@ export async function requireSellerSession(req: SellerAuthedRequest, res: Respon
   const secret = getJwtSecret();
   if (!secret) {
     return res.status(500).json({
+<<<<<<< HEAD
+=======
+=======
+    status: SellerStatus;
+    listingsCount: number;
+  };
+}
+
+// Authentication middleware to protect seller dashboard & seller product management
+export async function requireSellerAuth(req: SellerAuthedRequest, res: Response, next: NextFunction) {
+  const secret = getJwtSecret();
+  if (!secret) {
+    return res.status(503).json({
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
       success: false,
       error: "Authentication service is temporarily misconfigured. Please contact support.",
     });
   }
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
   const isSettingsHubRoute = req.path.startsWith("/settings-hub") || req.path.startsWith("/commission");
   const fallbackToDemoSeller = () => {
     const demoSeller = (memoryStore.sellers || []).find((s) => s.status === "approved") || (memoryStore.sellers || [])[0];
@@ -354,6 +392,16 @@ export async function requireSellerSession(req: SellerAuthedRequest, res: Respon
     return res.status(401).json({
       success: false,
       error: "Authentication required: Please sign in to your Seller Portal account.",
+<<<<<<< HEAD
+=======
+=======
+  const header = req.headers.authorization;
+  if (!header || !header.startsWith("Bearer ")) {
+    return res.status(401).json({
+      success: false,
+      error: "Authentication required: Please log in to your seller account.",
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
     });
   }
 
@@ -362,19 +410,39 @@ export async function requireSellerSession(req: SellerAuthedRequest, res: Respon
   try {
     payload = jwt.verify(token, secret);
   } catch (err: any) {
+<<<<<<< HEAD
     if (isSettingsHubRoute && fallbackToDemoSeller()) return;
+=======
+<<<<<<< HEAD
+    if (isSettingsHubRoute && fallbackToDemoSeller()) return;
+=======
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
     return res.status(401).json({
       success: false,
       error: "Invalid or expired seller session token. Please sign in again.",
     });
   }
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
   // Strict account type separation: reject customer tokens (userId) and admin tokens (adminId)
   if (!payload || !payload.sellerId || payload.role !== "seller" || payload.userId || payload.adminId) {
     if (isSettingsHubRoute && fallbackToDemoSeller()) return;
     return res.status(401).json({
       success: false,
       error: "Access denied: A dedicated Seller account session is required. Customer accounts cannot access seller routes.",
+<<<<<<< HEAD
+=======
+=======
+  if (!payload || !payload.sellerId || payload.role !== "seller") {
+    return res.status(403).json({
+      success: false,
+      error: "Access denied: Seller authentication token required.",
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
     });
   }
 
@@ -383,6 +451,10 @@ export async function requireSellerSession(req: SellerAuthedRequest, res: Respon
     try {
       const sellerDoc = await Seller.findById(payload.sellerId);
       if (sellerDoc) {
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
         const currentVer = Number(sellerDoc.tokenVersion) || 1;
         const tokenVer = Number(payload.tokenVersion) || 1;
         if (tokenVer < currentVer) {
@@ -397,10 +469,46 @@ export async function requireSellerSession(req: SellerAuthedRequest, res: Respon
       }
     } catch (e: any) {
       console.warn("MongoDB seller session lookup failed, trying memory store:", e?.message);
+<<<<<<< HEAD
+=======
+=======
+        if (sellerDoc.status !== "approved") {
+          return res.status(403).json({
+            success: false,
+            status: sellerDoc.status,
+            error:
+              sellerDoc.status === "pending"
+                ? "Your seller application is pending administrator approval."
+                : `Your seller account is ${sellerDoc.status}. Only approved sellers can manage products.`,
+          });
+        }
+
+        req.sellerId = String(sellerDoc._id);
+        req.seller = {
+          _id: String(sellerDoc._id),
+          shopName: sellerDoc.shopName || sellerDoc.storefront,
+          storefront: sellerDoc.storefront || sellerDoc.shopName,
+          ownerName: sellerDoc.ownerName,
+          email: sellerDoc.email || sellerDoc.ownerEmail,
+          mobileNumber: sellerDoc.mobileNumber || "",
+          businessAddress: sellerDoc.businessAddress || "",
+          status: sellerDoc.status,
+          listingsCount: sellerDoc.listingsCount || 0,
+        };
+        return next();
+      }
+    } catch (e: any) {
+      console.warn("MongoDB seller lookup failed, trying memory store:", e?.message);
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
     }
   }
 
   // 2. Check in-memory store
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
   let memSeller = (memoryStore.sellers || []).find(
     (s) =>
       String(s._id) === String(payload.sellerId) ||
@@ -451,11 +559,52 @@ export async function requireSellerSession(req: SellerAuthedRequest, res: Respon
   }
 
   return res.status(401).json({
+<<<<<<< HEAD
+=======
+=======
+  const memSeller = (memoryStore.sellers || []).find(
+    (s) => s._id === payload.sellerId || (s.email && s.email.toLowerCase() === (payload.email || "").toLowerCase())
+  );
+
+  if (memSeller) {
+    if (memSeller.status !== "approved") {
+      return res.status(403).json({
+        success: false,
+        status: memSeller.status,
+        error:
+          memSeller.status === "pending"
+            ? "Your seller application is pending administrator approval."
+            : `Your seller account is ${memSeller.status}. Only approved sellers can manage products.`,
+      });
+    }
+
+    req.sellerId = memSeller._id;
+    req.seller = {
+      _id: memSeller._id,
+      shopName: memSeller.shopName || memSeller.storefront,
+      storefront: memSeller.storefront || memSeller.shopName || "",
+      ownerName: memSeller.ownerName,
+      email: memSeller.email || memSeller.ownerEmail || "",
+      mobileNumber: memSeller.mobileNumber || "",
+      businessAddress: memSeller.businessAddress || "",
+      status: memSeller.status,
+      listingsCount: memSeller.listingsCount || 0,
+    };
+    return next();
+  }
+
+  return res.status(403).json({
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
     success: false,
     error: "Access denied: Seller account not found.",
   });
 }
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
 /**
  * Middleware: Requires an authenticated AND administrator-approved Seller account.
  * Blocks pending, under_review, rejected, and suspended sellers from restricted operations.
@@ -494,6 +643,11 @@ export async function requireSellerAuth(req: SellerAuthedRequest, res: Response,
   });
 }
 
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
 const router = Router();
 
 // ==========================================
@@ -537,6 +691,10 @@ router.get("/status-check", async (req: Request, res: Response) => {
 });
 
 // ==========================================
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
 // 1. POST /api/sellers/register (Public - Seller Sign Up)
 // ==========================================
 router.post("/register", sellerAuthLimiter, async (req: Request, res: Response) => {
@@ -646,6 +804,105 @@ router.post("/register", sellerAuthLimiter, async (req: Request, res: Response) 
             error: isSameEmail
               ? "A seller account with this email address already exists."
               : "A seller account with this mobile number already exists.",
+<<<<<<< HEAD
+=======
+=======
+// 1. POST /api/sellers/register (Public)
+// ==========================================
+router.post("/register", async (req: Request, res: Response) => {
+  try {
+    const {
+      shopName,
+      ownerName,
+      mobileNumber,
+      email,
+      password,
+      businessAddress,
+      panNumber,
+      gstin,
+      bankAccountHolderName,
+      bankAccountNumber,
+      bankIFSC,
+      bankName,
+    } = req.body;
+
+    if (!shopName || !shopName.trim()) {
+      return res.status(400).json({ error: "Shop name is required." });
+    }
+    if (!ownerName || !ownerName.trim()) {
+      return res.status(400).json({ error: "Owner name is required." });
+    }
+    if (!mobileNumber || !mobileNumber.trim()) {
+      return res.status(400).json({ error: "Mobile number is required." });
+    }
+    if (!email || !email.trim()) {
+      return res.status(400).json({ error: "Email address is required." });
+    }
+    if (!password || password.length < 6) {
+      return res.status(400).json({ error: "Password must be at least 6 characters long." });
+    }
+    if (!businessAddress || !businessAddress.trim()) {
+      return res.status(400).json({ error: "Business address is required." });
+    }
+
+    // KYC Field Validations
+    if (!panNumber || !panNumber.trim()) {
+      return res.status(400).json({ error: "PAN number is required for seller verification." });
+    }
+    const cleanPan = panNumber.trim().toUpperCase();
+    const panRegex = /^[A-Z]{5}[0-9]{4}[A-Z]{1}$/;
+    if (!panRegex.test(cleanPan)) {
+      return res.status(400).json({ error: "Invalid PAN format. Expected format: ABCDE1234F (10 characters: 5 letters, 4 digits, 1 letter)." });
+    }
+
+    let cleanGstin = "";
+    if (gstin && gstin.trim()) {
+      cleanGstin = gstin.trim().toUpperCase();
+      const gstinRegex = /^[0-9]{2}[A-Z]{5}[0-9]{4}[A-Z]{1}[1-9A-Z]{1}Z[0-9A-Z]{1}$/;
+      if (!gstinRegex.test(cleanGstin)) {
+        return res.status(400).json({ error: "Invalid GSTIN format. Expected format: 22ABCDE1234F1Z5 (15 characters)." });
+      }
+    }
+
+    if (!bankAccountHolderName || !bankAccountHolderName.trim()) {
+      return res.status(400).json({ error: "Bank account holder name is required." });
+    }
+    if (!bankAccountNumber || !bankAccountNumber.trim()) {
+      return res.status(400).json({ error: "Bank account number is required." });
+    }
+    if (!bankIFSC || !bankIFSC.trim()) {
+      return res.status(400).json({ error: "Bank IFSC code is required." });
+    }
+    const cleanIfsc = bankIFSC.trim().toUpperCase();
+    const ifscRegex = /^[A-Z]{4}0[A-Z0-9]{6}$/;
+    if (!ifscRegex.test(cleanIfsc)) {
+      return res.status(400).json({ error: "Invalid IFSC code format. Expected format: SBIN0001234 (11 characters: 4 letters, '0', 6 alphanumeric)." });
+    }
+
+    if (!bankName || !bankName.trim()) {
+      return res.status(400).json({ error: "Bank name is required." });
+    }
+
+    const cleanEmail = email.trim().toLowerCase();
+    const cleanShopName = shopName.trim();
+    const cleanOwnerName = ownerName.trim();
+    const cleanMobile = mobileNumber.trim();
+    const cleanAddress = businessAddress.trim();
+    const cleanAccountHolder = bankAccountHolderName.trim();
+    const cleanAccountNumber = bankAccountNumber.trim();
+    const cleanBank = bankName.trim();
+
+    // Check if seller email already exists
+    if (isMongoConnected()) {
+      try {
+        const existing = await Seller.findOne({
+          $or: [{ email: cleanEmail }, { ownerEmail: cleanEmail }],
+        });
+        if (existing) {
+          return res.status(409).json({
+            error: "A seller account or application with this email address already exists.",
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
           });
         }
       } catch (err) {
@@ -653,6 +910,10 @@ router.post("/register", sellerAuthLimiter, async (req: Request, res: Response) 
       }
     }
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
     const memExisting = (memoryStore.sellers || []).find((s) => {
       const emailMatch =
         (s.email && s.email.toLowerCase() === cleanEmail) ||
@@ -672,6 +933,21 @@ router.post("/register", sellerAuthLimiter, async (req: Request, res: Response) 
     }
 
     // Hash password with bcrypt
+<<<<<<< HEAD
+=======
+=======
+    const memExisting = (memoryStore.sellers || []).find(
+      (s) => (s.email && s.email.toLowerCase() === cleanEmail) || (s.ownerEmail && s.ownerEmail.toLowerCase() === cleanEmail)
+    );
+    if (memExisting) {
+      return res.status(409).json({
+        error: "A seller account or application with this email address already exists.",
+      });
+    }
+
+    // Hash password
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
     const salt = await bcrypt.genSalt(10);
     const passwordHash = await bcrypt.hash(password, salt);
 
@@ -679,9 +955,21 @@ router.post("/register", sellerAuthLimiter, async (req: Request, res: Response) 
     if (isMongoConnected()) {
       try {
         createdSeller = await Seller.create({
+<<<<<<< HEAD
           shopName: resolvedShopName,
           storefront: resolvedShopName,
           ownerName: resolvedOwnerName,
+=======
+<<<<<<< HEAD
+          shopName: resolvedShopName,
+          storefront: resolvedShopName,
+          ownerName: resolvedOwnerName,
+=======
+          shopName: cleanShopName,
+          storefront: cleanShopName,
+          ownerName: cleanOwnerName,
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
           ownerEmail: cleanEmail,
           email: cleanEmail,
           mobileNumber: cleanMobile,
@@ -693,10 +981,19 @@ router.post("/register", sellerAuthLimiter, async (req: Request, res: Response) 
           bankIFSC: cleanIfsc,
           bankName: cleanBank,
           kycVerified: false,
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
           emailVerified: false,
           agreedToTerms: true,
           agreedToTermsAt: new Date(),
           permissions: { ...DEFAULT_PERMISSIONS },
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
           password: passwordHash,
           status: "pending",
           listingsCount: 0,
@@ -709,9 +1006,21 @@ router.post("/register", sellerAuthLimiter, async (req: Request, res: Response) 
     const newId = createdSeller ? String(createdSeller._id) : `seller_${Date.now()}`;
     const newSellerData = {
       _id: newId,
+<<<<<<< HEAD
       shopName: resolvedShopName,
       storefront: resolvedShopName,
       ownerName: resolvedOwnerName,
+=======
+<<<<<<< HEAD
+      shopName: resolvedShopName,
+      storefront: resolvedShopName,
+      ownerName: resolvedOwnerName,
+=======
+      shopName: cleanShopName,
+      storefront: cleanShopName,
+      ownerName: cleanOwnerName,
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
       ownerEmail: cleanEmail,
       email: cleanEmail,
       mobileNumber: cleanMobile,
@@ -723,6 +1032,10 @@ router.post("/register", sellerAuthLimiter, async (req: Request, res: Response) 
       bankIFSC: cleanIfsc,
       bankName: cleanBank,
       kycVerified: false,
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
       emailVerified: false,
       agreedToTerms: true,
       agreedToTermsAt: new Date(),
@@ -732,12 +1045,23 @@ router.post("/register", sellerAuthLimiter, async (req: Request, res: Response) 
       walletBalance: 0,
       totalEarnings: 0,
       pendingWithdrawals: 0,
+<<<<<<< HEAD
+=======
+=======
+      passwordHash,
+      listingsCount: 0,
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
       status: "pending" as SellerStatus,
       createdAt: new Date(),
     };
 
     memoryStore.sellers.unshift(newSellerData);
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
     // Generate 6-digit email verification OTP
     const verificationOtp = String(Math.floor(100000 + Math.random() * 900000));
     sellerOtpStore.set(cleanEmail, {
@@ -795,6 +1119,30 @@ router.post("/register", sellerAuthLimiter, async (req: Request, res: Response) 
       message:
         "Seller account created! Your application is currently pending administrator approval. Please verify your email ownership to complete onboarding.",
       seller: formatSellerProfile(newSellerData),
+<<<<<<< HEAD
+=======
+=======
+    return res.status(201).json({
+      success: true,
+      message: "Seller application submitted successfully! Your application is currently pending administrator approval.",
+      seller: {
+        _id: newId,
+        shopName: cleanShopName,
+        ownerName: cleanOwnerName,
+        email: cleanEmail,
+        mobileNumber: cleanMobile,
+        businessAddress: cleanAddress,
+        panNumber: cleanPan,
+        gstin: cleanGstin || undefined,
+        bankAccountHolderName: cleanAccountHolder,
+        bankAccountNumber: cleanAccountNumber,
+        bankIFSC: cleanIfsc,
+        bankName: cleanBank,
+        kycVerified: false,
+        status: "pending",
+      },
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
     });
   } catch (err: any) {
     console.error("Seller register error:", err);
@@ -803,6 +1151,10 @@ router.post("/register", sellerAuthLimiter, async (req: Request, res: Response) 
 });
 
 // ==========================================
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
 // 1.5. POST /api/sellers/demo-login (Instant access for testing)
 // ==========================================
 router.post("/demo-login", async (_req: Request, res: Response) => {
@@ -937,6 +1289,97 @@ router.post("/login", sellerAuthLimiter, async (req: Request, res: Response) => 
       });
     }
 
+<<<<<<< HEAD
+=======
+=======
+// 2. POST /api/sellers/login (Public)
+// ==========================================
+router.post("/login", async (req: Request, res: Response) => {
+  try {
+    const { email, password } = req.body;
+
+    if (!email || !password) {
+      return res.status(400).json({ error: "Email and password are required" });
+    }
+
+    const cleanEmail = email.trim().toLowerCase();
+    let sellerDoc: any = null;
+
+    if (isMongoConnected()) {
+      try {
+        sellerDoc = await Seller.findOne({
+          $or: [{ email: cleanEmail }, { ownerEmail: cleanEmail }],
+        });
+      } catch (err) {
+        console.warn("MongoDB find seller for login failed:", err);
+      }
+    }
+
+    let sellerRecord: any = sellerDoc;
+    let storedHash: string | undefined = sellerDoc?.password;
+
+    if (!sellerRecord) {
+      const mem = (memoryStore.sellers || []).find(
+        (s) => (s.email && s.email.toLowerCase() === cleanEmail) || (s.ownerEmail && s.ownerEmail.toLowerCase() === cleanEmail)
+      );
+      if (mem) {
+        sellerRecord = mem;
+        storedHash = mem.passwordHash;
+      }
+    }
+
+    if (!sellerRecord) {
+      return res.status(401).json({ success: false, error: "Invalid credentials" });
+    }
+
+    // Enforce strict bcrypt authentication against stored hash
+    if (!storedHash) {
+      return res.status(401).json({ success: false, error: "Invalid credentials" });
+    }
+
+    const isValid = await bcrypt.compare(password, storedHash);
+    if (!isValid) {
+      return res.status(401).json({ success: false, error: "Invalid credentials" });
+    }
+
+    // CHECK APPROVAL STATUS: Only "approved" sellers can log in and manage products!
+    if (sellerRecord.status === "pending") {
+      return res.status(403).json({
+        success: false,
+        status: "pending",
+        error: "Your seller application is pending administrator approval. Please wait for an administrator to approve your account before logging in.",
+      });
+    }
+
+    if (sellerRecord.status === "rejected") {
+      return res.status(403).json({
+        success: false,
+        status: "rejected",
+        error: "Your seller registration was rejected by the administrator. Please contact support for inquiries.",
+      });
+    }
+
+    if (sellerRecord.status === "suspended") {
+      return res.status(403).json({
+        success: false,
+        status: "suspended",
+        error: "Your seller account is currently suspended. Please contact platform administration.",
+      });
+    }
+
+    if (sellerRecord.status !== "approved") {
+      return res.status(403).json({
+        success: false,
+        status: sellerRecord.status,
+        error: `Your seller account is currently in '${sellerRecord.status}' status. Only approved sellers can access the dashboard.`,
+      });
+    }
+
+    const sellerId = String(sellerRecord._id);
+    const shopName = sellerRecord.shopName || sellerRecord.storefront || "Seller Atelier";
+
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
     const secret = getJwtSecret();
     if (!secret) {
       return res.status(503).json({
@@ -945,6 +1388,10 @@ router.post("/login", sellerAuthLimiter, async (req: Request, res: Response) => 
       });
     }
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
     const sellerId = String(sellerRecord._id);
     const shopName = sellerRecord.shopName || sellerRecord.storefront || "Seller Atelier";
     const sellerEmail = sellerRecord.email || sellerRecord.ownerEmail || "";
@@ -959,10 +1406,20 @@ router.post("/login", sellerAuthLimiter, async (req: Request, res: Response) => 
     }
 
     // Generate dedicated Seller JWT token (separate from customer and admin sessions)
+<<<<<<< HEAD
+=======
+=======
+    // Generate JWT token
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
     const token = jwt.sign(
       {
         sellerId,
         role: "seller",
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
         accountType: "seller",
         email: sellerEmail,
         shopName,
@@ -985,6 +1442,32 @@ router.post("/login", sellerAuthLimiter, async (req: Request, res: Response) => 
       success: true,
       token,
       seller: formatSellerProfile(sellerRecord),
+<<<<<<< HEAD
+=======
+=======
+        email: sellerRecord.email || sellerRecord.ownerEmail,
+        shopName,
+      },
+      secret,
+      { expiresIn: "7d" }
+    );
+
+    return res.json({
+      success: true,
+      token,
+      seller: {
+        _id: sellerId,
+        shopName,
+        storefront: shopName,
+        ownerName: sellerRecord.ownerName,
+        email: sellerRecord.email || sellerRecord.ownerEmail,
+        mobileNumber: sellerRecord.mobileNumber || "",
+        businessAddress: sellerRecord.businessAddress || "",
+        status: sellerRecord.status,
+        listingsCount: sellerRecord.listingsCount || 0,
+      },
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
     });
   } catch (err: any) {
     console.error("Seller login error:", err);
@@ -993,6 +1476,10 @@ router.post("/login", sellerAuthLimiter, async (req: Request, res: Response) => 
 });
 
 // ==========================================
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
 // 2.1 POST /api/sellers/forgot-password (Public - Password Recovery Request)
 // ==========================================
 router.post("/forgot-password", sellerAuthLimiter, async (req: Request, res: Response) => {
@@ -1251,6 +1738,14 @@ router.post("/verify-email", sellerOtpLimiter, requireSellerSession, async (req:
 // 3. GET /api/sellers/me (Protected by Seller Session - works for pending & approved)
 // ==========================================
 router.get("/me", requireSellerSession, async (req: SellerAuthedRequest, res: Response) => {
+<<<<<<< HEAD
+=======
+=======
+// 3. GET /api/sellers/me (Protected)
+// ==========================================
+router.get("/me", requireSellerAuth, async (req: SellerAuthedRequest, res: Response) => {
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
   try {
     const sellerId = req.sellerId!;
     let productCount = 0;
@@ -1264,11 +1759,24 @@ router.get("/me", requireSellerSession, async (req: SellerAuthedRequest, res: Re
     }
 
     if (!productCount) {
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
       productCount = (memoryStore.products || []).filter((p) => String(p.sellerId) === String(sellerId)).length;
     }
 
     return res.json({
       success: true,
+<<<<<<< HEAD
+=======
+=======
+      productCount = (memoryStore.products || []).filter((p) => p.sellerId === sellerId).length;
+    }
+
+    return res.json({
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
       seller: {
         ...req.seller,
         listingsCount: productCount,
@@ -1280,6 +1788,10 @@ router.get("/me", requireSellerSession, async (req: SellerAuthedRequest, res: Re
 });
 
 // ==========================================
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
 // 3.1 PUT /api/sellers/profile (Protected by Seller Session - Update Store & KYC Info)
 // ==========================================
 router.put("/profile", requireSellerSession, async (req: SellerAuthedRequest, res: Response) => {
@@ -1586,11 +2098,30 @@ router.get("/products", requireSellerSession, async (req: SellerAuthedRequest, r
             combinedMap.set(String(norm.id), norm);
           }
         }
+<<<<<<< HEAD
+=======
+=======
+// 4. GET /api/sellers/products (Protected - ONLY their own products)
+// ==========================================
+router.get("/products", requireSellerAuth, async (req: SellerAuthedRequest, res: Response) => {
+  try {
+    const sellerId = req.sellerId!;
+
+    if (isMongoConnected()) {
+      try {
+        const products = await Product.find({ sellerId }).sort({ createdAt: -1 });
+        return res.json(products);
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
       } catch (err) {
         console.warn("MongoDB fetch seller products failed, using in-memory store:", err);
       }
     }
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
     const memProducts = (memoryStore.products || []).filter(
       (p) =>
         String(p.sellerId) === String(sellerId) ||
@@ -1622,12 +2153,23 @@ router.get("/products", requireSellerSession, async (req: SellerAuthedRequest, r
       success: true,
       products: Array.from(combinedMap.values()),
     });
+<<<<<<< HEAD
+=======
+=======
+    const sellerProducts = (memoryStore.products || []).filter((p) => p.sellerId === sellerId);
+    return res.json(sellerProducts);
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
   } catch (err: any) {
     return res.status(500).json({ error: err.message || "Failed to fetch seller products" });
   }
 });
 
 // ==========================================
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
 // 4B. POST /api/sellers/products/upload-media (Seller Media Upload)
 // ==========================================
 router.post("/products/upload-media", requireSellerSession, async (req: SellerAuthedRequest, res: Response) => {
@@ -1754,19 +2296,58 @@ router.post("/products", requireSellerSession, async (req: SellerAuthedRequest, 
       manualUrl = "",
       specifications = {},
       customSpecifications = [],
+<<<<<<< HEAD
+=======
+=======
+// 5. POST /api/sellers/products (Protected - Creates product with sellerId)
+// ==========================================
+router.post("/products", requireSellerAuth, async (req: SellerAuthedRequest, res: Response) => {
+  try {
+    const sellerId = req.sellerId!;
+    const sellerShopName = req.seller?.shopName || req.seller?.storefront || "Seller Atelier";
+
+    const {
+      name,
+      brand,
+      category,
+      subCategory = "",
+      eligibleFor20MinDelivery,
+      price,
+      mrp,
+      stock = 10,
+      stockStatus = "In Stock",
+      badge = "",
+      image = "",
+      images = [],
+      description = "",
+      specifications = {},
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
       isWholesale = false,
       wholesalePrice = 0,
       wholesaleMinQty = 1,
       colors = [],
       sizes = [],
+<<<<<<< HEAD
       variants = [],
       variantOptionGroups = [],
+=======
+<<<<<<< HEAD
+      variants = [],
+      variantOptionGroups = [],
+=======
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
       emoji = "📦",
       hsnCode = "",
       gstRate = 18,
       countryOfOrigin = "India",
       manufacturerDetails = "",
       packInfo = "",
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
       packageWeightKg = 0.5,
       packageLengthCm = 15,
       packageWidthCm = 10,
@@ -1937,13 +2518,107 @@ router.post("/products", requireSellerSession, async (req: SellerAuthedRequest, 
       manualUrl: String(manualUrl || "").trim(),
       specifications: specifications || {},
       customSpecifications: Array.isArray(customSpecifications) ? customSpecifications : [],
+<<<<<<< HEAD
+=======
+=======
+    } = req.body;
+
+    if (!name || !name.trim()) {
+      return res.status(400).json({ error: "Product name is required" });
+    }
+    if (!category || !category.trim()) {
+      return res.status(400).json({ error: "Product category is required" });
+    }
+
+    const numericPrice = Number(price) || 0;
+    const numericMrp = mrp !== undefined && mrp !== null ? Number(mrp) : numericPrice;
+    const numericStock = Number(stock) || 0;
+    const resolvedBrand = (brand && brand.trim()) ? brand.trim() : sellerShopName;
+    const is20Min = eligibleFor20MinDelivery !== undefined
+      ? Boolean(eligibleFor20MinDelivery)
+      : (category.trim() === 'grocery' || category.trim() === 'food_delivery' || category.trim() === 'delivery');
+
+    let createdProduct: any = null;
+
+    if (isMongoConnected()) {
+      try {
+        createdProduct = await Product.create({
+          name: name.trim(),
+          brand: resolvedBrand,
+          category: category.trim(),
+          subCategory: String(subCategory || "").trim(),
+          eligibleFor20MinDelivery: is20Min,
+          price: numericPrice,
+          mrp: numericMrp,
+          rating: 5.0,
+          reviewsCount: 1,
+          stock: numericStock,
+          stockStatus: stockStatus || (numericStock <= 0 ? "Out of Stock" : numericStock <= 3 ? "Only 2 left!" : "In Stock"),
+          badge,
+          isFlashSale: false,
+          image: image || "https://images.unsplash.com/photo-1547996160-81dfa63595aa?w=500&auto=format&fit=crop&q=60",
+          images: Array.isArray(images) && images.length > 0 ? images : [image || "https://images.unsplash.com/photo-1547996160-81dfa63595aa?w=500&auto=format&fit=crop&q=60"],
+          description: description || "",
+          specifications: specifications || {},
+          isWholesale: Boolean(isWholesale),
+          wholesalePrice: Number(wholesalePrice) || 0,
+          wholesaleMinQty: Number(wholesaleMinQty) || 1,
+          colors: Array.isArray(colors) ? colors : [],
+          sizes: Array.isArray(sizes) ? sizes : [],
+          emoji: emoji || "📦",
+          sellerId,
+          sellerShopName,
+          hsnCode: String(hsnCode || "").trim(),
+          gstRate: Number(gstRate) || 18,
+          countryOfOrigin: String(countryOfOrigin || "India").trim(),
+          manufacturerDetails: String(manufacturerDetails || "").trim(),
+          packInfo: String(packInfo || "").trim(),
+        });
+
+        // Update seller listings count
+        await Seller.findByIdAndUpdate(sellerId, { $inc: { listingsCount: 1 } });
+      } catch (err) {
+        console.warn("MongoDB create seller product failed, storing in-memory:", err);
+      }
+    }
+
+    const newProd = {
+      _id: createdProduct ? String(createdProduct._id) : `prod_seller_${Date.now()}`,
+      id: Date.now(),
+      name: name.trim(),
+      brand: resolvedBrand,
+      category: category.trim(),
+      subCategory: String(subCategory || "").trim(),
+      eligibleFor20MinDelivery: is20Min,
+      price: numericPrice,
+      mrp: numericMrp,
+      rating: 5.0,
+      reviewsCount: 1,
+      stock: numericStock,
+      stockStatus: stockStatus || (numericStock <= 0 ? "Out of Stock" : numericStock <= 3 ? "Only 2 left!" : "In Stock"),
+      badge,
+      isFlashSale: false,
+      image: image || "https://images.unsplash.com/photo-1547996160-81dfa63595aa?w=500&auto=format&fit=crop&q=60",
+      images: Array.isArray(images) && images.length > 0 ? images : [image || "https://images.unsplash.com/photo-1547996160-81dfa63595aa?w=500&auto=format&fit=crop&q=60"],
+      description: description || "",
+      specifications: specifications || {},
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
       isWholesale: Boolean(isWholesale),
       wholesalePrice: Number(wholesalePrice) || 0,
       wholesaleMinQty: Number(wholesaleMinQty) || 1,
       colors: Array.isArray(colors) ? colors : [],
       sizes: Array.isArray(sizes) ? sizes : [],
+<<<<<<< HEAD
       variants: safeVariants,
       variantOptionGroups: Array.isArray(variantOptionGroups) ? variantOptionGroups : [],
+=======
+<<<<<<< HEAD
+      variants: safeVariants,
+      variantOptionGroups: Array.isArray(variantOptionGroups) ? variantOptionGroups : [],
+=======
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
       emoji: emoji || "📦",
       sellerId,
       sellerShopName,
@@ -1952,6 +2627,10 @@ router.post("/products", requireSellerSession, async (req: SellerAuthedRequest, 
       countryOfOrigin: String(countryOfOrigin || "India").trim(),
       manufacturerDetails: String(manufacturerDetails || "").trim(),
       packInfo: String(packInfo || "").trim(),
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
       packageWeightKg: Math.max(0.01, Number(packageWeightKg) || 0.5),
       packageLengthCm: Math.max(1, Number(packageLengthCm) || 15),
       packageWidthCm: Math.max(1, Number(packageWidthCm) || 10),
@@ -2057,15 +2736,34 @@ router.post("/products", requireSellerSession, async (req: SellerAuthedRequest, 
       ...productDocPayload,
       _id: createdProduct ? String(createdProduct._id) : `prod_seller_${numId}`,
       id: createdProduct?.id || numId,
+<<<<<<< HEAD
+=======
+=======
+      createdAt: new Date(),
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
     };
 
     memoryStore.products.unshift(newProd);
 
+<<<<<<< HEAD
     const memSeller = (memoryStore.sellers || []).find((s) => String(s._id) === String(sellerId));
+=======
+<<<<<<< HEAD
+    const memSeller = (memoryStore.sellers || []).find((s) => String(s._id) === String(sellerId));
+=======
+    // Update memory seller count
+    const memSeller = (memoryStore.sellers || []).find((s) => s._id === sellerId);
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
     if (memSeller) {
       memSeller.listingsCount = (memSeller.listingsCount || 0) + 1;
     }
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
     const finalProduct = createdProduct
       ? { ...newProd, ...(createdProduct.toObject ? createdProduct.toObject() : createdProduct), id: newProd.id }
       : newProd;
@@ -2074,6 +2772,12 @@ router.post("/products", requireSellerSession, async (req: SellerAuthedRequest, 
       product: finalProduct,
       ...finalProduct,
     });
+<<<<<<< HEAD
+=======
+=======
+    return res.status(201).json(createdProduct || newProd);
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
   } catch (err: any) {
     console.error("Seller create product error:", err);
     return res.status(500).json({ error: err.message || "Failed to create product" });
@@ -2081,6 +2785,10 @@ router.post("/products", requireSellerSession, async (req: SellerAuthedRequest, 
 });
 
 // ==========================================
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
 // 6. PUT /api/sellers/products/:id (Protected - Seller's Product Update)
 // ==========================================
 router.put("/products/:id", requireSellerSession, async (req: SellerAuthedRequest, res: Response) => {
@@ -2200,12 +2908,66 @@ router.put("/products/:id", requireSellerSession, async (req: SellerAuthedReques
               updatedResult = normalizeSellerProduct(updated, String(sellerId), sellerShopName);
             }
           }
+<<<<<<< HEAD
+=======
+=======
+// 6. PUT /api/sellers/products/:id (Protected - Only their own product)
+// ==========================================
+router.put("/products/:id", requireSellerAuth, async (req: SellerAuthedRequest, res: Response) => {
+  try {
+    const sellerId = req.sellerId!;
+    const { id } = req.params;
+    const body = req.body;
+
+    // Verify ownership in MongoDB
+    if (isMongoConnected()) {
+      try {
+        const existing = await Product.findById(id);
+        if (existing) {
+          if (existing.sellerId !== sellerId) {
+            return res.status(403).json({ error: "Unauthorized: You can only edit your own products." });
+          }
+
+          const updateData: any = {};
+          if (body.name !== undefined) updateData.name = body.name.trim();
+          if (body.brand !== undefined) updateData.brand = body.brand.trim();
+          if (body.category !== undefined) updateData.category = body.category.trim();
+          if (body.subCategory !== undefined) updateData.subCategory = body.subCategory.trim();
+          if (body.eligibleFor20MinDelivery !== undefined) updateData.eligibleFor20MinDelivery = Boolean(body.eligibleFor20MinDelivery);
+          if (body.price !== undefined) updateData.price = Number(body.price);
+          if (body.mrp !== undefined) updateData.mrp = Number(body.mrp);
+          if (body.stock !== undefined) updateData.stock = Number(body.stock);
+          if (body.stockStatus !== undefined) updateData.stockStatus = body.stockStatus;
+          if (body.badge !== undefined) updateData.badge = body.badge;
+          if (body.image !== undefined) updateData.image = body.image;
+          if (body.images !== undefined) updateData.images = body.images;
+          if (body.description !== undefined) updateData.description = body.description;
+          if (body.specifications !== undefined) updateData.specifications = body.specifications;
+          if (body.isWholesale !== undefined) updateData.isWholesale = Boolean(body.isWholesale);
+          if (body.wholesalePrice !== undefined) updateData.wholesalePrice = Number(body.wholesalePrice);
+          if (body.wholesaleMinQty !== undefined) updateData.wholesaleMinQty = Number(body.wholesaleMinQty);
+          if (body.colors !== undefined) updateData.colors = body.colors;
+          if (body.sizes !== undefined) updateData.sizes = body.sizes;
+          if (body.hsnCode !== undefined) updateData.hsnCode = String(body.hsnCode || "").trim();
+          if (body.gstRate !== undefined) updateData.gstRate = Number(body.gstRate) || 18;
+          if (body.countryOfOrigin !== undefined) updateData.countryOfOrigin = String(body.countryOfOrigin || "India").trim();
+          if (body.manufacturerDetails !== undefined) updateData.manufacturerDetails = String(body.manufacturerDetails || "").trim();
+          if (body.packInfo !== undefined) updateData.packInfo = String(body.packInfo || "").trim();
+
+          const updated = await Product.findByIdAndUpdate(id, updateData, { new: true });
+          return res.json(updated);
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
         }
       } catch (err) {
         console.warn("MongoDB seller update product error:", err);
       }
     }
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
     // 2. Also update in memoryStore
     const index = memoryStore.products.findIndex((p) => String(p._id) === String(id) || String(p.id) === String(id));
     if (index !== -1) {
@@ -2252,6 +3014,25 @@ router.put("/products/:id", requireSellerSession, async (req: SellerAuthedReques
         product: updatedResult,
         ...updatedResult,
       });
+<<<<<<< HEAD
+=======
+=======
+    // Check memoryStore
+    const index = memoryStore.products.findIndex((p) => p._id === id || String(p.id) === id);
+    if (index !== -1) {
+      const prod = memoryStore.products[index];
+      if (prod.sellerId !== sellerId) {
+        return res.status(403).json({ error: "Unauthorized: You can only edit your own products." });
+      }
+
+      memoryStore.products[index] = {
+        ...prod,
+        ...body,
+        updatedAt: new Date(),
+      };
+      return res.json(memoryStore.products[index]);
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
     }
 
     return res.status(404).json({ error: "Product not found" });
@@ -2261,6 +3042,10 @@ router.put("/products/:id", requireSellerSession, async (req: SellerAuthedReques
 });
 
 // ==========================================
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
 // 6B. POST /api/sellers/products/:id/adjust-stock (Seller Stock Adjustment)
 // ==========================================
 router.post("/products/:id/adjust-stock", requireSellerSession, async (req: SellerAuthedRequest, res: Response) => {
@@ -2389,12 +3174,38 @@ router.delete("/products/:id", requireSellerSession, async (req: SellerAuthedReq
             await Product.findByIdAndDelete(existing._id);
             await Seller.findByIdAndUpdate(sellerId, { $inc: { listingsCount: -1 } }).catch(() => {});
           }
+<<<<<<< HEAD
+=======
+=======
+// 7. DELETE /api/sellers/products/:id (Protected - Only their own product)
+// ==========================================
+router.delete("/products/:id", requireSellerAuth, async (req: SellerAuthedRequest, res: Response) => {
+  try {
+    const sellerId = req.sellerId!;
+    const { id } = req.params;
+
+    if (isMongoConnected()) {
+      try {
+        const existing = await Product.findById(id);
+        if (existing) {
+          if (existing.sellerId !== sellerId) {
+            return res.status(403).json({ error: "Unauthorized: You can only delete your own products." });
+          }
+
+          await Product.findByIdAndDelete(id);
+          await Seller.findByIdAndUpdate(sellerId, { $inc: { listingsCount: -1 } });
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
         }
       } catch (err) {
         console.warn("MongoDB seller delete product error:", err);
       }
     }
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
     const index = memoryStore.products.findIndex((p) => String(p._id) === String(id) || String(p.id) === String(id));
     if (index !== -1) {
       const prod = memoryStore.products[index];
@@ -2403,18 +3214,44 @@ router.delete("/products/:id", requireSellerSession, async (req: SellerAuthedReq
       memoryStore.products.splice(index, 1);
 
       const memSeller = (memoryStore.sellers || []).find((s) => String(s._id) === String(sellerId));
+<<<<<<< HEAD
+=======
+=======
+    const index = memoryStore.products.findIndex((p) => p._id === id || String(p.id) === id);
+    if (index !== -1) {
+      const prod = memoryStore.products[index];
+      if (prod.sellerId !== sellerId) {
+        return res.status(403).json({ error: "Unauthorized: You can only delete your own products." });
+      }
+      memoryStore.products.splice(index, 1);
+
+      const memSeller = (memoryStore.sellers || []).find((s) => s._id === sellerId);
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
       if (memSeller && memSeller.listingsCount > 0) {
         memSeller.listingsCount -= 1;
       }
     }
 
+<<<<<<< HEAD
     return res.json({ success: true, ok: true, message: "Product deleted from your seller catalog." });
+=======
+<<<<<<< HEAD
+    return res.json({ success: true, ok: true, message: "Product deleted from your seller catalog." });
+=======
+    return res.json({ ok: true, message: "Product deleted from your seller catalog." });
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
   } catch (err: any) {
     return res.status(500).json({ error: err.message || "Failed to delete product" });
   }
 });
 
 // ==========================================
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
 // 7.5 GET /api/sellers/orders & PATCH /api/sellers/orders/:id/status (Seller's Own Orders Only)
 // ==========================================
 router.get("/orders", requireSellerSession, async (req: SellerAuthedRequest, res: Response) => {
@@ -2650,12 +3487,27 @@ router.patch("/orders/:id/status", requireSellerAuth, async (req: SellerAuthedRe
 // 8. GET /api/sellers/wallet (Protected by Seller Session)
 // ==========================================
 router.get("/wallet", requireSellerSession, async (req: SellerAuthedRequest, res: Response) => {
+<<<<<<< HEAD
+=======
+=======
+// 8. GET /api/sellers/wallet (Protected - Seller's Available Balance, Lifetime Earnings & Orders Ledger)
+// ==========================================
+router.get("/wallet", requireSellerAuth, async (req: SellerAuthedRequest, res: Response) => {
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
   try {
     const sellerId = req.sellerId!;
     let walletBalance = 0;
     let totalEarnings = 0;
     let pendingWithdrawals = 0;
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+    // 1. Fetch current seller financial balance
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
     if (isMongoConnected()) {
       try {
         const sellerDoc = await Seller.findById(sellerId).lean();
@@ -2669,8 +3521,19 @@ router.get("/wallet", requireSellerSession, async (req: SellerAuthedRequest, res
       }
     }
 
+<<<<<<< HEAD
     if (walletBalance === 0 && totalEarnings === 0) {
       const memSeller = (memoryStore.sellers || []).find((s) => String(s._id) === String(sellerId));
+=======
+<<<<<<< HEAD
+    if (walletBalance === 0 && totalEarnings === 0) {
+      const memSeller = (memoryStore.sellers || []).find((s) => String(s._id) === String(sellerId));
+=======
+    // In-memory fallback if not in MongoDB
+    if (walletBalance === 0 && totalEarnings === 0) {
+      const memSeller = (memoryStore.sellers || []).find((s) => s._id === sellerId);
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
       if (memSeller) {
         walletBalance = Number((memSeller as any).walletBalance) || 0;
         totalEarnings = Number((memSeller as any).totalEarnings) || 0;
@@ -2678,15 +3541,36 @@ router.get("/wallet", requireSellerSession, async (req: SellerAuthedRequest, res
       }
     }
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+    // 2. Fetch all products owned by this seller
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
     let sellerProducts: any[] = [];
     if (isMongoConnected()) {
       try {
         sellerProducts = await Product.find({ sellerId }).select("_id id name price image").lean();
       } catch (err) {
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
         sellerProducts = (memoryStore.products || []).filter((p) => String(p.sellerId) === String(sellerId));
       }
     } else {
       sellerProducts = (memoryStore.products || []).filter((p) => String(p.sellerId) === String(sellerId));
+<<<<<<< HEAD
+=======
+=======
+        console.warn("MongoDB seller products query in /wallet error:", err);
+        sellerProducts = (memoryStore.products || []).filter((p) => p.sellerId === sellerId);
+      }
+    } else {
+      sellerProducts = (memoryStore.products || []).filter((p) => p.sellerId === sellerId);
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
     }
 
     const sellerProductMap = new Map<string, any>();
@@ -2695,6 +3579,13 @@ router.get("/wallet", requireSellerSession, async (req: SellerAuthedRequest, res
       if (p.id !== undefined && p.id !== null) sellerProductMap.set(String(p.id), p);
     }
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+    // 3. Fetch delivered orders
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
     let deliveredOrders: any[] = [];
     if (isMongoConnected()) {
       try {
@@ -2702,12 +3593,26 @@ router.get("/wallet", requireSellerSession, async (req: SellerAuthedRequest, res
           .sort({ deliveredAt: -1, createdAt: -1 })
           .lean();
       } catch (err) {
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+        console.warn("MongoDB orders query in /wallet error:", err);
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
         deliveredOrders = (memoryStore.orders || []).filter((o) => o.status === "delivered");
       }
     } else {
       deliveredOrders = (memoryStore.orders || []).filter((o) => o.status === "delivered");
     }
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+    // 4. Construct ledger of delivered orders with this seller's specific item earnings
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
     const ledger = [];
     for (const ord of deliveredOrders) {
       const items = Array.isArray(ord.items) ? ord.items : [];
@@ -2774,11 +3679,23 @@ router.get("/wallet", requireSellerSession, async (req: SellerAuthedRequest, res
 });
 
 // ==========================================
+<<<<<<< HEAD
 // 9. POST /api/seller/wallet/withdraw (Protected by requireSellerAuth - Approved Sellers Only)
+=======
+<<<<<<< HEAD
+// 9. POST /api/seller/wallet/withdraw (Protected by requireSellerAuth - Approved Sellers Only)
+=======
+// 9. POST /api/seller/wallet/withdraw (Protected - Submit Withdrawal Request)
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
 // ==========================================
 router.post("/wallet/withdraw", requireSellerAuth, async (req: SellerAuthedRequest, res: Response) => {
   try {
     const sellerId = req.sellerId!;
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
     if (req.seller?.permissions?.canWithdrawPayouts === false) {
       return res.status(403).json({
         success: false,
@@ -2788,6 +3705,14 @@ router.post("/wallet/withdraw", requireSellerAuth, async (req: SellerAuthedReque
 
     const { amount, payoutDetails, note } = req.body;
 
+<<<<<<< HEAD
+=======
+=======
+    const { amount, payoutDetails, note } = req.body;
+
+    // Validate requested amount
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
     const numAmount = Number(amount);
     if (isNaN(numAmount) || numAmount <= 0) {
       return res.status(400).json({
@@ -2796,6 +3721,13 @@ router.post("/wallet/withdraw", requireSellerAuth, async (req: SellerAuthedReque
       });
     }
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+    // Lookup seller to verify existence, shop details, and current balance
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
     let sellerDoc: any = null;
     if (isMongoConnected()) {
       try {
@@ -2805,7 +3737,15 @@ router.post("/wallet/withdraw", requireSellerAuth, async (req: SellerAuthedReque
       }
     }
     if (!sellerDoc) {
+<<<<<<< HEAD
       sellerDoc = (memoryStore.sellers || []).find((s) => String(s._id) === String(sellerId));
+=======
+<<<<<<< HEAD
+      sellerDoc = (memoryStore.sellers || []).find((s) => String(s._id) === String(sellerId));
+=======
+      sellerDoc = (memoryStore.sellers || []).find((s) => s._id === sellerId);
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
     }
 
     if (!sellerDoc) {
@@ -2821,6 +3761,14 @@ router.post("/wallet/withdraw", requireSellerAuth, async (req: SellerAuthedReque
       });
     }
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+    // Atomic balance update:
+    // Decrement walletBalance by numAmount and increment pendingWithdrawals by numAmount
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
     let updatedSeller: any = null;
     if (isMongoConnected()) {
       try {
@@ -2841,6 +3789,14 @@ router.post("/wallet/withdraw", requireSellerAuth, async (req: SellerAuthedReque
         console.warn("MongoDB atomic seller balance update error:", err);
       }
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+      // If MongoDB is connected and the atomic update returned null (insufficient funds / concurrency),
+      // strictly return insufficient funds without falling back to stale in-memory state.
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
       if (!updatedSeller) {
         return res.status(400).json({
           success: false,
@@ -2848,7 +3804,16 @@ router.post("/wallet/withdraw", requireSellerAuth, async (req: SellerAuthedReque
         });
       }
     } else {
+<<<<<<< HEAD
       const memSeller = (memoryStore.sellers || []).find((s) => String(s._id) === String(sellerId));
+=======
+<<<<<<< HEAD
+      const memSeller = (memoryStore.sellers || []).find((s) => String(s._id) === String(sellerId));
+=======
+      // In-memory mode only when MongoDB is completely offline
+      const memSeller = (memoryStore.sellers || []).find((s) => s._id === sellerId);
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
       if (memSeller) {
         const memBal = Number((memSeller as any).walletBalance || 0);
         if (memBal < numAmount) {
@@ -2870,6 +3835,13 @@ router.post("/wallet/withdraw", requireSellerAuth, async (req: SellerAuthedReque
       });
     }
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+    // Create the SellerWithdrawal record with status 'pending'
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
     let withdrawalRecord: any = null;
     if (isMongoConnected()) {
       try {
@@ -2884,6 +3856,14 @@ router.post("/wallet/withdraw", requireSellerAuth, async (req: SellerAuthedReque
           requestedAt: new Date(),
         });
       } catch (dbErr: any) {
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+        console.error("MongoDB failed to create SellerWithdrawal:", dbErr);
+        // Rollback balance deduction if record creation fails
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
         await Seller.findByIdAndUpdate(sellerId, {
           $inc: { walletBalance: numAmount, pendingWithdrawals: -numAmount },
         }).catch(() => {});
@@ -2894,6 +3874,13 @@ router.post("/wallet/withdraw", requireSellerAuth, async (req: SellerAuthedReque
       }
     }
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+    // Keep memoryStore in sync
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
     const memWithdrawal = {
       _id: withdrawalRecord ? String(withdrawalRecord._id) : `sw_${Date.now()}_${Math.random().toString(36).slice(2, 7)}`,
       sellerId: String(updatedSeller._id),
@@ -2911,6 +3898,16 @@ router.post("/wallet/withdraw", requireSellerAuth, async (req: SellerAuthedReque
 
     const finalRecord = withdrawalRecord || memWithdrawal;
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+    console.log(
+      `💸 [SELLER WITHDRAWAL REQUESTED] Seller ${updatedSeller.shopName} (${updatedSeller.email}) requested ₹${numAmount}. Status: PENDING.`
+    );
+
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
     return res.status(201).json({
       success: true,
       message: "Withdrawal request submitted successfully and is awaiting admin approval.",
@@ -2928,9 +3925,21 @@ router.post("/wallet/withdraw", requireSellerAuth, async (req: SellerAuthedReque
 });
 
 // ==========================================
+<<<<<<< HEAD
 // 10. GET /api/seller/wallet/withdrawals (Protected by Seller Session)
 // ==========================================
 router.get("/wallet/withdrawals", requireSellerSession, async (req: SellerAuthedRequest, res: Response) => {
+=======
+<<<<<<< HEAD
+// 10. GET /api/seller/wallet/withdrawals (Protected by Seller Session)
+// ==========================================
+router.get("/wallet/withdrawals", requireSellerSession, async (req: SellerAuthedRequest, res: Response) => {
+=======
+// 10. GET /api/seller/wallet/withdrawals (Protected - Seller's Withdrawal History)
+// ==========================================
+router.get("/wallet/withdrawals", requireSellerAuth, async (req: SellerAuthedRequest, res: Response) => {
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
   try {
     const sellerId = req.sellerId!;
     const sellerEmail = req.seller?.email;
@@ -2952,9 +3961,19 @@ router.get("/wallet/withdrawals", requireSellerSession, async (req: SellerAuthed
 
     if (!withdrawals || withdrawals.length === 0) {
       withdrawals = (memoryStore.sellerWithdrawals || []).filter(
+<<<<<<< HEAD
         (w) =>
           String(w.sellerId) === String(sellerId) ||
           (sellerEmail && w.sellerEmail?.toLowerCase() === sellerEmail.toLowerCase())
+=======
+<<<<<<< HEAD
+        (w) =>
+          String(w.sellerId) === String(sellerId) ||
+          (sellerEmail && w.sellerEmail?.toLowerCase() === sellerEmail.toLowerCase())
+=======
+        (w) => String(w.sellerId) === String(sellerId) || (sellerEmail && w.sellerEmail?.toLowerCase() === sellerEmail.toLowerCase())
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
       );
     }
 
@@ -2964,6 +3983,10 @@ router.get("/wallet/withdrawals", requireSellerSession, async (req: SellerAuthed
     });
   } catch (err: any) {
     console.error("Failed to fetch seller withdrawals:", err);
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
     return res.status(500).json({ error: "Failed to fetch withdrawals." });
   }
 });
@@ -7557,9 +8580,26 @@ router.post("/store-builder/feedback", requireSellerSession, async (req: SellerA
     });
   } catch (err: any) {
     return res.status(500).json({ error: err.message || "Failed to submit feedback" });
+<<<<<<< HEAD
+=======
+=======
+    return res.status(500).json({
+      success: false,
+      error: err.message || "Failed to fetch withdrawal history",
+    });
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
   }
 });
 
 export default router;
+<<<<<<< HEAD
 
 
+=======
+<<<<<<< HEAD
+
+
+=======
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995

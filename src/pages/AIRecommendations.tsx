@@ -901,12 +901,28 @@ How may our guild assist your international boutique's seasonal layout today?`,
             
             {isCompilingOutfit && (
               <div className="text-center py-16 space-y-4 animate-pulse">
+<<<<<<< HEAD
                 <span className="inline-flex p-4 rounded-full bg-neutral-900 border border-solid border-neutral-850 text-[#FF007F]">
+=======
+<<<<<<< HEAD
+                <span className="inline-flex p-4 rounded-full bg-neutral-900 border border-solid border-neutral-850 text-[#FF007F]">
+=======
+                <span className="inline-flex p-4 rounded-full bg-neutral-900 border border-solid border-neutral-850 text-[#D4AF37]">
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
                   <RefreshCw className="w-8 h-8 animate-spin" />
                 </span>
                 <div className="space-y-1">
                   <p className="text-[11px] font-mono tracking-widest uppercase text-neutral-400 font-bold">Stylist Matchmaking Engine active</p>
+<<<<<<< HEAD
                   <p className="text-[#FF007F] text-xs font-semibold italic">Analyzing chromatic golds and fabric density...</p>
+=======
+<<<<<<< HEAD
+                  <p className="text-[#FF007F] text-xs font-semibold italic">Analyzing chromatic golds and fabric density...</p>
+=======
+                  <p className="text-[#D4AF37] text-xs font-semibold italic">Analyzing chromatic golds and fabric density...</p>
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
                 </div>
               </div>
             )}
@@ -915,9 +931,21 @@ How may our guild assist your international boutique's seasonal layout today?`,
               <div className="space-y-8 animate-fade-in text-xs">
                 
                 {/* Bundle Header */}
+<<<<<<< HEAD
                 <div className="p-5 rounded-2xl bg-gradient-to-r from-neutral-900 to-[#0A1629] border border-solid border-[#FF007F]/30 flex flex-col md:flex-row justify-between items-start md:items-center gap-5 shadow-inner">
                   <div className="space-y-1">
                     <span className="text-[9px] uppercase tracking-widest font-black text-[#FF007F] bg-[#FF007F]/10 px-2.5 py-0.5 rounded-full inline-block font-mono mb-1">
+=======
+<<<<<<< HEAD
+                <div className="p-5 rounded-2xl bg-gradient-to-r from-neutral-900 to-[#0A1629] border border-solid border-[#FF007F]/30 flex flex-col md:flex-row justify-between items-start md:items-center gap-5 shadow-inner">
+                  <div className="space-y-1">
+                    <span className="text-[9px] uppercase tracking-widest font-black text-[#FF007F] bg-[#FF007F]/10 px-2.5 py-0.5 rounded-full inline-block font-mono mb-1">
+=======
+                <div className="p-5 rounded-2xl bg-gradient-to-r from-neutral-900 to-[#0A1629] border border-solid border-[#D4AF37]/30 flex flex-col md:flex-row justify-between items-start md:items-center gap-5 shadow-inner">
+                  <div className="space-y-1">
+                    <span className="text-[9px] uppercase tracking-widest font-black text-[#D4AF37] bg-[#D4AF37]/10 px-2.5 py-0.5 rounded-full inline-block font-mono mb-1">
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
                       Complete Look Bundle — 15% Off
                     </span>
                     <h3 className="text-md font-bold text-white uppercase font-serif tracking-wide">{stylingNotes.headline} Suite</h3>
@@ -927,7 +955,15 @@ How may our guild assist your international boutique's seasonal layout today?`,
                   <div className="shrink-0 self-stretch md:self-auto">
                     <button
                       onClick={handleAddCyLookToBag}
+<<<<<<< HEAD
                       className="w-full py-3 px-6 uppercase font-black text-[10px] bg-gradient-to-r from-[#FF1990] via-[#FF007F] to-[#D80068] hover:opacity-95 text-white rounded-xl flex items-center justify-center gap-1.5 shadow-[0_4px_16px_rgba(255,0,127,0.35)] hover:scale-[1.02] duration-300 transition-all cursor-pointer"
+=======
+<<<<<<< HEAD
+                      className="w-full py-3 px-6 uppercase font-black text-[10px] bg-gradient-to-r from-[#FF1990] via-[#FF007F] to-[#D80068] hover:opacity-95 text-white rounded-xl flex items-center justify-center gap-1.5 shadow-[0_4px_16px_rgba(255,0,127,0.35)] hover:scale-[1.02] duration-300 transition-all cursor-pointer"
+=======
+                      className="w-full py-3 px-6 uppercase font-black text-[10px] bg-gradient-to-r from-amber-400 via-[#D4AF37] to-amber-500 hover:opacity-95 text-black rounded-xl flex items-center justify-center gap-1.5 shadow-[0_4px_16px_rgba(212,175,55,0.25)] hover:scale-[1.02] duration-300 transition-all cursor-pointer"
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
                     >
                       <ShoppingCart className="w-3.5 h-3.5" /> Acquire Complete Look (15% Off)
                     </button>
@@ -944,19 +980,43 @@ How may our guild assist your international boutique's seasonal layout today?`,
                       <div className="space-y-3.5">
                         <div className="relative aspect-square rounded-xl overflow-hidden bg-neutral-950 border border-solid border-neutral-850">
                           <img src={selectedBaseProduct.image} alt={selectedBaseProduct.name} className="w-full h-full object-cover" referrerPolicy="no-referrer" />
+<<<<<<< HEAD
                           <span className="absolute top-2 left-2 px-2 py-0.5 bg-[#FF007F] text-black font-black text-[8px] font-mono uppercase rounded">Suite Anchor</span>
+=======
+<<<<<<< HEAD
+                          <span className="absolute top-2 left-2 px-2 py-0.5 bg-[#FF007F] text-black font-black text-[8px] font-mono uppercase rounded">Suite Anchor</span>
+=======
+                          <span className="absolute top-2 left-2 px-2 py-0.5 bg-[#D4AF37] text-black font-black text-[8px] font-mono uppercase rounded">Suite Anchor</span>
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
                         </div>
                         <div>
                           <p className="text-[9px] font-mono text-neutral-500 uppercase tracking-wide">{selectedBaseProduct.category}</p>
                           <h4 className="font-bold text-white uppercase text-[11px] truncate leading-tight mt-1">{selectedBaseProduct.name}</h4>
                         </div>
                       </div>
+<<<<<<< HEAD
                       <p className="text-[11px] text-[#FF007F] font-black mt-3">₹{selectedBaseProduct.price.toLocaleString('en-IN')}</p>
+=======
+<<<<<<< HEAD
+                      <p className="text-[11px] text-[#FF007F] font-black mt-3">₹{selectedBaseProduct.price.toLocaleString('en-IN')}</p>
+=======
+                      <p className="text-[11px] text-[#D4AF37] font-black mt-3">₹{selectedBaseProduct.price.toLocaleString('en-IN')}</p>
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
                     </div>
 
                     {/* Companion 1 */}
                     {complementaryProducts[0] && (
+<<<<<<< HEAD
                       <div className="bg-neutral-900/60 p-4 rounded-2xl border border-solid border-neutral-850 flex flex-col justify-between group cursor-pointer hover:border-[#FF007F]/50 transition-colors" onClick={() => onSelectProduct(complementaryProducts[0])}>
+=======
+<<<<<<< HEAD
+                      <div className="bg-neutral-900/60 p-4 rounded-2xl border border-solid border-neutral-850 flex flex-col justify-between group cursor-pointer hover:border-[#FF007F]/50 transition-colors" onClick={() => onSelectProduct(complementaryProducts[0])}>
+=======
+                      <div className="bg-neutral-900/60 p-4 rounded-2xl border border-solid border-neutral-850 flex flex-col justify-between group cursor-pointer hover:border-[#D4AF37]/50 transition-colors" onClick={() => onSelectProduct(complementaryProducts[0])}>
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
                         <div className="space-y-3.5">
                           <div className="relative aspect-square rounded-xl overflow-hidden bg-neutral-950 border border-solid border-neutral-850">
                             <img src={complementaryProducts[0].image} alt={complementaryProducts[0].name} className="w-full h-full object-cover group-hover:scale-103 duration-300 transition-transform" referrerPolicy="no-referrer" />
@@ -973,7 +1033,15 @@ How may our guild assist your international boutique's seasonal layout today?`,
 
                     {/* Companion 2 */}
                     {complementaryProducts[1] && (
+<<<<<<< HEAD
                       <div className="bg-neutral-900/60 p-4 rounded-2xl border border-solid border-neutral-850 flex flex-col justify-between group cursor-pointer hover:border-[#FF007F]/50 transition-colors" onClick={() => onSelectProduct(complementaryProducts[1])}>
+=======
+<<<<<<< HEAD
+                      <div className="bg-neutral-900/60 p-4 rounded-2xl border border-solid border-neutral-850 flex flex-col justify-between group cursor-pointer hover:border-[#FF007F]/50 transition-colors" onClick={() => onSelectProduct(complementaryProducts[1])}>
+=======
+                      <div className="bg-neutral-900/60 p-4 rounded-2xl border border-solid border-neutral-850 flex flex-col justify-between group cursor-pointer hover:border-[#D4AF37]/50 transition-colors" onClick={() => onSelectProduct(complementaryProducts[1])}>
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
                         <div className="space-y-3.5">
                           <div className="relative aspect-square rounded-xl overflow-hidden bg-neutral-950 border border-solid border-neutral-850">
                             <img src={complementaryProducts[1].image} alt={complementaryProducts[1].name} className="w-full h-full object-cover group-hover:scale-103 duration-300 transition-transform" referrerPolicy="no-referrer" />
@@ -994,13 +1062,29 @@ How may our guild assist your international boutique's seasonal layout today?`,
                 {/* Dynamically Generated Stylist Commentary */}
                 <div className="p-5 bg-neutral-900/40 rounded-2xl border border-solid border-neutral-850 space-y-3.5">
                   <h4 className="text-xs font-black uppercase text-white tracking-widest font-serif flex items-center gap-2">
+<<<<<<< HEAD
                     <Sparkles className="w-4 h-4 text-[#FF007F]" />
+=======
+<<<<<<< HEAD
+                    <Sparkles className="w-4 h-4 text-[#FF007F]" />
+=======
+                    <Sparkles className="w-4 h-4 text-[#D4AF37]" />
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
                     Atelier Styling Directives
                   </h4>
                   <ul className="space-y-2 text-neutral-400 text-[11px] font-sans font-medium list-none pl-0">
                     {stylingNotes.bullets.map((bullet, idx) => (
                       <li key={idx} className="flex gap-2.5 items-start">
+<<<<<<< HEAD
                         <span className="text-[#FF007F] shrink-0 mt-0.5">✦</span>
+=======
+<<<<<<< HEAD
+                        <span className="text-[#FF007F] shrink-0 mt-0.5">✦</span>
+=======
+                        <span className="text-[#D4AF37] shrink-0 mt-0.5">✦</span>
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
                         <span className="leading-relaxed">{bullet}</span>
                       </li>
                     ))}
@@ -1019,7 +1103,15 @@ How may our guild assist your international boutique's seasonal layout today?`,
                   </div>
                   <div className="flex justify-between font-extrabold text-white pt-3.5 text-sm uppercase border-t border-solid border-neutral-900">
                     <span>Final Outfit Outlay:</span>
+<<<<<<< HEAD
                     <span className="text-[#FF007F] font-serif text-base">₹{cyTotal.toLocaleString('en-IN')}</span>
+=======
+<<<<<<< HEAD
+                    <span className="text-[#FF007F] font-serif text-base">₹{cyTotal.toLocaleString('en-IN')}</span>
+=======
+                    <span className="text-[#D4AF37] font-serif text-base">₹{cyTotal.toLocaleString('en-IN')}</span>
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
                   </div>
                 </div>
 
@@ -1041,7 +1133,15 @@ How may our guild assist your international boutique's seasonal layout today?`,
           {/* Left column selection pane */}
           <aside className="lg:col-span-4 bg-neutral-950/75 border border-solid border-neutral-850 p-6 rounded-3xl space-y-6">
             <div>
+<<<<<<< HEAD
               <span className="text-[9px] uppercase font-mono text-[#FF007F] tracking-widest block mb-1">Tailored Benchmark dossiers</span>
+=======
+<<<<<<< HEAD
+              <span className="text-[9px] uppercase font-mono text-[#FF007F] tracking-widest block mb-1">Tailored Benchmark dossiers</span>
+=======
+              <span className="text-[9px] uppercase font-mono text-[#D4AF37] tracking-widest block mb-1">Tailored Benchmark dossiers</span>
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
               <h3 className="text-sm font-black font-serif text-white uppercase pb-2.5 border-b border-solid border-neutral-900">
                 1. Select Archetype Vibe
               </h3>
@@ -1058,14 +1158,30 @@ How may our guild assist your international boutique's seasonal layout today?`,
                   }}
                   className={`p-4 rounded-2xl border border-solid cursor-pointer select-none transition-all ${
                     selectedArch === arch.id
+<<<<<<< HEAD
                       ? 'border-[#FF007F]/50 bg-[#0E203B]/60 shadow-[0_4px_16px_rgba(212,175,55,0.06)]'
+=======
+<<<<<<< HEAD
+                      ? 'border-[#FF007F]/50 bg-[#0E203B]/60 shadow-[0_4px_16px_rgba(212,175,55,0.06)]'
+=======
+                      ? 'border-[#D4AF37]/50 bg-[#0E203B]/60 shadow-[0_4px_16px_rgba(212,175,55,0.06)]'
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
                       : 'border-neutral-850 bg-neutral-900 hover:bg-neutral-850'
                   }`}
                 >
                   <div className="flex gap-4">
                     <span className="text-2.5xl mt-0.5" role="img" aria-label={arch.name}>{arch.icon}</span>
                     <div className="text-xs space-y-1.5 flex-1">
+<<<<<<< HEAD
                       <h4 className={`font-black uppercase text-[11px] tracking-wider ${selectedArch === arch.id ? 'text-[#FF007F]' : 'text-white'}`}>{arch.name}</h4>
+=======
+<<<<<<< HEAD
+                      <h4 className={`font-black uppercase text-[11px] tracking-wider ${selectedArch === arch.id ? 'text-[#FF007F]' : 'text-white'}`}>{arch.name}</h4>
+=======
+                      <h4 className={`font-black uppercase text-[11px] tracking-wider ${selectedArch === arch.id ? 'text-[#D4AF37]' : 'text-white'}`}>{arch.name}</h4>
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
                       <p className="text-neutral-400 font-medium leading-relaxed font-sans mt-0.5">{arch.desc}</p>
                       <p className="text-[10px] text-neutral-300 italic font-semibold mt-1 bg-neutral-950/40 px-2.5 py-0.5 rounded inline-block">Core: {arch.vibe}</p>
                     </div>
@@ -1095,7 +1211,15 @@ How may our guild assist your international boutique's seasonal layout today?`,
                 </span>
                 <div className="space-y-1">
                   <p className="text-xs font-bold uppercase tracking-widest text-neutral-400">Gemini Style Synthesis active</p>
+<<<<<<< HEAD
                   <p className="text-[#FF007F] text-xs font-mono font-black italic">{generationStep}</p>
+=======
+<<<<<<< HEAD
+                  <p className="text-[#FF007F] text-xs font-mono font-black italic">{generationStep}</p>
+=======
+                  <p className="text-[#D4AF37] text-xs font-mono font-black italic">{generationStep}</p>
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
                 </div>
               </div>
             )}
@@ -1104,7 +1228,15 @@ How may our guild assist your international boutique's seasonal layout today?`,
               /* EMPTY INITIAL CALL TO ACTION */
               <div id="ai-prompt-call-to-action" className="text-center py-20 space-y-4 text-neutral-500">
                 <span className="inline-flex p-6 rounded-full bg-neutral-900 border border-solid border-neutral-850">
+<<<<<<< HEAD
                   <Sparkles className="w-10 h-10 text-[#FF007F]" />
+=======
+<<<<<<< HEAD
+                  <Sparkles className="w-10 h-10 text-[#FF007F]" />
+=======
+                  <Sparkles className="w-10 h-10 text-[#D4AF37]" />
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
                 </span>
                 <div className="space-y-1.5">
                   <h3 className="text-white font-serif font-bold text-sm uppercase">Fashion Synthesizer Online</h3>
@@ -1120,9 +1252,21 @@ How may our guild assist your international boutique's seasonal layout today?`,
               <div id="ai-lookbook-grid-results" className="space-y-6 animate-fade-in text-xs">
                 
                 {/* Lookbook Summary Card Header */}
+<<<<<<< HEAD
                 <div className="p-5 rounded-2xl bg-[#0A1629] border border-solid border-[#FF007F]/45 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-5">
                   <div className="space-y-1">
                     <span className="text-[9px] uppercase tracking-widest font-black text-[#FF007F] bg-[#FF007F]/10 px-2.5 py-0.5 rounded-full inline-block font-mono">Dossier code unlocked: 15% Off</span>
+=======
+<<<<<<< HEAD
+                <div className="p-5 rounded-2xl bg-[#0A1629] border border-solid border-[#FF007F]/45 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-5">
+                  <div className="space-y-1">
+                    <span className="text-[9px] uppercase tracking-widest font-black text-[#FF007F] bg-[#FF007F]/10 px-2.5 py-0.5 rounded-full inline-block font-mono">Dossier code unlocked: 15% Off</span>
+=======
+                <div className="p-5 rounded-2xl bg-[#0A1629] border border-solid border-[#D4AF37]/45 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-5">
+                  <div className="space-y-1">
+                    <span className="text-[9px] uppercase tracking-widest font-black text-[#D4AF37] bg-[#D4AF37]/10 px-2.5 py-0.5 rounded-full inline-block font-mono">Dossier code unlocked: 15% Off</span>
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
                     <h3 className="text-md font-serif font-bold text-white uppercase">{activeArchetype.name} Suite</h3>
                     <p className="text-neutral-400 text-[10px]">Stylist Vibe matches: <strong className="text-white">{activeArchetype.vibe}</strong></p>
                   </div>
@@ -1131,7 +1275,15 @@ How may our guild assist your international boutique's seasonal layout today?`,
                     <button
                       id="add-bundle-lookbook-cart-btn"
                       onClick={handleAddBundleToCart}
+<<<<<<< HEAD
                       className="w-full py-3.5 px-6 uppercase font-black text-[10px] bg-gradient-to-r from-[#FF1990] via-[#FF007F] to-[#D80068] text-white rounded-xl flex items-center justify-center gap-1.5 shadow-lg shadow-[#FF007F]/10 hover:scale-[1.02] duration-200 transition-all cursor-pointer"
+=======
+<<<<<<< HEAD
+                      className="w-full py-3.5 px-6 uppercase font-black text-[10px] bg-gradient-to-r from-[#FF1990] via-[#FF007F] to-[#D80068] text-white rounded-xl flex items-center justify-center gap-1.5 shadow-lg shadow-[#FF007F]/10 hover:scale-[1.02] duration-200 transition-all cursor-pointer"
+=======
+                      className="w-full py-3.5 px-6 uppercase font-black text-[10px] bg-gradient-to-r from-amber-400 via-[#D4AF37] to-amber-500 text-black rounded-xl flex items-center justify-center gap-1.5 shadow-lg shadow-[#D4AF37]/10 hover:scale-[1.02] duration-200 transition-all cursor-pointer"
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
                     >
                       <ShoppingCart className="w-3.5 h-3.5" /> Acquire Look Suite (15% Off)
                     </button>
@@ -1145,12 +1297,28 @@ How may our guild assist your international boutique's seasonal layout today?`,
                       <div
                         key={p.id}
                         onClick={() => onSelectProduct(p)}
+<<<<<<< HEAD
                         className="group cursor-pointer bg-neutral-900 rounded-2xl p-4 border border-solid border-neutral-850 hover:border-[#FF007F]/50 transition-all"
+=======
+<<<<<<< HEAD
+                        className="group cursor-pointer bg-neutral-900 rounded-2xl p-4 border border-solid border-neutral-850 hover:border-[#FF007F]/50 transition-all"
+=======
+                        className="group cursor-pointer bg-neutral-900 rounded-2xl p-4 border border-solid border-neutral-850 hover:border-[#D4AF37]/50 transition-all"
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
                       >
                         <div className="relative aspect-square rounded-xl overflow-hidden bg-neutral-950 border border-solid border-neutral-850">
                           <img src={p.image} alt={p.name} className="w-full h-full object-cover group-hover:scale-102 transition-transform duration-300" referrerPolicy="no-referrer" />
                         </div>
+<<<<<<< HEAD
                         <span className="text-[9px] text-[#FF007F] uppercase font-mono mt-3.5 block font-bold">{p.brand}</span>
+=======
+<<<<<<< HEAD
+                        <span className="text-[9px] text-[#FF007F] uppercase font-mono mt-3.5 block font-bold">{p.brand}</span>
+=======
+                        <span className="text-[9px] text-[#D4AF37] uppercase font-mono mt-3.5 block font-bold">{p.brand}</span>
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
                         <h4 className="font-bold text-white uppercase truncate text-[11px] mt-1 leading-tight">{p.name}</h4>
                         <p className="text-[10px] text-neutral-400 mt-1 font-bold">₹{p.price.toLocaleString('en-IN')}</p>
                       </div>
@@ -1173,7 +1341,15 @@ How may our guild assist your international boutique's seasonal layout today?`,
                   </div>
                   <div className="flex justify-between font-extrabold text-white pt-3.5 border-t border-solid border-neutral-950 text-sm uppercase">
                     <span>Final outfit outlay:</span>
+<<<<<<< HEAD
                     <span className="text-[#FF007F] font-serif text-base">₹{bundleTotal.toLocaleString('en-IN')}</span>
+=======
+<<<<<<< HEAD
+                    <span className="text-[#FF007F] font-serif text-base">₹{bundleTotal.toLocaleString('en-IN')}</span>
+=======
+                    <span className="text-[#D4AF37] font-serif text-base">₹{bundleTotal.toLocaleString('en-IN')}</span>
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
                   </div>
                 </div>
 
@@ -1196,7 +1372,15 @@ How may our guild assist your international boutique's seasonal layout today?`,
           {/* Subsegment: For You */}
           <div className="space-y-4">
             <div className="flex items-center gap-2 pb-2 border-b border-solid border-neutral-900">
+<<<<<<< HEAD
               <Compass className="w-5 h-5 text-[#FF007F]" />
+=======
+<<<<<<< HEAD
+              <Compass className="w-5 h-5 text-[#FF007F]" />
+=======
+              <Compass className="w-5 h-5 text-[#D4AF37]" />
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
               <h3 className="text-base font-serif font-extrabold text-white uppercase tracking-wider">Taste-Matched For You</h3>
             </div>
             
@@ -1204,7 +1388,15 @@ How may our guild assist your international boutique's seasonal layout today?`,
               {curatedPersonalizedFeeds.map((feed) => (
                 <div key={feed.id} className="p-6 bg-neutral-950/75 border border-solid border-neutral-850 rounded-3xl relative overflow-hidden flex flex-col justify-between space-y-4 shadow-xl">
                   {/* Rating Index Badge */}
+<<<<<<< HEAD
                   <span className="absolute top-4 right-4 px-3 py-1 bg-gradient-to-r from-[#FF1990] to-[#FF007F] text-white font-black text-[9px] font-mono tracking-wider rounded-full shadow-[0_0_12px_rgba(255,0,127,0.35)] uppercase">
+=======
+<<<<<<< HEAD
+                  <span className="absolute top-4 right-4 px-3 py-1 bg-gradient-to-r from-[#FF1990] to-[#FF007F] text-white font-black text-[9px] font-mono tracking-wider rounded-full shadow-[0_0_12px_rgba(255,0,127,0.35)] uppercase">
+=======
+                  <span className="absolute top-4 right-4 px-3 py-1 bg-gradient-to-r from-amber-400 to-[#D4AF37] text-black font-black text-[9px] font-mono tracking-wider rounded-full shadow-[0_0_12px_rgba(212,175,55,0.35)] uppercase">
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
                     {feed.matchScore} Taste Match Matchmaker
                   </span>
 
@@ -1218,10 +1410,23 @@ How may our guild assist your international boutique's seasonal layout today?`,
                     {feed.baseItem && (
                       <div
                         onClick={() => onSelectProduct(feed.baseItem)}
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
                         className="p-3 bg-neutral-900 rounded-2xl border border-solid border-neutral-850/80 cursor-pointer hover:border-[#FF007F]/50 duration-300 transition-colors"
                       >
                         <img src={feed.baseItem.image} className="w-full aspect-square rounded-xl object-cover bg-neutral-950" referrerPolicy="no-referrer" />
                         <h5 className="font-extrabold text-[#FF007F] text-[9px] font-mono tracking-wider truncate uppercase mt-1.5">{feed.baseItem.brand}</h5>
+<<<<<<< HEAD
+=======
+=======
+                        className="p-3 bg-neutral-900 rounded-2xl border border-solid border-neutral-850/80 cursor-pointer hover:border-[#D4AF37]/50 duration-300 transition-colors"
+                      >
+                        <img src={feed.baseItem.image} className="w-full aspect-square rounded-xl object-cover bg-neutral-950" referrerPolicy="no-referrer" />
+                        <h5 className="font-extrabold text-[#D4AF37] text-[9px] font-mono tracking-wider truncate uppercase mt-1.5">{feed.baseItem.brand}</h5>
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
                         <h6 className="font-bold text-white uppercase tracking-normal truncate text-[10px] mt-0.5">{feed.baseItem.name}</h6>
                         <p className="text-[10px] font-medium text-neutral-400 mt-1">₹{feed.baseItem.price.toLocaleString('en-IN')}</p>
                       </div>
@@ -1229,10 +1434,23 @@ How may our guild assist your international boutique's seasonal layout today?`,
                     {feed.accentItem && (
                       <div
                         onClick={() => onSelectProduct(feed.accentItem)}
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
                         className="p-3 bg-neutral-900 rounded-2xl border border-solid border-neutral-850/80 cursor-pointer hover:border-[#FF007F]/50 duration-300 transition-colors"
                       >
                         <img src={feed.accentItem.image} className="w-full aspect-square rounded-xl object-cover bg-neutral-950" referrerPolicy="no-referrer" />
                         <h5 className="font-extrabold text-[#FF007F] text-[9px] font-mono tracking-wider truncate uppercase mt-1.5">{feed.accentItem.brand}</h5>
+<<<<<<< HEAD
+=======
+=======
+                        className="p-3 bg-neutral-900 rounded-2xl border border-solid border-neutral-850/80 cursor-pointer hover:border-[#D4AF37]/50 duration-300 transition-colors"
+                      >
+                        <img src={feed.accentItem.image} className="w-full aspect-square rounded-xl object-cover bg-neutral-950" referrerPolicy="no-referrer" />
+                        <h5 className="font-extrabold text-[#D4AF37] text-[9px] font-mono tracking-wider truncate uppercase mt-1.5">{feed.accentItem.brand}</h5>
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
                         <h6 className="font-bold text-white uppercase tracking-normal truncate text-[10px] mt-0.5">{feed.accentItem.name}</h6>
                         <p className="text-[10px] font-medium text-neutral-400 mt-1">₹{feed.accentItem.price.toLocaleString('en-IN')}</p>
                       </div>
@@ -1261,7 +1479,15 @@ How may our guild assist your international boutique's seasonal layout today?`,
           {/* Subsegment: Trending Now */}
           <div className="space-y-4">
             <div className="flex items-center gap-2 pb-2 border-b border-solid border-neutral-900">
+<<<<<<< HEAD
               <TrendingUp className="w-5 h-5 text-[#FF007F]" />
+=======
+<<<<<<< HEAD
+              <TrendingUp className="w-5 h-5 text-[#FF007F]" />
+=======
+              <TrendingUp className="w-5 h-5 text-[#D4AF37]" />
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
               <h3 className="text-base font-serif font-extrabold text-white uppercase tracking-wider">Hottest Trending Designs</h3>
             </div>
 
@@ -1284,7 +1510,15 @@ How may our guild assist your international boutique's seasonal layout today?`,
                     <div>
                       {/* High-status statistical tags */}
                       <div className="flex justify-between items-baseline">
+<<<<<<< HEAD
                         <span className="text-[9px] uppercase font-mono font-black text-[#FF007F] tracking-wider">{p.brand}</span>
+=======
+<<<<<<< HEAD
+                        <span className="text-[9px] uppercase font-mono font-black text-[#FF007F] tracking-wider">{p.brand}</span>
+=======
+                        <span className="text-[9px] uppercase font-mono font-black text-[#D4AF37] tracking-wider">{p.brand}</span>
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
                         <span className="text-[9px] uppercase font-mono text-neutral-400 font-extrabold flex gap-1 items-center bg-neutral-900 px-2 py-0.5 rounded border border-solid border-neutral-800">
                           {p.trendingStat.label}: <strong className="text-green-400 font-bold">{p.trendingStat.stats}</strong>
                         </span>
@@ -1299,7 +1533,15 @@ How may our guild assist your international boutique's seasonal layout today?`,
                       onClick={() => {
                         onSelectProduct(p);
                       }}
+<<<<<<< HEAD
                       className="px-4 py-2 bg-[#0E203B] hover:bg-[#162C4E] text-[10px] font-extrabold uppercase text-[#FF007F] rounded-xl transition-colors cursor-pointer border border-solid border-[#FF007F]/20"
+=======
+<<<<<<< HEAD
+                      className="px-4 py-2 bg-[#0E203B] hover:bg-[#162C4E] text-[10px] font-extrabold uppercase text-[#FF007F] rounded-xl transition-colors cursor-pointer border border-solid border-[#FF007F]/20"
+=======
+                      className="px-4 py-2 bg-[#0E203B] hover:bg-[#162C4E] text-[10px] font-extrabold uppercase text-[#D4AF37] rounded-xl transition-colors cursor-pointer border border-solid border-[#D4AF37]/20"
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
                     >
                       View specs
                     </button>

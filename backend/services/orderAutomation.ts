@@ -69,7 +69,14 @@ export async function progressOrderStatuses(force: boolean = false): Promise<{ u
             order.status = "delivered";
             order.trackingStep = 4;
             order.deliveredAt = new Date(effectiveShippedTime + shippedToDeliveredMs);
+<<<<<<< HEAD
             order.liveTracking = undefined;
+=======
+<<<<<<< HEAD
+            order.liveTracking = undefined;
+=======
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
             changed = true;
           }
         }
@@ -128,7 +135,14 @@ export async function progressOrderStatuses(force: boolean = false): Promise<{ u
           o.status = "delivered";
           o.trackingStep = 4;
           o.deliveredAt = new Date(effShipped + shippedToDeliveredMs);
+<<<<<<< HEAD
           delete o.liveTracking;
+=======
+<<<<<<< HEAD
+          delete o.liveTracking;
+=======
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
           updatedCount++;
           await creditSellerWalletsForOrder(o).catch((err) => {
             console.warn("Automation wallet crediting notice (Memory):", err);

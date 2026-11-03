@@ -43,7 +43,17 @@ async function main() {
     }
   } else {
     // Development mode with tsx runtime
+<<<<<<< HEAD
     await import("./server.core.ts");
+=======
+<<<<<<< HEAD
+    await import("./server.core.ts");
+=======
+    await import("./server.core.js").catch(async () => {
+      await import("./server.core.ts");
+    });
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
   }
 }
 

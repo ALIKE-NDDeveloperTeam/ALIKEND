@@ -51,11 +51,25 @@ function ToastCard({ toast, onDismiss }: { toast: ToastItem; onDismiss: (id: str
 
   const config = {
     success: {
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
       borderColor: isLight ? 'border-[#FF007F]/40' : 'border-[#FF007F]/50',
       icon: <Sparkles className={`w-5 h-5 shrink-0 ${isLight ? 'text-[#FF007F]' : 'text-[#FF1990]'}`} />,
       glow: isLight ? 'shadow-[0_10px_25px_rgba(255,0,127,0.15)]' : 'shadow-[0_10px_30px_rgba(255,0,127,0.22)]',
       badge: 'SUCCESS',
       badgeColor: isLight ? 'bg-[#FF007F]/10 text-[#FF007F]' : 'bg-[#FF007F]/20 text-[#FF007F]'
+<<<<<<< HEAD
+=======
+=======
+      borderColor: isLight ? 'border-[#C5A02B]/40' : 'border-[#D4AF37]/50',
+      icon: <Sparkles className={`w-5 h-5 shrink-0 ${isLight ? 'text-[#C5A02B]' : 'text-[#D4AF37]'}`} />,
+      glow: isLight ? 'shadow-[0_10px_25px_rgba(197,160,43,0.12)]' : 'shadow-[0_10px_30px_rgba(212,175,55,0.18)]',
+      badge: 'SUCCESS',
+      badgeColor: isLight ? 'bg-[#C5A02B]/10 text-[#C5A02B]' : 'bg-[#D4AF37]/20 text-[#D4AF37]'
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
     },
     error: {
       borderColor: 'border-rose-500/50',
@@ -72,7 +86,15 @@ function ToastCard({ toast, onDismiss }: { toast: ToastItem; onDismiss: (id: str
       badgeColor: 'bg-amber-500/15 text-amber-400'
     },
     info: {
+<<<<<<< HEAD
       borderColor: isLight ? 'border-[#FF007F]/30' : 'border-neutral-700',
+=======
+<<<<<<< HEAD
+      borderColor: isLight ? 'border-[#FF007F]/30' : 'border-neutral-700',
+=======
+      borderColor: isLight ? 'border-[#C5A02B]/30' : 'border-neutral-700',
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
       icon: <Info className={`w-5 h-5 shrink-0 ${isLight ? 'text-neutral-600' : 'text-neutral-400'}`} />,
       glow: 'shadow-[0_10px_25px_rgba(0,0,0,0.1)]',
       badge: 'NOTICE',

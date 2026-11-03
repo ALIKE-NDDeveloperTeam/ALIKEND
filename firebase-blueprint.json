@@ -88,6 +88,10 @@
         "updatedAt": { "type": "string", "format": "date-time" }
       },
       "required": ["autoResponderEnabled", "emergencyBannerActive"]
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
     },
     "SellerAccount": {
       "title": "SellerAccount",
@@ -126,6 +130,11 @@
         "createdAt": { "type": "string", "format": "date-time" }
       },
       "required": ["name", "email", "role"]
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
     }
   },
   "firestore": {
@@ -144,6 +153,10 @@
     "/customerCareSettings/global": {
       "schema": "CustomerCareSettings",
       "description": "Global settings for Customer Care system"
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
     },
     "/sellers/{sellerId}": {
       "schema": "SellerAccount",
@@ -152,6 +165,11 @@
     "/users/{userId}": {
       "schema": "CustomerAccount",
       "description": "Dedicated customer accounts isolated from seller accounts"
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
     }
   }
 }

@@ -1,8 +1,20 @@
 import React, { useState } from 'react';
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
 import { Eye, Heart, GitCompare, ShoppingCart, Star, PackageOpen, Check, Store, Zap, Edit, EyeOff, Trash2, ShieldCheck } from 'lucide-react';
 import { Product } from '../types';
 import FavoriteButton from './FavoriteButton';
 import { useAdminEdit } from '../context/AdminEditContext';
+<<<<<<< HEAD
+=======
+=======
+import { Eye, Heart, GitCompare, ShoppingCart, Star, PackageOpen, Check, Store, Zap } from 'lucide-react';
+import { Product } from '../types';
+import FavoriteButton from './FavoriteButton';
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
 
 interface ProductCardProps {
   product: Product;
@@ -24,12 +36,24 @@ export default function ProductCard({
   onQuickView,
   isWishlisted,
 }: ProductCardProps) {
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
   const { isAdmin, isEditMode, openEditProduct, openDeleteProduct, toggleProductVisibility } = useAdminEdit();
   const { id, name, brand, price, mrp, rating, reviewsCount, image, badge } = product;
   const isHiddenOrUnpublished = product.isHidden === true || product.isPublished === false;
   const [imageError, setImageError] = useState(false);
   const [addedAnim, setAddedAnim] = useState(false);
   const [togglingVisibility, setTogglingVisibility] = useState(false);
+<<<<<<< HEAD
+=======
+=======
+  const { id, name, brand, price, mrp, rating, reviewsCount, image, badge } = product;
+  const [imageError, setImageError] = useState(false);
+  const [addedAnim, setAddedAnim] = useState(false);
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
 
   // Calculate discount percentage
   const discountPercent = Math.round(((mrp - price) / mrp) * 100);
@@ -86,6 +110,10 @@ export default function ProductCard({
       <div className="relative w-full aspect-[4/3] overflow-hidden bg-neutral-100 dark:bg-neutral-950 shrink-0">
         {/* Badge positioned inside image container */}
         <div className="absolute top-2 left-2 z-10 flex flex-col gap-1 items-start">
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
           {isHiddenOrUnpublished && (
             <span
               className="px-2 py-0.5 text-[8px] font-black tracking-widest uppercase rounded-md shadow-md bg-rose-600 text-white border border-rose-400"
@@ -94,6 +122,11 @@ export default function ProductCard({
               HIDDEN
             </span>
           )}
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
           {badge && (
             <span
               id={`product-badge-${id}`}
@@ -110,6 +143,10 @@ export default function ProductCard({
               {badge}
             </span>
           )}
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
           {product.quickDelivery && (
             <span
               id={`product-quick-badge-${id}`}
@@ -177,6 +214,13 @@ export default function ProductCard({
           </div>
         )}
 
+<<<<<<< HEAD
+=======
+=======
+        </div>
+
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
         {!imageError && image ? (
           <img
             id={`product-image-${id}`}
@@ -220,7 +264,15 @@ export default function ProductCard({
                 onSelectProduct(product);
               }
             }}
+<<<<<<< HEAD
             className="hidden sm:flex p-1.5 rounded-full border border-solid border-white/20 bg-black/75 hover:bg-[#F5A623] text-white hover:text-[#0F1A3C] transition-all shadow-md active:scale-90 cursor-pointer product-action-btn backdrop-blur-xs"
+=======
+<<<<<<< HEAD
+            className="hidden sm:flex p-1.5 rounded-full border border-solid border-white/20 bg-black/75 hover:bg-[#F5A623] text-white hover:text-[#0F1A3C] transition-all shadow-md active:scale-90 cursor-pointer product-action-btn backdrop-blur-xs"
+=======
+            className="p-1.5 rounded-full border border-solid border-white/20 bg-black/75 hover:bg-[#F5A623] text-white hover:text-[#0F1A3C] transition-all shadow-md active:scale-90 cursor-pointer product-action-btn backdrop-blur-xs"
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
             title="Quick View"
           >
             <Eye className="w-3.5 h-3.5" />
@@ -232,7 +284,15 @@ export default function ProductCard({
               e.stopPropagation();
               onCompare(product);
             }}
+<<<<<<< HEAD
             className="hidden sm:flex p-1.5 rounded-full border border-solid border-white/20 bg-black/75 hover:bg-[#F5A623] text-white hover:text-[#0F1A3C] transition-all shadow-md active:scale-90 cursor-pointer product-action-btn backdrop-blur-xs"
+=======
+<<<<<<< HEAD
+            className="hidden sm:flex p-1.5 rounded-full border border-solid border-white/20 bg-black/75 hover:bg-[#F5A623] text-white hover:text-[#0F1A3C] transition-all shadow-md active:scale-90 cursor-pointer product-action-btn backdrop-blur-xs"
+=======
+            className="p-1.5 rounded-full border border-solid border-white/20 bg-black/75 hover:bg-[#F5A623] text-white hover:text-[#0F1A3C] transition-all shadow-md active:scale-90 cursor-pointer product-action-btn backdrop-blur-xs"
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
             title="Compare Product"
           >
             <GitCompare className="w-3.5 h-3.5" />
@@ -241,9 +301,21 @@ export default function ProductCard({
       </div>
 
       {/* 2. Content Container (Spacious, elegant, with readable 2-line title) */}
+<<<<<<< HEAD
       <div className="flex flex-col flex-1 p-2.5 sm:p-3 bg-white dark:bg-neutral-900 min-w-0">
         <div className="flex items-center justify-between gap-1 mb-1">
           <div className="flex items-center gap-1 min-w-0">
+=======
+<<<<<<< HEAD
+      <div className="flex flex-col flex-1 p-2.5 sm:p-3 bg-white dark:bg-neutral-900 min-w-0">
+        <div className="flex items-center justify-between gap-1 mb-1">
+          <div className="flex items-center gap-1 min-w-0">
+=======
+      <div className="flex flex-col flex-1 p-3 bg-white dark:bg-neutral-900 min-w-0">
+        <div className="flex items-center justify-between gap-1.5 mb-1">
+          <div className="flex items-center gap-1.5 min-w-0">
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
             <span className="text-[8.5px] text-neutral-400 dark:text-neutral-500 uppercase tracking-widest font-extrabold font-mono truncate block">
               {brand}
             </span>
@@ -269,9 +341,21 @@ export default function ProductCard({
         </h3>
 
         {/* Rating and Discount Row */}
+<<<<<<< HEAD
         <div className="flex items-center justify-between gap-1 mb-1.5 sm:mb-2">
           <div className="flex items-center gap-1" id={`product-reviews-${id}`}>
             <Star className="w-3 sm:w-3.5 h-3 sm:h-3.5 fill-amber-400 text-amber-400" />
+=======
+<<<<<<< HEAD
+        <div className="flex items-center justify-between gap-1 mb-1.5 sm:mb-2">
+          <div className="flex items-center gap-1" id={`product-reviews-${id}`}>
+            <Star className="w-3 sm:w-3.5 h-3 sm:h-3.5 fill-amber-400 text-amber-400" />
+=======
+        <div className="flex items-center justify-between gap-1 mb-2">
+          <div className="flex items-center gap-1" id={`product-reviews-${id}`}>
+            <Star className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
             <span className="text-[10px] font-extrabold text-neutral-800 dark:text-neutral-200">{rating.toFixed(1)}</span>
             <span className="text-neutral-400 text-[9px]">({reviewsCount})</span>
           </div>
@@ -294,6 +378,10 @@ export default function ProductCard({
         </div>
 
         {/* Sold By Merchant Display */}
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
         <div className="flex items-center gap-1 text-[9px] sm:text-[9.5px] text-neutral-500 dark:text-neutral-400 truncate mb-2">
           <Store className="w-3 h-3 text-amber-600/80 dark:text-amber-400/80 shrink-0" />
           <span className="truncate">
@@ -309,6 +397,16 @@ export default function ProductCard({
               <span className="hidden sm:inline">Verified</span>
             </span>
           )}
+<<<<<<< HEAD
+=======
+=======
+        <div className="flex items-center gap-1 text-[9.5px] text-neutral-500 dark:text-neutral-400 truncate mb-2">
+          <Store className="w-3 h-3 text-amber-600/80 dark:text-amber-400/80 shrink-0" />
+          <span className="truncate">
+            Sold by: <span className="font-semibold text-neutral-800 dark:text-neutral-200">{product.sellerShopName || 'ALIKE-ND Official'}</span>
+          </span>
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
         </div>
 
         {/* Sleek Action Button */}
@@ -317,7 +415,15 @@ export default function ProductCard({
           type="button"
           onClick={handleCartClick}
           disabled={stock.isOut}
+<<<<<<< HEAD
           className={`w-full py-2 px-2.5 sm:px-3 border border-solid rounded-lg transition-all duration-200 flex items-center justify-center gap-1.5 shadow-sm text-[10px] sm:text-[11px] tracking-wider font-extrabold active:scale-[0.96] min-h-[36px] ${
+=======
+<<<<<<< HEAD
+          className={`w-full py-2 px-2.5 sm:px-3 border border-solid rounded-lg transition-all duration-200 flex items-center justify-center gap-1.5 shadow-sm text-[10px] sm:text-[11px] tracking-wider font-extrabold active:scale-[0.96] min-h-[36px] ${
+=======
+          className={`w-full py-2 px-3 border border-solid rounded-lg transition-all duration-200 flex items-center justify-center gap-1.5 shadow-sm text-[10px] sm:text-[11px] tracking-wider font-extrabold active:scale-[0.96] ${
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
             stock.isOut
               ? 'bg-neutral-100 border-neutral-200 text-neutral-500 dark:bg-neutral-800 dark:border-neutral-700 dark:text-neutral-400 cursor-not-allowed'
               : addedAnim
@@ -337,7 +443,15 @@ export default function ProductCard({
             </>
           ) : (
             <>
+<<<<<<< HEAD
               <ShoppingCart className="w-3.5 h-3.5 stroke-[2.5] text-[#F5A623]" />
+=======
+<<<<<<< HEAD
+              <ShoppingCart className="w-3.5 h-3.5 stroke-[2.5] text-[#F5A623]" />
+=======
+              <ShoppingCart className="w-3.5 h-3.5 stroke-[2.5] text-[#0F1A3C]" />
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
               <span>Add to Cart</span>
             </>
           )}

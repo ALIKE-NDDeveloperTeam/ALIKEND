@@ -106,7 +106,14 @@ export default function Footer({
 
   const shopLinks = [
     { label: 'Become a Seller', icon: Store, action: () => onNavigate('seller_register') },
+<<<<<<< HEAD
     { label: 'Delivery Partner Portal', icon: Truck, action: () => onNavigate('delivery_partner') },
+=======
+<<<<<<< HEAD
+    { label: 'Delivery Partner Portal', icon: Truck, action: () => onNavigate('delivery_partner') },
+=======
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
     { label: 'Seller Terms & Policy', icon: FileCheck, action: () => onNavigate('seller_policy') },
     { label: 'All Categories', icon: LayoutGrid, action: () => onNavigate('category_search', 'all') },
     { label: 'Curated Brands', icon: Crown, action: () => onNavigate('category_search', 'luxury') },
@@ -127,11 +134,25 @@ export default function Footer({
     <footer className={`relative border-t transition-colors duration-300 overflow-hidden ${
       isLightMode 
         ? 'bg-gradient-to-b from-[#FBF9F5] via-[#F6F2EA] to-[#EFE9DD] border-[#E8DEC9] text-[#1D2433]' 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
         : 'bg-gradient-to-b from-[#0A1128] via-[#0F1A3C] to-[#070D1F] border-[#FF007F]/20 text-neutral-300'
     }`}>
       {/* Ambient top-edge subtle brand light spill */}
       <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#FF007F]/60 dark:via-[#FF1990]/50 to-transparent pointer-events-none" />
       <div className="absolute top-0 inset-x-1/4 h-24 bg-gradient-to-b from-[#FF007F]/10 to-transparent blur-2xl pointer-events-none" />
+<<<<<<< HEAD
+=======
+=======
+        : 'bg-gradient-to-b from-[#0A1128] via-[#0F1A3C] to-[#070D1F] border-[#F5A623]/20 text-neutral-300'
+    }`}>
+      {/* Ambient top-edge subtle gold light spill */}
+      <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#F5A623]/60 dark:via-[#D4AF37]/50 to-transparent pointer-events-none" />
+      <div className="absolute top-0 inset-x-1/4 h-24 bg-gradient-to-b from-[#F5A623]/5 to-transparent blur-2xl pointer-events-none" />
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-10 space-y-12">
         
@@ -158,7 +179,15 @@ export default function Footer({
             {/* Follow Us Section */}
             <div className="pt-2">
               <span className={`text-[11px] uppercase font-black tracking-[0.18em] block mb-3.5 ${
+<<<<<<< HEAD
                 isLightMode ? 'text-[#0F1A3C]' : 'text-[#FF007F]'
+=======
+<<<<<<< HEAD
+                isLightMode ? 'text-[#0F1A3C]' : 'text-[#FF007F]'
+=======
+                isLightMode ? 'text-[#0F1A3C]' : 'text-amber-400/90'
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
               }`}>
                 FOLLOW US
               </span>
@@ -172,8 +201,18 @@ export default function Footer({
                     aria-label={`Follow us on ${social.name}`}
                     className={`w-9 h-9 rounded-full flex items-center justify-center transition-all duration-300 shadow-xs cursor-pointer border ${
                       isLightMode
+<<<<<<< HEAD
                         ? 'bg-white border-[#E5DAC4] text-neutral-700 hover:border-[#FF007F] hover:text-[#FF007F] hover:shadow-[0_4px_12px_rgba(255,0,127,0.25)] hover:-translate-y-0.5 active:scale-95'
                         : 'bg-[#142145]/90 border-white/10 text-neutral-300 hover:border-[#FF007F] hover:text-[#FF007F] hover:shadow-[0_4px_14px_rgba(255,0,127,0.3)] hover:-translate-y-0.5 active:scale-95'
+=======
+<<<<<<< HEAD
+                        ? 'bg-white border-[#E5DAC4] text-neutral-700 hover:border-[#FF007F] hover:text-[#FF007F] hover:shadow-[0_4px_12px_rgba(255,0,127,0.25)] hover:-translate-y-0.5 active:scale-95'
+                        : 'bg-[#142145]/90 border-white/10 text-neutral-300 hover:border-[#FF007F] hover:text-[#FF007F] hover:shadow-[0_4px_14px_rgba(255,0,127,0.3)] hover:-translate-y-0.5 active:scale-95'
+=======
+                        ? 'bg-white border-[#E5DAC4] text-neutral-700 hover:border-[#F5A623] hover:text-[#0F1A3C] hover:shadow-[0_4px_12px_rgba(245,166,35,0.25)] hover:-translate-y-0.5 active:scale-95'
+                        : 'bg-[#142145]/90 border-white/10 text-neutral-300 hover:border-[#F5A623] hover:text-[#F5A623] hover:shadow-[0_4px_14px_rgba(245,166,35,0.3)] hover:-translate-y-0.5 active:scale-95'
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
                     } ${social.hoverClass}`}
                     title={social.name}
                   >
@@ -192,7 +231,15 @@ export default function Footer({
               }`}>
                 SHOP
               </h4>
+<<<<<<< HEAD
               <div className="h-0.5 w-6 bg-gradient-to-r from-[#FF1990] to-[#FF007F] rounded-full mt-1.5" />
+=======
+<<<<<<< HEAD
+              <div className="h-0.5 w-6 bg-gradient-to-r from-[#FF1990] to-[#FF007F] rounded-full mt-1.5" />
+=======
+              <div className="h-0.5 w-6 bg-gradient-to-r from-[#F5A623] to-[#D4AF37] rounded-full mt-1.5" />
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
             </div>
 
             <ul className="space-y-2 text-xs font-medium pt-1">
@@ -205,6 +252,10 @@ export default function Footer({
                       onClick={item.action}
                       className={`w-full flex items-center justify-between py-1 transition-all duration-200 group text-left cursor-pointer ${
                         isLightMode 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
                           ? 'text-neutral-600 hover:text-[#FF007F]' 
                           : 'text-neutral-300 hover:text-[#FF007F]'
                       }`}
@@ -214,6 +265,20 @@ export default function Footer({
                         <span className="truncate group-hover:translate-x-0.5 transition-transform duration-200">{item.label}</span>
                       </div>
                       <ChevronRight className="w-3.5 h-3.5 text-[#FF007F] opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-200 shrink-0" />
+<<<<<<< HEAD
+=======
+=======
+                          ? 'text-neutral-600 hover:text-[#0F1A3C]' 
+                          : 'text-neutral-300 hover:text-white'
+                      }`}
+                    >
+                      <div className="flex items-center gap-2.5 min-w-0">
+                        <Icon className="w-3.5 h-3.5 text-[#F5A623] group-hover:scale-115 transition-transform duration-200 shrink-0" />
+                        <span className="truncate group-hover:translate-x-0.5 transition-transform duration-200">{item.label}</span>
+                      </div>
+                      <ChevronRight className="w-3.5 h-3.5 text-[#F5A623] opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-200 shrink-0" />
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
                     </button>
                   </li>
                 );
@@ -229,7 +294,15 @@ export default function Footer({
               }`}>
                 CUSTOMER SERVICE
               </h4>
+<<<<<<< HEAD
               <div className="h-0.5 w-6 bg-gradient-to-r from-[#FF1990] to-[#FF007F] rounded-full mt-1.5" />
+=======
+<<<<<<< HEAD
+              <div className="h-0.5 w-6 bg-gradient-to-r from-[#FF1990] to-[#FF007F] rounded-full mt-1.5" />
+=======
+              <div className="h-0.5 w-6 bg-gradient-to-r from-[#F5A623] to-[#D4AF37] rounded-full mt-1.5" />
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
             </div>
 
             <ul className="space-y-2 text-xs font-medium pt-1">
@@ -242,6 +315,10 @@ export default function Footer({
                       onClick={item.action}
                       className={`w-full flex items-center justify-between py-1 transition-all duration-200 group text-left cursor-pointer ${
                         isLightMode 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
                           ? 'text-neutral-600 hover:text-[#FF007F]' 
                           : 'text-neutral-300 hover:text-[#FF007F]'
                       }`}
@@ -251,6 +328,20 @@ export default function Footer({
                         <span className="truncate group-hover:translate-x-0.5 transition-transform duration-200">{item.label}</span>
                       </div>
                       <ChevronRight className="w-3.5 h-3.5 text-[#FF007F] opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-200 shrink-0" />
+<<<<<<< HEAD
+=======
+=======
+                          ? 'text-neutral-600 hover:text-[#0F1A3C]' 
+                          : 'text-neutral-300 hover:text-white'
+                      }`}
+                    >
+                      <div className="flex items-center gap-2.5 min-w-0">
+                        <Icon className="w-3.5 h-3.5 text-[#F5A623] group-hover:scale-115 transition-transform duration-200 shrink-0" />
+                        <span className="truncate group-hover:translate-x-0.5 transition-transform duration-200">{item.label}</span>
+                      </div>
+                      <ChevronRight className="w-3.5 h-3.5 text-[#F5A623] opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-200 shrink-0" />
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
                     </button>
                   </li>
                 );
@@ -266,7 +357,15 @@ export default function Footer({
               }`}>
                 STAY UPDATED
               </h4>
+<<<<<<< HEAD
               <div className="h-0.5 w-6 bg-gradient-to-r from-[#FF1990] to-[#FF007F] rounded-full mt-1.5" />
+=======
+<<<<<<< HEAD
+              <div className="h-0.5 w-6 bg-gradient-to-r from-[#FF1990] to-[#FF007F] rounded-full mt-1.5" />
+=======
+              <div className="h-0.5 w-6 bg-gradient-to-r from-[#F5A623] to-[#D4AF37] rounded-full mt-1.5" />
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
             </div>
 
             <p className={`text-xs leading-relaxed ${
@@ -278,7 +377,15 @@ export default function Footer({
             {/* Newsletter Input & Submit */}
             <form onSubmit={handleSubscribe} className="space-y-3 pt-1">
               <div className="relative flex items-center group">
+<<<<<<< HEAD
                 <Mail className="w-4 h-4 text-[#FF007F] absolute left-3.5 pointer-events-none group-focus-within:text-[#FF1990] transition-colors" />
+=======
+<<<<<<< HEAD
+                <Mail className="w-4 h-4 text-[#FF007F] absolute left-3.5 pointer-events-none group-focus-within:text-[#FF1990] transition-colors" />
+=======
+                <Mail className="w-4 h-4 text-[#F5A623] absolute left-3.5 pointer-events-none group-focus-within:text-[#D4AF37] transition-colors" />
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
                 <input
                   id="newsletter-email-input"
                   type="email"
@@ -288,8 +395,18 @@ export default function Footer({
                   placeholder="Enter your email address"
                   className={`w-full pl-10 pr-3.5 py-2.5 rounded-xl text-xs outline-none transition-all font-medium border shadow-xs ${
                     isLightMode
+<<<<<<< HEAD
                       ? 'bg-white border-[#E0D5BE] text-neutral-900 placeholder-neutral-400 focus:border-[#FF007F] focus:ring-2 focus:ring-[#FF007F]/20'
                       : 'bg-[#142145]/80 border-white/15 text-white placeholder-neutral-400 focus:border-[#FF007F] focus:ring-2 focus:ring-[#FF007F]/25'
+=======
+<<<<<<< HEAD
+                      ? 'bg-white border-[#E0D5BE] text-neutral-900 placeholder-neutral-400 focus:border-[#FF007F] focus:ring-2 focus:ring-[#FF007F]/20'
+                      : 'bg-[#142145]/80 border-white/15 text-white placeholder-neutral-400 focus:border-[#FF007F] focus:ring-2 focus:ring-[#FF007F]/25'
+=======
+                      ? 'bg-white border-[#E0D5BE] text-neutral-900 placeholder-neutral-400 focus:border-[#F5A623] focus:ring-2 focus:ring-[#F5A623]/20'
+                      : 'bg-[#142145]/80 border-white/15 text-white placeholder-neutral-400 focus:border-[#F5A623] focus:ring-2 focus:ring-[#F5A623]/25'
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
                   }`}
                 />
               </div>
@@ -300,7 +417,15 @@ export default function Footer({
                 className={`w-full py-2.5 font-black text-xs uppercase tracking-[0.14em] rounded-xl shadow-md active:scale-98 transition-all duration-200 flex items-center justify-center gap-2 cursor-pointer border ${
                   subscribed
                     ? 'bg-emerald-600 text-white border-emerald-500 shadow-emerald-600/30'
+<<<<<<< HEAD
                     : 'bg-gradient-to-r from-[#FF1990] via-[#FF007F] to-[#D80068] hover:brightness-110 text-white border-[#FF007F] shadow-[0_4px_16px_rgba(255,0,127,0.35)]'
+=======
+<<<<<<< HEAD
+                    : 'bg-gradient-to-r from-[#FF1990] via-[#FF007F] to-[#D80068] hover:brightness-110 text-white border-[#FF007F] shadow-[0_4px_16px_rgba(255,0,127,0.35)]'
+=======
+                    : 'bg-gradient-to-r from-[#F5A623] via-[#E59819] to-[#D4AF37] hover:brightness-110 text-[#0F1A3C] border-[#F5A623] shadow-[0_4px_16px_rgba(245,166,35,0.35)]'
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
                 }`}
                 title="Subscribe to Newsletter"
               >
@@ -321,18 +446,42 @@ export default function Footer({
             {/* Promo Card: Get 10% Off Your First Order! */}
             <div className={`relative p-3.5 rounded-2xl border transition-all overflow-hidden ${
               isLightMode 
+<<<<<<< HEAD
                 ? 'bg-gradient-to-br from-rose-500/15 via-pink-500/5 to-white border-rose-500/30 shadow-xs' 
                 : 'bg-gradient-to-br from-[#FF007F]/15 via-[#18264D] to-[#0F1A3C] border-[#FF007F]/35 shadow-[0_8px_20px_-6px_rgba(255,0,127,0.15)]'
+=======
+<<<<<<< HEAD
+                ? 'bg-gradient-to-br from-rose-500/15 via-pink-500/5 to-white border-rose-500/30 shadow-xs' 
+                : 'bg-gradient-to-br from-[#FF007F]/15 via-[#18264D] to-[#0F1A3C] border-[#FF007F]/35 shadow-[0_8px_20px_-6px_rgba(255,0,127,0.15)]'
+=======
+                ? 'bg-gradient-to-br from-amber-500/15 via-amber-500/5 to-white border-amber-500/30 shadow-xs' 
+                : 'bg-gradient-to-br from-[#F5A623]/15 via-[#18264D] to-[#0F1A3C] border-[#F5A623]/35 shadow-[0_8px_20px_-6px_rgba(245,166,35,0.15)]'
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
             }`}>
               {/* Subtle upper sheen streak */}
               <div className="absolute inset-x-0 top-0 h-[40%] bg-gradient-to-b from-white/20 to-transparent pointer-events-none" />
 
               <div className="flex items-start gap-3 relative z-10">
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
                 <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-[#FF1990] to-[#FF007F] text-white flex items-center justify-center shrink-0 shadow-md ring-1 ring-inset ring-white/40">
                   <Tag className="w-4.5 h-4.5 stroke-[2.25]" />
                 </div>
                 <div className="space-y-0.5">
                   <h5 className={`text-xs font-black tracking-wide ${isLightMode ? 'text-[#D80068]' : 'text-pink-300'}`}>
+<<<<<<< HEAD
+=======
+=======
+                <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-[#F5A623] to-[#D4AF37] text-[#0F1A3C] flex items-center justify-center shrink-0 shadow-md ring-1 ring-inset ring-white/40">
+                  <Tag className="w-4.5 h-4.5 stroke-[2.25]" />
+                </div>
+                <div className="space-y-0.5">
+                  <h5 className={`text-xs font-black tracking-wide ${isLightMode ? 'text-[#8A5200]' : 'text-amber-300'}`}>
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
                     Get 10% Off Your First Order!
                   </h5>
                   <p className={`text-[11px] leading-snug ${isLightMode ? 'text-neutral-600' : 'text-neutral-300'}`}>
@@ -401,12 +550,27 @@ export default function Footer({
                 onClick={onBack}
                 className={`p-2.5 rounded-xl border transition-all duration-300 active:scale-95 shadow-xs cursor-pointer flex items-center gap-1.5 ${
                   isLightMode 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
                     ? 'bg-white hover:bg-neutral-100 border-[#E0D5BE] text-[#0F1A3C] hover:border-[#FF007F]' 
                     : 'bg-[#142145] hover:bg-[#1A2A57] border-white/10 text-neutral-200 hover:text-[#FF007F] hover:border-[#FF007F]/40'
                 }`}
                 title="Go Back"
               >
                 <ArrowLeft className="w-4 h-4 text-[#FF007F]" />
+<<<<<<< HEAD
+=======
+=======
+                    ? 'bg-white hover:bg-neutral-100 border-[#E0D5BE] text-[#0F1A3C] hover:border-[#F5A623]' 
+                    : 'bg-[#142145] hover:bg-[#1A2A57] border-white/10 text-neutral-200 hover:text-[#F5A623] hover:border-[#F5A623]/40'
+                }`}
+                title="Go Back"
+              >
+                <ArrowLeft className="w-4 h-4 text-[#F5A623]" />
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
                 <span className="text-[11px] font-bold">Back</span>
               </button>
             </div>

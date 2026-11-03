@@ -31,10 +31,20 @@ import {
   Download,
   Tag,
   Flame,
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
   Store,
   Edit,
   Trash2,
   Plus
+<<<<<<< HEAD
+=======
+=======
+  Store
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
 } from 'lucide-react';
 import { Product, Job, Testimonial, Banner } from '../types';
 import { CATEGORIES } from '../data/mockData';
@@ -43,8 +53,16 @@ import AllCategoriesModal from '../components/AllCategoriesModal';
 import HeroBanners from '../components/HeroBanners';
 import FlashCountdown from '../components/FlashCountdown';
 import CategoryCarousel from '../components/CategoryCarousel';
+<<<<<<< HEAD
 import { NearbySellersSection } from '../components/home/NearbySellersSection';
 import { useAdminEdit } from '../context/AdminEditContext';
+=======
+<<<<<<< HEAD
+import { NearbySellersSection } from '../components/home/NearbySellersSection';
+import { useAdminEdit } from '../context/AdminEditContext';
+=======
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
 
 // High-fidelity fallback photographic images for categories if no product is listed yet
 const CATEGORY_FALLBACK_IMAGES: Record<string, string> = {
@@ -304,6 +322,10 @@ export function CategorySection({
   };
 
   return (
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
     <section id={`category-section-${category.id}`} className="max-w-7xl mx-auto px-3 sm:px-6 space-y-4 sm:space-y-6">
       <div className="flex flex-col sm:flex-row sm:justify-between sm:items-end gap-2 border-b border-solid border-neutral-200 dark:border-neutral-800 pb-3">
         <div className="min-w-0">
@@ -311,12 +333,28 @@ export function CategorySection({
             {meta.emoji} {meta.titlePrefix} <span className="text-[#F5A623]">{meta.titleAccent}</span>
           </h3>
           <p className={`text-[11px] sm:text-xs mt-0.5 sm:mt-1 line-clamp-1 ${isLightMode ? 'text-[#6B7280]' : 'text-neutral-400'}`}>
+<<<<<<< HEAD
+=======
+=======
+    <section id={`category-section-${category.id}`} className="max-w-7xl mx-auto px-6 space-y-6">
+      <div className="flex justify-between items-end border-b border-solid border-neutral-200 dark:border-neutral-800 pb-3">
+        <div>
+          <h3 className={`text-2xl md:text-3xl font-extrabold tracking-tight ${isLightMode ? 'text-[#0F1A3C]' : 'text-white'}`}>
+            {meta.emoji} {meta.titlePrefix} <span className="text-[#F5A623]">{meta.titleAccent}</span>
+          </h3>
+          <p className={`text-xs mt-1 ${isLightMode ? 'text-[#6B7280]' : 'text-neutral-400'}`}>
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
             {meta.subtitle}
           </p>
         </div>
         <button
           id={`view-all-${category.id}`}
           onClick={() => onNavigate('category_search', category.id)}
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
           className="self-start sm:self-auto shrink-0 text-[11px] sm:text-xs text-[#F5A623] hover:text-amber-600 hover:underline flex items-center gap-1 font-bold uppercase tracking-wider transition-all duration-300 hover:translate-x-1 active:scale-95 cursor-pointer"
         >
           {meta.exploreText} <ChevronRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#F5A623]" />
@@ -324,6 +362,18 @@ export function CategorySection({
       </div>
 
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2.5 sm:gap-4 items-stretch">
+<<<<<<< HEAD
+=======
+=======
+          className="text-xs text-[#F5A623] hover:text-amber-600 hover:underline flex items-center gap-1 font-bold uppercase tracking-wider transition-all duration-300 hover:translate-x-1.5 hover:scale-105 active:scale-95 cursor-pointer"
+        >
+          {meta.exploreText} <ChevronRight className="w-4 h-4 text-[#F5A623]" />
+        </button>
+      </div>
+
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 sm:gap-4 items-stretch">
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
         {products.slice(0, 5).map((p) => {
           const isWishlisted = wishlistedIds.includes(p.id);
           return (
@@ -357,6 +407,10 @@ export default function Home({
   onQuickView,
   isLightMode,
 }: HomeProps) {
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
   // Admin Edit Live Website Context
   const {
     isAdmin,
@@ -391,10 +445,21 @@ export default function Home({
     } catch {}
     return [];
   });
+<<<<<<< HEAD
+=======
+=======
+  // Dynamic Hero Banners State
+  const [banners, setBanners] = useState<Banner[]>(DEFAULT_HERO_BANNERS);
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
 
   // Fetch active banners dynamically from backend
   useEffect(() => {
     let isMounted = true;
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
     const url = isAdmin && isEditMode ? '/api/admin/banners' : '/api/banners';
     const token = localStorage.getItem('alikend_admin_token') || sessionStorage.getItem('alikend_admin_token');
     fetch(url, {
@@ -402,13 +467,28 @@ export default function Home({
         ...(token ? { Authorization: `Bearer ${token}` } : {}),
       },
     })
+<<<<<<< HEAD
+=======
+=======
+    fetch("/api/banners")
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
       .then((res) => (res.ok ? res.json() : null))
       .then((data) => {
         if (isMounted && Array.isArray(data) && data.length > 0) {
           setBanners(data);
+<<<<<<< HEAD
           try {
             localStorage.setItem('alike_cache_banners', JSON.stringify(data));
           } catch {}
+=======
+<<<<<<< HEAD
+          try {
+            localStorage.setItem('alike_cache_banners', JSON.stringify(data));
+          } catch {}
+=======
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
         }
       })
       .catch((err) => console.warn("Failed to fetch dynamic banners:", err));
@@ -416,6 +496,10 @@ export default function Home({
     return () => {
       isMounted = false;
     };
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
   }, [refreshTrigger, isAdmin, isEditMode]);
 
   // Fetch active advertisements dynamically from backend
@@ -443,6 +527,12 @@ export default function Home({
       isMounted = false;
     };
   }, [refreshTrigger, isAdmin, isEditMode]);
+<<<<<<< HEAD
+=======
+=======
+  }, []);
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
 
   const activeBanners = useMemo(() => {
     const activeList = banners.filter((b) => b.active);
@@ -483,9 +573,171 @@ export default function Home({
   const [newsletterEmail, setNewsletterEmail] = useState('');
   const [newsletterSubscribed, setNewsletterSubscribed] = useState(false);
 
+<<<<<<< HEAD
   // All categories full modal view state
   const [isAllCategoriesModalOpen, setIsAllCategoriesModalOpen] = useState(false);
   const [selectedNearbySeller, setSelectedNearbySeller] = useState<{ id: string; shopName: string } | null>(null);
+=======
+<<<<<<< HEAD
+  // All categories full modal view state
+  const [isAllCategoriesModalOpen, setIsAllCategoriesModalOpen] = useState(false);
+  const [selectedNearbySeller, setSelectedNearbySeller] = useState<{ id: string; shopName: string } | null>(null);
+=======
+  // Browse Categories interactive scroll & drag state
+  const categoryScrollRef = useRef<HTMLDivElement>(null);
+  const [canScrollCatLeft, setCanScrollCatLeft] = useState(false);
+  const [canScrollCatRight, setCanScrollCatRight] = useState(true);
+  const [isCatInteracting, setIsCatInteracting] = useState(false);
+  const [isDraggingCategory, setIsDraggingCategory] = useState(false);
+  const categoryDragStartXRef = useRef(0);
+  const categoryDragStartScrollLeftRef = useRef(0);
+  const hasDraggedRef = useRef(false);
+  const touchStartXRef = useRef(0);
+  const touchHasMovedRef = useRef(false);
+  const autoScrollResumeTimerRef = useRef<any>(null);
+
+  const updateCategoryScrollButtons = () => {
+    const el = categoryScrollRef.current;
+    if (!el) return;
+    setCanScrollCatLeft(el.scrollLeft > 10);
+    setCanScrollCatRight(el.scrollLeft < el.scrollWidth - el.clientWidth - 10);
+  };
+
+  const handleCategoryScroll = () => {
+    const el = categoryScrollRef.current;
+    if (!el) return;
+    const halfWidth = el.scrollWidth / 2;
+    // Seamless -50% duplicated track infinite wrap during manual scrolling
+    if (halfWidth > 0) {
+      if (el.scrollLeft >= halfWidth * 1.5) {
+        el.scrollLeft -= halfWidth;
+      } else if (el.scrollLeft <= 5 && (isCatInteracting || isDraggingCategory)) {
+        el.scrollLeft += halfWidth;
+      }
+    }
+    updateCategoryScrollButtons();
+  };
+
+  const handleScrollCategory = (direction: 'left' | 'right') => {
+    const el = categoryScrollRef.current;
+    if (!el) return;
+    setIsCatInteracting(true);
+    clearTimeout(autoScrollResumeTimerRef.current);
+    autoScrollResumeTimerRef.current = setTimeout(() => setIsCatInteracting(false), 3500);
+
+    const scrollAmount = Math.max(260, Math.floor(el.clientWidth * 0.65));
+    el.scrollBy({
+      left: direction === 'left' ? -scrollAmount : scrollAmount,
+      behavior: 'smooth'
+    });
+  };
+
+  useEffect(() => {
+    updateCategoryScrollButtons();
+    window.addEventListener('resize', updateCategoryScrollButtons);
+    return () => window.removeEventListener('resize', updateCategoryScrollButtons);
+  }, []);
+
+  // Desktop horizontal wheel scrolling (allows standard mouse wheel to scroll horizontally)
+  useEffect(() => {
+    const el = categoryScrollRef.current;
+    if (!el) return;
+
+    const handleWheel = (e: WheelEvent) => {
+      // If user is scrolling mouse wheel vertically over category carousel
+      if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
+        const canLeft = el.scrollLeft > 0 && e.deltaY < 0;
+        const canRight = el.scrollLeft < el.scrollWidth - el.clientWidth - 1 && e.deltaY > 0;
+        if (canLeft || canRight) {
+          e.preventDefault();
+          setIsCatInteracting(true);
+          clearTimeout(autoScrollResumeTimerRef.current);
+          autoScrollResumeTimerRef.current = setTimeout(() => setIsCatInteracting(false), 2500);
+          el.scrollLeft += e.deltaY * 0.95;
+          updateCategoryScrollButtons();
+        }
+      } else if (Math.abs(e.deltaX) > 0) {
+        setIsCatInteracting(true);
+        clearTimeout(autoScrollResumeTimerRef.current);
+        autoScrollResumeTimerRef.current = setTimeout(() => setIsCatInteracting(false), 2500);
+        updateCategoryScrollButtons();
+      }
+    };
+
+    el.addEventListener('wheel', handleWheel, { passive: false });
+    return () => el.removeEventListener('wheel', handleWheel);
+  }, []);
+
+  // Window-level mouse move & mouse up during drag to ensure buttery smooth dragging without losing tracking
+  useEffect(() => {
+    if (!isDraggingCategory) return;
+
+    const handleMouseMove = (e: MouseEvent) => {
+      const el = categoryScrollRef.current;
+      if (!el) return;
+      const walk = (e.pageX - categoryDragStartXRef.current) * 1.5;
+      if (Math.abs(walk) > 5) {
+        hasDraggedRef.current = true;
+      }
+      el.scrollLeft = categoryDragStartScrollLeftRef.current - walk;
+      updateCategoryScrollButtons();
+    };
+
+    const handleMouseUp = () => {
+      setIsDraggingCategory(false);
+      clearTimeout(autoScrollResumeTimerRef.current);
+      autoScrollResumeTimerRef.current = setTimeout(() => setIsCatInteracting(false), 2000);
+      // Keep hasDragged true briefly so the subsequent click on the card is blocked
+      setTimeout(() => {
+        hasDraggedRef.current = false;
+      }, 150);
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+    window.addEventListener('mouseup', handleMouseUp);
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener('mouseup', handleMouseUp);
+    };
+  }, [isDraggingCategory]);
+
+  // Gentle auto-drift when completely idle that yields 100% to user scroll/touch/drag
+  useEffect(() => {
+    const el = categoryScrollRef.current;
+    if (!el) return;
+
+    let animId: number;
+    let lastTime = performance.now();
+
+    const step = (time: number) => {
+      const delta = Math.min((time - lastTime) / 1000, 0.1);
+      lastTime = time;
+
+      if (!isCatInteracting && !isDraggingCategory && el) {
+        const halfWidth = el.scrollWidth / 2;
+        if (halfWidth > 0) {
+          if (el.scrollLeft >= halfWidth) {
+            el.scrollLeft -= halfWidth;
+          }
+          el.scrollLeft += 24 * delta; // Smooth, continuous cinematic marquee drift
+        }
+        updateCategoryScrollButtons();
+      }
+      animId = requestAnimationFrame(step);
+    };
+
+    animId = requestAnimationFrame(step);
+
+    return () => {
+      cancelAnimationFrame(animId);
+      clearTimeout(autoScrollResumeTimerRef.current);
+    };
+  }, [isCatInteracting, isDraggingCategory]);
+
+  // All categories full modal view state
+  const [isAllCategoriesModalOpen, setIsAllCategoriesModalOpen] = useState(false);
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
 
   useEffect(() => {
     if (activeBanners.length <= 1) return;
@@ -509,6 +761,10 @@ export default function Home({
     bannerText: "⚡ Deals Refresh Every 24 Hours — Don't Miss Out!",
     targetEndTime: new Date(Date.now() + 24 * 60 * 60 * 1000),
   });
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
   const [dynamicFlashProducts, setDynamicFlashProducts] = useState<Product[]>(() => {
     try {
       const cached = localStorage.getItem('alike_cache_flash_products');
@@ -519,6 +775,12 @@ export default function Home({
     } catch {}
     return [];
   });
+<<<<<<< HEAD
+=======
+=======
+  const [dynamicFlashProducts, setDynamicFlashProducts] = useState<Product[]>([]);
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
 
   useEffect(() => {
     fetch('/api/flash-sale')
@@ -528,14 +790,31 @@ export default function Home({
           setFlashConfig(data.config);
           if (Array.isArray(data.products) && data.products.length > 0) {
             setDynamicFlashProducts(data.products);
+<<<<<<< HEAD
             try {
               localStorage.setItem('alike_cache_flash_products', JSON.stringify(data.products));
             } catch {}
+=======
+<<<<<<< HEAD
+            try {
+              localStorage.setItem('alike_cache_flash_products', JSON.stringify(data.products));
+            } catch {}
+=======
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
           }
         }
       })
       .catch((err) => console.warn('Could not load flash sale config:', err));
+<<<<<<< HEAD
   }, [refreshTrigger]);
+=======
+<<<<<<< HEAD
+  }, [refreshTrigger]);
+=======
+  }, []);
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
 
   const formatTime = (seconds: number) => {
     const h = Math.floor(seconds / 3600);
@@ -746,9 +1025,21 @@ export default function Home({
   };
 
   return (
+<<<<<<< HEAD
     <div id="homepage-root" className="space-y-8 sm:space-y-12 pb-12 sm:pb-16">
       {/* Hero Banner & Categories Carousel: Grouped with tighter 16-20px spacing */}
       <div id="hero-and-categories-group" className="space-y-3 sm:space-y-5">
+=======
+<<<<<<< HEAD
+    <div id="homepage-root" className="space-y-8 sm:space-y-12 pb-12 sm:pb-16">
+      {/* Hero Banner & Categories Carousel: Grouped with tighter 16-20px spacing */}
+      <div id="hero-and-categories-group" className="space-y-3 sm:space-y-5">
+=======
+    <div id="homepage-root" className="space-y-12 pb-16">
+      {/* Hero Banner & Categories Carousel: Grouped with tighter 16-20px spacing */}
+      <div id="hero-and-categories-group" className="space-y-4 sm:space-y-5">
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
         {/* 1. Interactive 3-Banner Carousel Section */}
         <HeroBanners
           banners={activeBanners}
@@ -764,6 +1055,10 @@ export default function Home({
         />
       </div>
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
       {/* 3. Top Banner Features & Dynamic Advertisements */}
       {(() => {
         const displayAds =
@@ -949,6 +1244,112 @@ export default function Home({
           </div>
         </section>
       </div>
+<<<<<<< HEAD
+=======
+=======
+      {/* 3. Top Banner Features (2 Service Cards) */}
+      <section className="w-full max-w-7xl mx-auto px-4 sm:px-6 grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
+        <div
+          onClick={() => onNavigate('category_search', 'jewellery')}
+          className={`cursor-pointer group flex items-start gap-4 p-5 sm:p-6 backdrop-blur-md border border-solid rounded-2xl shadow-sm transition-all duration-300 hover:-translate-y-1 ${
+            isLightMode
+              ? 'bg-white border-neutral-200 hover:border-[#D4AF37] hover:shadow-[0_4px_20px_rgba(212,175,55,0.15)] text-neutral-900'
+              : 'bg-neutral-900/40 border-neutral-800 hover:border-[#D4AF37]/80 hover:shadow-[0_0_20px_rgba(212,175,55,0.1)] text-white'
+          }`}
+        >
+          <div className="p-3.5 bg-[#D4AF37]/10 text-[#D4AF37] rounded-xl group-hover:scale-105 group-hover:bg-[#D4AF37] group-hover:text-black transition-all duration-300 shrink-0">
+            <Gem className="w-6 h-6" />
+          </div>
+          <div>
+            <h4 className={`font-bold text-sm sm:text-base group-hover:text-[#D4AF37] transition-all ${
+              isLightMode ? 'text-neutral-900' : 'text-white'
+            }`}>
+              Jewellery & Watches
+            </h4>
+            <p className="text-xs sm:text-sm text-neutral-500 mt-1 leading-relaxed">
+              Certified authentic jewels and precision artisan timepieces.
+            </p>
+          </div>
+        </div>
+
+        <div
+          onClick={() => onNavigate('category_search', 'luxury')}
+          className={`cursor-pointer group flex items-start gap-4 p-5 sm:p-6 backdrop-blur-md border border-solid rounded-2xl shadow-sm transition-all duration-300 hover:-translate-y-1 ${
+            isLightMode
+              ? 'bg-white border-neutral-200 hover:border-[#D4AF37] hover:shadow-[0_4px_20px_rgba(212,175,55,0.15)] text-neutral-900'
+              : 'bg-neutral-900/40 border-neutral-800 hover:border-[#D4AF37]/80 hover:shadow-[0_0_20px_rgba(212,175,55,0.1)] text-white'
+          }`}
+        >
+          <div className="p-3.5 bg-[#D4AF37]/10 text-[#D4AF37] rounded-xl group-hover:scale-105 group-hover:bg-[#D4AF37] group-hover:text-black transition-all duration-300 shrink-0">
+            <Sparkles className="w-6 h-6" />
+          </div>
+          <div>
+            <h4 className={`font-bold text-sm sm:text-base group-hover:text-[#D4AF37] transition-all ${
+              isLightMode ? 'text-neutral-900' : 'text-white'
+            }`}>
+              Curated VIP Selection
+            </h4>
+            <p className="text-xs sm:text-sm text-neutral-500 mt-1 leading-relaxed">
+              Exclusive luxury edition items handpicked for distinguished clients.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* 4. Flash Sale Section (With Real-Time Countdown & Dynamic Config) */}
+      <section className="max-w-7xl mx-auto px-6 p-6 bg-[#E9E9E7] dark:bg-neutral-900 border border-solid border-[#F5A623]/40 rounded-2xl shadow-md text-[#0F1A3C] dark:text-white">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-solid border-neutral-300/80 dark:border-neutral-800 pb-4 mb-6">
+          <div className="flex items-center gap-3">
+            <span className="p-2 rounded-xl bg-white dark:bg-[#0A1028] text-[#F5A623] border border-[#F5A623]/30 shadow-2xs">
+              <Zap className="w-6 h-6 fill-[#F5A623] text-[#F5A623]" />
+            </span>
+            <div>
+              <div className="flex items-center gap-2 sm:gap-2.5 flex-wrap">
+                <h3 className="text-xl md:text-2xl font-black text-[#0F1A3C] dark:text-white tracking-wide uppercase">
+                  {flashConfig.title}
+                </h3>
+                {flashConfig.bannerText && (
+                  <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 sm:py-1 rounded-full text-[10px] sm:text-xs font-black tracking-wider uppercase bg-gradient-to-r from-amber-500 via-[#F5A623] to-[#D4AF37] text-white shadow-[0_2px_10px_rgba(245,166,35,0.35)] border border-amber-300/60 select-none">
+                    <span className="relative flex h-2 w-2">
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-90"></span>
+                      <span className="relative inline-flex rounded-full h-2 w-2 bg-white"></span>
+                    </span>
+                    <Flame className="w-3 h-3 sm:w-3.5 sm:h-3.5 fill-current text-white shrink-0" />
+                    <span className="font-extrabold">{flashConfig.bannerText}</span>
+                  </span>
+                )}
+              </div>
+              <p className="text-xs text-neutral-600 dark:text-neutral-400 font-medium mt-0.5">
+                {flashConfig.subtitle}
+              </p>
+            </div>
+          </div>
+
+          {/* Golden Real-time Live Countdown timer */}
+          <FlashCountdown targetEndTime={flashConfig.targetEndTime} />
+        </div>
+
+        {/* Dynamic products in grid (5 in a row on PC) */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 sm:gap-4 items-stretch">
+          {flashSaleProducts.map((p) => {
+            const isWishlisted = wishlistedIds.includes(p.id);
+            return (
+              <ProductCard
+                key={p.id}
+                product={p}
+                onAddToCart={onAddToCart}
+                onToggleWishlist={onToggleWishlist}
+                onSelectProduct={onSelectProduct}
+                onCompare={onCompare}
+                onQuickView={onQuickView}
+                isWishlisted={isWishlisted}
+              />
+            );
+          })}
+        </div>
+      </section>
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
 
       {/* 5. Dynamic Per-Category Showcase Sections (Rendered for all categories that have active products) */}
       {categoryDealsList.map(({ category, products: catProducts }) => {
@@ -971,6 +1372,10 @@ export default function Home({
       })}
 
       {/* 6. Alike Premium Jobs Preview */}
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
       <div className="max-w-7xl mx-auto px-3 sm:px-6">
         <section className={`p-4 sm:p-6 md:p-8 rounded-2xl border border-solid ${
           isLightMode ? 'bg-white border-neutral-200 shadow-md' : 'bg-neutral-950 border-neutral-800'
@@ -1040,15 +1445,101 @@ export default function Home({
         <div className="text-center border-b border-solid border-neutral-200 dark:border-neutral-800 pb-4">
           <span className="text-[10px] uppercase tracking-widest font-mono font-extrabold text-[#F5A623]">Atelier Endorsements</span>
           <h3 className={`text-xl sm:text-2xl md:text-3xl font-extrabold mt-1 tracking-tight ${isLightMode ? 'text-[#0F1A3C]' : 'text-white'}`}>
+<<<<<<< HEAD
+=======
+=======
+      <section className={`max-w-7xl mx-auto px-6 p-6 md:p-8 rounded-2xl border border-solid ${
+        isLightMode ? 'bg-white border-neutral-200 shadow-md' : 'bg-neutral-950 border-neutral-800'
+      }`}>
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-solid border-neutral-200 dark:border-neutral-800 pb-4 mb-6">
+          <div>
+            <h3 className={`text-xl md:text-2xl font-black flex items-center gap-2 ${isLightMode ? 'text-[#0F1A3C]' : 'text-white'}`}>
+              <Briefcase className="w-5.5 h-5.5 text-[#F5A623]" /> Careers @ <span className="text-[#F5A623]">Alike-ND Group</span>
+            </h3>
+            <p className={`text-xs mt-0.5 ${isLightMode ? 'text-[#6B7280]' : 'text-neutral-400'}`}>
+              Join one of India's fastest scaling hyper-local luxury delivery channels
+            </p>
+          </div>
+          <button
+            id="view-all-jobs"
+            onClick={() => onNavigate('jobs')}
+            className="text-xs text-[#F5A623] hover:text-amber-600 hover:underline font-bold uppercase tracking-wider flex items-center gap-1 transition-all duration-300 hover:translate-x-1 hover:scale-105 active:scale-95 cursor-pointer"
+          >
+            Go to Careers Center <ChevronRight className="w-4 h-4 text-[#F5A623]" />
+          </button>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+          {jobs.slice(0, 2).map((job) => (
+            <div
+              key={job.id}
+              onClick={() => onNavigate('jobs')}
+              className={`group cursor-pointer p-5 rounded-xl flex items-start gap-4 transition-all duration-300 border border-solid ${
+                isLightMode
+                  ? 'bg-white border-neutral-200 hover:border-[#F5A623] hover:shadow-md'
+                  : 'bg-neutral-900 border-neutral-800 hover:border-[#F5A623]'
+              }`}
+            >
+              <img
+                src={job.logo}
+                alt={job.company}
+                loading="lazy"
+                decoding="async"
+                width="48"
+                height="48"
+                className="w-12 h-12 rounded-lg object-cover bg-neutral-100 dark:bg-neutral-950 border border-solid border-neutral-200 dark:border-neutral-800 shrink-0"
+              />
+              <div className="space-y-1">
+                <span className="inline-block px-2 py-0.5 bg-neutral-100 dark:bg-neutral-800 text-[9px] uppercase tracking-wider text-[#0F1A3C] dark:text-neutral-300 rounded-full font-bold">
+                  {job.type}
+                </span>
+                <h4 className={`text-sm font-bold transition-colors ${
+                  isLightMode ? 'text-[#0F1A3C] group-hover:text-[#F5A623]' : 'text-white group-hover:text-[#F5A623]'
+                }`}>
+                  {job.title}
+                </h4>
+                <p className={`text-xs font-semibold ${isLightMode ? 'text-[#4B5563]' : 'text-neutral-400'}`}>{job.company}</p>
+                <div className="flex flex-wrap gap-2 text-[10px] text-[#6B7280] font-mono pt-1">
+                  <span>📍 {job.location}</span>
+                  <span>|</span>
+                  <span className="text-[#F5A623] font-bold">💰 {job.salary}</span>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* 9. Client Testimonials */}
+      <section className="max-w-7xl mx-auto px-6 space-y-6">
+        <div className="text-center border-b border-solid border-neutral-200 dark:border-neutral-800 pb-4">
+          <span className="text-[10px] uppercase tracking-widest font-mono font-extrabold text-[#F5A623]">Atelier Endorsements</span>
+          <h3 className={`text-2xl md:text-3xl font-extrabold mt-1 tracking-tight ${isLightMode ? 'text-[#0F1A3C]' : 'text-white'}`}>
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
             What Our <span className="text-[#F5A623]">Luxury Clients</span> Experience
           </h3>
         </div>
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
           {testimonials.map((test) => (
             <div
               key={test.id}
               className={`relative p-5 sm:p-6 rounded-2xl flex flex-col justify-between transition-all duration-300 border border-solid ${
+<<<<<<< HEAD
+=======
+=======
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {testimonials.map((test) => (
+            <div
+              key={test.id}
+              className={`relative p-6 rounded-2xl flex flex-col justify-between transition-all duration-300 border border-solid ${
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
                 isLightMode
                   ? 'bg-white border-neutral-200 shadow-sm hover:border-[#F5A623]'
                   : 'bg-neutral-900/40 backdrop-blur-md border-neutral-800 hover:border-[#F5A623]/70'
@@ -1088,11 +1579,25 @@ export default function Home({
       </section>
 
       {/* 10. VIP Membership Section */}
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
       <section className="max-w-7xl mx-auto px-3 sm:px-6">
         <div className="p-5 sm:p-8 bg-[#0B1330] border border-solid border-[#F5A623]/40 rounded-2xl flex flex-col md:flex-row items-center justify-between gap-5 sm:gap-6 relative overflow-hidden shadow-2xl text-white">
           <div className="space-y-1.5 z-10 text-center md:text-left">
             <span className="text-[10px] font-black uppercase text-[#F5A623] tracking-widest block font-mono">VIP CLIENT MEMBERSHIP</span>
             <h3 className="text-xl sm:text-2xl md:text-3xl font-extrabold text-white">Unlock Exclusive Voucher Codes</h3>
+<<<<<<< HEAD
+=======
+=======
+      <section className="max-w-7xl mx-auto px-6">
+        <div className="p-8 bg-[#0B1330] border border-solid border-[#F5A623]/40 rounded-2xl flex flex-col md:flex-row items-center justify-between gap-6 relative overflow-hidden shadow-2xl text-white">
+          <div className="space-y-1.5 z-10 text-center md:text-left">
+            <span className="text-[10px] font-black uppercase text-[#F5A623] tracking-widest block font-mono">VIP CLIENT MEMBERSHIP</span>
+            <h3 className="text-2xl md:text-3xl font-extrabold text-white">Unlock Exclusive Voucher Codes</h3>
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
             <p className="text-xs text-[#D1D5DB] max-w-md">
               Sign up today and receive a flat 10% coupon valid on your next order, including limited timepiece catalogs.
             </p>
@@ -1118,9 +1623,23 @@ export default function Home({
                   onClick={() => {
                     if (newsletterEmail.trim().includes('@')) {
                       setNewsletterSubscribed(true);
+<<<<<<< HEAD
                     }
                   }}
                   className="px-6 py-3 bg-[#0d0d0d] hover:bg-black text-white border border-[#0d0d0d] font-extrabold text-xs uppercase tracking-wider rounded-xl active:scale-95 transition-all duration-300 select-none cursor-pointer shadow-md"
+=======
+<<<<<<< HEAD
+                    }
+                  }}
+                  className="px-6 py-3 bg-[#0d0d0d] hover:bg-black text-white border border-[#0d0d0d] font-extrabold text-xs uppercase tracking-wider rounded-xl active:scale-95 transition-all duration-300 select-none cursor-pointer shadow-md"
+=======
+                    } else {
+                      alert('Please enter a valid luxury partner email address.');
+                    }
+                  }}
+                  className="px-6 py-3 bg-[#0d0d0d] hover:bg-black text-white border border-[#0d0d0d] font-extrabold text-xs uppercase tracking-wider rounded-xl hover:scale-105 active:scale-95 transition-all duration-300 select-none cursor-pointer shadow-md"
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
                   title="Join Membership Club"
                 >
                   Join VIP Club

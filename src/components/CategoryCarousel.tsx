@@ -153,6 +153,10 @@ export const CategoryCarousel: React.FC<CategoryCarouselProps> = ({
   onOpenAllCategories,
   className = '',
 }) => {
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
   const [items, setItems] = useState<DynamicCategory[]>(() => {
     if (propCategories && propCategories.length > 0) return propCategories;
     try {
@@ -164,6 +168,14 @@ export const CategoryCarousel: React.FC<CategoryCarouselProps> = ({
     } catch {}
     return DEFAULT_CAROUSEL_CATEGORIES;
   });
+<<<<<<< HEAD
+=======
+=======
+  const [items, setItems] = useState<DynamicCategory[]>(
+    propCategories && propCategories.length > 0 ? propCategories : DEFAULT_CAROUSEL_CATEGORIES
+  );
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
   const [loading, setLoading] = useState(false);
 
   // Carousel interactive DOM refs
@@ -196,6 +208,10 @@ export const CategoryCarousel: React.FC<CategoryCarouselProps> = ({
       .then((res) => (res.ok ? res.json() : null))
       .then((data) => {
         if (!isMounted) return;
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
         const fresh =
           data && data.success && Array.isArray(data.categories) && data.categories.length > 0
             ? data.categories
@@ -207,6 +223,15 @@ export const CategoryCarousel: React.FC<CategoryCarouselProps> = ({
           try {
             localStorage.setItem('alike_cache_categories', JSON.stringify(fresh));
           } catch {}
+<<<<<<< HEAD
+=======
+=======
+        if (data && data.success && Array.isArray(data.categories) && data.categories.length > 0) {
+          setItems(data.categories);
+        } else if (Array.isArray(data) && data.length > 0) {
+          setItems(data);
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
         }
       })
       .catch((err) => {
@@ -297,12 +322,25 @@ export const CategoryCarousel: React.FC<CategoryCarouselProps> = ({
     return () => el.removeEventListener('wheel', handleWheel);
   }, [updateScrollStatus]);
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
   // Requirement: Auto-Play / Auto-Scroll on desktop that gently slides categories and pauses on hover / drag
   // Disabled on mobile (< 768px) so native touch momentum scrolling is never interrupted
   useEffect(() => {
     const el = trackRef.current;
     if (!el || items.length === 0) return;
     if (typeof window !== 'undefined' && window.innerWidth < 768) return;
+<<<<<<< HEAD
+=======
+=======
+  // Requirement: Auto-Play / Auto-Scroll that gently slides categories and pauses on hover / drag
+  useEffect(() => {
+    const el = trackRef.current;
+    if (!el || items.length === 0) return;
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
 
     let animId: number;
     let lastTime = performance.now();
@@ -312,7 +350,15 @@ export const CategoryCarousel: React.FC<CategoryCarouselProps> = ({
       lastTime = time;
 
       // Auto-slide runs only when not hovering, not dragging, and has scrollable width
+<<<<<<< HEAD
       if (!isHovered && !isDragging && el && window.innerWidth >= 768) {
+=======
+<<<<<<< HEAD
+      if (!isHovered && !isDragging && el && window.innerWidth >= 768) {
+=======
+      if (!isHovered && !isDragging && el) {
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
         const maxScroll = el.scrollWidth - el.clientWidth;
         if (maxScroll > 5) {
           // Continuous gentle auto-drift (approx 28px/second)
@@ -469,14 +515,30 @@ export const CategoryCarousel: React.FC<CategoryCarouselProps> = ({
           }
         }}
       >
+<<<<<<< HEAD
         {/* Left Navigation Button (<) - Hidden on small mobile screens where touch swipe is primary */}
+=======
+<<<<<<< HEAD
+        {/* Left Navigation Button (<) - Hidden on small mobile screens where touch swipe is primary */}
+=======
+        {/* Left Navigation Button (<) */}
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
         <button
           type="button"
           id="category-nav-left"
           onClick={() => handleScroll('left')}
           disabled={!canScrollLeft}
           aria-label="Scroll left"
+<<<<<<< HEAD
           className={`hidden sm:flex absolute left-0 sm:left-1 top-1/2 -translate-y-1/2 z-20 w-9 h-9 sm:w-11 sm:h-11 rounded-full items-center justify-center transition-all duration-300 shadow-xl active:scale-95 ${
+=======
+<<<<<<< HEAD
+          className={`hidden sm:flex absolute left-0 sm:left-1 top-1/2 -translate-y-1/2 z-20 w-9 h-9 sm:w-11 sm:h-11 rounded-full items-center justify-center transition-all duration-300 shadow-xl active:scale-95 ${
+=======
+          className={`absolute left-0 sm:left-1 top-1/2 -translate-y-1/2 z-20 w-9 h-9 sm:w-11 sm:h-11 rounded-full flex items-center justify-center transition-all duration-300 shadow-xl active:scale-95 ${
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
             isLightMode
               ? 'bg-white text-neutral-800 border-2 border-amber-400 hover:bg-amber-50 hover:text-[#F5A623] hover:border-[#F5A623]'
               : 'bg-[#0B1330] text-[#F5A623] border-2 border-[#F5A623]/60 hover:bg-[#121E4A] hover:border-[#F5A623] hover:shadow-[0_0_15px_rgba(245,166,35,0.45)]'
@@ -485,14 +547,30 @@ export const CategoryCarousel: React.FC<CategoryCarouselProps> = ({
           <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
         </button>
 
+<<<<<<< HEAD
         {/* Right Navigation Button (>) - Hidden on small mobile screens where touch swipe is primary */}
+=======
+<<<<<<< HEAD
+        {/* Right Navigation Button (>) - Hidden on small mobile screens where touch swipe is primary */}
+=======
+        {/* Right Navigation Button (>) */}
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
         <button
           type="button"
           id="category-nav-right"
           onClick={() => handleScroll('right')}
           disabled={!canScrollRight}
           aria-label="Scroll right"
+<<<<<<< HEAD
           className={`hidden sm:flex absolute right-0 sm:right-1 top-1/2 -translate-y-1/2 z-20 w-9 h-9 sm:w-11 sm:h-11 rounded-full items-center justify-center transition-all duration-300 shadow-xl active:scale-95 ${
+=======
+<<<<<<< HEAD
+          className={`hidden sm:flex absolute right-0 sm:right-1 top-1/2 -translate-y-1/2 z-20 w-9 h-9 sm:w-11 sm:h-11 rounded-full items-center justify-center transition-all duration-300 shadow-xl active:scale-95 ${
+=======
+          className={`absolute right-0 sm:right-1 top-1/2 -translate-y-1/2 z-20 w-9 h-9 sm:w-11 sm:h-11 rounded-full flex items-center justify-center transition-all duration-300 shadow-xl active:scale-95 ${
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
             isLightMode
               ? 'bg-white text-neutral-800 border-2 border-amber-400 hover:bg-amber-50 hover:text-[#F5A623] hover:border-[#F5A623]'
               : 'bg-[#0B1330] text-[#F5A623] border-2 border-[#F5A623]/60 hover:bg-[#121E4A] hover:border-[#F5A623] hover:shadow-[0_0_15px_rgba(245,166,35,0.45)]'
@@ -501,19 +579,52 @@ export const CategoryCarousel: React.FC<CategoryCarouselProps> = ({
           <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
         </button>
 
+<<<<<<< HEAD
         {/* Subtle Horizontal Edge Fades (Desktop/Tablet only so mobile cards aren't washed out) */}
         <div
           className={`hidden sm:block pointer-events-none absolute left-0 top-0 bottom-0 w-8 sm:w-14 z-10 bg-gradient-to-r ${
+=======
+<<<<<<< HEAD
+        {/* Subtle Horizontal Edge Fades (Desktop/Tablet only so mobile cards aren't washed out) */}
+        <div
+          className={`hidden sm:block pointer-events-none absolute left-0 top-0 bottom-0 w-8 sm:w-14 z-10 bg-gradient-to-r ${
+=======
+        {/* Subtle Horizontal Edge Fades */}
+        <div
+          className={`pointer-events-none absolute left-0 top-0 bottom-0 w-8 sm:w-14 z-10 bg-gradient-to-r ${
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
             isLightMode ? 'from-white/85 to-transparent' : 'from-[#0B1330]/85 to-transparent'
           }`}
         />
         <div
+<<<<<<< HEAD
           className={`hidden sm:block pointer-events-none absolute right-0 top-0 bottom-0 w-8 sm:w-14 z-10 bg-gradient-to-l ${
+=======
+<<<<<<< HEAD
+          className={`hidden sm:block pointer-events-none absolute right-0 top-0 bottom-0 w-8 sm:w-14 z-10 bg-gradient-to-l ${
+=======
+          className={`pointer-events-none absolute right-0 top-0 bottom-0 w-8 sm:w-14 z-10 bg-gradient-to-l ${
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
             isLightMode ? 'from-white/85 to-transparent' : 'from-[#0B1330]/85 to-transparent'
           }`}
         />
 
+<<<<<<< HEAD
         {/* Horizontal Scroll Track */}
+=======
+<<<<<<< HEAD
+        {/* Horizontal Scroll Track */}
+=======
+        {/* Horizontal Scroll Track:
+            Responsive Card widths:
+            - Desktop: 6-7 items visible (w-36 md:w-40 xl:w-42, ~14-16% container)
+            - Tablet: 3-4 items visible (w-32 sm:w-36)
+            - Mobile: 2 items visible (w-28 sm:w-32)
+        */}
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
         <div
           ref={trackRef}
           onScroll={updateScrollStatus}

@@ -32,6 +32,10 @@ export interface Product {
   countryOfOrigin?: string;
   manufacturerDetails?: string;
   packInfo?: string;
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
   audience?: string;
   sku?: string;
   videoUrl?: string;
@@ -169,6 +173,11 @@ export interface Product {
     note?: string;
     createdAt: string;
   }>;
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
   createdAt?: string;
   updatedAt?: string;
 }
@@ -318,6 +327,10 @@ export interface Banner {
   updatedAt?: string;
 }
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
 export interface CommissionRuleItem {
   ruleId: string;
   ruleType: "category" | "subcategory" | "product_override" | "seller_override";
@@ -370,12 +383,21 @@ export interface CommissionAuditItem {
   createdAt: string;
 }
 
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
 export interface CommissionOrderLog {
   _id: string;
   orderNumber: string;
   date: string;
   memberName: string;
   memberEmail?: string;
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
   subtotal?: number;
   discount?: number;
   tax?: number;
@@ -386,10 +408,22 @@ export interface CommissionOrderLog {
   commissionAmount: number;
   originalCommissionAmount?: number;
   refundedCommissionAmount?: number;
+<<<<<<< HEAD
+=======
+=======
+  total: number;
+  commissionRate: number;
+  commissionAmount: number;
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
   sellerPayout: number;
   paymentMethod?: string;
   status: OrderStatus;
   commissionStatus?: string;
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
   items?: Array<{
     productId?: any;
     productName: string;
@@ -409,6 +443,11 @@ export interface CommissionOrderLog {
     commissionAmount: number;
     sellerNetAmount: number;
   }>;
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
 }
 
 export interface PlatformWithdrawal {
@@ -423,6 +462,10 @@ export interface PlatformWithdrawal {
 
 export interface CommissionData {
   commissionRate: number;
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
   config?: CommissionConfigType;
   rules?: CommissionRuleItem[];
   auditLogs?: CommissionAuditItem[];
@@ -471,3 +514,18 @@ export interface CommissionData {
   orders: CommissionOrderLog[];
   withdrawals?: PlatformWithdrawal[];
 }
+<<<<<<< HEAD
+=======
+=======
+  totalCommissionEarned: number;
+  runningBalance: number;
+  totalWithdrawn?: number;
+  totalOrdersCount: number;
+  orders: CommissionOrderLog[];
+  withdrawals?: PlatformWithdrawal[];
+}
+
+
+
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995

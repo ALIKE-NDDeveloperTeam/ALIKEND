@@ -7,6 +7,10 @@ export interface RegisterSellerPayload {
   ownerName: string;
   mobileNumber: string;
   email: string;
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
   password: string;
   confirmPassword?: string;
   agreedToTerms: boolean;
@@ -17,6 +21,19 @@ export interface RegisterSellerPayload {
   bankAccountNumber?: string;
   bankIFSC?: string;
   bankName?: string;
+<<<<<<< HEAD
+=======
+=======
+  businessAddress: string;
+  panNumber: string;
+  gstin?: string;
+  bankAccountHolderName: string;
+  bankAccountNumber: string;
+  bankIFSC: string;
+  bankName: string;
+  password?: string;
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
 }
 
 export interface SellerProductPayload {
@@ -40,20 +57,39 @@ export interface SellerProductPayload {
   countryOfOrigin?: string;
   manufacturerDetails?: string;
   packInfo?: string;
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
   isPublished?: boolean;
   deliveryCharge?: number;
   moderationStatus?: 'draft' | 'approved' | 'pending' | 'rejected' | 'archived';
   [key: string]: any;
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
 }
 
 function getToken(): string | null {
   try {
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
     return (
       localStorage.getItem("alike_seller_token") ||
       sessionStorage.getItem("alike_seller_token") ||
       localStorage.getItem("seller_token") ||
       sessionStorage.getItem("seller_token")
     );
+<<<<<<< HEAD
+=======
+=======
+    return localStorage.getItem("alike_seller_token");
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
   } catch {
     return null;
   }
@@ -79,6 +115,10 @@ async function request(path: string, options: RequestInit = {}) {
 
 export const sellerApi = {
   getToken,
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
   setToken: (token: string, rememberMe: boolean = true) => {
     try {
       if (rememberMe) {
@@ -92,14 +132,31 @@ export const sellerApi = {
         localStorage.removeItem("alike_seller_token");
         localStorage.removeItem("seller_token");
       }
+<<<<<<< HEAD
+=======
+=======
+  setToken: (token: string) => {
+    try {
+      localStorage.setItem("alike_seller_token", token);
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
     } catch {}
   },
   clearToken: () => {
     try {
       localStorage.removeItem("alike_seller_token");
+<<<<<<< HEAD
       localStorage.removeItem("seller_token");
       sessionStorage.removeItem("alike_seller_token");
       sessionStorage.removeItem("seller_token");
+=======
+<<<<<<< HEAD
+      localStorage.removeItem("seller_token");
+      sessionStorage.removeItem("alike_seller_token");
+      sessionStorage.removeItem("seller_token");
+=======
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
       localStorage.removeItem("alike_seller_profile");
     } catch {}
   },
@@ -117,6 +174,10 @@ export const sellerApi = {
     } catch {}
   },
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
   register: async (payload: RegisterSellerPayload) => {
     const res = await request("/register", { method: "POST", body: JSON.stringify(payload) });
     if (res.token) {
@@ -176,6 +237,21 @@ export const sellerApi = {
     });
     if (res.token) {
       sellerApi.setToken(res.token, true);
+<<<<<<< HEAD
+=======
+=======
+  register: (payload: RegisterSellerPayload) =>
+    request("/register", { method: "POST", body: JSON.stringify(payload) }),
+
+  login: async (email: string, password: string) => {
+    const res = await request("/login", {
+      method: "POST",
+      body: JSON.stringify({ email, password }),
+    });
+    if (res.token) {
+      sellerApi.setToken(res.token);
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
     }
     if (res.seller) {
       sellerApi.setStoredProfile(res.seller);
@@ -185,6 +261,10 @@ export const sellerApi = {
 
   getMe: () => request("/me"),
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
   updateProfile: async (data: Partial<SellerProfile>) => {
     const res = await request("/profile", {
       method: "PUT",
@@ -208,10 +288,25 @@ export const sellerApi = {
     request("/products", { method: "POST", body: JSON.stringify(product) }),
 
   updateProduct: (id: number | string, product: Partial<SellerProductPayload> | Record<string, any>) =>
+<<<<<<< HEAD
+=======
+=======
+  getMyProducts: () => request("/products"),
+
+  createProduct: (product: SellerProductPayload) =>
+    request("/products", { method: "POST", body: JSON.stringify(product) }),
+
+  updateProduct: (id: number | string, product: Partial<SellerProductPayload>) =>
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
     request(`/products/${id}`, { method: "PUT", body: JSON.stringify(product) }),
 
   deleteProduct: (id: number | string) =>
     request(`/products/${id}`, { method: "DELETE" }),
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
 
   uploadProductMedia: (data: { dataUrl: string; fileName?: string; mimeType?: string; mediaType?: "image" | "video" }) =>
     request("/products/upload-media", { method: "POST", body: JSON.stringify(data) }),
@@ -533,3 +628,9 @@ export const sellerApi = {
     }),
 };
 
+<<<<<<< HEAD
+=======
+=======
+};
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995

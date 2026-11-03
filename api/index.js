@@ -37,6 +37,7 @@ var init_Admin = __esm({
         phone: { type: String, default: "" },
         department: { type: String, default: "" },
         designation: { type: String, default: "" },
+<<<<<<< HEAD
         isActive: { type: Boolean, default: true },
         sellerManagementPermissions: {
           viewSellers: { type: Boolean, default: true },
@@ -50,6 +51,9 @@ var init_Admin = __esm({
           managePayouts: { type: Boolean, default: true },
           manageSellerSupport: { type: Boolean, default: true }
         }
+=======
+        isActive: { type: Boolean, default: true }
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
       },
       {
         timestamps: true,
@@ -71,12 +75,18 @@ var init_User = __esm({
         fullName: { type: String, required: true, trim: true },
         username: { type: String, unique: true, sparse: true, lowercase: true, trim: true },
         email: { type: String, required: true, unique: true, lowercase: true, trim: true },
+<<<<<<< HEAD
         country: { type: String, required: false, default: "Bangladesh", trim: true },
         mobileNumber: { type: String, required: false, default: "", trim: true },
+=======
+        country: { type: String, required: true, trim: true },
+        mobileNumber: { type: String, required: true, trim: true },
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
         phone: { type: String, trim: true },
         passwordHash: { type: String, required: true },
         tier: { type: String, enum: ["Silver", "Gold", "Platinum", "VIP", "Normal"], default: "Normal" },
         verified: { type: Boolean, default: true },
+<<<<<<< HEAD
         isBlocked: { type: Boolean, default: false },
         avatar: { type: String },
         addresses: [
@@ -116,6 +126,9 @@ var init_User = __esm({
             timestamp: { type: Date, default: Date.now }
           }
         ]
+=======
+        isBlocked: { type: Boolean, default: false }
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
       },
       {
         timestamps: true,
@@ -128,6 +141,7 @@ var init_User = __esm({
   }
 });
 
+<<<<<<< HEAD
 // backend/models/Order.ts
 import mongoose3, { Schema as Schema3 } from "mongoose";
 var OrderSchema, Order_default;
@@ -238,6 +252,8 @@ var init_Order = __esm({
   }
 });
 
+=======
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
 // backend/models/Product.ts
 import mongoose4, { Schema as Schema4 } from "mongoose";
 var ProductSchema, Product_default;
@@ -274,6 +290,7 @@ var init_Product = __esm({
         sellerShopName: { type: String, default: "ALIKE-ND Official" },
         // Indian Marketplace Compliance Fields (Rule 6, Consumer Protection E-Commerce Rules, 2020)
         hsnCode: { type: String, default: "", trim: true },
+<<<<<<< HEAD
         gstRate: { type: Number, default: 18 },
         countryOfOrigin: { type: String, default: "India", trim: true },
         manufacturerDetails: { type: String, default: "", trim: true },
@@ -352,6 +369,12 @@ var init_Product = __esm({
           ],
           default: []
         }
+=======
+        gstRate: { type: Number, default: 18, enum: [0, 5, 12, 18, 28] },
+        countryOfOrigin: { type: String, default: "India", trim: true },
+        manufacturerDetails: { type: String, default: "", trim: true },
+        packInfo: { type: String, default: "", trim: true }
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
       },
       { timestamps: true, collection: "products" }
     );
@@ -365,6 +388,7 @@ __export(Seller_exports, {
   default: () => Seller_default
 });
 import mongoose5, { Schema as Schema5 } from "mongoose";
+<<<<<<< HEAD
 var SellerAdminNoteSchema, SellerApplicationHistorySchema, SellerVerificationHistorySchema, SellerNotificationSchema, SellerIdentityVerificationSchema, SellerSchema, Seller_default;
 var init_Seller = __esm({
   "backend/models/Seller.ts"() {
@@ -457,6 +481,11 @@ var init_Seller = __esm({
       },
       { _id: false }
     );
+=======
+var SellerSchema, Seller_default;
+var init_Seller = __esm({
+  "backend/models/Seller.ts"() {
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
     SellerSchema = new Schema5(
       {
         shopName: { type: String, required: true, trim: true },
@@ -465,6 +494,7 @@ var init_Seller = __esm({
         ownerEmail: { type: String, trim: true },
         email: { type: String, required: true, unique: true, lowercase: true, trim: true },
         mobileNumber: { type: String, required: true, trim: true },
+<<<<<<< HEAD
         businessAddress: { type: String, default: "", trim: true },
         shopAddress: { type: String, trim: true },
         location: {
@@ -581,22 +611,40 @@ var init_Seller = __esm({
         lastPasswordResetAt: { type: Date },
         adminNotes: { type: [SellerAdminNoteSchema], default: [] },
         applicationHistory: { type: [SellerApplicationHistorySchema], default: [] },
+=======
+        businessAddress: { type: String, required: true, trim: true },
+        panNumber: { type: String, required: true, uppercase: true, trim: true },
+        gstin: { type: String, uppercase: true, trim: true },
+        bankAccountHolderName: { type: String, required: true, trim: true },
+        bankAccountNumber: { type: String, required: true, trim: true },
+        bankIFSC: { type: String, required: true, uppercase: true, trim: true },
+        bankName: { type: String, required: true, trim: true },
+        kycVerified: { type: Boolean, default: false },
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
         password: { type: String, required: true },
         listingsCount: { type: Number, default: 0 },
         walletBalance: { type: Number, default: 0, min: 0 },
         totalEarnings: { type: Number, default: 0, min: 0 },
         pendingWithdrawals: { type: Number, default: 0, min: 0 },
+<<<<<<< HEAD
         settingsHub: { type: Schema5.Types.Mixed, default: {} },
+=======
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
         status: {
           type: String,
           enum: ["pending", "approved", "rejected", "suspended", "review"],
           default: "pending"
         }
       },
+<<<<<<< HEAD
       { timestamps: true, collection: "sellers", strict: false }
     );
     SellerSchema.index({ location: "2dsphere" }, { sparse: true });
     SellerSchema.index({ mobileNumber: 1 });
+=======
+      { timestamps: true, collection: "sellers" }
+    );
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
     Seller_default = mongoose5.model("Seller", SellerSchema);
   }
 });
@@ -691,6 +739,7 @@ var init_PlatformSetting = __esm({
   "backend/models/PlatformSetting.ts"() {
     PlatformSettingSchema = new Schema10(
       {
+<<<<<<< HEAD
         key: { type: String, required: true, unique: true, default: "commission_settings", index: true },
         commissionRate: { type: Number, default: 5, min: 0, max: 100 },
         platformBalance: { type: Number, default: 0 },
@@ -701,6 +750,15 @@ var init_PlatformSetting = __esm({
         updatedBy: { type: String, default: "superadmin" }
       },
       { timestamps: true, collection: "platform_settings", strict: false }
+=======
+        key: { type: String, required: true, unique: true, default: "commission_settings" },
+        commissionRate: { type: Number, default: 5, min: 0, max: 100 },
+        platformBalance: { type: Number, default: 0 },
+        totalCommissionEarned: { type: Number, default: 0 },
+        updatedBy: { type: String, default: "superadmin" }
+      },
+      { timestamps: true, collection: "platform_settings" }
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
     );
     PlatformSetting_default = mongoose10.model("PlatformSetting", PlatformSettingSchema);
   }
@@ -720,8 +778,12 @@ __export(store_exports, {
   connectMongoDB: () => connectMongoDB,
   getMongoDbInfo: () => getMongoDbInfo,
   isMongoConnected: () => isMongoConnected,
+<<<<<<< HEAD
   memoryStore: () => memoryStore,
   syncDatabaseWithMemory: () => syncDatabaseWithMemory
+=======
+  memoryStore: () => memoryStore
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
 });
 import mongoose11 from "mongoose";
 import bcrypt from "bcryptjs";
@@ -935,6 +997,7 @@ async function connectMongoDB(force = false) {
         verified: true
       });
     }
+<<<<<<< HEAD
     const sellerCount = await Seller_default.countDocuments();
     if (sellerCount === 0 && memoryStore.sellers && memoryStore.sellers.length > 0) {
       console.log("\u{1F3EA} [MONGODB SEED] Seeding approved sellers into alikendshop.sellers...");
@@ -959,6 +1022,8 @@ async function connectMongoDB(force = false) {
       }
       console.log(`\u2728 [MONGODB SEED] Successfully seeded ${memoryStore.orders.length} orders in alikendshop.orders`);
     }
+=======
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
     const existingSetting = await PlatformSetting_default.findOne({ key: "commission_settings" });
     if (!existingSetting) {
       await PlatformSetting_default.create({
@@ -970,12 +1035,16 @@ async function connectMongoDB(force = false) {
       });
       console.log("\u{1F4B0} [MONGODB SEED] Platform Commission settings initialized with default 5% rate in alikendshop.platform_settings");
     }
+<<<<<<< HEAD
     await syncDatabaseWithMemory();
+=======
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
   } catch (e) {
     console.warn("\u26A0\uFE0F [MONGODB SEED NOTICE]:", e?.message || e);
   }
   return mongoose11;
 }
+<<<<<<< HEAD
 async function syncDatabaseWithMemory() {
   if (!isMongoConnected()) {
     return {
@@ -1062,6 +1131,8 @@ async function syncDatabaseWithMemory() {
     };
   }
 }
+=======
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
 var INITIAL_ADMIN_SEED_PASSWORD, INITIAL_ADMIN_SEED_HASH, INITIAL_SUPERADMIN_EMAIL, INITIAL_SUPERADMIN_NAME, INITIAL_STAFF_EMAIL, INITIAL_BANNERS_SEED, INITIAL_PRODUCTS_SEED, INITIAL_CATEGORIES_SEED, memoryStore, lastConnectionError, lastMaskedUri, isConnecting, authFailed, cachedPromise;
 var init_store = __esm({
   "backend/store.ts"() {
@@ -1071,8 +1142,11 @@ var init_store = __esm({
     init_Banner();
     init_Category();
     init_PlatformSetting();
+<<<<<<< HEAD
     init_Seller();
     init_Order();
+=======
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
     INITIAL_ADMIN_SEED_PASSWORD = process.env.INITIAL_ADMIN_PASSWORD || process.env.ADMIN_SEED_PASSWORD || "";
     INITIAL_ADMIN_SEED_HASH = INITIAL_ADMIN_SEED_PASSWORD ? bcrypt.hashSync(INITIAL_ADMIN_SEED_PASSWORD, 10) : "";
     INITIAL_SUPERADMIN_EMAIL = process.env.SUPERADMIN_EMAIL?.trim().toLowerCase() || "developer.alikend@gmail.com";
@@ -1697,6 +1771,7 @@ var init_store = __esm({
           passwordHash: INITIAL_ADMIN_SEED_HASH,
           tier: "Platinum",
           verified: true,
+<<<<<<< HEAD
           isBlocked: false,
           adminNotes: "Platform super administrator account.",
           addresses: [
@@ -1863,6 +1938,16 @@ var init_store = __esm({
           sellerShopName: idx % 2 === 0 ? "Atelier Vesper" : "Royal Heritage Boutiques"
         };
       }),
+=======
+          createdAt: /* @__PURE__ */ new Date()
+        }
+      ],
+      products: INITIAL_PRODUCTS_SEED.map((p) => ({
+        ...p,
+        sellerId: "admin",
+        sellerShopName: "ALIKE-ND Official"
+      })),
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
       orders: [
         {
           _id: "ord_1",
@@ -1916,6 +2001,7 @@ var init_store = __esm({
           ownerEmail: "sara@example.com",
           email: "sara@example.com",
           mobileNumber: "+91 98765 43210",
+<<<<<<< HEAD
           businessAddress: "42 Connaught Place, New Delhi",
           shopAddress: "Block B, Inner Circle, Connaught Place, New Delhi 110001",
           location: {
@@ -2110,6 +2196,10 @@ var init_store = __esm({
               }
             ]
           },
+=======
+          businessAddress: "42 Rue de la Paix, Paris",
+          listingsCount: 34,
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
           status: "approved",
           createdAt: /* @__PURE__ */ new Date()
         },
@@ -2123,6 +2213,7 @@ var init_store = __esm({
           mobileNumber: "+91 98765 43211",
           businessAddress: "15 Gangnam-daero, Seoul",
           listingsCount: 12,
+<<<<<<< HEAD
           kycVerified: false,
           verificationStatus: "pending_admin_review",
           verifiedBadge: false,
@@ -2152,6 +2243,8 @@ var init_store = __esm({
               }
             ]
           },
+=======
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
           status: "pending",
           createdAt: /* @__PURE__ */ new Date()
         },
@@ -2163,6 +2256,7 @@ var init_store = __esm({
           ownerEmail: "claire@example.com",
           email: "claire@example.com",
           mobileNumber: "+91 98765 43212",
+<<<<<<< HEAD
           businessAddress: "88 Linking Road, Bandra West, Mumbai",
           shopAddress: "88 Linking Road, Near National College, Bandra West, Mumbai 400050",
           location: {
@@ -2206,6 +2300,12 @@ var init_store = __esm({
           listingsCount: 28,
           status: "approved",
           createdAt: /* @__PURE__ */ new Date()
+=======
+          businessAddress: "88 Kensington High St, London",
+          listingsCount: 19,
+          status: "approved",
+          createdAt: /* @__PURE__ */ new Date()
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
         }
       ],
       customers: [
@@ -2788,6 +2888,7 @@ var init_store = __esm({
         emailNotificationsEnabled: true,
         defaultSlaHours: 12,
         updatedAt: /* @__PURE__ */ new Date()
+<<<<<<< HEAD
       },
       returnRequests: [
         {
@@ -3101,6 +3202,9 @@ var init_store = __esm({
       deliveryDisputes: [],
       deliveryAnnouncements: [],
       deliveryReviews: []
+=======
+      }
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
     };
     lastConnectionError = null;
     lastMaskedUri = null;
@@ -3134,22 +3238,92 @@ var init_store = __esm({
 });
 
 // backend/app.ts
+<<<<<<< HEAD
 import express2 from "express";
 import cors from "cors";
 import crypto8 from "crypto";
 import dotenv from "dotenv";
 import rateLimit5 from "express-rate-limit";
+=======
+import express from "express";
+import cors from "cors";
+import crypto4 from "crypto";
+import dotenv from "dotenv";
+import rateLimit from "express-rate-limit";
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
 import { GoogleGenAI } from "@google/genai";
 
 // backend/routes/auth.ts
 init_Admin();
 init_User();
+<<<<<<< HEAD
 init_Order();
 init_Product();
 init_Seller();
 import { Router as Router2 } from "express";
 import bcrypt3 from "bcryptjs";
 import jwt3 from "jsonwebtoken";
+=======
+import { Router } from "express";
+import bcrypt2 from "bcryptjs";
+import jwt2 from "jsonwebtoken";
+
+// backend/models/Order.ts
+import mongoose3, { Schema as Schema3 } from "mongoose";
+var OrderSchema = new Schema3(
+  {
+    orderNumber: { type: String, required: true, unique: true },
+    memberName: { type: String, required: true },
+    memberEmail: { type: String },
+    total: { type: Number, required: true, min: 0 },
+    status: {
+      type: String,
+      enum: ["pending", "processing", "shipped", "delivered", "cancelled"],
+      default: "processing"
+    },
+    items: [
+      {
+        productId: { type: Schema3.Types.Mixed },
+        name: String,
+        qty: Number,
+        price: Number,
+        image: String,
+        color: String,
+        size: String
+      }
+    ],
+    address: {
+      name: String,
+      phone: String,
+      street: String,
+      city: String,
+      state: String,
+      zip: String
+    },
+    paymentMethod: { type: String, default: "CARD" },
+    subtotal: { type: Number, default: 0 },
+    tax: { type: Number, default: 0 },
+    discount: { type: Number, default: 0 },
+    delivery: { type: Number, default: 0 },
+    trackingStep: { type: Number, default: 2 },
+    commissionRate: { type: Number, default: 5 },
+    commissionAmount: { type: Number, default: 0 },
+    sellerPayout: { type: Number, default: 0 },
+    commissionStatus: { type: String, enum: ["credited", "pending"], default: "credited" },
+    approvedAt: { type: Date },
+    shippedAt: { type: Date },
+    deliveredAt: { type: Date },
+    walletCredited: { type: Boolean, default: false },
+    manualOverride: { type: Boolean, default: false }
+  },
+  { timestamps: true, collection: "orders" }
+);
+var Order_default = mongoose3.model("Order", OrderSchema);
+
+// backend/routes/auth.ts
+init_Product();
+init_Seller();
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
 
 // backend/models/SellerWithdrawal.ts
 import mongoose6, { Schema as Schema6 } from "mongoose";
@@ -3183,6 +3357,10 @@ var ActivityLogSchema = new Schema7(
     eventType: {
       type: String,
       required: true,
+<<<<<<< HEAD
+=======
+      enum: ["Registration", "Login", "Failed Login"],
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
       index: true
     },
     userName: { type: String, required: true, trim: true },
@@ -3212,6 +3390,7 @@ import crypto2 from "crypto";
 
 // backend/config/jwt.ts
 import crypto from "crypto";
+<<<<<<< HEAD
 var fallbackDerivedSecret = null;
 function getJwtSecret() {
   const secret = process.env.JWT_SECRET?.trim();
@@ -3227,6 +3406,31 @@ function getJwtSecret() {
     );
   }
   return fallbackDerivedSecret;
+=======
+var devEphemeralSecret = null;
+function getJwtSecret() {
+  const secret = process.env.JWT_SECRET?.trim();
+  const isProduction = process.env.NODE_ENV === "production" || Boolean(process.env.VERCEL);
+  if (isProduction) {
+    if (!secret || secret.length < 32) {
+      console.error(
+        "\u274C [SECURITY ERROR]: JWT_SECRET environment variable is missing or shorter than 32 characters in production."
+      );
+      return null;
+    }
+    return secret;
+  }
+  if (secret && secret.length >= 8) {
+    return secret;
+  }
+  if (!devEphemeralSecret) {
+    devEphemeralSecret = crypto.randomBytes(32).toString("hex");
+    console.warn(
+      "\u26A0\uFE0F [DEV SECURITY NOTICE]: JWT_SECRET not configured. Using ephemeral random secret for this session."
+    );
+  }
+  return devEphemeralSecret;
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
 }
 
 // backend/middleware/auth.ts
@@ -3282,11 +3486,16 @@ function resolveAdminRole(recordOrRole, emailFallback) {
 async function requireAdmin(req, res, next) {
   const secret = getJwtSecret();
   if (!secret) {
+<<<<<<< HEAD
     return res.status(500).json({
+=======
+    return res.status(503).json({
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
       success: false,
       error: "Authentication service is temporarily misconfigured. Please contact support."
     });
   }
+<<<<<<< HEAD
   const isSettingsHubRoute = req.path.startsWith("/settings-hub") || req.path.startsWith("/seller-reviews") || req.path.startsWith("/approval-rules");
   const fallbackToPrimaryAdmin = () => {
     const primaryAdmin = (memoryStore.admins || [])[0];
@@ -3307,6 +3516,10 @@ async function requireAdmin(req, res, next) {
   const header = req.headers.authorization;
   if (!header || !header.startsWith("Bearer ")) {
     if (isSettingsHubRoute && fallbackToPrimaryAdmin()) return;
+=======
+  const header = req.headers.authorization;
+  if (!header || !header.startsWith("Bearer ")) {
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
     return res.status(401).json({
       success: false,
       error: "Authentication required: Missing or invalid Authorization header."
@@ -3317,20 +3530,32 @@ async function requireAdmin(req, res, next) {
   try {
     payload = jwt.verify(token, secret);
   } catch (err) {
+<<<<<<< HEAD
     if (isSettingsHubRoute && fallbackToPrimaryAdmin()) return;
     return res.status(401).json({
       success: false,
       code: err.name === "TokenExpiredError" ? "TOKEN_EXPIRED" : "INVALID_TOKEN",
+=======
+    return res.status(401).json({
+      success: false,
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
       error: "Invalid or expired admin session token."
     });
   }
   const tokenRole = payload?.role;
   const hasValidAdminRole = ALL_ADMIN_ROLES.includes(tokenRole);
+<<<<<<< HEAD
   if (!payload || !payload.adminId || !hasValidAdminRole || payload.role === "customer" || payload.role === "seller" || payload.userId || payload.sellerId) {
     if (isSettingsHubRoute && fallbackToPrimaryAdmin()) return;
     return res.status(401).json({
       success: false,
       error: "Access denied: Admin privileges required. Customer and Seller accounts cannot access admin routes."
+=======
+  if (!payload || !payload.adminId || !hasValidAdminRole || payload.role === "customer" || payload.userId) {
+    return res.status(403).json({
+      success: false,
+      error: "Access denied: Admin privileges required. Regular customer accounts cannot access admin routes."
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
     });
   }
   if (isMongoConnected()) {
@@ -3338,7 +3563,11 @@ async function requireAdmin(req, res, next) {
       const adminDoc = await Admin_default.findById(payload.adminId);
       if (adminDoc) {
         if (adminDoc.isActive === false) {
+<<<<<<< HEAD
           return res.status(401).json({
+=======
+          return res.status(403).json({
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
             success: false,
             error: "Access denied: Admin account is inactive or suspended."
           });
@@ -3358,6 +3587,7 @@ async function requireAdmin(req, res, next) {
       console.warn("MongoDB admin lookup error:", dbErr?.message);
     }
   }
+<<<<<<< HEAD
   let memAdmin = (memoryStore.admins || []).find(
     (a) => a.email.toLowerCase() === (payload.email || "").toLowerCase() || a._id === payload.adminId
   );
@@ -3378,6 +3608,14 @@ async function requireAdmin(req, res, next) {
   if (memAdmin) {
     if (memAdmin.isActive === false) {
       return res.status(401).json({
+=======
+  const memAdmin = (memoryStore.admins || []).find(
+    (a) => a.email.toLowerCase() === (payload.email || "").toLowerCase() || a._id === payload.adminId
+  );
+  if (memAdmin) {
+    if (memAdmin.isActive === false) {
+      return res.status(403).json({
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
         success: false,
         error: "Access denied: Admin account is inactive."
       });
@@ -3393,7 +3631,11 @@ async function requireAdmin(req, res, next) {
     };
     return next();
   }
+<<<<<<< HEAD
   return res.status(401).json({
+=======
+  return res.status(403).json({
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
     success: false,
     error: "Access denied: Admin account not found."
   });
@@ -3431,12 +3673,15 @@ async function requireCustomerAuth(req, res, next) {
     if (!payload || !payload.userId && !payload.email) {
       return res.status(401).json({ success: false, error: "Invalid customer session token." });
     }
+<<<<<<< HEAD
     if (payload.role === "seller" || payload.sellerId || payload.accountType === "seller") {
       return res.status(403).json({
         success: false,
         error: "Access denied: Seller accounts are separate from customer accounts and cannot access customer-only data."
       });
     }
+=======
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
     req.userId = payload.userId ? String(payload.userId) : void 0;
     req.userEmail = payload.email ? String(payload.email).toLowerCase().trim() : void 0;
     req.user = {
@@ -3448,7 +3693,10 @@ async function requireCustomerAuth(req, res, next) {
   } catch (err) {
     return res.status(401).json({
       success: false,
+<<<<<<< HEAD
       code: err.name === "TokenExpiredError" ? "TOKEN_EXPIRED" : "INVALID_TOKEN",
+=======
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
       error: "Session expired or invalid. Please sign in again."
     });
   }
@@ -3613,6 +3861,16 @@ async function checkLoginRateLimit(req, identifier) {
     }
   }
   if (!isMongoConnected()) {
+<<<<<<< HEAD
+=======
+    if (process.env.NODE_ENV === "production") {
+      return {
+        allowed: false,
+        status: 503,
+        error: "Authentication service is temporarily unavailable. Please try again shortly."
+      };
+    }
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
     return { allowed: true };
   }
   try {
@@ -3641,6 +3899,16 @@ async function checkLoginRateLimit(req, identifier) {
     }
     return { allowed: true };
   } catch (err) {
+<<<<<<< HEAD
+=======
+    if (process.env.NODE_ENV === "production") {
+      return {
+        allowed: false,
+        status: 503,
+        error: "Authentication service is temporarily unavailable. Please try again shortly."
+      };
+    }
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
     return { allowed: true };
   }
 }
@@ -3711,6 +3979,7 @@ async function resetLoginAttempts(...identifiers) {
   }
 }
 
+<<<<<<< HEAD
 // backend/routes/adminCentral.ts
 import express from "express";
 import crypto3 from "crypto";
@@ -3944,6 +4213,1090 @@ import { Router } from "express";
 import bcrypt2 from "bcryptjs";
 import jwt2 from "jsonwebtoken";
 import rateLimit from "express-rate-limit";
+=======
+// backend/routes/auth.ts
+var router = Router();
+function syncAdminPasswordToMemoryStore(email, newPasswordHash, extraData) {
+  const cleanEmail = email.toLowerCase().trim();
+  if (!memoryStore.admins) memoryStore.admins = [];
+  const existingIndex = memoryStore.admins.findIndex(
+    (a) => a.email.toLowerCase() === cleanEmail
+  );
+  if (existingIndex !== -1) {
+    memoryStore.admins[existingIndex].passwordHash = newPasswordHash;
+    if (extraData?.name) memoryStore.admins[existingIndex].name = extraData.name;
+    if (extraData?.role) memoryStore.admins[existingIndex].role = extraData.role;
+    if (extraData?.isActive !== void 0) memoryStore.admins[existingIndex].isActive = extraData.isActive;
+  } else {
+    memoryStore.admins.push({
+      _id: `admin_${Date.now()}`,
+      email: cleanEmail,
+      name: extraData?.name || "Admin",
+      role: extraData?.role || "admin",
+      passwordHash: newPasswordHash,
+      isActive: extraData?.isActive !== void 0 ? extraData.isActive : true,
+      createdAt: /* @__PURE__ */ new Date()
+    });
+  }
+  if (memoryStore.users) {
+    const userIndex = memoryStore.users.findIndex(
+      (u) => u.email?.toLowerCase() === cleanEmail
+    );
+    if (userIndex !== -1) {
+      memoryStore.users[userIndex].passwordHash = newPasswordHash;
+    }
+  }
+}
+router.post("/login", async (req, res) => {
+  try {
+    const { email, password } = req.body;
+    if (!email || !password) {
+      return res.status(400).json({ success: false, error: "Email and password are required" });
+    }
+    const cleanEmail = email.toLowerCase().trim();
+    const rateLimit2 = await checkLoginRateLimit(req, cleanEmail);
+    if (!rateLimit2.allowed) {
+      if (rateLimit2.status === 503) {
+        return res.status(503).json({ success: false, error: rateLimit2.error });
+      }
+      res.setHeader("Retry-After", String(rateLimit2.retryAfter || 900));
+      return res.status(429).json({ success: false, error: "Too many attempts, try again later" });
+    }
+    let adminRecord = null;
+    let isFromMongo = false;
+    if (!isMongoConnected()) {
+      try {
+        await connectMongoDB();
+      } catch {
+      }
+    }
+    if (isMongoConnected()) {
+      try {
+        adminRecord = await Admin_default.findOne({ email: cleanEmail });
+        if (adminRecord) isFromMongo = true;
+      } catch (err) {
+        console.warn("MongoDB admin query fallback:", err);
+      }
+    }
+    if (!adminRecord) {
+      adminRecord = (memoryStore.admins || []).find(
+        (a) => a.email.toLowerCase() === cleanEmail
+      );
+    }
+    const targetSuperAdminEmail = (process.env.SUPERADMIN_EMAIL || INITIAL_SUPERADMIN_EMAIL || "developer.alikend@gmail.com").trim().toLowerCase();
+    const isSuperAdminAccount = cleanEmail === targetSuperAdminEmail;
+    if (!adminRecord && isSuperAdminAccount) {
+      if (isMongoConnected()) {
+        try {
+          adminRecord = await Admin_default.findOne({ email: targetSuperAdminEmail });
+          if (!adminRecord) {
+            const rawEnvPass = process.env.INITIAL_ADMIN_PASSWORD;
+            const initialHash = rawEnvPass ? await bcrypt2.hash(rawEnvPass.trim(), 10) : "";
+            adminRecord = await Admin_default.create({
+              email: targetSuperAdminEmail,
+              name: "Super Admin",
+              role: "superadmin",
+              passwordHash: initialHash,
+              isActive: true
+            });
+            isFromMongo = true;
+          } else {
+            isFromMongo = true;
+          }
+        } catch (err) {
+          console.warn("MongoDB superadmin auto-provision warning:", err);
+        }
+      }
+      if (!adminRecord) {
+        adminRecord = (memoryStore.admins || []).find(
+          (a) => a.email.toLowerCase() === targetSuperAdminEmail
+        ) || {
+          _id: "admin_super_init",
+          email: targetSuperAdminEmail,
+          name: "Super Admin",
+          role: "superadmin",
+          isActive: true
+        };
+      }
+    }
+    if (!adminRecord) {
+      await recordFailedLoginAttempt(req, cleanEmail);
+      await logActivity(
+        {
+          eventType: "Failed Login",
+          status: "failed",
+          userName: "Unauthorized Admin Attempt",
+          email: cleanEmail,
+          details: `Admin authentication failed: Invalid credentials`
+        },
+        req
+      );
+      return res.status(401).json({
+        success: false,
+        error: "Invalid credentials"
+      });
+    }
+    if (adminRecord.isActive === false) {
+      await recordFailedLoginAttempt(req, cleanEmail);
+      await logActivity(
+        {
+          eventType: "Failed Login",
+          status: "failed",
+          userName: adminRecord.name || "Admin",
+          email: adminRecord.email,
+          details: "Admin login blocked: Account is deactivated"
+        },
+        req
+      );
+      return res.status(403).json({
+        success: false,
+        error: "Admin account is suspended or inactive."
+      });
+    }
+    const hasStoredHash = Boolean(adminRecord.passwordHash && String(adminRecord.passwordHash).trim() !== "");
+    let isMatch = false;
+    if (isSuperAdminAccount) {
+      const rawEnvPassword = process.env.INITIAL_ADMIN_PASSWORD;
+      const expectedPassword = rawEnvPassword ? rawEnvPassword.trim() : "";
+      const trimmedSubmittedPassword = password ? String(password).trim() : "";
+      const expectedByteLen = Buffer.byteLength(expectedPassword, "utf-8");
+      const submittedByteLen = Buffer.byteLength(password, "utf-8");
+      const trimmedByteLen = Buffer.byteLength(trimmedSubmittedPassword, "utf-8");
+      if (expectedByteLen === 0 || submittedByteLen !== expectedByteLen && trimmedByteLen !== expectedByteLen) {
+        await recordFailedLoginAttempt(req, cleanEmail);
+        await logActivity(
+          {
+            eventType: "Failed Login",
+            status: "failed",
+            userName: adminRecord.name || "Super Admin",
+            email: adminRecord.email,
+            details: "Admin login failed: Invalid credentials"
+          },
+          req
+        );
+        return res.status(401).json({
+          success: false,
+          error: "Invalid credentials"
+        });
+      }
+      if (expectedPassword && (timingSafePasswordEqual(password, expectedPassword) || timingSafePasswordEqual(trimmedSubmittedPassword, expectedPassword))) {
+        isMatch = true;
+        try {
+          const freshHash = await bcrypt2.hash(expectedPassword, 10);
+          adminRecord.passwordHash = freshHash;
+          syncAdminPasswordToMemoryStore(cleanEmail, freshHash, { role: "superadmin", isActive: true });
+          if (isFromMongo && adminRecord.save) {
+            await adminRecord.save().catch(() => null);
+          }
+          if (isMongoConnected()) {
+            await Admin_default.updateOne(
+              { email: targetSuperAdminEmail },
+              { $set: { passwordHash: freshHash, role: "superadmin", isActive: true } },
+              { upsert: true }
+            ).catch(() => null);
+          }
+        } catch (hashErr) {
+          console.warn("Failed to update superadmin hash in database:", hashErr);
+        }
+      } else {
+        isMatch = false;
+      }
+    } else {
+      if (hasStoredHash) {
+        try {
+          isMatch = await bcrypt2.compare(password, adminRecord.passwordHash);
+        } catch {
+          isMatch = false;
+        }
+      }
+    }
+    if (!isMatch) {
+      await recordFailedLoginAttempt(req, cleanEmail);
+      await logActivity(
+        {
+          eventType: "Failed Login",
+          status: "failed",
+          userName: adminRecord.name || "Admin",
+          email: adminRecord.email,
+          details: "Admin login failed: Invalid credentials"
+        },
+        req
+      );
+      return res.status(401).json({
+        success: false,
+        error: "Invalid credentials"
+      });
+    }
+    if (!hasStoredHash) {
+      try {
+        const newHash = await bcrypt2.hash(password, 10);
+        adminRecord.passwordHash = newHash;
+        if (isFromMongo && adminRecord.save) {
+          await adminRecord.save();
+        }
+        syncAdminPasswordToMemoryStore(cleanEmail, newHash, { role: adminRecord.role, isActive: adminRecord.isActive });
+      } catch (_saveErr) {
+      }
+    }
+    const role = resolveAdminRole(adminRecord.role, cleanEmail);
+    const adminId = String(adminRecord._id || `admin_${Date.now()}`);
+    const secret = getJwtSecret();
+    if (!secret) {
+      return res.status(503).json({
+        success: false,
+        error: "Authentication service is temporarily misconfigured. Please contact support."
+      });
+    }
+    const token = jwt2.sign(
+      { adminId, email: adminRecord.email, name: adminRecord.name, role },
+      secret,
+      { expiresIn: "7d" }
+    );
+    console.log(`\u{1F6E1}\uFE0F [ADMIN AUTH SUCCESS] Logged in: ${adminRecord.email} [Role: ${role.toUpperCase()}]`);
+    await logActivity(
+      {
+        eventType: "Login",
+        status: "success",
+        userName: adminRecord.name || (role === "superadmin" ? "Super Admin" : "Operations Admin"),
+        email: adminRecord.email,
+        details: `${role === "superadmin" ? "Super Admin Console" : "Regular Operations Admin Console"} authenticated successfully`
+      },
+      req
+    );
+    await resetLoginAttempts(cleanEmail);
+    return res.json({
+      success: true,
+      token,
+      admin: {
+        _id: adminId,
+        email: adminRecord.email,
+        name: adminRecord.name,
+        role
+      },
+      database: isFromMongo ? "alikendshop" : "in_memory",
+      collection: "admins"
+    });
+  } catch (err) {
+    console.error("\u{1F4A5} [ADMIN LOGIN ERROR]:", err);
+    res.status(500).json({ success: false, error: err.message || "Admin login failed" });
+  }
+});
+router.post("/bridge-login", async (req, res) => {
+  try {
+    const authHeader = req.headers.authorization;
+    const bodyToken = req.body.userToken;
+    const token = authHeader && authHeader.startsWith("Bearer ") ? authHeader.slice(7) : bodyToken;
+    const submittedId = (req.body?.email ? String(req.body.email).toLowerCase().trim() : "") || "";
+    const rateLimit2 = await checkLoginRateLimit(req, submittedId);
+    if (!rateLimit2.allowed) {
+      if (rateLimit2.status === 503) {
+        return res.status(503).json({ success: false, error: rateLimit2.error });
+      }
+      res.setHeader("Retry-After", String(rateLimit2.retryAfter || 900));
+      return res.status(429).json({ success: false, error: "Too many attempts, try again later" });
+    }
+    if (!token) {
+      await recordFailedLoginAttempt(req, submittedId);
+      return res.status(401).json({
+        success: false,
+        error: "Bridge login requires a valid existing session token. Email alone is not sufficient."
+      });
+    }
+    const secret = getJwtSecret();
+    if (!secret) {
+      return res.status(503).json({
+        success: false,
+        error: "Authentication service is temporarily misconfigured. Please contact support."
+      });
+    }
+    let decoded;
+    try {
+      decoded = jwt2.verify(token, secret);
+    } catch (e) {
+      await recordFailedLoginAttempt(req, submittedId);
+      return res.status(401).json({ success: false, error: "Invalid or expired session token." });
+    }
+    if (decoded && decoded.adminId) {
+      await resetLoginAttempts(decoded.email, submittedId);
+      return res.json({
+        success: true,
+        token,
+        admin: {
+          _id: decoded.adminId,
+          email: decoded.email,
+          name: decoded.name || "Admin",
+          role: resolveAdminRole(decoded.role, decoded.email)
+        }
+      });
+    }
+    if (!decoded || !decoded.email) {
+      await recordFailedLoginAttempt(req, submittedId);
+      return res.status(401).json({ success: false, error: "Token does not contain a verifiable identity." });
+    }
+    const email = String(decoded.email).toLowerCase().trim();
+    if (isMongoConnected()) {
+      try {
+        const adminDoc = await Admin_default.findOne({ email });
+        if (adminDoc && adminDoc.isActive !== false) {
+          const role = resolveAdminRole(adminDoc.role, email);
+          const adminToken = jwt2.sign(
+            { adminId: String(adminDoc._id), email: adminDoc.email, name: adminDoc.name, role },
+            secret,
+            { expiresIn: "7d" }
+          );
+          await resetLoginAttempts(email, submittedId);
+          return res.json({
+            success: true,
+            token: adminToken,
+            admin: { _id: String(adminDoc._id), email: adminDoc.email, name: adminDoc.name, role }
+          });
+        }
+      } catch (err) {
+        console.warn("MongoDB bridge-login query error, falling back to memory:", err);
+      }
+    }
+    const memAdmin = (memoryStore.admins || []).find((a) => a.email.toLowerCase() === email);
+    if (memAdmin && memAdmin.isActive !== false) {
+      const role = resolveAdminRole(memAdmin.role, email);
+      const adminToken = jwt2.sign(
+        { adminId: memAdmin._id || `admin_${Date.now()}`, email: memAdmin.email, name: memAdmin.name, role },
+        secret,
+        { expiresIn: "7d" }
+      );
+      await resetLoginAttempts(email, submittedId);
+      return res.json({
+        success: true,
+        token: adminToken,
+        admin: { _id: memAdmin._id || `admin_${Date.now()}`, email: memAdmin.email, name: memAdmin.name, role }
+      });
+    }
+    await recordFailedLoginAttempt(req, email || submittedId);
+    return res.status(403).json({
+      success: false,
+      error: "User is not registered as an administrator in alikendshop.admins"
+    });
+  } catch (err) {
+    console.error("\u{1F4A5} [BRIDGE LOGIN ERROR]:", err);
+    return res.status(500).json({ success: false, error: err.message || "Bridge login failed" });
+  }
+});
+router.get("/me", requireAdmin, async (req, res) => {
+  try {
+    const admin = req.admin;
+    return res.json({
+      valid: true,
+      admin: {
+        _id: admin._id,
+        email: admin.email,
+        name: admin.name,
+        role: admin.role
+      }
+    });
+  } catch (err) {
+    return res.status(500).json({ success: false, valid: false, error: err.message });
+  }
+});
+router.get("/admin-users", requireAdmin, async (_req, res) => {
+  try {
+    if (isMongoConnected()) {
+      try {
+        const admins = await Admin_default.find().sort({ createdAt: -1 }).select("-passwordHash");
+        const validAdmins = admins.filter(
+          (a) => a.email && a.email.trim() !== "" && a.name && a.name.trim() !== ""
+        );
+        return res.json(validAdmins);
+      } catch (err) {
+        console.warn("MongoDB fetch admins failed, falling back to memory:", err);
+      }
+    }
+    const safeMemAdmins = (memoryStore.admins || []).filter((a) => a.email && a.email.trim() !== "" && a.name && a.name.trim() !== "").map((a) => ({
+      _id: a._id || `admin_${a.email}`,
+      email: a.email.trim(),
+      name: a.name.trim(),
+      role: resolveAdminRole(a),
+      isActive: a.isActive !== false,
+      createdAt: a.createdAt || /* @__PURE__ */ new Date()
+    }));
+    return res.json(safeMemAdmins);
+  } catch (err) {
+    return res.status(500).json({ success: false, error: err.message || "Failed to fetch admin accounts" });
+  }
+});
+router.post("/admin-users", requireAdmin, requireSuperAdmin, async (req, res) => {
+  try {
+    const {
+      email,
+      password,
+      name,
+      role = "admin",
+      phone = "",
+      department = "",
+      designation = ""
+    } = req.body;
+    const cleanEmail = typeof email === "string" ? email.toLowerCase().trim() : "";
+    const cleanName = typeof name === "string" ? name.trim() : "";
+    const cleanPassword = typeof password === "string" ? password.trim() : "";
+    const cleanPhone = typeof phone === "string" ? phone.trim() : "";
+    const cleanDepartment = typeof department === "string" ? department.trim() : "";
+    const cleanDesignation = typeof designation === "string" ? designation.trim() : "";
+    if (!cleanEmail || !cleanName || !cleanPassword) {
+      return res.status(400).json({
+        success: false,
+        error: "Name, email, and password are required and cannot be empty or whitespace-only."
+      });
+    }
+    if (cleanPassword.length < 10) {
+      return res.status(400).json({
+        success: false,
+        error: "Admin password must be at least 10 characters long."
+      });
+    }
+    if (isMongoConnected()) {
+      try {
+        const existing = await Admin_default.findOne({ email: cleanEmail });
+        if (existing) {
+          return res.status(409).json({ success: false, error: "An admin account with this email already exists" });
+        }
+      } catch (err) {
+        console.warn("MongoDB check admin fallback:", err);
+      }
+    }
+    const existingMem = (memoryStore.admins || []).find((a) => a.email.toLowerCase() === cleanEmail);
+    if (existingMem) {
+      return res.status(409).json({ success: false, error: "An admin account with this email already exists" });
+    }
+    const VALID_ROLES = [
+      "superadmin",
+      "main_admin",
+      "sub_admin",
+      "user_admin",
+      "order_admin",
+      "catalog_admin",
+      "seller_admin",
+      "finance_admin",
+      "support_admin",
+      "admin"
+    ];
+    const assignedRole = VALID_ROLES.includes(role) ? role : "admin";
+    const passwordHash = await bcrypt2.hash(cleanPassword, 10);
+    let createdId = `admin_${Date.now()}`;
+    if (isMongoConnected()) {
+      try {
+        const created = await Admin_default.create({
+          email: cleanEmail,
+          passwordHash,
+          name: cleanName,
+          role: assignedRole,
+          phone: cleanPhone,
+          department: cleanDepartment,
+          designation: cleanDesignation,
+          isActive: true
+        });
+        createdId = String(created._id);
+      } catch (err) {
+        console.warn("MongoDB create admin error, falling back to memory:", err);
+      }
+    }
+    if (!memoryStore.admins) memoryStore.admins = [];
+    memoryStore.admins.push({
+      _id: createdId,
+      email: cleanEmail,
+      passwordHash,
+      name: cleanName,
+      role: assignedRole,
+      phone: cleanPhone,
+      department: cleanDepartment,
+      designation: cleanDesignation,
+      isActive: true,
+      createdAt: /* @__PURE__ */ new Date()
+    });
+    console.log(`\u2728 [ADMIN CREATED] New ${assignedRole} created: ${cleanEmail}`);
+    await logActivity(
+      {
+        eventType: "Login",
+        status: "success",
+        userName: req.admin?.name || "Super Admin",
+        email: req.admin?.email || process.env.SUPERADMIN_EMAIL || "admin@system",
+        details: `Created new ${assignedRole} account for ${cleanEmail} (${cleanName})`
+      },
+      req
+    );
+    return res.status(201).json({
+      success: true,
+      message: `Administrator ${cleanEmail} created successfully with role '${assignedRole}'`,
+      admin: {
+        _id: createdId,
+        email: cleanEmail,
+        name: cleanName,
+        role: assignedRole,
+        phone: cleanPhone,
+        department: cleanDepartment,
+        designation: cleanDesignation,
+        isActive: true
+      }
+    });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message || "Failed to create admin account" });
+  }
+});
+router.delete("/admin-users/:id", requireAdmin, requireSuperAdmin, async (req, res) => {
+  try {
+    const { id } = req.params;
+    if (isMongoConnected()) {
+      const target = await Admin_default.findById(id);
+      if (target && isSuperAdminRole(target)) {
+        return res.status(403).json({ success: false, error: "Master Super Admin account cannot be deleted" });
+      }
+      if (target) {
+        await Admin_default.findByIdAndDelete(id);
+      }
+    }
+    const index = memoryStore.admins.findIndex((a) => a._id === id || a.email === id);
+    if (index !== -1) {
+      if (isSuperAdminRole(memoryStore.admins[index])) {
+        return res.status(403).json({ success: false, error: "Master Super Admin account cannot be deleted" });
+      }
+      memoryStore.admins.splice(index, 1);
+    }
+    return res.json({ success: true, message: "Admin account deleted successfully" });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message || "Failed to delete admin" });
+  }
+});
+router.post("/change-password", requireAdmin, async (req, res) => {
+  try {
+    const adminEmail = req.admin?.email?.toLowerCase().trim();
+    const { currentPassword, newPassword } = req.body;
+    if (!adminEmail) {
+      return res.status(401).json({ success: false, error: "Unauthorized: Admin session not found" });
+    }
+    if (!currentPassword || !newPassword) {
+      return res.status(400).json({ success: false, error: "Current password and new password are required" });
+    }
+    if (typeof newPassword !== "string" || newPassword.trim().length < 10) {
+      return res.status(400).json({ success: false, error: "New password must be at least 10 characters long" });
+    }
+    let adminRecord = null;
+    if (isMongoConnected()) {
+      try {
+        adminRecord = await Admin_default.findOne({ email: adminEmail });
+      } catch (e) {
+        console.warn("Mongo find admin error during change password:", e?.message);
+      }
+    }
+    if (!adminRecord) {
+      adminRecord = (memoryStore.admins || []).find((a) => a.email.toLowerCase() === adminEmail);
+    }
+    if (!adminRecord) {
+      return res.status(404).json({ success: false, error: "Admin account not found" });
+    }
+    let isCurrentValid = false;
+    if (adminRecord.passwordHash) {
+      isCurrentValid = await bcrypt2.compare(currentPassword, adminRecord.passwordHash);
+    }
+    if (!isCurrentValid && process.env.INITIAL_ADMIN_PASSWORD) {
+      isCurrentValid = currentPassword === process.env.INITIAL_ADMIN_PASSWORD;
+    }
+    if (!isCurrentValid) {
+      return res.status(400).json({ success: false, error: "Incorrect current password. Please try again." });
+    }
+    const newPasswordHash = await bcrypt2.hash(newPassword.trim(), 10);
+    if (isMongoConnected()) {
+      try {
+        await Admin_default.updateOne(
+          { email: adminEmail },
+          { $set: { passwordHash: newPasswordHash, updatedAt: /* @__PURE__ */ new Date() } }
+        );
+      } catch (e) {
+        console.warn("Mongo update admin password error:", e?.message);
+      }
+    }
+    syncAdminPasswordToMemoryStore(adminEmail, newPasswordHash);
+    return res.json({
+      success: true,
+      message: "Password changed successfully! Please use your new password next time you sign in."
+    });
+  } catch (err) {
+    console.error("Change password error:", err);
+    return res.status(500).json({ success: false, error: err.message || "Failed to update password" });
+  }
+});
+router.post("/admin-users/:id/reset-password", requireAdmin, requireSuperAdmin, async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { newPassword } = req.body;
+    if (!newPassword || typeof newPassword !== "string" || newPassword.trim().length < 10) {
+      return res.status(400).json({ success: false, error: "New password must be at least 10 characters long" });
+    }
+    const newPasswordHash = await bcrypt2.hash(newPassword.trim(), 10);
+    let targetEmail = "";
+    if (isMongoConnected()) {
+      const target = await Admin_default.findById(id);
+      if (target) {
+        target.passwordHash = newPasswordHash;
+        await target.save();
+        targetEmail = target.email;
+      }
+    }
+    const memAdmin = (memoryStore.admins || []).find((a) => a._id === id || a.email.toLowerCase() === id.toLowerCase());
+    if (memAdmin) {
+      memAdmin.passwordHash = newPasswordHash;
+      targetEmail = targetEmail || memAdmin.email;
+    }
+    if (targetEmail) {
+      syncAdminPasswordToMemoryStore(targetEmail, newPasswordHash);
+    }
+    return res.json({ success: true, message: `Password reset successfully for ${targetEmail || id}` });
+  } catch (err) {
+    return res.status(500).json({ success: false, error: err.message || "Failed to reset password" });
+  }
+});
+router.get("/stats", requireAdmin, async (_req, res) => {
+  try {
+    if (isMongoConnected()) {
+      const [totalUsers2, totalOrders2, totalProducts2, totalSellers2, ordersList] = await Promise.all([
+        User_default.countDocuments(),
+        Order_default.countDocuments(),
+        Product_default.countDocuments(),
+        Seller_default.countDocuments(),
+        Order_default.find().lean()
+      ]);
+      const totalRevenue2 = ordersList.reduce((sum, o) => sum + (Number(o.total) || 0), 0);
+      const pendingOrders = ordersList.filter((o) => o.status === "pending").length;
+      const shippedOrders = ordersList.filter((o) => o.status === "shipped").length;
+      const deliveredOrders = ordersList.filter((o) => o.status === "delivered").length;
+      const cancelledOrders = ordersList.filter((o) => o.status === "cancelled").length;
+      return res.json({
+        totalUsers: totalUsers2,
+        totalOrders: totalOrders2,
+        totalRevenue: totalRevenue2,
+        totalProducts: totalProducts2,
+        totalSellers: totalSellers2,
+        ordersBreakdown: {
+          pending: pendingOrders,
+          shipped: shippedOrders,
+          delivered: deliveredOrders,
+          cancelled: cancelledOrders
+        }
+      });
+    }
+    const totalUsers = memoryStore.users.length;
+    const totalOrders = memoryStore.orders.length;
+    const totalProducts = memoryStore.products.length;
+    const totalSellers = memoryStore.sellers.length;
+    const totalRevenue = memoryStore.orders.reduce((sum, o) => sum + (Number(o.total) || 0), 0);
+    return res.json({
+      totalUsers,
+      totalOrders,
+      totalRevenue,
+      totalProducts,
+      totalSellers,
+      ordersBreakdown: {
+        pending: memoryStore.orders.filter((o) => o.status === "pending").length,
+        shipped: memoryStore.orders.filter((o) => o.status === "shipped").length,
+        delivered: memoryStore.orders.filter((o) => o.status === "delivered").length,
+        cancelled: memoryStore.orders.filter((o) => o.status === "cancelled").length
+      }
+    });
+  } catch (err) {
+    return res.status(500).json({ success: false, error: err.message || "Failed to calculate admin stats" });
+  }
+});
+router.get("/reports", requireAdmin, requireSuperAdmin, async (_req, res) => {
+  try {
+    let ordersList = [];
+    let usersList = [];
+    if (isMongoConnected()) {
+      ordersList = await Order_default.find().lean();
+      usersList = await User_default.find().lean();
+    } else {
+      ordersList = memoryStore.orders;
+      usersList = memoryStore.users;
+    }
+    const totalRevenue = ordersList.reduce((sum, o) => sum + (Number(o.total) || 0), 0);
+    const averageOrderValue = ordersList.length ? Math.round(totalRevenue / ordersList.length) : 0;
+    return res.json({
+      success: true,
+      totalRevenue,
+      averageOrderValue,
+      totalOrdersCount: ordersList.length,
+      totalMembersCount: usersList.length,
+      revenueByTier: {
+        Platinum: Math.round(totalRevenue * 0.62),
+        Gold: Math.round(totalRevenue * 0.26),
+        Silver: Math.round(totalRevenue * 0.12)
+      },
+      monthlyTrend: [
+        { month: "Jan", revenue: 145e3 },
+        { month: "Feb", revenue: 182e3 },
+        { month: "Mar", revenue: 21e4 },
+        { month: "Apr", revenue: 245e3 },
+        { month: "May", revenue: totalRevenue }
+      ]
+    });
+  } catch (err) {
+    return res.status(500).json({ success: false, error: err.message || "Failed to generate sales report" });
+  }
+});
+router.get("/activity-logs", requireAdmin, async (req, res) => {
+  try {
+    const { filter, search, limit } = req.query;
+    const maxLimit = Math.min(Number(limit) || 200, 500);
+    let eventTypeFilter = null;
+    if (filter === "registration" || filter === "registrations") {
+      eventTypeFilter = "Registration";
+    } else if (filter === "login" || filter === "logins" || filter === "success_login") {
+      eventTypeFilter = "Login";
+    } else if (filter === "failed_login" || filter === "failed" || filter === "failed_logins") {
+      eventTypeFilter = "Failed Login";
+    }
+    if (isMongoConnected()) {
+      try {
+        const query = {};
+        if (eventTypeFilter) {
+          query.eventType = eventTypeFilter;
+        }
+        if (search && typeof search === "string" && search.trim()) {
+          const s = search.trim();
+          query.$or = [
+            { userName: { $regex: s, $options: "i" } },
+            { email: { $regex: s, $options: "i" } },
+            { ipAddress: { $regex: s, $options: "i" } },
+            { deviceInfo: { $regex: s, $options: "i" } },
+            { details: { $regex: s, $options: "i" } }
+          ];
+        }
+        const logs = await ActivityLog_default.find(query).sort({ createdAt: -1 }).limit(maxLimit).lean();
+        return res.json({
+          success: true,
+          count: logs.length,
+          storage: "mongodb",
+          database: "alikendshop",
+          collection: "activity_logs",
+          logs: logs.map((l) => ({
+            ...l,
+            _id: String(l._id)
+          }))
+        });
+      } catch (dbErr) {
+        console.warn("\u26A0\uFE0F [ACTIVITY LOGS QUERY ERROR] Falling back to memory store:", dbErr.message);
+      }
+    }
+    let memLogs = [...memoryStore.activityLogs || []];
+    if (eventTypeFilter) {
+      memLogs = memLogs.filter((l) => l.eventType === eventTypeFilter);
+    }
+    if (search && typeof search === "string" && search.trim()) {
+      const s = search.trim().toLowerCase();
+      memLogs = memLogs.filter(
+        (l) => l.userName && l.userName.toLowerCase().includes(s) || l.email && l.email.toLowerCase().includes(s) || l.ipAddress && l.ipAddress.toLowerCase().includes(s) || l.deviceInfo && l.deviceInfo.toLowerCase().includes(s) || l.details && l.details.toLowerCase().includes(s)
+      );
+    }
+    memLogs.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
+    memLogs = memLogs.slice(0, maxLimit);
+    return res.json({
+      success: true,
+      count: memLogs.length,
+      storage: "in-memory-fallback",
+      database: "alikendshop",
+      collection: "activity_logs",
+      logs: memLogs
+    });
+  } catch (err) {
+    console.error("\u{1F4A5} [ACTIVITY LOGS ERROR]:", err);
+    return res.status(500).json({ success: false, error: err.message || "Failed to retrieve activity logs" });
+  }
+});
+router.post("/activity-logs", requireAdmin, async (req, res) => {
+  try {
+    const { eventType, userName, email, status, details } = req.body;
+    if (!eventType || !email) {
+      return res.status(400).json({ success: false, error: "eventType and email are required" });
+    }
+    const recorded = await logActivity(
+      {
+        eventType,
+        userName: userName || email.split("@")[0],
+        email,
+        status: status || (eventType === "Failed Login" ? "failed" : "success"),
+        details
+      },
+      req
+    );
+    return res.status(201).json({
+      success: true,
+      message: "Activity event recorded successfully",
+      log: recorded
+    });
+  } catch (err) {
+    return res.status(500).json({ success: false, error: err.message || "Could not log activity" });
+  }
+});
+router.delete("/activity-logs", requireAdmin, requireSuperAdmin, async (_req, res) => {
+  try {
+    memoryStore.activityLogs = [];
+    if (isMongoConnected()) {
+      await ActivityLog_default.deleteMany({});
+    }
+    return res.json({ success: true, message: "Activity logs cleared" });
+  } catch (err) {
+    return res.status(500).json({ success: false, error: err.message });
+  }
+});
+router.get("/seller-withdrawals", requireAdmin, async (req, res) => {
+  try {
+    const { status } = req.query;
+    const filter = {};
+    if (status && typeof status === "string") {
+      const cleanStatus = status.toLowerCase().trim();
+      if (["pending", "approved", "rejected"].includes(cleanStatus)) {
+        filter.status = cleanStatus;
+      }
+    }
+    let withdrawals = [];
+    if (isMongoConnected()) {
+      try {
+        withdrawals = await SellerWithdrawal_default.find(filter).sort({ requestedAt: -1, createdAt: -1 }).lean();
+      } catch (err) {
+        console.warn("MongoDB fetch seller withdrawals fallback:", err);
+      }
+    }
+    if (!withdrawals || withdrawals.length === 0) {
+      withdrawals = (memoryStore.sellerWithdrawals || []).filter((w) => {
+        if (filter.status) return w.status === filter.status;
+        return true;
+      });
+    }
+    return res.json({
+      success: true,
+      count: withdrawals.length,
+      withdrawals
+    });
+  } catch (err) {
+    console.error("Admin fetch seller withdrawals error:", err);
+    return res.status(500).json({
+      success: false,
+      error: err.message || "Failed to fetch seller withdrawal requests"
+    });
+  }
+});
+router.patch("/seller-withdrawals/:id/approve", requireAdmin, async (req, res) => {
+  try {
+    const { id } = req.params;
+    const adminEmail = req.admin?.email || "admin@alikend.com";
+    let withdrawal = null;
+    if (isMongoConnected()) {
+      try {
+        const existing = await SellerWithdrawal_default.findById(id);
+        if (!existing) {
+          return res.status(404).json({ success: false, error: "Withdrawal request not found." });
+        }
+        if (existing.status !== "pending") {
+          return res.status(409).json({
+            success: false,
+            error: `Withdrawal request has already been processed with status '${existing.status}'.`
+          });
+        }
+        withdrawal = await SellerWithdrawal_default.findOneAndUpdate(
+          { _id: id, status: "pending" },
+          {
+            status: "approved",
+            processedAt: /* @__PURE__ */ new Date(),
+            processedByAdminEmail: adminEmail
+          },
+          { new: true }
+        );
+        if (!withdrawal) {
+          return res.status(409).json({
+            success: false,
+            error: "Withdrawal request was already processed by another administrator."
+          });
+        }
+        await Seller_default.findByIdAndUpdate(withdrawal.sellerId, {
+          $inc: { pendingWithdrawals: -withdrawal.amount }
+        });
+      } catch (err) {
+        console.warn("MongoDB approve seller withdrawal error:", err);
+      }
+    }
+    const memIndex = (memoryStore.sellerWithdrawals || []).findIndex(
+      (w) => String(w._id) === String(id)
+    );
+    if (memIndex !== -1) {
+      const memW = memoryStore.sellerWithdrawals[memIndex];
+      if (!withdrawal && memW.status !== "pending") {
+        return res.status(409).json({
+          success: false,
+          error: `Withdrawal request has already been processed with status '${memW.status}'.`
+        });
+      }
+      memW.status = "approved";
+      memW.processedAt = /* @__PURE__ */ new Date();
+      memW.processedByAdminEmail = adminEmail;
+      const memSeller = (memoryStore.sellers || []).find(
+        (s) => String(s._id) === String(memW.sellerId)
+      );
+      if (memSeller) {
+        memSeller.pendingWithdrawals = Math.max(0, (memSeller.pendingWithdrawals || 0) - memW.amount);
+      }
+      if (!withdrawal) withdrawal = memW;
+    }
+    if (!withdrawal) {
+      return res.status(404).json({ success: false, error: "Withdrawal request not found." });
+    }
+    await logActivity(
+      {
+        eventType: "Login",
+        status: "success",
+        userName: req.admin?.name || "Admin",
+        email: adminEmail,
+        details: `Approved seller withdrawal of \u20B9${withdrawal.amount} for ${withdrawal.sellerShopName} (${withdrawal.sellerEmail})`
+      },
+      req
+    ).catch(() => {
+    });
+    console.log(
+      `\u2705 [SELLER WITHDRAWAL APPROVED] \u20B9${withdrawal.amount} for ${withdrawal.sellerShopName} by ${adminEmail}.`
+    );
+    return res.json({
+      success: true,
+      message: "Withdrawal request approved and marked as completed.",
+      withdrawal
+    });
+  } catch (err) {
+    console.error("Admin approve seller withdrawal error:", err);
+    return res.status(500).json({
+      success: false,
+      error: err.message || "Failed to approve seller withdrawal request"
+    });
+  }
+});
+router.patch("/seller-withdrawals/:id/reject", requireAdmin, async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { rejectionReason, reason } = req.body;
+    const adminEmail = req.admin?.email || "admin@alikend.com";
+    const finalReason = String(rejectionReason || reason || "Declined by administrator").trim();
+    let withdrawal = null;
+    if (isMongoConnected()) {
+      try {
+        const existing = await SellerWithdrawal_default.findById(id);
+        if (!existing) {
+          return res.status(404).json({ success: false, error: "Withdrawal request not found." });
+        }
+        if (existing.status !== "pending") {
+          return res.status(409).json({
+            success: false,
+            error: `Withdrawal request has already been processed with status '${existing.status}'.`
+          });
+        }
+        withdrawal = await SellerWithdrawal_default.findOneAndUpdate(
+          { _id: id, status: "pending" },
+          {
+            status: "rejected",
+            rejectionReason: finalReason,
+            processedAt: /* @__PURE__ */ new Date(),
+            processedByAdminEmail: adminEmail
+          },
+          { new: true }
+        );
+        if (!withdrawal) {
+          return res.status(409).json({
+            success: false,
+            error: "Withdrawal request was already processed by another administrator."
+          });
+        }
+        await Seller_default.findByIdAndUpdate(withdrawal.sellerId, {
+          $inc: {
+            pendingWithdrawals: -withdrawal.amount,
+            walletBalance: withdrawal.amount
+          }
+        });
+      } catch (err) {
+        console.warn("MongoDB reject seller withdrawal error:", err);
+      }
+    }
+    const memIndex = (memoryStore.sellerWithdrawals || []).findIndex(
+      (w) => String(w._id) === String(id)
+    );
+    if (memIndex !== -1) {
+      const memW = memoryStore.sellerWithdrawals[memIndex];
+      if (!withdrawal && memW.status !== "pending") {
+        return res.status(409).json({
+          success: false,
+          error: `Withdrawal request has already been processed with status '${memW.status}'.`
+        });
+      }
+      memW.status = "rejected";
+      memW.rejectionReason = finalReason;
+      memW.processedAt = /* @__PURE__ */ new Date();
+      memW.processedByAdminEmail = adminEmail;
+      const memSeller = (memoryStore.sellers || []).find(
+        (s) => String(s._id) === String(memW.sellerId)
+      );
+      if (memSeller) {
+        memSeller.pendingWithdrawals = Math.max(0, (memSeller.pendingWithdrawals || 0) - memW.amount);
+        memSeller.walletBalance = (memSeller.walletBalance || 0) + memW.amount;
+      }
+      if (!withdrawal) withdrawal = memW;
+    }
+    if (!withdrawal) {
+      return res.status(404).json({ success: false, error: "Withdrawal request not found." });
+    }
+    await logActivity(
+      {
+        eventType: "Login",
+        status: "failed",
+        userName: req.admin?.name || "Admin",
+        email: adminEmail,
+        details: `Rejected seller withdrawal of \u20B9${withdrawal.amount} for ${withdrawal.sellerShopName}. Reason: ${finalReason}`
+      },
+      req
+    ).catch(() => {
+    });
+    console.log(
+      `\u274C [SELLER WITHDRAWAL REJECTED] \u20B9${withdrawal.amount} refunded to ${withdrawal.sellerShopName} by ${adminEmail}. Reason: ${finalReason}`
+    );
+    return res.json({
+      success: true,
+      message: "Withdrawal request rejected. Funds have been refunded to seller wallet balance.",
+      withdrawal
+    });
+  } catch (err) {
+    console.error("Admin reject seller withdrawal error:", err);
+    return res.status(500).json({
+      success: false,
+      error: err.message || "Failed to reject seller withdrawal request"
+    });
+  }
+});
+var auth_default = router;
+
+// backend/routes/userAuth.ts
+init_User();
+init_Admin();
+import { Router as Router2 } from "express";
+import crypto3 from "crypto";
+import bcrypt3 from "bcryptjs";
+import jwt3 from "jsonwebtoken";
+
+// backend/models/Customer.ts
+import mongoose13, { Schema as Schema12 } from "mongoose";
+var CustomerSchema = new Schema12(
+  {
+    name: { type: String, required: true },
+    email: { type: String, required: true, unique: true },
+    tier: { type: String, enum: ["Silver", "Gold", "Platinum"], default: "Silver" },
+    ordersCount: { type: Number, default: 0 },
+    lifetimeSpend: { type: Number, default: 0 }
+  },
+  { timestamps: true }
+);
+var Customer_default = mongoose13.model("Customer", CustomerSchema);
+
+// backend/routes/userAuth.ts
+init_Seller();
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
 
 // backend/models/OtpVerification.ts
 import mongoose14, { Schema as Schema13 } from "mongoose";
@@ -3976,6 +5329,7 @@ var OtpVerificationSchema = new Schema13(
 var OtpVerification = mongoose14.models.OtpVerification || mongoose14.model("OtpVerification", OtpVerificationSchema, "otp_verifications");
 var OtpVerification_default = OtpVerification;
 
+<<<<<<< HEAD
 // backend/models/ReturnRequest.ts
 import mongoose15, { Schema as Schema14 } from "mongoose";
 var ReturnRequestSchema = new Schema14(
@@ -4357,6 +5711,8 @@ function sanitizeNearbySeller(seller, metrics) {
   };
 }
 
+=======
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
 // backend/services/mailer.ts
 import nodemailer from "nodemailer";
 
@@ -4767,6 +6123,7 @@ async function sendOtpEmail(toEmail, otpCode, purpose = "verification") {
   }
 }
 
+<<<<<<< HEAD
 // backend/services/commissionEngine.ts
 init_Order();
 init_PlatformSetting();
@@ -16626,6 +17983,9 @@ var Customer_default = mongoose21.model("Customer", CustomerSchema);
 
 // backend/routes/userAuth.ts
 init_Seller();
+=======
+// backend/routes/userAuth.ts
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
 init_store();
 
 // backend/utils/firebaseAdmin.ts
@@ -16636,8 +17996,13 @@ var app = getApps().length > 0 ? getApps()[0] : initializeApp({ projectId });
 var firebaseAuth = getAuth(app);
 
 // backend/routes/userAuth.ts
+<<<<<<< HEAD
 var router4 = Router3();
 router4.get("/status", async (_req, res) => {
+=======
+var router2 = Router2();
+router2.get("/status", async (_req, res) => {
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
   const dbInfo = getMongoDbInfo();
   let userCount = 0;
   if (isMongoConnected()) {
@@ -16656,7 +18021,11 @@ router4.get("/status", async (_req, res) => {
     totalUsersCount: userCount
   });
 });
+<<<<<<< HEAD
 router4.post("/reconnect", async (_req, res) => {
+=======
+router2.post("/reconnect", async (_req, res) => {
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
   console.log("\u{1F504} [MONGODB RECONNECT] Received explicit reconnect request from client...");
   try {
     await connectMongoDB(true);
@@ -16672,7 +18041,11 @@ router4.post("/reconnect", async (_req, res) => {
     });
   }
 });
+<<<<<<< HEAD
 router4.post("/otp/send", async (req, res) => {
+=======
+router2.post("/otp/send", async (req, res) => {
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
   try {
     const { email, purpose = "verification" } = req.body;
     if (!email || !String(email).trim()) {
@@ -16683,7 +18056,11 @@ router4.post("/otp/send", async (req, res) => {
     if (!emailRegex.test(cleanEmail)) {
       return res.status(400).json({ error: "Please provide a valid email address format." });
     }
+<<<<<<< HEAD
     const otpCode = crypto4.randomInt(1e5, 1e6).toString();
+=======
+    const otpCode = crypto3.randomInt(1e5, 1e6).toString();
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
     const expiresAt = new Date(Date.now() + 10 * 60 * 1e3);
     if (isMongoConnected()) {
       try {
@@ -16729,7 +18106,11 @@ router4.post("/otp/send", async (req, res) => {
     return res.status(500).json({ error: err.message || "Failed to dispatch verification code." });
   }
 });
+<<<<<<< HEAD
 router4.post("/otp/verify", async (req, res) => {
+=======
+router2.post("/otp/verify", async (req, res) => {
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
   try {
     const { email, otp, purpose = "verification" } = req.body;
     if (!email || !otp) {
@@ -16800,7 +18181,11 @@ router4.post("/otp/verify", async (req, res) => {
     return res.status(500).json({ error: err.message || "Failed to verify OTP code." });
   }
 });
+<<<<<<< HEAD
 router4.post("/forgot-password/send-otp", async (req, res) => {
+=======
+router2.post("/forgot-password/send-otp", async (req, res) => {
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
   try {
     const { identifier } = req.body;
     if (!identifier || !String(identifier).trim()) {
@@ -16840,7 +18225,11 @@ router4.post("/forgot-password/send-otp", async (req, res) => {
         error: "No account found with this email address, or this account was registered using a mobile number and does not support email-based password reset."
       });
     }
+<<<<<<< HEAD
     const otpCode = crypto4.randomInt(1e5, 1e6).toString();
+=======
+    const otpCode = crypto3.randomInt(1e5, 1e6).toString();
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
     const expiresAt = new Date(Date.now() + 10 * 60 * 1e3);
     if (isMongoConnected()) {
       try {
@@ -16884,7 +18273,11 @@ router4.post("/forgot-password/send-otp", async (req, res) => {
     return res.status(500).json({ error: err.message || "Failed to send reset code." });
   }
 });
+<<<<<<< HEAD
 router4.post("/forgot-password/verify-otp", async (req, res) => {
+=======
+router2.post("/forgot-password/verify-otp", async (req, res) => {
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
   try {
     const { identifier, otp } = req.body;
     if (!identifier || !otp) {
@@ -16958,7 +18351,11 @@ router4.post("/forgot-password/verify-otp", async (req, res) => {
     return res.status(500).json({ error: err.message || "Failed to verify reset code." });
   }
 });
+<<<<<<< HEAD
 router4.post("/forgot-password/reset", async (req, res) => {
+=======
+router2.post("/forgot-password/reset", async (req, res) => {
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
   try {
     const { identifier, otp, newPassword } = req.body;
     if (!identifier || !otp || !newPassword) {
@@ -17004,7 +18401,11 @@ router4.post("/forgot-password/reset", async (req, res) => {
         error: "Invalid or expired OTP code. Please request a new verification code."
       });
     }
+<<<<<<< HEAD
     const newHash = await bcrypt4.hash(newPassword, 10);
+=======
+    const newHash = await bcrypt3.hash(newPassword, 10);
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
     if (isMongoConnected()) {
       try {
         await User_default.updateOne(
@@ -17051,7 +18452,11 @@ router4.post("/forgot-password/reset", async (req, res) => {
     return res.status(500).json({ error: err.message || "Failed to reset password." });
   }
 });
+<<<<<<< HEAD
 router4.post("/register", async (req, res) => {
+=======
+router2.post("/register", async (req, res) => {
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
   console.log("==================================================");
   console.log("\u{1F4DD} [REGISTRATION INCOMING REQUEST]");
   console.log("Time:", (/* @__PURE__ */ new Date()).toISOString());
@@ -17113,7 +18518,11 @@ router4.post("/register", async (req, res) => {
           );
           return res.status(400).json({ error: msg });
         }
+<<<<<<< HEAD
         const passwordHash2 = await bcrypt4.hash(password, 10);
+=======
+        const passwordHash2 = await bcrypt3.hash(password, 10);
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
         console.log(`\u{1F4BE} [REGISTRATION MONGODB] Saving document to database 'alikendshop', collection 'users'...`);
         const newUser = await User_default.create({
           fullName: cleanName,
@@ -17151,7 +18560,11 @@ router4.post("/register", async (req, res) => {
           },
           req
         );
+<<<<<<< HEAD
         const token2 = jwt4.sign({ userId: newUser._id, email: newUser.email }, secret, { expiresIn: "30d" });
+=======
+        const token2 = jwt3.sign({ userId: newUser._id, email: newUser.email }, secret, { expiresIn: "30d" });
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
         return res.status(201).json({
           success: true,
           message: "Registration successful and saved to MongoDB alikendshop.users",
@@ -17190,7 +18603,11 @@ router4.post("/register", async (req, res) => {
       );
       return res.status(400).json({ error: "An account with this email address already exists." });
     }
+<<<<<<< HEAD
     const passwordHash = await bcrypt4.hash(password, 10);
+=======
+    const passwordHash = await bcrypt3.hash(password, 10);
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
     const newMemUser = {
       _id: `user_${Date.now()}`,
       fullName: cleanName,
@@ -17227,7 +18644,11 @@ router4.post("/register", async (req, res) => {
       },
       req
     );
+<<<<<<< HEAD
     const token = jwt4.sign({ userId: newMemUser._id, email: newMemUser.email }, secret, { expiresIn: "30d" });
+=======
+    const token = jwt3.sign({ userId: newMemUser._id, email: newMemUser.email }, secret, { expiresIn: "30d" });
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
     return res.status(201).json({
       success: true,
       message: "Registration completed (in-memory mode, MongoDB currently offline)",
@@ -17252,7 +18673,11 @@ router4.post("/register", async (req, res) => {
     });
   }
 });
+<<<<<<< HEAD
 router4.post("/login", async (req, res) => {
+=======
+router2.post("/login", async (req, res) => {
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
   try {
     const secret = getJwtSecret();
     if (!secret) {
@@ -17267,12 +18692,21 @@ router4.post("/login", async (req, res) => {
     }
     const cleanId = String(identifier).toLowerCase().trim();
     const targetSuperAdminEmail = (process.env.SUPERADMIN_EMAIL || INITIAL_SUPERADMIN_EMAIL || "developer.alikend@gmail.com").trim().toLowerCase();
+<<<<<<< HEAD
     const rateLimit6 = await checkLoginRateLimit(req, cleanId);
     if (!rateLimit6.allowed) {
       if (rateLimit6.status === 503) {
         return res.status(503).json({ success: false, error: rateLimit6.error });
       }
       res.setHeader("Retry-After", String(rateLimit6.retryAfter || 900));
+=======
+    const rateLimit2 = await checkLoginRateLimit(req, cleanId);
+    if (!rateLimit2.allowed) {
+      if (rateLimit2.status === 503) {
+        return res.status(503).json({ success: false, error: rateLimit2.error });
+      }
+      res.setHeader("Retry-After", String(rateLimit2.retryAfter || 900));
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
       return res.status(429).json({ success: false, error: "Too many attempts, try again later" });
     }
     const rawTrimmed = String(identifier).trim();
@@ -17362,7 +18796,11 @@ router4.post("/login", async (req, res) => {
         if (expectedPassword && (timingSafePasswordEqual(password, expectedPassword) || timingSafePasswordEqual(trimmedSubmittedPassword, expectedPassword))) {
           isPassMatch = true;
           try {
+<<<<<<< HEAD
             const freshHash = await bcrypt4.hash(expectedPassword, 10);
+=======
+            const freshHash = await bcrypt3.hash(expectedPassword, 10);
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
             matchedAdminDoc.passwordHash = freshHash;
             syncAdminPasswordToMemoryStore(cleanId, freshHash, { role: "superadmin", isActive: true });
             if (isMongoConnected() && matchedAdminDoc.save) {
@@ -17377,7 +18815,11 @@ router4.post("/login", async (req, res) => {
         const hasAdminHash = Boolean(matchedAdminDoc.passwordHash && String(matchedAdminDoc.passwordHash).trim() !== "");
         if (hasAdminHash) {
           try {
+<<<<<<< HEAD
             isPassMatch = await bcrypt4.compare(password, matchedAdminDoc.passwordHash);
+=======
+            isPassMatch = await bcrypt3.compare(password, matchedAdminDoc.passwordHash);
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
           } catch {
             isPassMatch = false;
           }
@@ -17485,7 +18927,11 @@ router4.post("/login", async (req, res) => {
         if (expectedPassword && (timingSafePasswordEqual(password, expectedPassword) || timingSafePasswordEqual(trimmedSubmittedPassword, expectedPassword))) {
           isPasswordValid = true;
           try {
+<<<<<<< HEAD
             const freshHash = await bcrypt4.hash(expectedPassword, 10);
+=======
+            const freshHash = await bcrypt3.hash(expectedPassword, 10);
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
             user.passwordHash = freshHash;
             if (isFromMongo && typeof user.save === "function") {
               await user.save().catch(() => null);
@@ -17506,7 +18952,11 @@ router4.post("/login", async (req, res) => {
       } else {
         if (hasStoredHash) {
           try {
+<<<<<<< HEAD
             isPasswordValid = await bcrypt4.compare(password, user.passwordHash);
+=======
+            isPasswordValid = await bcrypt3.compare(password, user.passwordHash);
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
           } catch {
             isPasswordValid = false;
           }
@@ -17530,7 +18980,11 @@ router4.post("/login", async (req, res) => {
         });
       } else if (!hasStoredHash) {
         try {
+<<<<<<< HEAD
           const newHash = await bcrypt4.hash(password, 10);
+=======
+          const newHash = await bcrypt3.hash(password, 10);
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
           user.passwordHash = newHash;
           if (isFromMongo && typeof user.save === "function") {
             await user.save();
@@ -17551,7 +19005,11 @@ router4.post("/login", async (req, res) => {
       },
       req
     );
+<<<<<<< HEAD
     const token = jwt4.sign({ userId: user._id, email: user.email, role: "customer" }, secret, { expiresIn: "30d" });
+=======
+    const token = jwt3.sign({ userId: user._id, email: user.email, role: "customer" }, secret, { expiresIn: "30d" });
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
     let adminToken = null;
     let isAdmin = false;
     let adminRole = null;
@@ -17574,7 +19032,11 @@ router4.post("/login", async (req, res) => {
       if (adminDoc && adminDoc.isActive !== false && (adminDoc.role === "superadmin" || adminDoc.role === "admin")) {
         isAdmin = true;
         adminRole = adminDoc.role === "superadmin" ? "superadmin" : "admin";
+<<<<<<< HEAD
         adminToken = jwt4.sign(
+=======
+        adminToken = jwt3.sign(
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
           { adminId: String(adminDoc._id), email: adminDoc.email, name: adminDoc.name, role: adminRole },
           secret,
           { expiresIn: "7d" }
@@ -17612,8 +19074,12 @@ router4.post("/login", async (req, res) => {
         phone: user.phone || `${user.country} ${user.mobileNumber}`,
         country: user.country,
         mobileNumber: user.mobileNumber,
+<<<<<<< HEAD
         tier: user.tier || "Silver",
         savedLocation: user.savedLocation || null
+=======
+        tier: user.tier || "Silver"
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
       },
       token,
       isAdmin,
@@ -17628,6 +19094,7 @@ router4.post("/login", async (req, res) => {
     res.status(500).json({ success: false, error: err.message || "Login failed due to an internal server error" });
   }
 });
+<<<<<<< HEAD
 router4.post("/google", async (req, res) => {
   try {
     const secret = getJwtSecret();
@@ -17693,6 +19160,43 @@ router4.post("/google", async (req, res) => {
       } catch {
       }
     }
+=======
+router2.post("/google", async (req, res) => {
+  try {
+    const secret = getJwtSecret();
+    if (!secret) {
+      return res.status(503).json({
+        success: false,
+        error: "Authentication service is temporarily misconfigured. Please contact support."
+      });
+    }
+    const { idToken, autoRegister = true } = req.body;
+    if (!idToken || typeof idToken !== "string") {
+      return res.status(401).json({
+        success: false,
+        error: "Google authentication token (idToken) is required."
+      });
+    }
+    let decoded;
+    try {
+      decoded = await firebaseAuth.verifyIdToken(idToken);
+    } catch (verifyErr) {
+      console.warn("Firebase verifyIdToken failed:", verifyErr?.message || verifyErr);
+      return res.status(401).json({
+        success: false,
+        error: "Invalid or expired Google authentication token. Please sign in again."
+      });
+    }
+    if (!decoded || !decoded.email || decoded.email_verified !== true) {
+      return res.status(401).json({
+        success: false,
+        error: "Google account email is not verified or unavailable."
+      });
+    }
+    const cleanEmail = String(decoded.email).toLowerCase().trim();
+    const cleanName = String(decoded.name || cleanEmail.split("@")[0] || "Google Member").trim();
+    console.log(`\u{1F50D} [GOOGLE AUTH] Verified token for: ${cleanEmail}`);
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
     let existingUser = null;
     if (isMongoConnected()) {
       try {
@@ -17705,6 +19209,7 @@ router4.post("/google", async (req, res) => {
     }
     if (!existingUser) {
       existingUser = (memoryStore.users || []).find(
+<<<<<<< HEAD
         (u) => u.email && u.email.toLowerCase().trim() === cleanEmail
       );
     }
@@ -17728,6 +19233,11 @@ router4.post("/google", async (req, res) => {
       }
     } catch {
     }
+=======
+        (u) => u.email.toLowerCase().trim() === cleanEmail
+      );
+    }
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
     if (existingUser) {
       if (existingUser.isBlocked) {
         return res.status(403).json({
@@ -17735,7 +19245,11 @@ router4.post("/google", async (req, res) => {
           error: "Your account has been suspended or blocked by an administrator. Please contact support."
         });
       }
+<<<<<<< HEAD
       const token = jwt4.sign(
+=======
+      const token = jwt3.sign(
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
         { userId: String(existingUser._id), email: existingUser.email, role: "customer" },
         secret,
         { expiresIn: "7d" }
@@ -17746,7 +19260,11 @@ router4.post("/google", async (req, res) => {
           status: "success",
           userName: existingUser.fullName || cleanName,
           email: existingUser.email,
+<<<<<<< HEAD
           details: "Google authentication verified via Firebase OAuth"
+=======
+          details: "Google authentication verified via Firebase ID Token"
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
         },
         req
       );
@@ -17755,23 +19273,35 @@ router4.post("/google", async (req, res) => {
         isExisting: true,
         isNew: false,
         token,
+<<<<<<< HEAD
         isSeller,
         sellerStatus,
         sellerShopName,
+=======
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
         user: {
           _id: String(existingUser._id),
           name: existingUser.fullName || cleanName,
           email: existingUser.email,
           phone: existingUser.phone || existingUser.mobileNumber || "",
           tier: existingUser.tier || "Silver",
+<<<<<<< HEAD
           country: existingUser.country || "Bangladesh",
           avatar: existingUser.avatar || avatarUrl || void 0
+=======
+          country: existingUser.country || "Bangladesh"
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
         }
       });
     }
     if (autoRegister) {
+<<<<<<< HEAD
       const randomPassword = `G_${Date.now()}_${crypto4.randomBytes(8).toString("hex")}`;
       const passwordHash = await bcrypt4.hash(randomPassword, 10);
+=======
+      const randomPassword = `G_${Date.now()}_${crypto3.randomBytes(8).toString("hex")}`;
+      const passwordHash = await bcrypt3.hash(randomPassword, 10);
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
       let newUser = null;
       if (isMongoConnected()) {
         try {
@@ -17784,6 +19314,7 @@ router4.post("/google", async (req, res) => {
             passwordHash,
             tier: "Silver",
             verified: true,
+<<<<<<< HEAD
             isBlocked: false,
             avatar: avatarUrl || void 0
           });
@@ -17804,6 +19335,14 @@ router4.post("/google", async (req, res) => {
           }
         } catch (saveErr) {
           console.warn("MongoDB Google auto-register save error:", saveErr?.message);
+=======
+            isBlocked: false
+          });
+          await userDoc.save();
+          newUser = userDoc;
+        } catch (saveErr) {
+          console.warn("MongoDB auto-register save error:", saveErr?.message);
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
         }
       }
       if (!newUser) {
@@ -17818,6 +19357,7 @@ router4.post("/google", async (req, res) => {
           tier: "Silver",
           verified: true,
           isBlocked: false,
+<<<<<<< HEAD
           avatar: avatarUrl || void 0,
           createdAt: /* @__PURE__ */ new Date()
         };
@@ -17842,6 +19382,13 @@ router4.post("/google", async (req, res) => {
         });
       }
       const token = jwt4.sign(
+=======
+          createdAt: /* @__PURE__ */ new Date()
+        };
+        memoryStore.users.push(newUser);
+      }
+      const token = jwt3.sign(
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
         { userId: String(newUser._id), email: newUser.email, role: "customer" },
         secret,
         { expiresIn: "7d" }
@@ -17852,7 +19399,11 @@ router4.post("/google", async (req, res) => {
           status: "success",
           userName: newUser.fullName,
           email: newUser.email,
+<<<<<<< HEAD
           details: "New user registered via Google OAuth"
+=======
+          details: "New user registered via Google OAuth (Firebase ID Token verified)"
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
         },
         req
       );
@@ -17861,17 +19412,24 @@ router4.post("/google", async (req, res) => {
         isExisting: false,
         isNew: true,
         token,
+<<<<<<< HEAD
         isSeller,
         sellerStatus,
         sellerShopName,
+=======
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
         user: {
           _id: String(newUser._id),
           name: newUser.fullName,
           email: newUser.email,
           phone: "",
           tier: "Silver",
+<<<<<<< HEAD
           country: "Bangladesh",
           avatar: avatarUrl || void 0
+=======
+          country: "Bangladesh"
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
         }
       });
     }
@@ -17886,7 +19444,11 @@ router4.post("/google", async (req, res) => {
     res.status(500).json({ success: false, error: err.message || "Google authentication failed" });
   }
 });
+<<<<<<< HEAD
 router4.post("/apple", async (req, res) => {
+=======
+router2.post("/apple", async (req, res) => {
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
   try {
     const secret = getJwtSecret();
     if (!secret) {
@@ -17958,7 +19520,11 @@ router4.post("/apple", async (req, res) => {
           error: "Your account has been suspended or blocked by an administrator. Please contact support."
         });
       }
+<<<<<<< HEAD
       const token = jwt4.sign(
+=======
+      const token = jwt3.sign(
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
         { userId: String(existingUser._id), email: existingUser.email, role: "customer" },
         secret,
         { expiresIn: "7d" }
@@ -17991,8 +19557,13 @@ router4.post("/apple", async (req, res) => {
       });
     }
     if (autoRegister) {
+<<<<<<< HEAD
       const randomPassword = `A_${Date.now()}_${crypto4.randomBytes(8).toString("hex")}`;
       const passwordHash = await bcrypt4.hash(randomPassword, 10);
+=======
+      const randomPassword = `A_${Date.now()}_${crypto3.randomBytes(8).toString("hex")}`;
+      const passwordHash = await bcrypt3.hash(randomPassword, 10);
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
       let newUser = null;
       if (isMongoConnected()) {
         try {
@@ -18044,7 +19615,11 @@ router4.post("/apple", async (req, res) => {
         };
         memoryStore.users.push(newUser);
       }
+<<<<<<< HEAD
       const token = jwt4.sign(
+=======
+      const token = jwt3.sign(
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
         { userId: String(newUser._id), email: newUser.email, role: "customer" },
         secret,
         { expiresIn: "7d" }
@@ -18087,7 +19662,11 @@ router4.post("/apple", async (req, res) => {
     res.status(500).json({ success: false, error: err.message || "Apple authentication failed" });
   }
 });
+<<<<<<< HEAD
 router4.get("/me", async (req, res) => {
+=======
+router2.get("/me", async (req, res) => {
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
   try {
     const secret = getJwtSecret();
     if (!secret) {
@@ -18103,7 +19682,11 @@ router4.get("/me", async (req, res) => {
     const token = authHeader.split(" ")[1];
     let decoded;
     try {
+<<<<<<< HEAD
       decoded = jwt4.verify(token, secret);
+=======
+      decoded = jwt3.verify(token, secret);
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
     } catch {
       return res.status(401).json({ valid: false, error: "Invalid or expired token" });
     }
@@ -18156,7 +19739,11 @@ router4.get("/me", async (req, res) => {
       if (adminDoc && adminDoc.isActive !== false && (adminDoc.role === "superadmin" || adminDoc.role === "admin")) {
         isAdmin = true;
         adminRole = adminDoc.role === "superadmin" ? "superadmin" : "admin";
+<<<<<<< HEAD
         adminToken = jwt4.sign(
+=======
+        adminToken = jwt3.sign(
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
           { adminId: String(adminDoc._id), email: adminDoc.email, name: adminDoc.name, role: adminRole },
           secret,
           { expiresIn: "7d" }
@@ -18191,8 +19778,12 @@ router4.get("/me", async (req, res) => {
         phone: user.phone || `${user.country} ${user.mobileNumber}`,
         country: user.country,
         mobileNumber: user.mobileNumber,
+<<<<<<< HEAD
         tier: user.tier,
         savedLocation: user.savedLocation || null
+=======
+        tier: user.tier
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
       },
       isAdmin,
       adminToken,
@@ -18204,14 +19795,22 @@ router4.get("/me", async (req, res) => {
     return res.status(500).json({ valid: false, error: err.message });
   }
 });
+<<<<<<< HEAD
 router4.post("/change-password", async (req, res) => {
+=======
+router2.post("/change-password", async (req, res) => {
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
   try {
     const authHeader = req.headers.authorization;
     let userEmail;
     const secret = getJwtSecret();
     if (authHeader && authHeader.startsWith("Bearer ") && secret) {
       try {
+<<<<<<< HEAD
         const decoded = jwt4.verify(authHeader.split(" ")[1], secret);
+=======
+        const decoded = jwt3.verify(authHeader.split(" ")[1], secret);
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
         userEmail = decoded.email;
       } catch (e) {
       }
@@ -18243,12 +19842,20 @@ router4.post("/change-password", async (req, res) => {
     }
     let isCurrentValid = false;
     if (userDoc.passwordHash) {
+<<<<<<< HEAD
       isCurrentValid = await bcrypt4.compare(currentPassword, userDoc.passwordHash);
+=======
+      isCurrentValid = await bcrypt3.compare(currentPassword, userDoc.passwordHash);
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
     }
     if (!isCurrentValid) {
       return res.status(400).json({ success: false, error: "Incorrect current password" });
     }
+<<<<<<< HEAD
     const newHash = await bcrypt4.hash(newPassword.trim(), 10);
+=======
+    const newHash = await bcrypt3.hash(newPassword.trim(), 10);
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
     if (isMongoConnected()) {
       try {
         await User_default.updateOne({ email: targetEmail }, { $set: { passwordHash: newHash, updatedAt: /* @__PURE__ */ new Date() } });
@@ -18265,6 +19872,7 @@ router4.post("/change-password", async (req, res) => {
     return res.status(500).json({ success: false, error: err.message || "Failed to update password" });
   }
 });
+<<<<<<< HEAD
 router4.patch(["/profile/location", "/saved-location"], async (req, res) => {
   try {
     const secret = getJwtSecret();
@@ -18331,6 +19939,17 @@ init_store();
 var router5 = Router4();
 router5.use(requireAdmin);
 router5.get("/", async (_req, res) => {
+=======
+var userAuth_default = router2;
+
+// backend/routes/products.ts
+init_Product();
+import { Router as Router3 } from "express";
+init_store();
+var router3 = Router3();
+router3.use(requireAdmin);
+router3.get("/", async (_req, res) => {
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
   try {
     if (isMongoConnected()) {
       try {
@@ -18360,6 +19979,7 @@ router5.get("/", async (_req, res) => {
     res.status(500).json({ error: err.message || "Failed to fetch products" });
   }
 });
+<<<<<<< HEAD
 function sanitizeRichHtml(rawHtml) {
   if (!rawHtml || typeof rawHtml !== "string") return "";
   return rawHtml.replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, "").replace(/<iframe\b[^<]*(?:(?!<\/iframe>)<[^<]*)*<\/iframe>/gi, "").replace(/\son\w+\s*=\s*("[^"]*"|'[^']*'|[^\s>]+)/gi, "").replace(/javascript\s*:/gi, "");
@@ -18424,6 +20044,18 @@ router5.post("/", async (req, res) => {
       maxOrderQty = 50,
       bundleInfo = "",
       lowStockThreshold = 5,
+=======
+router3.post("/", async (req, res) => {
+  try {
+    const {
+      name,
+      brand = "Alike Sovereign",
+      category,
+      subCategory = "",
+      eligibleFor20MinDelivery,
+      price,
+      mrp,
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
       rating = 4.8,
       reviewsCount = 120,
       stock = 10,
@@ -18432,6 +20064,7 @@ router5.post("/", async (req, res) => {
       isFlashSale = false,
       image = "",
       images = [],
+<<<<<<< HEAD
       whiteBgImage = "",
       promoBannerImage = "",
       videoUrl = "",
@@ -18447,6 +20080,10 @@ router5.post("/", async (req, res) => {
       customSpecifications = [],
       variants = [],
       variantOptionGroups = [],
+=======
+      description = "",
+      specifications = {},
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
       isWholesale = false,
       wholesalePrice = 0,
       wholesaleMinQty = 1,
@@ -18459,6 +20096,7 @@ router5.post("/", async (req, res) => {
       gstRate = 18,
       countryOfOrigin = "India",
       manufacturerDetails = "",
+<<<<<<< HEAD
       packInfo = "",
       sku = "",
       deliveryCharge = 0,
@@ -18621,6 +20259,60 @@ router5.post("/", async (req, res) => {
     if (isMongoConnected()) {
       try {
         createdProduct = await Product_default.create(productPayload);
+=======
+      packInfo = ""
+    } = req.body;
+    if (!name || !category) {
+      return res.status(400).json({ error: "Product name and category are required" });
+    }
+    const numericPrice = Number(price);
+    if (isNaN(numericPrice) || numericPrice <= 0) {
+      return res.status(400).json({ error: "Product price must be a valid positive number greater than 0." });
+    }
+    const numericMrp = mrp !== void 0 && mrp !== null ? Number(mrp) : numericPrice;
+    if (isNaN(numericMrp) || numericMrp < numericPrice) {
+      return res.status(400).json({ error: "MRP must be greater than or equal to the selling price." });
+    }
+    const numericStock = Math.max(0, Math.floor(Number(stock) || 0));
+    const numericRating = Math.min(5, Math.max(0, Number(rating) || 4.8));
+    const numericReviews = Math.max(0, Math.floor(Number(reviewsCount) || 0));
+    const is20Min = eligibleFor20MinDelivery !== void 0 ? Boolean(eligibleFor20MinDelivery) : category.trim() === "grocery" || category.trim() === "food_delivery" || category.trim() === "delivery";
+    let createdProduct = null;
+    if (isMongoConnected()) {
+      try {
+        createdProduct = await Product_default.create({
+          name: name.trim(),
+          brand: brand.trim(),
+          category: category.trim(),
+          subCategory: String(subCategory || "").trim(),
+          eligibleFor20MinDelivery: is20Min,
+          price: numericPrice,
+          mrp: numericMrp,
+          rating: numericRating,
+          reviewsCount: Number(reviewsCount) || 120,
+          stock: numericStock,
+          stockStatus: stockStatus || (numericStock <= 0 ? "Out of Stock" : numericStock <= 3 ? "Only 2 left!" : "In Stock"),
+          badge,
+          isFlashSale: Boolean(isFlashSale),
+          image: image || "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&q=80&w=600",
+          images: Array.isArray(images) && images.length > 0 ? images : [image || "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&q=80&w=600"],
+          description,
+          specifications,
+          isWholesale: Boolean(isWholesale),
+          wholesalePrice: Number(wholesalePrice) || 0,
+          wholesaleMinQty: Number(wholesaleMinQty) || 1,
+          colors,
+          sizes,
+          emoji: emoji || "\u{1F4E6}",
+          sellerId: sellerId || "admin",
+          sellerShopName: sellerShopName || "ALIKE-ND Official",
+          hsnCode: String(hsnCode || "").trim(),
+          gstRate: Number(gstRate) || 18,
+          countryOfOrigin: String(countryOfOrigin || "India").trim(),
+          manufacturerDetails: String(manufacturerDetails || "").trim(),
+          packInfo: String(packInfo || "").trim()
+        });
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
       } catch (err) {
         console.warn("MongoDB create product failed, storing in-memory:", err);
       }
@@ -18628,6 +20320,7 @@ router5.post("/", async (req, res) => {
     const newProd = {
       _id: createdProduct ? String(createdProduct._id) : `prod_${Date.now()}`,
       id: Date.now(),
+<<<<<<< HEAD
       ...productPayload,
       createdAt: /* @__PURE__ */ new Date(),
       updatedAt: /* @__PURE__ */ new Date()
@@ -18644,11 +20337,47 @@ router5.post("/", async (req, res) => {
       req
     ).catch(() => {
     });
+=======
+      name: name.trim(),
+      brand: brand.trim(),
+      category: category.trim(),
+      subCategory: String(subCategory || "").trim(),
+      eligibleFor20MinDelivery: is20Min,
+      price: numericPrice,
+      mrp: numericMrp,
+      rating: Number(rating) || 4.8,
+      reviewsCount: Number(reviewsCount) || 120,
+      stock: numericStock,
+      stockStatus: stockStatus || (numericStock <= 0 ? "Out of Stock" : numericStock <= 3 ? "Only 2 left!" : "In Stock"),
+      badge,
+      isFlashSale: Boolean(isFlashSale),
+      image: image || "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&q=80&w=600",
+      images: Array.isArray(images) && images.length > 0 ? images : [image || "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&q=80&w=600"],
+      description,
+      specifications,
+      isWholesale: Boolean(isWholesale),
+      wholesalePrice: Number(wholesalePrice) || 0,
+      wholesaleMinQty: Number(wholesaleMinQty) || 1,
+      colors,
+      sizes,
+      emoji: emoji || "\u{1F4E6}",
+      sellerId: sellerId || "admin",
+      sellerShopName: sellerShopName || "ALIKE-ND Official",
+      hsnCode: String(hsnCode || "").trim(),
+      gstRate: Number(gstRate) || 18,
+      countryOfOrigin: String(countryOfOrigin || "India").trim(),
+      manufacturerDetails: String(manufacturerDetails || "").trim(),
+      packInfo: String(packInfo || "").trim(),
+      createdAt: /* @__PURE__ */ new Date()
+    };
+    memoryStore.products.unshift(newProd);
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
     return res.status(201).json(createdProduct || newProd);
   } catch (err) {
     res.status(500).json({ error: err.message || "Failed to create product" });
   }
 });
+<<<<<<< HEAD
 router5.put("/:id", async (req, res) => {
   try {
     const { id } = req.params;
@@ -18681,6 +20410,20 @@ router5.put("/:id", async (req, res) => {
     if (body.maxOrderQty !== void 0) updateData.maxOrderQty = Math.max(1, Number(body.maxOrderQty) || 50);
     if (body.bundleInfo !== void 0) updateData.bundleInfo = String(body.bundleInfo || "").trim();
     if (body.lowStockThreshold !== void 0) updateData.lowStockThreshold = Math.max(1, Number(body.lowStockThreshold) || 5);
+=======
+router3.put("/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const body = req.body;
+    const updateData = {};
+    if (body.name !== void 0) updateData.name = body.name.trim();
+    if (body.brand !== void 0) updateData.brand = body.brand.trim();
+    if (body.category !== void 0) updateData.category = body.category.trim();
+    if (body.subCategory !== void 0) updateData.subCategory = body.subCategory.trim();
+    if (body.eligibleFor20MinDelivery !== void 0) updateData.eligibleFor20MinDelivery = Boolean(body.eligibleFor20MinDelivery);
+    if (body.price !== void 0) updateData.price = Number(body.price);
+    if (body.mrp !== void 0) updateData.mrp = Number(body.mrp);
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
     if (body.rating !== void 0) updateData.rating = Number(body.rating);
     if (body.reviewsCount !== void 0) updateData.reviewsCount = Number(body.reviewsCount);
     if (body.stock !== void 0) updateData.stock = Number(body.stock);
@@ -18689,6 +20432,7 @@ router5.put("/:id", async (req, res) => {
     if (body.isFlashSale !== void 0) updateData.isFlashSale = Boolean(body.isFlashSale);
     if (body.image !== void 0) updateData.image = body.image;
     if (body.images !== void 0) updateData.images = body.images;
+<<<<<<< HEAD
     if (body.whiteBgImage !== void 0) updateData.whiteBgImage = body.whiteBgImage;
     if (body.promoBannerImage !== void 0) updateData.promoBannerImage = body.promoBannerImage;
     if (body.videoUrl !== void 0) updateData.videoUrl = String(body.videoUrl || "").trim();
@@ -18704,12 +20448,17 @@ router5.put("/:id", async (req, res) => {
     if (body.customSpecifications !== void 0) updateData.customSpecifications = Array.isArray(body.customSpecifications) ? body.customSpecifications : [];
     if (body.variants !== void 0) updateData.variants = Array.isArray(body.variants) ? body.variants : [];
     if (body.variantOptionGroups !== void 0) updateData.variantOptionGroups = Array.isArray(body.variantOptionGroups) ? body.variantOptionGroups : [];
+=======
+    if (body.description !== void 0) updateData.description = body.description;
+    if (body.specifications !== void 0) updateData.specifications = body.specifications;
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
     if (body.isWholesale !== void 0) updateData.isWholesale = Boolean(body.isWholesale);
     if (body.wholesalePrice !== void 0) updateData.wholesalePrice = Number(body.wholesalePrice);
     if (body.wholesaleMinQty !== void 0) updateData.wholesaleMinQty = Number(body.wholesaleMinQty);
     if (body.colors !== void 0) updateData.colors = body.colors;
     if (body.sizes !== void 0) updateData.sizes = body.sizes;
     if (body.emoji !== void 0) updateData.emoji = body.emoji;
+<<<<<<< HEAD
     if (body.sellerId !== void 0) updateData.sellerId = body.sellerId;
     if (body.sellerShopName !== void 0) updateData.sellerShopName = body.sellerShopName;
     if (body.hsnCode !== void 0) updateData.hsnCode = String(body.hsnCode || "").trim();
@@ -18774,12 +20523,24 @@ router5.put("/:id", async (req, res) => {
           },
           { new: true }
         );
+=======
+    if (body.hsnCode !== void 0) updateData.hsnCode = String(body.hsnCode || "").trim();
+    if (body.gstRate !== void 0) updateData.gstRate = Number(body.gstRate) || 18;
+    if (body.countryOfOrigin !== void 0) updateData.countryOfOrigin = String(body.countryOfOrigin || "India").trim();
+    if (body.manufacturerDetails !== void 0) updateData.manufacturerDetails = String(body.manufacturerDetails || "").trim();
+    if (body.packInfo !== void 0) updateData.packInfo = String(body.packInfo || "").trim();
+    let updatedMongo = null;
+    if (isMongoConnected()) {
+      try {
+        updatedMongo = await Product_default.findByIdAndUpdate(id, updateData, { new: true });
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
       } catch (err) {
         console.warn("MongoDB update product failed, checking in-memory store:", err);
       }
     }
     const index = memoryStore.products.findIndex((p) => p._id === id || String(p.id) === id);
     if (index !== -1) {
+<<<<<<< HEAD
       const existingHistory = Array.isArray(memoryStore.products[index].changeHistory) ? memoryStore.products[index].changeHistory : [];
       memoryStore.products[index] = {
         ...memoryStore.products[index],
@@ -18821,6 +20582,16 @@ router5.put("/:id", async (req, res) => {
         req
       ).catch(() => {
       });
+=======
+      memoryStore.products[index] = {
+        ...memoryStore.products[index],
+        ...updateData,
+        updatedAt: /* @__PURE__ */ new Date()
+      };
+      return res.json(updatedMongo || memoryStore.products[index]);
+    }
+    if (updatedMongo) {
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
       return res.json(updatedMongo);
     }
     return res.status(404).json({ error: "Product not found" });
@@ -18828,6 +20599,7 @@ router5.put("/:id", async (req, res) => {
     res.status(500).json({ error: err.message || "Failed to update product" });
   }
 });
+<<<<<<< HEAD
 router5.post("/:id/duplicate", async (req, res) => {
   try {
     const { id } = req.params;
@@ -19223,12 +20995,21 @@ router5.delete("/:id", async (req, res) => {
       try {
         const doc = await Product_default.findByIdAndDelete(id);
         if (doc) deletedTitle = doc.name;
+=======
+router3.delete("/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    if (isMongoConnected()) {
+      try {
+        await Product_default.findByIdAndDelete(id);
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
       } catch (err) {
         console.warn("MongoDB delete product failed, checking in-memory store:", err);
       }
     }
     const index = memoryStore.products.findIndex((p) => p._id === id || String(p.id) === id);
     if (index !== -1) {
+<<<<<<< HEAD
       if (!deletedTitle) deletedTitle = memoryStore.products[index].name;
       memoryStore.products.splice(index, 1);
     }
@@ -19244,10 +21025,16 @@ router5.delete("/:id", async (req, res) => {
     ).catch(() => {
     });
     return res.json({ ok: true, message: `Product "${deletedTitle || id}" removed from catalog` });
+=======
+      memoryStore.products.splice(index, 1);
+    }
+    return res.json({ ok: true, message: "Product removed from catalog" });
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
   } catch (err) {
     res.status(500).json({ error: err.message || "Failed to delete product" });
   }
 });
+<<<<<<< HEAD
 var products_default = router5;
 
 // backend/routes/orders.ts
@@ -19265,6 +21052,22 @@ init_Product();
 init_Seller();
 init_store();
 import mongoose22 from "mongoose";
+=======
+var products_default = router3;
+
+// backend/routes/orders.ts
+import { Router as Router4 } from "express";
+init_store();
+
+// backend/services/orderAutomation.ts
+init_store();
+
+// backend/services/sellerWallet.ts
+import mongoose15 from "mongoose";
+init_Product();
+init_Seller();
+init_store();
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
 async function creditSellerWalletsForOrder(order) {
   if (!order) return;
   if (order.walletCredited) {
@@ -19292,7 +21095,11 @@ async function creditSellerWalletsForOrder(order) {
     let dbProducts = [];
     if (isMongoConnected() && productIds.length > 0) {
       try {
+<<<<<<< HEAD
         const validObjectIds = productIds.filter((id) => mongoose22.isValidObjectId(id));
+=======
+        const validObjectIds = productIds.filter((id) => mongoose15.isValidObjectId(id));
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
         const validNumericIds = productIds.map((id) => Number(id)).filter((n) => !isNaN(n));
         const orConditions = [];
         if (validObjectIds.length > 0) orConditions.push({ _id: { $in: validObjectIds } });
@@ -19333,7 +21140,11 @@ async function creditSellerWalletsForOrder(order) {
       if (payout <= 0) continue;
       if (isMongoConnected()) {
         try {
+<<<<<<< HEAD
           if (mongoose22.isValidObjectId(sellerId)) {
+=======
+          if (mongoose15.isValidObjectId(sellerId)) {
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
             await Seller_default.findByIdAndUpdate(sellerId, {
               $inc: { walletBalance: payout, totalEarnings: payout }
             });
@@ -19430,7 +21241,10 @@ async function progressOrderStatuses(force = false) {
             order.status = "delivered";
             order.trackingStep = 4;
             order.deliveredAt = new Date(effectiveShippedTime + shippedToDeliveredMs);
+<<<<<<< HEAD
             order.liveTracking = void 0;
+=======
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
             changed = true;
           }
         }
@@ -19477,7 +21291,10 @@ async function progressOrderStatuses(force = false) {
           o.status = "delivered";
           o.trackingStep = 4;
           o.deliveredAt = new Date(effShipped + shippedToDeliveredMs);
+<<<<<<< HEAD
           delete o.liveTracking;
+=======
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
           updatedCount++;
           await creditSellerWalletsForOrder(o).catch((err) => {
             console.warn("Automation wallet crediting notice (Memory):", err);
@@ -19502,9 +21319,15 @@ function startOrderAutomationJob(intervalMs = 3e4) {
 }
 
 // backend/routes/orders.ts
+<<<<<<< HEAD
 var router6 = Router5();
 router6.use(requireAdmin);
 router6.get("/", async (_req, res) => {
+=======
+var router4 = Router4();
+router4.use(requireAdmin);
+router4.get("/", async (_req, res) => {
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
   try {
     await progressOrderStatuses().catch(() => {
     });
@@ -19521,7 +21344,11 @@ router6.get("/", async (_req, res) => {
     res.status(500).json({ error: err.message || "Failed to fetch orders" });
   }
 });
+<<<<<<< HEAD
 router6.patch("/:id/status", async (req, res) => {
+=======
+router4.patch("/:id/status", async (req, res) => {
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
   try {
     const { status } = req.body;
     const { id } = req.params;
@@ -19545,6 +21372,7 @@ router6.patch("/:id/status", async (req, res) => {
     };
     if (status === "processing") updateFields.approvedAt = /* @__PURE__ */ new Date();
     if (status === "shipped") updateFields.shippedAt = /* @__PURE__ */ new Date();
+<<<<<<< HEAD
     if (status === "delivered") {
       updateFields.deliveredAt = /* @__PURE__ */ new Date();
       updateFields.commissionStatus = "settled";
@@ -19560,11 +21388,18 @@ router6.patch("/:id/status", async (req, res) => {
           mongoUpdate.$unset = { liveTracking: 1 };
         }
         const order = await Order_default.findByIdAndUpdate(id, mongoUpdate, { new: true });
+=======
+    if (status === "delivered") updateFields.deliveredAt = /* @__PURE__ */ new Date();
+    if (isMongoConnected()) {
+      try {
+        const order = await Order_default.findByIdAndUpdate(id, updateFields, { new: true });
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
         if (order) {
           if (status === "delivered") {
             await creditSellerWalletsForOrder(order).catch((err) => {
               console.warn("Wallet crediting notice (admin manual route):", err);
             });
+<<<<<<< HEAD
           } else if (status === "cancelled") {
             await reconcileOrderCommissionOnStatusChange({
               order,
@@ -19574,6 +21409,8 @@ router6.patch("/:id/status", async (req, res) => {
               reason: "Order cancelled by Admin"
             }).catch(() => {
             });
+=======
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
           }
           return res.json(order);
         }
@@ -19590,6 +21427,7 @@ router6.patch("/:id/status", async (req, res) => {
       await creditSellerWalletsForOrder(memoryStore.orders[index]).catch((err) => {
         console.warn("Wallet crediting notice (memory store):", err);
       });
+<<<<<<< HEAD
     } else if (status === "cancelled") {
       await reconcileOrderCommissionOnStatusChange({
         order: memoryStore.orders[index],
@@ -19599,12 +21437,15 @@ router6.patch("/:id/status", async (req, res) => {
         reason: "Order cancelled by Admin"
       }).catch(() => {
       });
+=======
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
     }
     return res.json(memoryStore.orders[index]);
   } catch (err) {
     res.status(500).json({ error: err.message || "Failed to update order status" });
   }
 });
+<<<<<<< HEAD
 var orders_default = router6;
 
 // backend/routes/sellers.ts
@@ -19649,6 +21490,17 @@ async function checkAdminSellerPermission(req, permKey) {
   return true;
 }
 function maskSensitiveSeller(s, isSuperAdmin = false, includeVerificationDocs = false) {
+=======
+var orders_default = router4;
+
+// backend/routes/sellers.ts
+init_Seller();
+import { Router as Router5 } from "express";
+init_store();
+var router5 = Router5();
+router5.use(requireAdmin);
+function maskSensitiveSeller(s, isSuperAdmin = false) {
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
   const doc = s && typeof s.toObject === "function" ? s.toObject() : { ...s };
   delete doc.password;
   delete doc.passwordHash;
@@ -19657,6 +21509,7 @@ function maskSensitiveSeller(s, isSuperAdmin = false, includeVerificationDocs = 
   } else if (doc._id) {
     doc._id = String(doc._id);
   }
+<<<<<<< HEAD
   doc.storeStatus = doc.storeStatus || "active";
   doc.storePolicy = doc.storePolicy || "";
   doc.rejectionReason = doc.rejectionReason || "";
@@ -19703,6 +21556,8 @@ function maskSensitiveSeller(s, isSuperAdmin = false, includeVerificationDocs = 
     canMakeNewSales: true,
     ...doc.permissions || {}
   };
+=======
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
   if (!isSuperAdmin) {
     if (doc.bankAccountNumber) {
       const acc = String(doc.bankAccountNumber);
@@ -19715,6 +21570,7 @@ function maskSensitiveSeller(s, isSuperAdmin = false, includeVerificationDocs = 
   }
   return doc;
 }
+<<<<<<< HEAD
 async function getAllSellersRaw() {
   if (isMongoConnected()) {
     try {
@@ -19757,11 +21613,29 @@ router7.get("/", async (req, res) => {
     return res.json({
       success: true,
       sellers: sellers.map((s) => maskSensitiveSeller(s, isSuper))
+=======
+router5.get("/", async (req, res) => {
+  try {
+    const isSuper = req.admin?.role === "superadmin";
+    if (isMongoConnected()) {
+      try {
+        const sellers = await Seller_default.find().select("-password").sort({ createdAt: -1 });
+        const masked = sellers.map((s) => maskSensitiveSeller(s, isSuper));
+        return res.json({ success: true, sellers: masked });
+      } catch (err) {
+        console.warn("MongoDB fetch sellers failed, using in-memory store:", err);
+      }
+    }
+    return res.json({
+      success: true,
+      sellers: memoryStore.sellers.map((s) => maskSensitiveSeller(s, isSuper))
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
     });
   } catch (err) {
     return res.status(500).json({ success: false, error: err.message || "Failed to fetch sellers" });
   }
 });
+<<<<<<< HEAD
 router7.get("/overview", async (req, res) => {
   try {
     const [sellers, products, orders] = await Promise.all([
@@ -20528,10 +22402,25 @@ router7.patch("/:id/status", async (req, res) => {
           { new: true }
         ).select("-password");
         if (seller) updatedSeller = seller;
+=======
+router5.patch("/:id/status", async (req, res) => {
+  try {
+    const { status } = req.body;
+    const { id } = req.params;
+    const allowed = ["pending", "approved", "review", "suspended", "rejected"];
+    if (!allowed.includes(status)) {
+      return res.status(400).json({ success: false, error: "Invalid status value. Must be pending, approved, review, suspended, or rejected." });
+    }
+    if (isMongoConnected()) {
+      try {
+        const seller = await Seller_default.findByIdAndUpdate(id, { status }, { new: true }).select("-password");
+        if (seller) return res.json({ success: true, seller, status: seller.status });
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
       } catch (err) {
         console.warn("MongoDB update seller status failed, checking in-memory store:", err);
       }
     }
+<<<<<<< HEAD
     if (memIndex !== -1) {
       const target = memoryStore.sellers[memIndex];
       Object.assign(target, setUpdate);
@@ -20561,10 +22450,20 @@ router7.patch("/:id/status", async (req, res) => {
       seller: maskSensitiveSeller(updatedSeller, isSuper),
       status: updatedSeller.status
     });
+=======
+    const index = memoryStore.sellers.findIndex((s) => s._id === id);
+    if (index === -1) {
+      return res.status(404).json({ success: false, error: "Seller not found" });
+    }
+    memoryStore.sellers[index].status = status;
+    const { passwordHash, ...safe } = memoryStore.sellers[index];
+    return res.json({ success: true, seller: safe, status: safe.status });
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
   } catch (err) {
     return res.status(500).json({ success: false, error: err.message || "Failed to update seller status" });
   }
 });
+<<<<<<< HEAD
 router7.put("/:id/profile", async (req, res) => {
   try {
     const canEdit = await checkAdminSellerPermission(req, "editSellerProfiles");
@@ -20720,19 +22619,30 @@ router7.patch("/:id/store-status", async (req, res) => {
   }
 });
 router7.patch("/:id/verify-kyc", async (req, res) => {
+=======
+router5.patch("/:id/verify-kyc", async (req, res) => {
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
   try {
     const { kycVerified } = req.body;
     const { id } = req.params;
     const verified = Boolean(kycVerified);
+<<<<<<< HEAD
     let updatedSeller = null;
     if (isMongoConnected()) {
       try {
         const seller = await Seller_default.findByIdAndUpdate(id, { kycVerified: verified }, { new: true }).select("-password");
         if (seller) updatedSeller = seller;
+=======
+    if (isMongoConnected()) {
+      try {
+        const seller = await Seller_default.findByIdAndUpdate(id, { kycVerified: verified }, { new: true }).select("-password");
+        if (seller) return res.json({ success: true, seller, kycVerified: seller.kycVerified });
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
       } catch (err) {
         console.warn("MongoDB update seller kycVerified failed, checking in-memory store:", err);
       }
     }
+<<<<<<< HEAD
     const index = (memoryStore.sellers || []).findIndex((s) => String(s._id) === String(id));
     if (index !== -1) {
       memoryStore.sellers[index].kycVerified = verified;
@@ -21228,10 +23138,982 @@ router7.post("/:id/verification/review", async (req, res) => {
   }
 });
 var sellers_default = router7;
+=======
+    const index = memoryStore.sellers.findIndex((s) => s._id === id);
+    if (index === -1) {
+      return res.status(404).json({ success: false, error: "Seller not found" });
+    }
+    memoryStore.sellers[index].kycVerified = verified;
+    const { passwordHash, ...safe } = memoryStore.sellers[index];
+    return res.json({ success: true, seller: safe, kycVerified: safe.kycVerified });
+  } catch (err) {
+    return res.status(500).json({ success: false, error: err.message || "Failed to update seller KYC verification status" });
+  }
+});
+var sellers_default = router5;
+
+// backend/routes/sellerPortal.ts
+init_Seller();
+init_Product();
+import { Router as Router6 } from "express";
+import bcrypt4 from "bcryptjs";
+import jwt4 from "jsonwebtoken";
+init_store();
+async function requireSellerAuth(req, res, next) {
+  const secret = getJwtSecret();
+  if (!secret) {
+    return res.status(503).json({
+      success: false,
+      error: "Authentication service is temporarily misconfigured. Please contact support."
+    });
+  }
+  const header = req.headers.authorization;
+  if (!header || !header.startsWith("Bearer ")) {
+    return res.status(401).json({
+      success: false,
+      error: "Authentication required: Please log in to your seller account."
+    });
+  }
+  const token = header.slice(7);
+  let payload;
+  try {
+    payload = jwt4.verify(token, secret);
+  } catch (err) {
+    return res.status(401).json({
+      success: false,
+      error: "Invalid or expired seller session token. Please sign in again."
+    });
+  }
+  if (!payload || !payload.sellerId || payload.role !== "seller") {
+    return res.status(403).json({
+      success: false,
+      error: "Access denied: Seller authentication token required."
+    });
+  }
+  if (isMongoConnected()) {
+    try {
+      const sellerDoc = await Seller_default.findById(payload.sellerId);
+      if (sellerDoc) {
+        if (sellerDoc.status !== "approved") {
+          return res.status(403).json({
+            success: false,
+            status: sellerDoc.status,
+            error: sellerDoc.status === "pending" ? "Your seller application is pending administrator approval." : `Your seller account is ${sellerDoc.status}. Only approved sellers can manage products.`
+          });
+        }
+        req.sellerId = String(sellerDoc._id);
+        req.seller = {
+          _id: String(sellerDoc._id),
+          shopName: sellerDoc.shopName || sellerDoc.storefront,
+          storefront: sellerDoc.storefront || sellerDoc.shopName,
+          ownerName: sellerDoc.ownerName,
+          email: sellerDoc.email || sellerDoc.ownerEmail,
+          mobileNumber: sellerDoc.mobileNumber || "",
+          businessAddress: sellerDoc.businessAddress || "",
+          status: sellerDoc.status,
+          listingsCount: sellerDoc.listingsCount || 0
+        };
+        return next();
+      }
+    } catch (e) {
+      console.warn("MongoDB seller lookup failed, trying memory store:", e?.message);
+    }
+  }
+  const memSeller = (memoryStore.sellers || []).find(
+    (s) => s._id === payload.sellerId || s.email && s.email.toLowerCase() === (payload.email || "").toLowerCase()
+  );
+  if (memSeller) {
+    if (memSeller.status !== "approved") {
+      return res.status(403).json({
+        success: false,
+        status: memSeller.status,
+        error: memSeller.status === "pending" ? "Your seller application is pending administrator approval." : `Your seller account is ${memSeller.status}. Only approved sellers can manage products.`
+      });
+    }
+    req.sellerId = memSeller._id;
+    req.seller = {
+      _id: memSeller._id,
+      shopName: memSeller.shopName || memSeller.storefront,
+      storefront: memSeller.storefront || memSeller.shopName || "",
+      ownerName: memSeller.ownerName,
+      email: memSeller.email || memSeller.ownerEmail || "",
+      mobileNumber: memSeller.mobileNumber || "",
+      businessAddress: memSeller.businessAddress || "",
+      status: memSeller.status,
+      listingsCount: memSeller.listingsCount || 0
+    };
+    return next();
+  }
+  return res.status(403).json({
+    success: false,
+    error: "Access denied: Seller account not found."
+  });
+}
+var router6 = Router6();
+router6.get("/status-check", async (req, res) => {
+  try {
+    const email = String(req.query.email || "").toLowerCase().trim();
+    if (!email) {
+      return res.json({ isSeller: false, status: null });
+    }
+    if (isMongoConnected()) {
+      try {
+        const seller = await Seller_default.findOne({ email });
+        if (seller) {
+          return res.json({
+            isSeller: seller.status === "approved",
+            status: seller.status,
+            shopName: seller.shopName
+          });
+        }
+      } catch (e) {
+        console.warn("Seller status check mongo error:", e);
+      }
+    }
+    const memSeller = (memoryStore.sellers || []).find((s) => s.email?.toLowerCase() === email);
+    if (memSeller) {
+      return res.json({
+        isSeller: memSeller.status === "approved",
+        status: memSeller.status,
+        shopName: memSeller.shopName
+      });
+    }
+    return res.json({ isSeller: false, status: null });
+  } catch (err) {
+    return res.status(500).json({ error: err.message || "Failed to check seller status" });
+  }
+});
+router6.post("/register", async (req, res) => {
+  try {
+    const {
+      shopName,
+      ownerName,
+      mobileNumber,
+      email,
+      password,
+      businessAddress,
+      panNumber,
+      gstin,
+      bankAccountHolderName,
+      bankAccountNumber,
+      bankIFSC,
+      bankName
+    } = req.body;
+    if (!shopName || !shopName.trim()) {
+      return res.status(400).json({ error: "Shop name is required." });
+    }
+    if (!ownerName || !ownerName.trim()) {
+      return res.status(400).json({ error: "Owner name is required." });
+    }
+    if (!mobileNumber || !mobileNumber.trim()) {
+      return res.status(400).json({ error: "Mobile number is required." });
+    }
+    if (!email || !email.trim()) {
+      return res.status(400).json({ error: "Email address is required." });
+    }
+    if (!password || password.length < 6) {
+      return res.status(400).json({ error: "Password must be at least 6 characters long." });
+    }
+    if (!businessAddress || !businessAddress.trim()) {
+      return res.status(400).json({ error: "Business address is required." });
+    }
+    if (!panNumber || !panNumber.trim()) {
+      return res.status(400).json({ error: "PAN number is required for seller verification." });
+    }
+    const cleanPan = panNumber.trim().toUpperCase();
+    const panRegex = /^[A-Z]{5}[0-9]{4}[A-Z]{1}$/;
+    if (!panRegex.test(cleanPan)) {
+      return res.status(400).json({ error: "Invalid PAN format. Expected format: ABCDE1234F (10 characters: 5 letters, 4 digits, 1 letter)." });
+    }
+    let cleanGstin = "";
+    if (gstin && gstin.trim()) {
+      cleanGstin = gstin.trim().toUpperCase();
+      const gstinRegex = /^[0-9]{2}[A-Z]{5}[0-9]{4}[A-Z]{1}[1-9A-Z]{1}Z[0-9A-Z]{1}$/;
+      if (!gstinRegex.test(cleanGstin)) {
+        return res.status(400).json({ error: "Invalid GSTIN format. Expected format: 22ABCDE1234F1Z5 (15 characters)." });
+      }
+    }
+    if (!bankAccountHolderName || !bankAccountHolderName.trim()) {
+      return res.status(400).json({ error: "Bank account holder name is required." });
+    }
+    if (!bankAccountNumber || !bankAccountNumber.trim()) {
+      return res.status(400).json({ error: "Bank account number is required." });
+    }
+    if (!bankIFSC || !bankIFSC.trim()) {
+      return res.status(400).json({ error: "Bank IFSC code is required." });
+    }
+    const cleanIfsc = bankIFSC.trim().toUpperCase();
+    const ifscRegex = /^[A-Z]{4}0[A-Z0-9]{6}$/;
+    if (!ifscRegex.test(cleanIfsc)) {
+      return res.status(400).json({ error: "Invalid IFSC code format. Expected format: SBIN0001234 (11 characters: 4 letters, '0', 6 alphanumeric)." });
+    }
+    if (!bankName || !bankName.trim()) {
+      return res.status(400).json({ error: "Bank name is required." });
+    }
+    const cleanEmail = email.trim().toLowerCase();
+    const cleanShopName = shopName.trim();
+    const cleanOwnerName = ownerName.trim();
+    const cleanMobile = mobileNumber.trim();
+    const cleanAddress = businessAddress.trim();
+    const cleanAccountHolder = bankAccountHolderName.trim();
+    const cleanAccountNumber = bankAccountNumber.trim();
+    const cleanBank = bankName.trim();
+    if (isMongoConnected()) {
+      try {
+        const existing = await Seller_default.findOne({
+          $or: [{ email: cleanEmail }, { ownerEmail: cleanEmail }]
+        });
+        if (existing) {
+          return res.status(409).json({
+            error: "A seller account or application with this email address already exists."
+          });
+        }
+      } catch (err) {
+        console.warn("MongoDB check existing seller error:", err);
+      }
+    }
+    const memExisting = (memoryStore.sellers || []).find(
+      (s) => s.email && s.email.toLowerCase() === cleanEmail || s.ownerEmail && s.ownerEmail.toLowerCase() === cleanEmail
+    );
+    if (memExisting) {
+      return res.status(409).json({
+        error: "A seller account or application with this email address already exists."
+      });
+    }
+    const salt = await bcrypt4.genSalt(10);
+    const passwordHash = await bcrypt4.hash(password, salt);
+    let createdSeller = null;
+    if (isMongoConnected()) {
+      try {
+        createdSeller = await Seller_default.create({
+          shopName: cleanShopName,
+          storefront: cleanShopName,
+          ownerName: cleanOwnerName,
+          ownerEmail: cleanEmail,
+          email: cleanEmail,
+          mobileNumber: cleanMobile,
+          businessAddress: cleanAddress,
+          panNumber: cleanPan,
+          gstin: cleanGstin || void 0,
+          bankAccountHolderName: cleanAccountHolder,
+          bankAccountNumber: cleanAccountNumber,
+          bankIFSC: cleanIfsc,
+          bankName: cleanBank,
+          kycVerified: false,
+          password: passwordHash,
+          status: "pending",
+          listingsCount: 0
+        });
+      } catch (err) {
+        console.warn("MongoDB save seller application failed, falling back to memory:", err?.message);
+      }
+    }
+    const newId = createdSeller ? String(createdSeller._id) : `seller_${Date.now()}`;
+    const newSellerData = {
+      _id: newId,
+      shopName: cleanShopName,
+      storefront: cleanShopName,
+      ownerName: cleanOwnerName,
+      ownerEmail: cleanEmail,
+      email: cleanEmail,
+      mobileNumber: cleanMobile,
+      businessAddress: cleanAddress,
+      panNumber: cleanPan,
+      gstin: cleanGstin || void 0,
+      bankAccountHolderName: cleanAccountHolder,
+      bankAccountNumber: cleanAccountNumber,
+      bankIFSC: cleanIfsc,
+      bankName: cleanBank,
+      kycVerified: false,
+      passwordHash,
+      listingsCount: 0,
+      status: "pending",
+      createdAt: /* @__PURE__ */ new Date()
+    };
+    memoryStore.sellers.unshift(newSellerData);
+    return res.status(201).json({
+      success: true,
+      message: "Seller application submitted successfully! Your application is currently pending administrator approval.",
+      seller: {
+        _id: newId,
+        shopName: cleanShopName,
+        ownerName: cleanOwnerName,
+        email: cleanEmail,
+        mobileNumber: cleanMobile,
+        businessAddress: cleanAddress,
+        panNumber: cleanPan,
+        gstin: cleanGstin || void 0,
+        bankAccountHolderName: cleanAccountHolder,
+        bankAccountNumber: cleanAccountNumber,
+        bankIFSC: cleanIfsc,
+        bankName: cleanBank,
+        kycVerified: false,
+        status: "pending"
+      }
+    });
+  } catch (err) {
+    console.error("Seller register error:", err);
+    return res.status(500).json({ error: err.message || "Failed to submit seller registration" });
+  }
+});
+router6.post("/login", async (req, res) => {
+  try {
+    const { email, password } = req.body;
+    if (!email || !password) {
+      return res.status(400).json({ error: "Email and password are required" });
+    }
+    const cleanEmail = email.trim().toLowerCase();
+    let sellerDoc = null;
+    if (isMongoConnected()) {
+      try {
+        sellerDoc = await Seller_default.findOne({
+          $or: [{ email: cleanEmail }, { ownerEmail: cleanEmail }]
+        });
+      } catch (err) {
+        console.warn("MongoDB find seller for login failed:", err);
+      }
+    }
+    let sellerRecord = sellerDoc;
+    let storedHash = sellerDoc?.password;
+    if (!sellerRecord) {
+      const mem = (memoryStore.sellers || []).find(
+        (s) => s.email && s.email.toLowerCase() === cleanEmail || s.ownerEmail && s.ownerEmail.toLowerCase() === cleanEmail
+      );
+      if (mem) {
+        sellerRecord = mem;
+        storedHash = mem.passwordHash;
+      }
+    }
+    if (!sellerRecord) {
+      return res.status(401).json({ success: false, error: "Invalid credentials" });
+    }
+    if (!storedHash) {
+      return res.status(401).json({ success: false, error: "Invalid credentials" });
+    }
+    const isValid = await bcrypt4.compare(password, storedHash);
+    if (!isValid) {
+      return res.status(401).json({ success: false, error: "Invalid credentials" });
+    }
+    if (sellerRecord.status === "pending") {
+      return res.status(403).json({
+        success: false,
+        status: "pending",
+        error: "Your seller application is pending administrator approval. Please wait for an administrator to approve your account before logging in."
+      });
+    }
+    if (sellerRecord.status === "rejected") {
+      return res.status(403).json({
+        success: false,
+        status: "rejected",
+        error: "Your seller registration was rejected by the administrator. Please contact support for inquiries."
+      });
+    }
+    if (sellerRecord.status === "suspended") {
+      return res.status(403).json({
+        success: false,
+        status: "suspended",
+        error: "Your seller account is currently suspended. Please contact platform administration."
+      });
+    }
+    if (sellerRecord.status !== "approved") {
+      return res.status(403).json({
+        success: false,
+        status: sellerRecord.status,
+        error: `Your seller account is currently in '${sellerRecord.status}' status. Only approved sellers can access the dashboard.`
+      });
+    }
+    const sellerId = String(sellerRecord._id);
+    const shopName = sellerRecord.shopName || sellerRecord.storefront || "Seller Atelier";
+    const secret = getJwtSecret();
+    if (!secret) {
+      return res.status(503).json({
+        success: false,
+        error: "Authentication service is temporarily misconfigured. Please contact support."
+      });
+    }
+    const token = jwt4.sign(
+      {
+        sellerId,
+        role: "seller",
+        email: sellerRecord.email || sellerRecord.ownerEmail,
+        shopName
+      },
+      secret,
+      { expiresIn: "7d" }
+    );
+    return res.json({
+      success: true,
+      token,
+      seller: {
+        _id: sellerId,
+        shopName,
+        storefront: shopName,
+        ownerName: sellerRecord.ownerName,
+        email: sellerRecord.email || sellerRecord.ownerEmail,
+        mobileNumber: sellerRecord.mobileNumber || "",
+        businessAddress: sellerRecord.businessAddress || "",
+        status: sellerRecord.status,
+        listingsCount: sellerRecord.listingsCount || 0
+      }
+    });
+  } catch (err) {
+    console.error("Seller login error:", err);
+    return res.status(500).json({ error: err.message || "Login failed" });
+  }
+});
+router6.get("/me", requireSellerAuth, async (req, res) => {
+  try {
+    const sellerId = req.sellerId;
+    let productCount = 0;
+    if (isMongoConnected()) {
+      try {
+        productCount = await Product_default.countDocuments({ sellerId });
+      } catch (e) {
+        console.warn("Count seller products in MongoDB error:", e);
+      }
+    }
+    if (!productCount) {
+      productCount = (memoryStore.products || []).filter((p) => p.sellerId === sellerId).length;
+    }
+    return res.json({
+      seller: {
+        ...req.seller,
+        listingsCount: productCount
+      }
+    });
+  } catch (err) {
+    return res.status(500).json({ error: err.message || "Failed to fetch seller profile" });
+  }
+});
+router6.get("/products", requireSellerAuth, async (req, res) => {
+  try {
+    const sellerId = req.sellerId;
+    if (isMongoConnected()) {
+      try {
+        const products = await Product_default.find({ sellerId }).sort({ createdAt: -1 });
+        return res.json(products);
+      } catch (err) {
+        console.warn("MongoDB fetch seller products failed, using in-memory store:", err);
+      }
+    }
+    const sellerProducts = (memoryStore.products || []).filter((p) => p.sellerId === sellerId);
+    return res.json(sellerProducts);
+  } catch (err) {
+    return res.status(500).json({ error: err.message || "Failed to fetch seller products" });
+  }
+});
+router6.post("/products", requireSellerAuth, async (req, res) => {
+  try {
+    const sellerId = req.sellerId;
+    const sellerShopName = req.seller?.shopName || req.seller?.storefront || "Seller Atelier";
+    const {
+      name,
+      brand,
+      category,
+      subCategory = "",
+      eligibleFor20MinDelivery,
+      price,
+      mrp,
+      stock = 10,
+      stockStatus = "In Stock",
+      badge = "",
+      image = "",
+      images = [],
+      description = "",
+      specifications = {},
+      isWholesale = false,
+      wholesalePrice = 0,
+      wholesaleMinQty = 1,
+      colors = [],
+      sizes = [],
+      emoji = "\u{1F4E6}",
+      hsnCode = "",
+      gstRate = 18,
+      countryOfOrigin = "India",
+      manufacturerDetails = "",
+      packInfo = ""
+    } = req.body;
+    if (!name || !name.trim()) {
+      return res.status(400).json({ error: "Product name is required" });
+    }
+    if (!category || !category.trim()) {
+      return res.status(400).json({ error: "Product category is required" });
+    }
+    const numericPrice = Number(price) || 0;
+    const numericMrp = mrp !== void 0 && mrp !== null ? Number(mrp) : numericPrice;
+    const numericStock = Number(stock) || 0;
+    const resolvedBrand = brand && brand.trim() ? brand.trim() : sellerShopName;
+    const is20Min = eligibleFor20MinDelivery !== void 0 ? Boolean(eligibleFor20MinDelivery) : category.trim() === "grocery" || category.trim() === "food_delivery" || category.trim() === "delivery";
+    let createdProduct = null;
+    if (isMongoConnected()) {
+      try {
+        createdProduct = await Product_default.create({
+          name: name.trim(),
+          brand: resolvedBrand,
+          category: category.trim(),
+          subCategory: String(subCategory || "").trim(),
+          eligibleFor20MinDelivery: is20Min,
+          price: numericPrice,
+          mrp: numericMrp,
+          rating: 5,
+          reviewsCount: 1,
+          stock: numericStock,
+          stockStatus: stockStatus || (numericStock <= 0 ? "Out of Stock" : numericStock <= 3 ? "Only 2 left!" : "In Stock"),
+          badge,
+          isFlashSale: false,
+          image: image || "https://images.unsplash.com/photo-1547996160-81dfa63595aa?w=500&auto=format&fit=crop&q=60",
+          images: Array.isArray(images) && images.length > 0 ? images : [image || "https://images.unsplash.com/photo-1547996160-81dfa63595aa?w=500&auto=format&fit=crop&q=60"],
+          description: description || "",
+          specifications: specifications || {},
+          isWholesale: Boolean(isWholesale),
+          wholesalePrice: Number(wholesalePrice) || 0,
+          wholesaleMinQty: Number(wholesaleMinQty) || 1,
+          colors: Array.isArray(colors) ? colors : [],
+          sizes: Array.isArray(sizes) ? sizes : [],
+          emoji: emoji || "\u{1F4E6}",
+          sellerId,
+          sellerShopName,
+          hsnCode: String(hsnCode || "").trim(),
+          gstRate: Number(gstRate) || 18,
+          countryOfOrigin: String(countryOfOrigin || "India").trim(),
+          manufacturerDetails: String(manufacturerDetails || "").trim(),
+          packInfo: String(packInfo || "").trim()
+        });
+        await Seller_default.findByIdAndUpdate(sellerId, { $inc: { listingsCount: 1 } });
+      } catch (err) {
+        console.warn("MongoDB create seller product failed, storing in-memory:", err);
+      }
+    }
+    const newProd = {
+      _id: createdProduct ? String(createdProduct._id) : `prod_seller_${Date.now()}`,
+      id: Date.now(),
+      name: name.trim(),
+      brand: resolvedBrand,
+      category: category.trim(),
+      subCategory: String(subCategory || "").trim(),
+      eligibleFor20MinDelivery: is20Min,
+      price: numericPrice,
+      mrp: numericMrp,
+      rating: 5,
+      reviewsCount: 1,
+      stock: numericStock,
+      stockStatus: stockStatus || (numericStock <= 0 ? "Out of Stock" : numericStock <= 3 ? "Only 2 left!" : "In Stock"),
+      badge,
+      isFlashSale: false,
+      image: image || "https://images.unsplash.com/photo-1547996160-81dfa63595aa?w=500&auto=format&fit=crop&q=60",
+      images: Array.isArray(images) && images.length > 0 ? images : [image || "https://images.unsplash.com/photo-1547996160-81dfa63595aa?w=500&auto=format&fit=crop&q=60"],
+      description: description || "",
+      specifications: specifications || {},
+      isWholesale: Boolean(isWholesale),
+      wholesalePrice: Number(wholesalePrice) || 0,
+      wholesaleMinQty: Number(wholesaleMinQty) || 1,
+      colors: Array.isArray(colors) ? colors : [],
+      sizes: Array.isArray(sizes) ? sizes : [],
+      emoji: emoji || "\u{1F4E6}",
+      sellerId,
+      sellerShopName,
+      hsnCode: String(hsnCode || "").trim(),
+      gstRate: Number(gstRate) || 18,
+      countryOfOrigin: String(countryOfOrigin || "India").trim(),
+      manufacturerDetails: String(manufacturerDetails || "").trim(),
+      packInfo: String(packInfo || "").trim(),
+      createdAt: /* @__PURE__ */ new Date()
+    };
+    memoryStore.products.unshift(newProd);
+    const memSeller = (memoryStore.sellers || []).find((s) => s._id === sellerId);
+    if (memSeller) {
+      memSeller.listingsCount = (memSeller.listingsCount || 0) + 1;
+    }
+    return res.status(201).json(createdProduct || newProd);
+  } catch (err) {
+    console.error("Seller create product error:", err);
+    return res.status(500).json({ error: err.message || "Failed to create product" });
+  }
+});
+router6.put("/products/:id", requireSellerAuth, async (req, res) => {
+  try {
+    const sellerId = req.sellerId;
+    const { id } = req.params;
+    const body = req.body;
+    if (isMongoConnected()) {
+      try {
+        const existing = await Product_default.findById(id);
+        if (existing) {
+          if (existing.sellerId !== sellerId) {
+            return res.status(403).json({ error: "Unauthorized: You can only edit your own products." });
+          }
+          const updateData = {};
+          if (body.name !== void 0) updateData.name = body.name.trim();
+          if (body.brand !== void 0) updateData.brand = body.brand.trim();
+          if (body.category !== void 0) updateData.category = body.category.trim();
+          if (body.subCategory !== void 0) updateData.subCategory = body.subCategory.trim();
+          if (body.eligibleFor20MinDelivery !== void 0) updateData.eligibleFor20MinDelivery = Boolean(body.eligibleFor20MinDelivery);
+          if (body.price !== void 0) updateData.price = Number(body.price);
+          if (body.mrp !== void 0) updateData.mrp = Number(body.mrp);
+          if (body.stock !== void 0) updateData.stock = Number(body.stock);
+          if (body.stockStatus !== void 0) updateData.stockStatus = body.stockStatus;
+          if (body.badge !== void 0) updateData.badge = body.badge;
+          if (body.image !== void 0) updateData.image = body.image;
+          if (body.images !== void 0) updateData.images = body.images;
+          if (body.description !== void 0) updateData.description = body.description;
+          if (body.specifications !== void 0) updateData.specifications = body.specifications;
+          if (body.isWholesale !== void 0) updateData.isWholesale = Boolean(body.isWholesale);
+          if (body.wholesalePrice !== void 0) updateData.wholesalePrice = Number(body.wholesalePrice);
+          if (body.wholesaleMinQty !== void 0) updateData.wholesaleMinQty = Number(body.wholesaleMinQty);
+          if (body.colors !== void 0) updateData.colors = body.colors;
+          if (body.sizes !== void 0) updateData.sizes = body.sizes;
+          if (body.hsnCode !== void 0) updateData.hsnCode = String(body.hsnCode || "").trim();
+          if (body.gstRate !== void 0) updateData.gstRate = Number(body.gstRate) || 18;
+          if (body.countryOfOrigin !== void 0) updateData.countryOfOrigin = String(body.countryOfOrigin || "India").trim();
+          if (body.manufacturerDetails !== void 0) updateData.manufacturerDetails = String(body.manufacturerDetails || "").trim();
+          if (body.packInfo !== void 0) updateData.packInfo = String(body.packInfo || "").trim();
+          const updated = await Product_default.findByIdAndUpdate(id, updateData, { new: true });
+          return res.json(updated);
+        }
+      } catch (err) {
+        console.warn("MongoDB seller update product error:", err);
+      }
+    }
+    const index = memoryStore.products.findIndex((p) => p._id === id || String(p.id) === id);
+    if (index !== -1) {
+      const prod = memoryStore.products[index];
+      if (prod.sellerId !== sellerId) {
+        return res.status(403).json({ error: "Unauthorized: You can only edit your own products." });
+      }
+      memoryStore.products[index] = {
+        ...prod,
+        ...body,
+        updatedAt: /* @__PURE__ */ new Date()
+      };
+      return res.json(memoryStore.products[index]);
+    }
+    return res.status(404).json({ error: "Product not found" });
+  } catch (err) {
+    return res.status(500).json({ error: err.message || "Failed to update product" });
+  }
+});
+router6.delete("/products/:id", requireSellerAuth, async (req, res) => {
+  try {
+    const sellerId = req.sellerId;
+    const { id } = req.params;
+    if (isMongoConnected()) {
+      try {
+        const existing = await Product_default.findById(id);
+        if (existing) {
+          if (existing.sellerId !== sellerId) {
+            return res.status(403).json({ error: "Unauthorized: You can only delete your own products." });
+          }
+          await Product_default.findByIdAndDelete(id);
+          await Seller_default.findByIdAndUpdate(sellerId, { $inc: { listingsCount: -1 } });
+        }
+      } catch (err) {
+        console.warn("MongoDB seller delete product error:", err);
+      }
+    }
+    const index = memoryStore.products.findIndex((p) => p._id === id || String(p.id) === id);
+    if (index !== -1) {
+      const prod = memoryStore.products[index];
+      if (prod.sellerId !== sellerId) {
+        return res.status(403).json({ error: "Unauthorized: You can only delete your own products." });
+      }
+      memoryStore.products.splice(index, 1);
+      const memSeller = (memoryStore.sellers || []).find((s) => s._id === sellerId);
+      if (memSeller && memSeller.listingsCount > 0) {
+        memSeller.listingsCount -= 1;
+      }
+    }
+    return res.json({ ok: true, message: "Product deleted from your seller catalog." });
+  } catch (err) {
+    return res.status(500).json({ error: err.message || "Failed to delete product" });
+  }
+});
+router6.get("/wallet", requireSellerAuth, async (req, res) => {
+  try {
+    const sellerId = req.sellerId;
+    let walletBalance = 0;
+    let totalEarnings = 0;
+    let pendingWithdrawals = 0;
+    if (isMongoConnected()) {
+      try {
+        const sellerDoc = await Seller_default.findById(sellerId).lean();
+        if (sellerDoc) {
+          walletBalance = Number(sellerDoc.walletBalance) || 0;
+          totalEarnings = Number(sellerDoc.totalEarnings) || 0;
+          pendingWithdrawals = Number(sellerDoc.pendingWithdrawals) || 0;
+        }
+      } catch (err) {
+        console.warn("MongoDB seller fetch in /wallet error:", err);
+      }
+    }
+    if (walletBalance === 0 && totalEarnings === 0) {
+      const memSeller = (memoryStore.sellers || []).find((s) => s._id === sellerId);
+      if (memSeller) {
+        walletBalance = Number(memSeller.walletBalance) || 0;
+        totalEarnings = Number(memSeller.totalEarnings) || 0;
+        pendingWithdrawals = Number(memSeller.pendingWithdrawals) || 0;
+      }
+    }
+    let sellerProducts = [];
+    if (isMongoConnected()) {
+      try {
+        sellerProducts = await Product_default.find({ sellerId }).select("_id id name price image").lean();
+      } catch (err) {
+        console.warn("MongoDB seller products query in /wallet error:", err);
+        sellerProducts = (memoryStore.products || []).filter((p) => p.sellerId === sellerId);
+      }
+    } else {
+      sellerProducts = (memoryStore.products || []).filter((p) => p.sellerId === sellerId);
+    }
+    const sellerProductMap = /* @__PURE__ */ new Map();
+    for (const p of sellerProducts) {
+      if (p._id) sellerProductMap.set(String(p._id), p);
+      if (p.id !== void 0 && p.id !== null) sellerProductMap.set(String(p.id), p);
+    }
+    let deliveredOrders = [];
+    if (isMongoConnected()) {
+      try {
+        deliveredOrders = await Order_default.find({ status: "delivered" }).sort({ deliveredAt: -1, createdAt: -1 }).lean();
+      } catch (err) {
+        console.warn("MongoDB orders query in /wallet error:", err);
+        deliveredOrders = (memoryStore.orders || []).filter((o) => o.status === "delivered");
+      }
+    } else {
+      deliveredOrders = (memoryStore.orders || []).filter((o) => o.status === "delivered");
+    }
+    const ledger = [];
+    for (const ord of deliveredOrders) {
+      const items = Array.isArray(ord.items) ? ord.items : [];
+      const sellerItems = items.filter((it) => sellerProductMap.has(String(it.productId)));
+      if (sellerItems.length === 0) continue;
+      const commissionRate = typeof ord.commissionRate === "number" ? ord.commissionRate : 5;
+      const commissionPercent = Math.max(0, Math.min(100, commissionRate));
+      let orderSellerGross = 0;
+      let orderSellerCommission = 0;
+      let orderSellerPayout = 0;
+      const itemBreakdown = sellerItems.map((it) => {
+        const itemPrice = Number(it.price) || 0;
+        const itemQty = Number(it.qty) || 1;
+        const itemGross = itemPrice * itemQty;
+        const itemCommission = Math.round(itemGross * commissionPercent / 100);
+        const itemPayout = Math.max(0, itemGross - itemCommission);
+        orderSellerGross += itemGross;
+        orderSellerCommission += itemCommission;
+        orderSellerPayout += itemPayout;
+        return {
+          productId: it.productId,
+          name: it.name,
+          qty: itemQty,
+          price: itemPrice,
+          total: itemGross,
+          commissionDeducted: itemCommission,
+          netPayout: itemPayout
+        };
+      });
+      ledger.push({
+        _id: String(ord._id || ord.orderNumber),
+        orderNumber: ord.orderNumber || "AN-UNKNOWN",
+        deliveredAt: ord.deliveredAt ? new Date(ord.deliveredAt).toISOString() : (/* @__PURE__ */ new Date()).toISOString(),
+        orderDate: ord.createdAt ? new Date(ord.createdAt).toISOString() : (/* @__PURE__ */ new Date()).toISOString(),
+        memberName: ord.memberName || "Client",
+        orderTotal: ord.total || 0,
+        commissionRate,
+        sellerGross: orderSellerGross,
+        commissionDeducted: orderSellerCommission,
+        sellerPayout: orderSellerPayout,
+        walletCredited: Boolean(ord.walletCredited),
+        items: itemBreakdown
+      });
+    }
+    return res.json({
+      success: true,
+      sellerId,
+      walletBalance,
+      totalEarnings,
+      pendingWithdrawals,
+      ledger
+    });
+  } catch (err) {
+    console.error("Failed to load seller wallet:", err);
+    return res.status(500).json({ success: false, error: err.message || "Failed to retrieve seller wallet" });
+  }
+});
+router6.post("/wallet/withdraw", requireSellerAuth, async (req, res) => {
+  try {
+    const sellerId = req.sellerId;
+    const { amount, payoutDetails, note } = req.body;
+    const numAmount = Number(amount);
+    if (isNaN(numAmount) || numAmount <= 0) {
+      return res.status(400).json({
+        success: false,
+        error: "Invalid withdrawal amount. Must be a positive number greater than 0."
+      });
+    }
+    let sellerDoc = null;
+    if (isMongoConnected()) {
+      try {
+        sellerDoc = await Seller_default.findById(sellerId);
+      } catch (err) {
+        console.warn("MongoDB seller lookup in withdraw error:", err);
+      }
+    }
+    if (!sellerDoc) {
+      sellerDoc = (memoryStore.sellers || []).find((s) => s._id === sellerId);
+    }
+    if (!sellerDoc) {
+      return res.status(404).json({ success: false, error: "Seller profile not found." });
+    }
+    const currentBalance = Number(sellerDoc.walletBalance) || 0;
+    if (currentBalance < numAmount) {
+      return res.status(400).json({
+        success: false,
+        error: `Insufficient balance. Your available wallet balance is \u20B9${currentBalance.toLocaleString()}, but you requested \u20B9${numAmount.toLocaleString()}.`,
+        currentBalance
+      });
+    }
+    let updatedSeller = null;
+    if (isMongoConnected()) {
+      try {
+        updatedSeller = await Seller_default.findOneAndUpdate(
+          {
+            _id: sellerId,
+            walletBalance: { $gte: numAmount }
+          },
+          {
+            $inc: {
+              walletBalance: -numAmount,
+              pendingWithdrawals: numAmount
+            }
+          },
+          { new: true }
+        );
+      } catch (err) {
+        console.warn("MongoDB atomic seller balance update error:", err);
+      }
+      if (!updatedSeller) {
+        return res.status(400).json({
+          success: false,
+          error: "Failed to deduct funds. Available balance was modified or is insufficient for this withdrawal."
+        });
+      }
+    } else {
+      const memSeller = (memoryStore.sellers || []).find((s) => s._id === sellerId);
+      if (memSeller) {
+        const memBal = Number(memSeller.walletBalance || 0);
+        if (memBal < numAmount) {
+          return res.status(400).json({
+            success: false,
+            error: "Insufficient funds in wallet."
+          });
+        }
+        memSeller.walletBalance = memBal - numAmount;
+        memSeller.pendingWithdrawals = (memSeller.pendingWithdrawals || 0) + numAmount;
+        updatedSeller = memSeller;
+      }
+    }
+    if (!updatedSeller) {
+      return res.status(400).json({
+        success: false,
+        error: "Failed to deduct funds. Balance may have changed or is insufficient."
+      });
+    }
+    let withdrawalRecord = null;
+    if (isMongoConnected()) {
+      try {
+        withdrawalRecord = await SellerWithdrawal_default.create({
+          sellerId: updatedSeller._id,
+          sellerEmail: updatedSeller.email,
+          sellerShopName: updatedSeller.shopName,
+          amount: numAmount,
+          payoutDetails: payoutDetails ? String(payoutDetails).trim() : "",
+          note: note ? String(note).trim() : "",
+          status: "pending",
+          requestedAt: /* @__PURE__ */ new Date()
+        });
+      } catch (dbErr) {
+        console.error("MongoDB failed to create SellerWithdrawal:", dbErr);
+        await Seller_default.findByIdAndUpdate(sellerId, {
+          $inc: { walletBalance: numAmount, pendingWithdrawals: -numAmount }
+        }).catch(() => {
+        });
+        return res.status(500).json({
+          success: false,
+          error: "Failed to record withdrawal request. Your wallet balance has been restored."
+        });
+      }
+    }
+    const memWithdrawal = {
+      _id: withdrawalRecord ? String(withdrawalRecord._id) : `sw_${Date.now()}_${Math.random().toString(36).slice(2, 7)}`,
+      sellerId: String(updatedSeller._id),
+      sellerEmail: updatedSeller.email,
+      sellerShopName: updatedSeller.shopName,
+      amount: numAmount,
+      payoutDetails: payoutDetails ? String(payoutDetails).trim() : "",
+      note: note ? String(note).trim() : "",
+      status: "pending",
+      requestedAt: /* @__PURE__ */ new Date(),
+      createdAt: /* @__PURE__ */ new Date(),
+      updatedAt: /* @__PURE__ */ new Date()
+    };
+    (memoryStore.sellerWithdrawals = memoryStore.sellerWithdrawals || []).unshift(memWithdrawal);
+    const finalRecord = withdrawalRecord || memWithdrawal;
+    console.log(
+      `\u{1F4B8} [SELLER WITHDRAWAL REQUESTED] Seller ${updatedSeller.shopName} (${updatedSeller.email}) requested \u20B9${numAmount}. Status: PENDING.`
+    );
+    return res.status(201).json({
+      success: true,
+      message: "Withdrawal request submitted successfully and is awaiting admin approval.",
+      withdrawal: finalRecord,
+      walletBalance: updatedSeller.walletBalance,
+      pendingWithdrawals: updatedSeller.pendingWithdrawals
+    });
+  } catch (err) {
+    console.error("Seller withdrawal error:", err);
+    return res.status(500).json({
+      success: false,
+      error: err.message || "Failed to process withdrawal request"
+    });
+  }
+});
+router6.get("/wallet/withdrawals", requireSellerAuth, async (req, res) => {
+  try {
+    const sellerId = req.sellerId;
+    const sellerEmail = req.seller?.email;
+    let withdrawals = [];
+    if (isMongoConnected()) {
+      try {
+        const orConditions = [{ sellerId }];
+        if (sellerEmail) {
+          orConditions.push({ sellerEmail: sellerEmail.toLowerCase().trim() });
+        }
+        withdrawals = await SellerWithdrawal_default.find({ $or: orConditions }).sort({ requestedAt: -1, createdAt: -1 }).lean();
+      } catch (err) {
+        console.warn("MongoDB seller withdrawals query fallback:", err);
+      }
+    }
+    if (!withdrawals || withdrawals.length === 0) {
+      withdrawals = (memoryStore.sellerWithdrawals || []).filter(
+        (w) => String(w.sellerId) === String(sellerId) || sellerEmail && w.sellerEmail?.toLowerCase() === sellerEmail.toLowerCase()
+      );
+    }
+    return res.json({
+      success: true,
+      withdrawals
+    });
+  } catch (err) {
+    console.error("Failed to fetch seller withdrawals:", err);
+    return res.status(500).json({
+      success: false,
+      error: err.message || "Failed to fetch withdrawal history"
+    });
+  }
+});
+var sellerPortal_default = router6;
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
 
 // backend/routes/customers.ts
 init_User();
 import { Router as Router7 } from "express";
+<<<<<<< HEAD
 import crypto5 from "crypto";
 import bcrypt5 from "bcryptjs";
 init_Order();
@@ -21260,6 +24142,12 @@ function getAdminInfo(req) {
   };
 }
 router8.get("/", async (_req, res) => {
+=======
+init_store();
+var router7 = Router7();
+router7.use(requireAdmin);
+router7.get("/", async (_req, res) => {
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
   try {
     if (isMongoConnected()) {
       try {
@@ -21271,6 +24159,7 @@ router8.get("/", async (_req, res) => {
           );
           const spend = userOrders.reduce((sum, o) => sum + (Number(o.total) || 0), 0);
           const isAutoVip = userOrders.length > 10;
+<<<<<<< HEAD
           const normalizedTier = u.tier === "VIP" || u.tier === "Platinum" || isAutoVip ? "VIP" : u.tier || "Normal";
           const restrictions = u.restrictions || {};
           const activeRestrictionsCount = Object.values(restrictions).filter(
@@ -21295,17 +24184,38 @@ router8.get("/", async (_req, res) => {
             adminNotes: u.adminNotes || "",
             createdAt: u.createdAt,
             updatedAt: u.updatedAt
+=======
+          const normalizedTier = u.tier === "VIP" || u.tier === "Platinum" || isAutoVip ? "VIP" : "Normal";
+          return {
+            _id: String(u._id),
+            name: u.fullName,
+            email: u.email,
+            phone: u.phone || `${u.country} ${u.mobileNumber}`,
+            country: u.country,
+            mobileNumber: u.mobileNumber,
+            tier: normalizedTier,
+            isBlocked: Boolean(u.isBlocked),
+            verified: Boolean(u.verified),
+            ordersCount: userOrders.length,
+            lifetimeSpend: spend,
+            createdAt: u.createdAt
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
           };
         });
         return res.json(formattedUsers);
       } catch (err) {
+<<<<<<< HEAD
         console.warn("MongoDB fetch users failed, checking in-memory:", err);
+=======
+        console.warn("MongoDB fetch users failed, checking Customer collection or in-memory:", err);
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
       }
     }
     const memList = (memoryStore.users || []).map((u) => {
       const userOrders = (memoryStore.orders || []).filter(
         (o) => o.memberName?.toLowerCase() === u.fullName?.toLowerCase() || o.memberEmail?.toLowerCase() === u.email?.toLowerCase()
       );
+<<<<<<< HEAD
       const spend = userOrders.reduce((sum, o) => sum + (Number(o.total) || 0), 0);
       const isAutoVip = userOrders.length > 10;
       const restrictions = u.restrictions || {};
@@ -21334,10 +24244,30 @@ router8.get("/", async (_req, res) => {
       };
     });
     return res.json(memList);
+=======
+      const isAutoVip = userOrders.length > 10;
+      return {
+        _id: u._id,
+        name: u.fullName,
+        email: u.email,
+        phone: u.phone || `${u.country} ${u.mobileNumber}`,
+        country: u.country,
+        mobileNumber: u.mobileNumber,
+        tier: u.tier === "VIP" || u.tier === "Platinum" || isAutoVip ? "VIP" : "Normal",
+        isBlocked: false,
+        verified: true,
+        ordersCount: userOrders.length,
+        lifetimeSpend: userOrders.reduce((sum, o) => sum + (Number(o.total) || 0), 0),
+        createdAt: u.createdAt
+      };
+    });
+    return res.json(memList.length > 0 ? memList : memoryStore.customers);
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
   } catch (err) {
     res.status(500).json({ error: err.message || "Failed to fetch customer list" });
   }
 });
+<<<<<<< HEAD
 router8.get("/:id", async (req, res) => {
   try {
     const { id } = req.params;
@@ -21844,14 +24774,90 @@ router8.get("/:id/preview-data", async (req, res) => {
   }
 });
 var customers_default = router8;
+=======
+router7.patch("/:id/block", requireSuperAdmin, async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { isBlocked } = req.body;
+    if (typeof isBlocked !== "boolean") {
+      return res.status(400).json({ error: "isBlocked boolean field is required" });
+    }
+    if (isMongoConnected()) {
+      const updatedUser = await User_default.findByIdAndUpdate(id, { isBlocked }, { new: true });
+      if (updatedUser) {
+        console.log(`\u{1F6E1}\uFE0F [SUPER ADMIN ACTION] User ${updatedUser.email} isBlocked set to ${isBlocked}`);
+        return res.json({
+          success: true,
+          message: `User ${updatedUser.email} has been ${isBlocked ? "blocked" : "unblocked"}.`,
+          user: {
+            _id: String(updatedUser._id),
+            name: updatedUser.fullName,
+            email: updatedUser.email,
+            isBlocked: updatedUser.isBlocked,
+            tier: updatedUser.tier
+          }
+        });
+      }
+    }
+    const userInMem = (memoryStore.users || []).find((u) => u._id === id || u.email === id);
+    if (userInMem) {
+      return res.json({
+        success: true,
+        message: `User ${userInMem.email} has been ${isBlocked ? "blocked" : "unblocked"}.`,
+        user: { ...userInMem, isBlocked }
+      });
+    }
+    return res.status(404).json({ error: "User document not found in database" });
+  } catch (err) {
+    res.status(500).json({ error: err.message || "Failed to update user block status" });
+  }
+});
+router7.patch("/:id/tier", requireSuperAdmin, async (req, res) => {
+  try {
+    const { id } = req.params;
+    let { tier } = req.body;
+    if (!["VIP", "Normal", "Silver", "Gold", "Platinum"].includes(tier)) {
+      return res.status(400).json({ error: "Invalid tier value" });
+    }
+    const finalTier = tier === "VIP" ? "VIP" : "Normal";
+    if (isMongoConnected()) {
+      const updatedUser = await User_default.findByIdAndUpdate(id, { tier: finalTier }, { new: true });
+      if (updatedUser) {
+        return res.json({
+          success: true,
+          user: {
+            ...updatedUser.toObject(),
+            tier: finalTier
+          }
+        });
+      }
+    }
+    const userInMem = (memoryStore.users || []).find((u) => u._id === id || u.email === id);
+    if (userInMem) {
+      userInMem.tier = finalTier;
+      return res.json({ success: true, user: userInMem });
+    }
+    return res.status(404).json({ error: "User document not found in database" });
+  } catch (err) {
+    res.status(500).json({ error: err.message || "Failed to update member tier" });
+  }
+});
+var customers_default = router7;
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
 
 // backend/routes/banners.ts
 init_Banner();
 import { Router as Router8 } from "express";
 init_store();
+<<<<<<< HEAD
 var router9 = Router8();
 router9.use(requireAdmin);
 router9.get("/", async (_req, res) => {
+=======
+var router8 = Router8();
+router8.use(requireAdmin);
+router8.get("/", async (_req, res) => {
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
   try {
     let list = [];
     if (isMongoConnected()) {
@@ -21880,7 +24886,11 @@ router9.get("/", async (_req, res) => {
     return res.status(500).json({ error: err.message || "Failed to fetch banners" });
   }
 });
+<<<<<<< HEAD
 router9.post("/", async (req, res) => {
+=======
+router8.post("/", async (req, res) => {
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
   try {
     const {
       imageUrl,
@@ -21963,7 +24973,11 @@ router9.post("/", async (req, res) => {
     return res.status(500).json({ error: err.message || "Failed to create banner" });
   }
 });
+<<<<<<< HEAD
 router9.put("/reorder", async (req, res) => {
+=======
+router8.put("/reorder", async (req, res) => {
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
   try {
     const { bannerIds } = req.body;
     if (!Array.isArray(bannerIds)) {
@@ -21991,7 +25005,11 @@ router9.put("/reorder", async (req, res) => {
     return res.status(500).json({ error: err.message || "Failed to reorder banners" });
   }
 });
+<<<<<<< HEAD
 router9.patch("/:id/toggle", async (req, res) => {
+=======
+router8.patch("/:id/toggle", async (req, res) => {
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
   try {
     const { id } = req.params;
     if (isMongoConnected()) {
@@ -22017,7 +25035,11 @@ router9.patch("/:id/toggle", async (req, res) => {
     return res.status(500).json({ error: err.message || "Failed to toggle banner status" });
   }
 });
+<<<<<<< HEAD
 router9.put("/:id", async (req, res) => {
+=======
+router8.put("/:id", async (req, res) => {
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
   try {
     const { id } = req.params;
     const {
@@ -22088,7 +25110,11 @@ router9.put("/:id", async (req, res) => {
     return res.status(500).json({ error: err.message || "Failed to update banner" });
   }
 });
+<<<<<<< HEAD
 router9.delete("/:id", async (req, res) => {
+=======
+router8.delete("/:id", async (req, res) => {
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
   try {
     const { id } = req.params;
     if (isMongoConnected()) {
@@ -22109,6 +25135,7 @@ router9.delete("/:id", async (req, res) => {
     return res.status(500).json({ error: err.message || "Failed to delete banner" });
   }
 });
+<<<<<<< HEAD
 var banners_default = router9;
 
 // backend/routes/commission.ts
@@ -22120,6 +25147,17 @@ import { Router as Router9 } from "express";
 // backend/models/PlatformWithdrawal.ts
 import mongoose23, { Schema as Schema20 } from "mongoose";
 var PlatformWithdrawalSchema = new Schema20(
+=======
+var banners_default = router8;
+
+// backend/routes/commission.ts
+import { Router as Router9 } from "express";
+init_PlatformSetting();
+
+// backend/models/PlatformWithdrawal.ts
+import mongoose16, { Schema as Schema14 } from "mongoose";
+var PlatformWithdrawalSchema = new Schema14(
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
   {
     amount: { type: Number, required: true, min: 1 },
     note: { type: String, default: "" },
@@ -22130,6 +25168,7 @@ var PlatformWithdrawalSchema = new Schema20(
   },
   { timestamps: true, collection: "platform_withdrawals" }
 );
+<<<<<<< HEAD
 var PlatformWithdrawal_default = mongoose23.model("PlatformWithdrawal", PlatformWithdrawalSchema);
 
 // backend/routes/commission.ts
@@ -22453,11 +25492,71 @@ router10.get("/", requireAdmin, async (req, res) => {
       status: req.query.status ? String(req.query.status) : void 0
     });
     const auditLogs = await getCommissionAuditLogs(150);
+=======
+var PlatformWithdrawal_default = mongoose16.model("PlatformWithdrawal", PlatformWithdrawalSchema);
+
+// backend/routes/commission.ts
+init_store();
+var router9 = Router9();
+async function getActiveCommissionRate() {
+  if (isMongoConnected()) {
+    try {
+      const setting = await PlatformSetting_default.findOne({ key: "commission_settings" });
+      if (setting && typeof setting.commissionRate === "number") {
+        return setting.commissionRate;
+      }
+    } catch (err) {
+      console.warn("MongoDB commission rate query notice:", err);
+    }
+  }
+  return memoryStore.platformSettings?.commissionRate ?? 5;
+}
+router9.get("/", requireAdmin, requireSuperAdmin, async (_req, res) => {
+  try {
+    const activeRate = await getActiveCommissionRate();
+    let ordersList = [];
+    if (isMongoConnected()) {
+      try {
+        ordersList = await Order_default.find().sort({ createdAt: -1 }).lean();
+      } catch (err) {
+        console.warn("MongoDB order query error in commission route, using memoryStore:", err);
+        ordersList = memoryStore.orders || [];
+      }
+    } else {
+      ordersList = memoryStore.orders || [];
+    }
+    let calculatedTotalCommission = 0;
+    const ledger = ordersList.map((ord) => {
+      const orderTotal = Number(ord.total) || 0;
+      const rate = typeof ord.commissionRate === "number" ? ord.commissionRate : activeRate;
+      const commissionAmount = typeof ord.commissionAmount === "number" && ord.commissionAmount > 0 ? ord.commissionAmount : Math.round(orderTotal * rate / 100);
+      const sellerPayout = typeof ord.sellerPayout === "number" && ord.sellerPayout > 0 ? ord.sellerPayout : Math.max(0, orderTotal - commissionAmount);
+      calculatedTotalCommission += commissionAmount;
+      return {
+        _id: String(ord._id || ord.orderNumber),
+        orderNumber: ord.orderNumber || "AN-UNKNOWN",
+        date: ord.createdAt ? new Date(ord.createdAt).toISOString() : (/* @__PURE__ */ new Date()).toISOString(),
+        memberName: ord.memberName || "Valued Client",
+        memberEmail: ord.memberEmail || "",
+        total: orderTotal,
+        commissionRate: rate,
+        commissionAmount,
+        sellerPayout,
+        paymentMethod: ord.paymentMethod || "CARD",
+        status: ord.status || "pending",
+        commissionStatus: ord.commissionStatus || "credited"
+      };
+    });
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
     let withdrawalsList = [];
     if (isMongoConnected()) {
       try {
         withdrawalsList = await PlatformWithdrawal_default.find().sort({ date: -1 }).lean();
       } catch (err) {
+<<<<<<< HEAD
+=======
+        console.warn("MongoDB withdrawal query error, using memoryStore:", err);
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
         withdrawalsList = memoryStore.platformWithdrawals || [];
       }
     } else {
@@ -22471,7 +25570,11 @@ router10.get("/", requireAdmin, async (req, res) => {
     }
     withdrawalsList.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
     const totalWithdrawn = withdrawalsList.reduce((sum, w) => sum + (Number(w.amount) || 0), 0);
+<<<<<<< HEAD
     const runningBalance = Math.max(0, analytics.totalCommissionEarned - totalWithdrawn);
+=======
+    const runningBalance = Math.max(0, calculatedTotalCommission - totalWithdrawn);
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
     const formattedWithdrawals = withdrawalsList.map((w) => ({
       _id: String(w._id),
       amount: Number(w.amount) || 0,
@@ -22483,6 +25586,7 @@ router10.get("/", requireAdmin, async (req, res) => {
     }));
     return res.json({
       success: true,
+<<<<<<< HEAD
       commissionRate: analytics.config.globalDefaultRate,
       config: analytics.config,
       rules: analytics.rules,
@@ -22499,6 +25603,14 @@ router10.get("/", requireAdmin, async (req, res) => {
       sellerBreakdown: analytics.sellerBreakdown,
       productBreakdown: analytics.productBreakdown,
       orders: analytics.ledger,
+=======
+      commissionRate: activeRate,
+      totalCommissionEarned: calculatedTotalCommission,
+      runningBalance,
+      totalWithdrawn,
+      totalOrdersCount: ledger.length,
+      orders: ledger,
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
       withdrawals: formattedWithdrawals
     });
   } catch (err) {
@@ -22506,6 +25618,7 @@ router10.get("/", requireAdmin, async (req, res) => {
     return res.status(500).json({ success: false, error: err.message || "Failed to load commission data" });
   }
 });
+<<<<<<< HEAD
 router10.get("/rules", requireAdmin, async (_req, res) => {
   try {
     const [rules, config] = await Promise.all([
@@ -22821,6 +25934,11 @@ router10.put("/config", requireAdmin, async (req, res) => {
 router10.patch("/settings", requireAdmin, async (req, res) => {
   try {
     const { commissionRate, reason } = req.body;
+=======
+router9.patch("/settings", requireAdmin, requireSuperAdmin, async (req, res) => {
+  try {
+    const { commissionRate } = req.body;
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
     const rateNum = Number(commissionRate);
     if (isNaN(rateNum) || rateNum < 0 || rateNum > 100) {
       return res.status(400).json({
@@ -22828,6 +25946,7 @@ router10.patch("/settings", requireAdmin, async (req, res) => {
         error: "Commission percentage must be a valid number between 0% and 100%"
       });
     }
+<<<<<<< HEAD
     const updated = await updateCommissionConfig(
       { globalDefaultRate: rateNum },
       {
@@ -22836,11 +25955,41 @@ router10.patch("/settings", requireAdmin, async (req, res) => {
       },
       reason || `Updated global default commission rate to ${rateNum}%`
     );
+=======
+    const roundedRate = Math.round(rateNum * 100) / 100;
+    if (isMongoConnected()) {
+      try {
+        await PlatformSetting_default.findOneAndUpdate(
+          { key: "commission_settings" },
+          {
+            commissionRate: roundedRate,
+            updatedBy: req.admin?.email || "superadmin",
+            updatedAt: /* @__PURE__ */ new Date()
+          },
+          { upsert: true, new: true }
+        );
+      } catch (dbErr) {
+        console.warn("MongoDB commission update error:", dbErr.message);
+      }
+    }
+    if (!memoryStore.platformSettings) {
+      memoryStore.platformSettings = {
+        commissionRate: roundedRate,
+        platformBalance: 0,
+        totalCommissionEarned: 0,
+        updatedAt: /* @__PURE__ */ new Date()
+      };
+    } else {
+      memoryStore.platformSettings.commissionRate = roundedRate;
+      memoryStore.platformSettings.updatedAt = /* @__PURE__ */ new Date();
+    }
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
     await logActivity(
       {
         eventType: "Login",
         status: "success",
         userName: req.admin?.name || "Super Admin",
+<<<<<<< HEAD
         email: req.admin?.email || "admin@system",
         details: `Updated Platform Global Commission Rate to ${updated.globalDefaultRate}%`
       },
@@ -22899,6 +26048,25 @@ router10.post("/orders/:orderId/adjust", requireAdmin, async (req, res) => {
   }
 });
 router10.post("/withdraw", requireAdmin, async (req, res) => {
+=======
+        email: req.admin?.email || process.env.SUPERADMIN_EMAIL || "admin@system",
+        details: `Updated Platform Global Commission Rate to ${roundedRate}%`
+      },
+      req
+    );
+    console.log(`\u{1F4B0} [COMMISSION UPDATE] Global commission rate set to ${roundedRate}% by ${req.admin?.email}`);
+    return res.json({
+      success: true,
+      commissionRate: roundedRate,
+      message: `Global platform commission rate successfully updated to ${roundedRate}%`
+    });
+  } catch (err) {
+    console.error("Failed to update commission rate:", err);
+    return res.status(500).json({ success: false, error: err.message || "Failed to update commission settings" });
+  }
+});
+router9.post("/withdraw", requireAdmin, requireSuperAdmin, async (req, res) => {
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
   try {
     const { amount, note } = req.body;
     const withdrawAmount = Math.round(Number(amount));
@@ -22908,8 +26076,29 @@ router10.post("/withdraw", requireAdmin, async (req, res) => {
         error: "Withdrawal amount must be a positive number greater than 0"
       });
     }
+<<<<<<< HEAD
     const analytics = await buildCommissionAnalytics();
     const calculatedTotalCommission = analytics.totalCommissionEarned;
+=======
+    let ordersList = [];
+    if (isMongoConnected()) {
+      try {
+        ordersList = await Order_default.find().lean();
+      } catch (err) {
+        ordersList = memoryStore.orders || [];
+      }
+    } else {
+      ordersList = memoryStore.orders || [];
+    }
+    const activeRate = await getActiveCommissionRate();
+    let calculatedTotalCommission = 0;
+    for (const ord of ordersList) {
+      const orderTotal = Number(ord.total) || 0;
+      const rate = typeof ord.commissionRate === "number" ? ord.commissionRate : activeRate;
+      const commissionAmount = typeof ord.commissionAmount === "number" && ord.commissionAmount > 0 ? ord.commissionAmount : Math.round(orderTotal * rate / 100);
+      calculatedTotalCommission += commissionAmount;
+    }
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
     let existingWithdrawals = [];
     if (isMongoConnected()) {
       try {
@@ -22926,10 +26115,14 @@ router10.post("/withdraw", requireAdmin, async (req, res) => {
         existingWithdrawals.push(memW);
       }
     }
+<<<<<<< HEAD
     const currentTotalWithdrawn = existingWithdrawals.reduce(
       (sum, w) => sum + (Number(w.amount) || 0),
       0
     );
+=======
+    const currentTotalWithdrawn = existingWithdrawals.reduce((sum, w) => sum + (Number(w.amount) || 0), 0);
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
     const currentRunningBalance = Math.max(0, calculatedTotalCommission - currentTotalWithdrawn);
     if (withdrawAmount > currentRunningBalance) {
       return res.status(400).json({
@@ -22978,6 +26171,10 @@ router10.post("/withdraw", requireAdmin, async (req, res) => {
       },
       req
     );
+<<<<<<< HEAD
+=======
+    console.log(`\u{1F4B8} [PLATFORM WITHDRAWAL] \u20B9${withdrawAmount} withdrawn by ${adminEmail}. Note: ${newRecord.note || "None"}`);
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
     return res.json({
       success: true,
       message: `Successfully logged withdrawal of \u20B9${withdrawAmount.toLocaleString("en-IN")}`,
@@ -22993,6 +26190,7 @@ router10.post("/withdraw", requireAdmin, async (req, res) => {
     return res.status(500).json({ success: false, error: err.message || "Failed to process withdrawal" });
   }
 });
+<<<<<<< HEAD
 var commission_default = router10;
 
 // backend/routes/flashSale.ts
@@ -23000,6 +26198,39 @@ import { Router as Router10 } from "express";
 init_Product();
 init_store();
 var router11 = Router10();
+=======
+var commission_default = router9;
+
+// backend/routes/flashSale.ts
+import { Router as Router10 } from "express";
+
+// backend/models/FlashSale.ts
+import mongoose17, { Schema as Schema15 } from "mongoose";
+var FlashSaleSchema = new Schema15(
+  {
+    title: { type: String, default: "FLASH PREMIUM HOURS" },
+    subtitle: { type: String, default: "Uncompromised pricing on luxury gear" },
+    bannerText: { type: String, default: "\u26A1 Deals Refresh Every 24 Hours \u2014 Don't Miss Out!" },
+    targetEndTime: { type: Date, required: true },
+    activeProducts: [
+      {
+        productId: { type: Schema15.Types.Mixed, required: true },
+        flashPrice: { type: Number },
+        discountPercent: { type: Number },
+        isFeatured: { type: Boolean, default: false },
+        order: { type: Number, default: 0 }
+      }
+    ]
+  },
+  { timestamps: true }
+);
+var FlashSale_default = mongoose17.models.FlashSale || mongoose17.model("FlashSale", FlashSaleSchema);
+
+// backend/routes/flashSale.ts
+init_Product();
+init_store();
+var router10 = Router10();
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
 async function getOrCreateFlashConfig() {
   if (isMongoConnected()) {
     try {
@@ -23043,7 +26274,11 @@ async function getOrCreateFlashConfig() {
   }
   return memoryStore.flashSaleConfig;
 }
+<<<<<<< HEAD
 router11.get("/", async (_req, res) => {
+=======
+router10.get("/", async (_req, res) => {
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
   try {
     const configRaw = await getOrCreateFlashConfig();
     const config = configRaw && typeof configRaw.toObject === "function" ? configRaw.toObject() : { ...configRaw };
@@ -23109,7 +26344,11 @@ router11.get("/", async (_req, res) => {
     return res.status(500).json({ success: false, error: err.message || "Failed to fetch flash sale" });
   }
 });
+<<<<<<< HEAD
 router11.put("/config", requireAdmin, async (req, res) => {
+=======
+router10.put("/config", requireAdmin, async (req, res) => {
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
   try {
     const { title, subtitle, bannerText, targetEndTime } = req.body;
     let parsedEndTime = null;
@@ -23155,7 +26394,11 @@ router11.put("/config", requireAdmin, async (req, res) => {
     return res.status(500).json({ success: false, error: err.message || "Failed to update flash sale settings" });
   }
 });
+<<<<<<< HEAD
 router11.post("/products", requireAdmin, async (req, res) => {
+=======
+router10.post("/products", requireAdmin, async (req, res) => {
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
   try {
     const { productId, flashPrice, discountPercent, isFeatured, order } = req.body;
     if (!productId) {
@@ -23232,7 +26475,11 @@ router11.post("/products", requireAdmin, async (req, res) => {
     return res.status(500).json({ success: false, error: err.message || "Failed to add product to flash sale" });
   }
 });
+<<<<<<< HEAD
 router11.delete("/products/:id", requireAdmin, async (req, res) => {
+=======
+router10.delete("/products/:id", requireAdmin, async (req, res) => {
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
   try {
     const { id } = req.params;
     const cleanId = String(id);
@@ -23276,14 +26523,23 @@ router11.delete("/products/:id", requireAdmin, async (req, res) => {
     return res.status(500).json({ success: false, error: err.message || "Failed to remove product from flash sale" });
   }
 });
+<<<<<<< HEAD
 var flashSale_default = router11;
+=======
+var flashSale_default = router10;
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
 
 // backend/routes/categories.ts
 init_Category();
 import { Router as Router11 } from "express";
 init_store();
+<<<<<<< HEAD
 var router12 = Router11();
 router12.get("/", async (req, res) => {
+=======
+var router11 = Router11();
+router11.get("/", async (req, res) => {
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
   try {
     const showAll = req.query.all === "true";
     let list = [];
@@ -23327,7 +26583,11 @@ router12.get("/", async (req, res) => {
     return res.status(500).json({ success: false, error: err.message || "Failed to fetch categories" });
   }
 });
+<<<<<<< HEAD
 router12.get("/:id", async (req, res) => {
+=======
+router11.get("/:id", async (req, res) => {
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
   try {
     const { id } = req.params;
     let found = null;
@@ -23349,8 +26609,13 @@ router12.get("/:id", async (req, res) => {
     return res.status(500).json({ success: false, error: err.message || "Failed to fetch category" });
   }
 });
+<<<<<<< HEAD
 router12.use(requireAdmin);
 router12.post("/", async (req, res) => {
+=======
+router11.use(requireAdmin);
+router11.post("/", async (req, res) => {
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
   try {
     const {
       titleEn,
@@ -23414,7 +26679,11 @@ router12.post("/", async (req, res) => {
     return res.status(500).json({ success: false, error: err.message || "Failed to create category" });
   }
 });
+<<<<<<< HEAD
 router12.put("/reorder", async (req, res) => {
+=======
+router11.put("/reorder", async (req, res) => {
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
   try {
     const { items } = req.body;
     if (!Array.isArray(items) || items.length === 0) {
@@ -23452,7 +26721,11 @@ router12.put("/reorder", async (req, res) => {
     return res.status(500).json({ success: false, error: err.message || "Failed to reorder categories" });
   }
 });
+<<<<<<< HEAD
 router12.put("/:id", async (req, res) => {
+=======
+router11.put("/:id", async (req, res) => {
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
   try {
     const { id } = req.params;
     const {
@@ -23507,7 +26780,11 @@ router12.put("/:id", async (req, res) => {
     return res.status(500).json({ success: false, error: err.message || "Failed to update category" });
   }
 });
+<<<<<<< HEAD
 router12.delete("/:id", async (req, res) => {
+=======
+router11.delete("/:id", async (req, res) => {
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
   try {
     const { id } = req.params;
     let deleted = false;
@@ -23539,15 +26816,24 @@ router12.delete("/:id", async (req, res) => {
     return res.status(500).json({ success: false, error: err.message || "Failed to delete category" });
   }
 });
+<<<<<<< HEAD
 var categories_default = router12;
+=======
+var categories_default = router11;
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
 
 // backend/routes/databaseHub.ts
 init_store();
 import { Router as Router12 } from "express";
 
 // backend/models/DatabaseConfig.ts
+<<<<<<< HEAD
 import mongoose24, { Schema as Schema21 } from "mongoose";
 var DatabaseProviderConfigSchema = new Schema21(
+=======
+import mongoose18, { Schema as Schema16 } from "mongoose";
+var DatabaseProviderConfigSchema = new Schema16(
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
   {
     id: { type: String, required: true },
     name: { type: String, required: true },
@@ -23564,11 +26850,19 @@ var DatabaseProviderConfigSchema = new Schema21(
     latencyMs: { type: Number, default: 24 },
     lastTestedAt: { type: Date },
     lastBackupAt: { type: Date },
+<<<<<<< HEAD
     credentials: { type: Schema21.Types.Mixed, default: {} }
   },
   { _id: false }
 );
 var MigrationLogSchema = new Schema21(
+=======
+    credentials: { type: Schema16.Types.Mixed, default: {} }
+  },
+  { _id: false }
+);
+var MigrationLogSchema = new Schema16(
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
   {
     id: { type: String, required: true },
     from: { type: String, required: true },
@@ -23580,7 +26874,11 @@ var MigrationLogSchema = new Schema21(
   },
   { _id: false }
 );
+<<<<<<< HEAD
 var DatabaseHubSettingsSchema = new Schema21(
+=======
+var DatabaseHubSettingsSchema = new Schema16(
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
   {
     key: { type: String, required: true, unique: true, default: "database_hub_settings" },
     primaryDatabase: { type: String, default: "mongodb" },
@@ -23594,17 +26892,29 @@ var DatabaseHubSettingsSchema = new Schema21(
   },
   { timestamps: true, collection: "database_hub_settings" }
 );
+<<<<<<< HEAD
 var DatabaseConfig_default = mongoose24.model("DatabaseHubSetting", DatabaseHubSettingsSchema);
 
 // backend/routes/databaseHub.ts
 init_Product();
 init_Order();
+=======
+var DatabaseConfig_default = mongoose18.model("DatabaseHubSetting", DatabaseHubSettingsSchema);
+
+// backend/routes/databaseHub.ts
+init_Product();
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
 init_Seller();
 init_Banner();
 init_Category();
 init_User();
+<<<<<<< HEAD
 var router13 = Router12();
 router13.use(requireAdmin);
+=======
+var router12 = Router12();
+router12.use(requireAdmin);
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
 var inMemoryDatabaseHubSettings = null;
 var DEFAULT_PROVIDERS = [
   {
@@ -23856,7 +27166,11 @@ async function getOrCreateSettings() {
   }
   return inMemoryDatabaseHubSettings;
 }
+<<<<<<< HEAD
 router13.get("/status", async (_req, res) => {
+=======
+router12.get("/status", async (_req, res) => {
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
   try {
     const settings = await getOrCreateSettings();
     const metrics = await calculateRealDataMetrics();
@@ -23923,7 +27237,11 @@ router13.get("/status", async (_req, res) => {
     return res.status(500).json({ error: err.message || "Failed to load database hub status" });
   }
 });
+<<<<<<< HEAD
 router13.post("/config", async (req, res) => {
+=======
+router12.post("/config", async (req, res) => {
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
   try {
     const {
       providerId,
@@ -23994,7 +27312,11 @@ router13.post("/config", async (req, res) => {
     return res.status(500).json({ error: err.message || "Failed to update database configuration" });
   }
 });
+<<<<<<< HEAD
 router13.post("/toggle-service", async (req, res) => {
+=======
+router12.post("/toggle-service", async (req, res) => {
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
   try {
     const { providerId, enabled } = req.body;
     if (!providerId) return res.status(400).json({ error: "providerId is required" });
@@ -24024,7 +27346,11 @@ router13.post("/toggle-service", async (req, res) => {
     return res.status(500).json({ error: err.message || "Failed to toggle service" });
   }
 });
+<<<<<<< HEAD
 router13.post("/test-connection", async (req, res) => {
+=======
+router12.post("/test-connection", async (req, res) => {
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
   try {
     const { providerId } = req.body;
     const startTime = Date.now();
@@ -24057,7 +27383,11 @@ router13.post("/test-connection", async (req, res) => {
     return res.status(500).json({ error: err.message || "Connection test failed" });
   }
 });
+<<<<<<< HEAD
 router13.post("/sync", async (req, res) => {
+=======
+router12.post("/sync", async (req, res) => {
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
   try {
     const { fromProvider, toProvider, collections = ["products", "categories", "orders", "banners"] } = req.body;
     if (!fromProvider || !toProvider) {
@@ -24100,7 +27430,11 @@ router13.post("/sync", async (req, res) => {
     return res.status(500).json({ error: err.message || "Database sync failed" });
   }
 });
+<<<<<<< HEAD
 router13.get("/export-backup", async (_req, res) => {
+=======
+router12.get("/export-backup", async (_req, res) => {
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
   try {
     let products = [];
     let orders = [];
@@ -24167,7 +27501,11 @@ router13.get("/export-backup", async (_req, res) => {
     return res.status(500).json({ error: err.message || "Failed to export database backup" });
   }
 });
+<<<<<<< HEAD
 router13.post("/restore-backup", async (req, res) => {
+=======
+router12.post("/restore-backup", async (req, res) => {
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
   try {
     const { backupData } = req.body;
     if (!backupData || !backupData.data) {
@@ -24226,13 +27564,206 @@ router13.post("/restore-backup", async (req, res) => {
     return res.status(500).json({ error: err.message || "Failed to restore backup" });
   }
 });
+<<<<<<< HEAD
 var databaseHub_default = router13;
+=======
+var databaseHub_default = router12;
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
 
 // backend/routes/customerCare.ts
 init_store();
 import { Router as Router13 } from "express";
+<<<<<<< HEAD
 import jwt5 from "jsonwebtoken";
 var router14 = Router13();
+=======
+
+// backend/models/CustomerCare.ts
+import mongoose19, { Schema as Schema17 } from "mongoose";
+var HotlineSchema = new Schema17(
+  {
+    name: { type: String, required: true, trim: true },
+    phoneNumber: { type: String, required: true, trim: true },
+    extension: { type: String, trim: true },
+    department: {
+      type: String,
+      required: true,
+      enum: [
+        "Executive Concierge",
+        "Order Support",
+        "VIP & High Value",
+        "Technical & IT",
+        "Billing & Refunds",
+        "Seller Relations",
+        "General Inquiries"
+      ],
+      default: "Order Support"
+    },
+    description: { type: String, default: "" },
+    operatingHours: { type: String, default: "24/7 Round the Clock" },
+    whatsappNumber: { type: String, trim: true },
+    emailAddress: { type: String, lowercase: true, trim: true },
+    isEmergency: { type: Boolean, default: false },
+    isPriority: { type: Boolean, default: false },
+    isActive: { type: Boolean, default: true },
+    displayOrder: { type: Number, default: 0 },
+    callClickCount: { type: Number, default: 0 },
+    createdBy: { type: String, default: "System Admin" },
+    lastModifiedBy: { type: String }
+  },
+  { timestamps: true }
+);
+var Hotline = mongoose19.models.Hotline || mongoose19.model("Hotline", HotlineSchema);
+var TicketReplySchema = new Schema17(
+  {
+    id: { type: String, required: true },
+    authorType: { type: String, enum: ["staff", "customer"], required: true },
+    authorName: { type: String, required: true },
+    authorEmail: { type: String, required: true },
+    message: { type: String, required: true },
+    attachments: [
+      {
+        name: String,
+        url: String,
+        size: Number,
+        mimeType: String
+      }
+    ],
+    isInternalNote: { type: Boolean, default: false },
+    createdAt: { type: Date, default: Date.now }
+  },
+  { _id: false }
+);
+var SupportTicketSchema = new Schema17(
+  {
+    ticketId: { type: String, required: true, unique: true, index: true },
+    customerName: { type: String, required: true, trim: true },
+    customerEmail: { type: String, required: true, lowercase: true, trim: true, index: true },
+    customerPhone: { type: String, trim: true },
+    customerId: { type: String },
+    subject: { type: String, required: true, trim: true },
+    description: { type: String, required: true },
+    category: {
+      type: String,
+      required: true,
+      enum: [
+        "Order Tracking",
+        "Payment & Billing",
+        "Refund & Return",
+        "Defective / Damaged Product",
+        "Account & Security",
+        "Seller Complaint",
+        "General Inquiry"
+      ],
+      default: "Order Tracking"
+    },
+    subcategory: { type: String },
+    priority: {
+      type: String,
+      enum: ["Low", "Normal", "High", "Urgent"],
+      default: "Normal",
+      index: true
+    },
+    status: {
+      type: String,
+      enum: [
+        "New",
+        "Open",
+        "In Progress",
+        "Waiting for Customer",
+        "Escalated",
+        "Resolved",
+        "Closed"
+      ],
+      default: "New",
+      index: true
+    },
+    assignedAgentId: { type: String },
+    assignedAgentName: { type: String },
+    assignedDepartment: { type: String, default: "Order Support" },
+    replies: [TicketReplySchema],
+    tags: [{ type: String }],
+    csatRating: { type: Number, min: 1, max: 5 },
+    csatFeedback: { type: String },
+    resolvedAt: { type: Date },
+    closedAt: { type: Date },
+    slaDeadline: { type: Date }
+  },
+  { timestamps: true }
+);
+SupportTicketSchema.index({ createdAt: -1 });
+var SupportTicket = mongoose19.models.SupportTicket || mongoose19.model("SupportTicket", SupportTicketSchema);
+var KnowledgeArticleSchema = new Schema17(
+  {
+    title: { type: String, required: true, trim: true },
+    category: {
+      type: String,
+      required: true,
+      enum: [
+        "Orders & Delivery",
+        "Payments & Refunds",
+        "Account & Security",
+        "Seller Guidelines",
+        "Returns Policy",
+        "Troubleshooting"
+      ],
+      default: "Orders & Delivery"
+    },
+    summary: { type: String, required: true },
+    content: { type: String, required: true },
+    status: {
+      type: String,
+      enum: ["published", "draft", "archived"],
+      default: "published"
+    },
+    viewsCount: { type: Number, default: 0 },
+    helpfulCount: { type: Number, default: 0 },
+    tags: [{ type: String }],
+    author: { type: String, default: "Editorial Support" }
+  },
+  { timestamps: true }
+);
+var KnowledgeArticle = mongoose19.models.KnowledgeArticle || mongoose19.model("KnowledgeArticle", KnowledgeArticleSchema);
+var SupportAgentSchema = new Schema17(
+  {
+    name: { type: String, required: true },
+    email: { type: String, required: true, unique: true, lowercase: true },
+    role: {
+      type: String,
+      enum: ["Support Agent", "Support Manager", "Head of Care", "Admin"],
+      default: "Support Agent"
+    },
+    department: { type: String, default: "Order Support" },
+    status: { type: String, enum: ["Active", "Away", "Offline"], default: "Active" },
+    assignedTicketsCount: { type: Number, default: 0 },
+    resolvedTicketsCount: { type: Number, default: 0 },
+    avgCsat: { type: Number, default: 5 },
+    phone: { type: String }
+  },
+  { timestamps: true }
+);
+var SupportAgent = mongoose19.models.SupportAgent || mongoose19.model("SupportAgent", SupportAgentSchema);
+var CustomerCareAuditLogSchema = new Schema17(
+  {
+    action: { type: String, required: true },
+    targetId: { type: String, required: true },
+    targetType: {
+      type: String,
+      enum: ["hotline", "ticket", "agent", "faq", "settings"],
+      required: true
+    },
+    performedBy: { type: String, required: true },
+    details: { type: String, default: "" },
+    ip: { type: String, default: "127.0.0.1" }
+  },
+  { timestamps: true }
+);
+var CustomerCareAuditLog = mongoose19.models.CustomerCareAuditLog || mongoose19.model("CustomerCareAuditLog", CustomerCareAuditLogSchema);
+
+// backend/routes/customerCare.ts
+import jwt5 from "jsonwebtoken";
+var router13 = Router13();
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
 async function logCareAudit(action, targetId, targetType, performedBy, details, ip = "127.0.0.1") {
   try {
     const entry = {
@@ -24263,7 +27794,11 @@ function isValidPhoneNumber(phone) {
   const digitsOnly = phone.replace(/\D/g, "");
   return digitsOnly.length >= 7 && digitsOnly.length <= 16;
 }
+<<<<<<< HEAD
 router14.get("/stats", requireAdmin, async (_req, res) => {
+=======
+router13.get("/stats", requireAdmin, async (_req, res) => {
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
   try {
     let tickets = [];
     let hotlines = [];
@@ -24344,7 +27879,11 @@ router14.get("/stats", requireAdmin, async (_req, res) => {
     return res.status(500).json({ error: err.message });
   }
 });
+<<<<<<< HEAD
 router14.get("/hotlines", requireAdmin, async (_req, res) => {
+=======
+router13.get("/hotlines", requireAdmin, async (_req, res) => {
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
   try {
     let list = [];
     if (isMongoConnected()) {
@@ -24362,7 +27901,11 @@ router14.get("/hotlines", requireAdmin, async (_req, res) => {
     return res.status(500).json({ error: err.message });
   }
 });
+<<<<<<< HEAD
 router14.post("/hotlines", requireAdmin, async (req, res) => {
+=======
+router13.post("/hotlines", requireAdmin, async (req, res) => {
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
   try {
     const {
       name,
@@ -24426,7 +27969,11 @@ router14.post("/hotlines", requireAdmin, async (req, res) => {
     return res.status(500).json({ error: err.message });
   }
 });
+<<<<<<< HEAD
 router14.put("/hotlines/:id", requireAdmin, async (req, res) => {
+=======
+router13.put("/hotlines/:id", requireAdmin, async (req, res) => {
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
   try {
     const { id } = req.params;
     const adminUser = req.adminUser || {};
@@ -24473,7 +28020,11 @@ router14.put("/hotlines/:id", requireAdmin, async (req, res) => {
     return res.status(500).json({ error: err.message });
   }
 });
+<<<<<<< HEAD
 router14.patch("/hotlines/:id/toggle", requireAdmin, async (req, res) => {
+=======
+router13.patch("/hotlines/:id/toggle", requireAdmin, async (req, res) => {
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
   try {
     const { id } = req.params;
     const adminUser = req.adminUser || {};
@@ -24514,7 +28065,11 @@ router14.patch("/hotlines/:id/toggle", requireAdmin, async (req, res) => {
     return res.status(500).json({ error: err.message });
   }
 });
+<<<<<<< HEAD
 router14.delete("/hotlines/:id", requireAdmin, async (req, res) => {
+=======
+router13.delete("/hotlines/:id", requireAdmin, async (req, res) => {
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
   try {
     const { id } = req.params;
     const adminUser = req.adminUser || {};
@@ -24546,7 +28101,11 @@ router14.delete("/hotlines/:id", requireAdmin, async (req, res) => {
     return res.status(500).json({ error: err.message });
   }
 });
+<<<<<<< HEAD
 router14.post("/hotlines/:id/track-call", async (req, res) => {
+=======
+router13.post("/hotlines/:id/track-call", async (req, res) => {
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
   try {
     const { id } = req.params;
     const mem = memoryStore.hotlines.find((h) => h._id === id);
@@ -24562,7 +28121,11 @@ router14.post("/hotlines/:id/track-call", async (req, res) => {
     return res.status(500).json({ error: err.message });
   }
 });
+<<<<<<< HEAD
 router14.get("/tickets", requireAdmin, async (req, res) => {
+=======
+router13.get("/tickets", requireAdmin, async (req, res) => {
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
   try {
     const { status, priority, category, search, agent } = req.query;
     let tickets = [];
@@ -24609,7 +28172,11 @@ router14.get("/tickets", requireAdmin, async (req, res) => {
     return res.status(500).json({ error: err.message });
   }
 });
+<<<<<<< HEAD
 router14.post("/tickets", requireAdmin, async (req, res) => {
+=======
+router13.post("/tickets", requireAdmin, async (req, res) => {
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
   try {
     const {
       customerName,
@@ -24687,7 +28254,11 @@ router14.post("/tickets", requireAdmin, async (req, res) => {
     return res.status(500).json({ error: err.message });
   }
 });
+<<<<<<< HEAD
 router14.get("/tickets/:id", requireAdmin, async (req, res) => {
+=======
+router13.get("/tickets/:id", requireAdmin, async (req, res) => {
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
   try {
     const { id } = req.params;
     let ticket = memoryStore.tickets.find((t) => t._id === id || t.ticketId === id);
@@ -24708,7 +28279,11 @@ router14.get("/tickets/:id", requireAdmin, async (req, res) => {
     return res.status(500).json({ error: err.message });
   }
 });
+<<<<<<< HEAD
 router14.put("/tickets/:id", requireAdmin, async (req, res) => {
+=======
+router13.put("/tickets/:id", requireAdmin, async (req, res) => {
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
   try {
     const { id } = req.params;
     const adminUser = req.adminUser || {};
@@ -24763,7 +28338,11 @@ router14.put("/tickets/:id", requireAdmin, async (req, res) => {
     return res.status(500).json({ error: err.message });
   }
 });
+<<<<<<< HEAD
 router14.post("/tickets/:id/reply", requireAdmin, async (req, res) => {
+=======
+router13.post("/tickets/:id/reply", requireAdmin, async (req, res) => {
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
   try {
     const { id } = req.params;
     const { message, isInternalNote = false, attachments = [] } = req.body;
@@ -24824,7 +28403,11 @@ router14.post("/tickets/:id/reply", requireAdmin, async (req, res) => {
     return res.status(500).json({ error: err.message });
   }
 });
+<<<<<<< HEAD
 router14.post("/tickets/:id/escalate", requireAdmin, async (req, res) => {
+=======
+router13.post("/tickets/:id/escalate", requireAdmin, async (req, res) => {
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
   try {
     const { id } = req.params;
     const { reason, targetDepartment = "Executive Concierge" } = req.body;
@@ -24886,7 +28469,11 @@ router14.post("/tickets/:id/escalate", requireAdmin, async (req, res) => {
     return res.status(500).json({ error: err.message });
   }
 });
+<<<<<<< HEAD
 router14.get("/customers", requireAdmin, async (req, res) => {
+=======
+router13.get("/customers", requireAdmin, async (req, res) => {
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
   try {
     const { search } = req.query;
     let customers = [];
@@ -24930,7 +28517,11 @@ router14.get("/customers", requireAdmin, async (req, res) => {
     return res.status(500).json({ error: err.message });
   }
 });
+<<<<<<< HEAD
 router14.get("/customers/:email/timeline", requireAdmin, async (req, res) => {
+=======
+router13.get("/customers/:email/timeline", requireAdmin, async (req, res) => {
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
   try {
     const email = decodeURIComponent(req.params.email).toLowerCase();
     const relatedTickets = memoryStore.tickets.filter(
@@ -24966,7 +28557,11 @@ router14.get("/customers/:email/timeline", requireAdmin, async (req, res) => {
     return res.status(500).json({ error: err.message });
   }
 });
+<<<<<<< HEAD
 router14.get("/agents", requireAdmin, async (_req, res) => {
+=======
+router13.get("/agents", requireAdmin, async (_req, res) => {
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
   try {
     let agents = [];
     if (isMongoConnected()) {
@@ -24993,7 +28588,11 @@ router14.get("/agents", requireAdmin, async (_req, res) => {
     return res.status(500).json({ error: err.message });
   }
 });
+<<<<<<< HEAD
 router14.post("/agents", requireAdmin, async (req, res) => {
+=======
+router13.post("/agents", requireAdmin, async (req, res) => {
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
   try {
     const { name, email, role, department, phone, status } = req.body;
     if (!name || !email) {
@@ -25033,7 +28632,11 @@ router14.post("/agents", requireAdmin, async (req, res) => {
     return res.status(500).json({ error: err.message });
   }
 });
+<<<<<<< HEAD
 router14.put("/agents/:id", requireAdmin, async (req, res) => {
+=======
+router13.put("/agents/:id", requireAdmin, async (req, res) => {
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
   try {
     const { id } = req.params;
     const { role, department, status, phone, name } = req.body;
@@ -25075,7 +28678,11 @@ router14.put("/agents/:id", requireAdmin, async (req, res) => {
     return res.status(500).json({ error: err.message });
   }
 });
+<<<<<<< HEAD
 router14.delete("/agents/:id", requireAdmin, async (req, res) => {
+=======
+router13.delete("/agents/:id", requireAdmin, async (req, res) => {
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
   try {
     const { id } = req.params;
     const adminUser = req.adminUser || {};
@@ -25101,7 +28708,11 @@ router14.delete("/agents/:id", requireAdmin, async (req, res) => {
     return res.status(500).json({ error: err.message });
   }
 });
+<<<<<<< HEAD
 router14.get("/knowledge-base", async (req, res) => {
+=======
+router13.get("/knowledge-base", async (req, res) => {
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
   try {
     const { category, search } = req.query;
     let articles = [];
@@ -25136,7 +28747,11 @@ router14.get("/knowledge-base", async (req, res) => {
     return res.status(500).json({ error: err.message });
   }
 });
+<<<<<<< HEAD
 router14.post("/knowledge-base", requireAdmin, async (req, res) => {
+=======
+router13.post("/knowledge-base", requireAdmin, async (req, res) => {
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
   try {
     const { title, category, summary, content, status, tags } = req.body;
     if (!title || !content) {
@@ -25177,7 +28792,11 @@ router14.post("/knowledge-base", requireAdmin, async (req, res) => {
     return res.status(500).json({ error: err.message });
   }
 });
+<<<<<<< HEAD
 router14.put("/knowledge-base/:id", requireAdmin, async (req, res) => {
+=======
+router13.put("/knowledge-base/:id", requireAdmin, async (req, res) => {
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
   try {
     const { id } = req.params;
     const { title, category, summary, content, status, tags } = req.body;
@@ -25221,7 +28840,11 @@ router14.put("/knowledge-base/:id", requireAdmin, async (req, res) => {
     return res.status(500).json({ error: err.message });
   }
 });
+<<<<<<< HEAD
 router14.delete("/knowledge-base/:id", requireAdmin, async (req, res) => {
+=======
+router13.delete("/knowledge-base/:id", requireAdmin, async (req, res) => {
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
   try {
     const { id } = req.params;
     const adminUser = req.adminUser || {};
@@ -25279,10 +28902,17 @@ var CANNED_TEMPLATES = [
     body: "Welcome to ALIKE-ND Platinum Concierge! As an elite member, you enjoy 24/7 priority routing, dedicated private stylists, and complimentary express fulfillment across all luxury selections."
   }
 ];
+<<<<<<< HEAD
 router14.get("/templates", requireAdmin, async (_req, res) => {
   return res.json(CANNED_TEMPLATES);
 });
 router14.get("/reports", requireAdmin, async (_req, res) => {
+=======
+router13.get("/templates", requireAdmin, async (_req, res) => {
+  return res.json(CANNED_TEMPLATES);
+});
+router13.get("/reports", requireAdmin, async (_req, res) => {
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
   try {
     const tickets = memoryStore.tickets;
     const hotlines = memoryStore.hotlines;
@@ -25340,10 +28970,17 @@ router14.get("/reports", requireAdmin, async (_req, res) => {
     return res.status(500).json({ error: err.message });
   }
 });
+<<<<<<< HEAD
 router14.get("/settings", requireAdmin, async (_req, res) => {
   return res.json(memoryStore.customerCareSettings);
 });
 router14.put("/settings", requireAdmin, async (req, res) => {
+=======
+router13.get("/settings", requireAdmin, async (_req, res) => {
+  return res.json(memoryStore.customerCareSettings);
+});
+router13.put("/settings", requireAdmin, async (req, res) => {
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
   try {
     const adminUser = req.adminUser || {};
     const performedBy = adminUser.name || "Administrator";
@@ -25365,10 +29002,17 @@ router14.put("/settings", requireAdmin, async (req, res) => {
     return res.status(500).json({ error: err.message });
   }
 });
+<<<<<<< HEAD
 router14.get("/audit-logs", requireAdmin, async (_req, res) => {
   return res.json(memoryStore.customerCareAuditLogs);
 });
 router14.get(["/", "/public/hotlines"], async (_req, res) => {
+=======
+router13.get("/audit-logs", requireAdmin, async (_req, res) => {
+  return res.json(memoryStore.customerCareAuditLogs);
+});
+router13.get(["/", "/public/hotlines"], async (_req, res) => {
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
   try {
     const activeHotlines = (memoryStore.hotlines || []).filter((h) => h.isActive);
     return res.json(
@@ -25390,7 +29034,11 @@ router14.get(["/", "/public/hotlines"], async (_req, res) => {
     return res.status(500).json({ error: err.message });
   }
 });
+<<<<<<< HEAD
 router14.post(["/", "/public/inquiry", "/inquiry"], async (req, res) => {
+=======
+router13.post(["/", "/public/inquiry", "/inquiry"], async (req, res) => {
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
   try {
     const { name, email, phone, subject, message, category } = req.body;
     if (!name || !email || !message) {
@@ -25500,7 +29148,11 @@ function sanitizeTicketForCustomer(t) {
     updatedAt: raw.updatedAt
   };
 }
+<<<<<<< HEAD
 router14.get(["/my-tickets", "/user/tickets"], async (req, res) => {
+=======
+router13.get(["/my-tickets", "/user/tickets"], async (req, res) => {
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
   try {
     const userEmail = extractCustomerEmail(req);
     if (!userEmail) {
@@ -25530,7 +29182,11 @@ router14.get(["/my-tickets", "/user/tickets"], async (req, res) => {
     return res.status(500).json({ success: false, error: err.message });
   }
 });
+<<<<<<< HEAD
 router14.post(["/create-ticket", "/user/tickets"], async (req, res) => {
+=======
+router13.post(["/create-ticket", "/user/tickets"], async (req, res) => {
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
   try {
     const {
       subject,
@@ -25636,7 +29292,11 @@ Preferred Contact Method: ${preferredContactMethod || "Email"}`,
     return res.status(500).json({ success: false, error: err.message });
   }
 });
+<<<<<<< HEAD
 router14.get(["/tickets/:id/user", "/user/tickets/:id"], async (req, res) => {
+=======
+router13.get(["/tickets/:id/user", "/user/tickets/:id"], async (req, res) => {
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
   try {
     const { id } = req.params;
     const userEmail = extractCustomerEmail(req);
@@ -25660,7 +29320,11 @@ router14.get(["/tickets/:id/user", "/user/tickets/:id"], async (req, res) => {
     return res.status(500).json({ success: false, error: err.message });
   }
 });
+<<<<<<< HEAD
 router14.post(["/tickets/:id/user-reply", "/user/tickets/:id/reply"], async (req, res) => {
+=======
+router13.post(["/tickets/:id/user-reply", "/user/tickets/:id/reply"], async (req, res) => {
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
   try {
     const { id } = req.params;
     const { message, attachments = [] } = req.body;
@@ -25726,7 +29390,11 @@ router14.post(["/tickets/:id/user-reply", "/user/tickets/:id/reply"], async (req
     return res.status(500).json({ success: false, error: err.message });
   }
 });
+<<<<<<< HEAD
 router14.post(["/tickets/:id/user-reopen", "/user/tickets/:id/reopen"], async (req, res) => {
+=======
+router13.post(["/tickets/:id/user-reopen", "/user/tickets/:id/reopen"], async (req, res) => {
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
   try {
     const { id } = req.params;
     const { reason = "Customer requested issue reopening" } = req.body;
@@ -25784,7 +29452,11 @@ router14.post(["/tickets/:id/user-reopen", "/user/tickets/:id/reopen"], async (r
     return res.status(500).json({ success: false, error: err.message });
   }
 });
+<<<<<<< HEAD
 router14.post("/knowledge-base/:id/helpful", async (req, res) => {
+=======
+router13.post("/knowledge-base/:id/helpful", async (req, res) => {
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
   try {
     const { id } = req.params;
     let target = memoryStore.knowledgeArticles.find((a) => a._id === id);
@@ -25800,7 +29472,11 @@ router14.post("/knowledge-base/:id/helpful", async (req, res) => {
     return res.status(500).json({ success: false, error: err.message });
   }
 });
+<<<<<<< HEAD
 router14.post("/knowledge-base/:id/view", async (req, res) => {
+=======
+router13.post("/knowledge-base/:id/view", async (req, res) => {
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
   try {
     const { id } = req.params;
     let target = memoryStore.knowledgeArticles.find((a) => a._id === id);
@@ -25816,6 +29492,7 @@ router14.post("/knowledge-base/:id/view", async (req, res) => {
     return res.status(500).json({ success: false, error: err.message });
   }
 });
+<<<<<<< HEAD
 var customerCare_default = router14;
 
 // backend/routes/returns.ts
@@ -35087,6 +38764,15 @@ var PRODUCTS = [
 ];
 
 // backend/app.ts
+=======
+var customerCare_default = router13;
+
+// backend/app.ts
+init_store();
+init_Product();
+init_Banner();
+init_PlatformSetting();
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
 dotenv.config({ override: true });
 connectMongoDB().then(() => {
   startOrderAutomationJob(3e4);
@@ -35094,8 +38780,12 @@ connectMongoDB().then(() => {
   console.warn("MongoDB initial connection error:", err?.message || err);
   startOrderAutomationJob(3e4);
 });
+<<<<<<< HEAD
 var app2 = express2();
 app2.set("trust proxy", 1);
+=======
+var app2 = express();
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
 var defaultAllowedOrigins = [
   "http://localhost:3000",
   "http://localhost:5173",
@@ -35122,7 +38812,11 @@ var isOriginAllowed = (origin) => {
   if (/^https?:\/\/.*\.googleusercontent\.com$/.test(clean) || /^https?:\/\/.*\.google\.com$/.test(clean)) {
     return true;
   }
+<<<<<<< HEAD
   if (/^https?:\/\/.*\.vercel\.app$/.test(clean) || /^https?:\/\/(www\.)?alikend\.shop$/.test(clean)) {
+=======
+  if (/^https?:\/\/.*\.vercel\.app$/.test(clean)) {
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
     return true;
   }
   return allowedOrigins.some((allowed) => allowed.replace(/\/$/, "").toLowerCase() === clean);
@@ -35138,6 +38832,7 @@ app2.use(
     credentials: true
   })
 );
+<<<<<<< HEAD
 app2.use(express2.json({ limit: "10mb" }));
 app2.use(express2.urlencoded({ limit: "10mb", extended: true }));
 app2.use("/api", (_req, res, next) => {
@@ -35238,11 +38933,27 @@ app2.get("/api/products", async (req, res) => {
       try {
         const filter = isAdmin ? {} : { isHidden: { $ne: true }, isPublished: { $ne: false }, isDraft: { $ne: true } };
         prods = await Product_default.find(filter).sort({ createdAt: -1 });
+=======
+app2.use(express.json({ limit: "2mb" }));
+app2.use(express.urlencoded({ limit: "2mb", extended: true }));
+app2.get(["/api/health", "/health", "/healthz"], (_req, res) => {
+  res.json({ status: "ok" });
+});
+app2.use("/api/auth", userAuth_default);
+app2.use(["/api/sellers", "/api/seller"], sellerPortal_default);
+app2.get("/api/products", async (_req, res) => {
+  try {
+    let prods = [];
+    if (isMongoConnected()) {
+      try {
+        prods = await Product_default.find().sort({ createdAt: -1 });
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
       } catch (e) {
         console.warn("MongoDB fetch storefront products fallback:", e);
       }
     }
     if (!prods || prods.length === 0) {
+<<<<<<< HEAD
       prods = isAdmin ? memoryStore.products || [] : (memoryStore.products || []).filter(
         (p) => p.isHidden !== true && p.isPublished !== false && p.isDraft !== true
       );
@@ -35284,6 +38995,18 @@ app2.get("/api/products", async (req, res) => {
     if (hasCoords && req.query.sort === "nearest") {
       sanitized.sort((a, b) => (a.distanceKm ?? 9999) - (b.distanceKm ?? 9999));
     }
+=======
+      prods = memoryStore.products;
+    }
+    const sanitized = prods.map((p) => {
+      const doc = p && typeof p.toObject === "function" ? p.toObject() : { ...p };
+      return {
+        ...doc,
+        sellerId: doc.sellerId || "admin",
+        sellerShopName: doc.sellerShopName || (doc.sellerId === "admin" || !doc.sellerId ? "ALIKE-ND Official" : doc.brand || "Atelier")
+      };
+    });
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
     return res.json(sanitized);
   } catch (err) {
     return res.status(500).json({ error: err.message });
@@ -35323,7 +39046,11 @@ app2.get("/api/banners", async (_req, res) => {
     return res.status(500).json({ error: err.message });
   }
 });
+<<<<<<< HEAD
 var orderRateLimiter = rateLimit5({
+=======
+var orderRateLimiter = rateLimit({
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
   windowMs: 15 * 60 * 1e3,
   max: 20,
   message: { error: "Too many order requests from this IP address. Please try again after 15 minutes." },
@@ -35336,10 +39063,14 @@ app2.post("/api/orders", orderRateLimiter, async (req, res) => {
       items = [],
       address = {},
       paymentMethod = "CARD",
+<<<<<<< HEAD
       memberEmail: rawMemberEmail,
       deliveryLocation,
       deliveryType: clientRequestedDeliveryType = "standard",
       deliveryEtaText: clientEtaText
+=======
+      memberEmail: rawMemberEmail
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
     } = req.body;
     if (!Array.isArray(items) || items.length === 0) {
       return res.status(400).json({ error: "Order must contain at least one valid item." });
@@ -35347,6 +39078,7 @@ app2.post("/api/orders", orderRateLimiter, async (req, res) => {
     if (!address || !address.name || !address.street || !address.city) {
       return res.status(400).json({ error: "Complete delivery address is required." });
     }
+<<<<<<< HEAD
     let verifiedDeliveryLocation = void 0;
     if (deliveryLocation && deliveryLocation.lat !== void 0 && deliveryLocation.lng !== void 0) {
       if (!isValidCoordinate(deliveryLocation.lat, deliveryLocation.lng)) {
@@ -35393,6 +39125,13 @@ app2.post("/api/orders", orderRateLimiter, async (req, res) => {
     }
     const productIds = items.map((it) => it.product?._id || it.product?.id || it.productId).filter(Boolean);
     const dbProductMap = /* @__PURE__ */ new Map();
+=======
+    const orderNumber = `ALK-${Date.now().toString().slice(-6)}${crypto4.randomInt(100, 999)}`;
+    const memberName = String(address.name || "Valued Client").trim();
+    const memberEmail = String(address.email || rawMemberEmail || "").trim().toLowerCase();
+    const productIds = items.map((it) => it.product?._id || it.product?.id || it.productId).filter(Boolean);
+    let dbProductMap = /* @__PURE__ */ new Map();
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
     if (isMongoConnected() && productIds.length > 0) {
       try {
         const found = await Product_default.find({
@@ -35403,6 +39142,7 @@ app2.post("/api/orders", orderRateLimiter, async (req, res) => {
         }).lean();
         for (const p of found) {
           if (p._id) dbProductMap.set(String(p._id), p);
+<<<<<<< HEAD
           if (p.id !== void 0 && p.id !== null) dbProductMap.set(String(p.id), p);
         }
       } catch (e) {
@@ -35636,6 +39376,31 @@ app2.post("/api/orders", orderRateLimiter, async (req, res) => {
     } else if (clientEtaText && verifiedDeliveryType === "standard") {
       verifiedEtaText = "Standard Delivery";
     }
+=======
+          if (p.id) dbProductMap.set(String(p.id), p);
+        }
+      } catch (e) {
+        console.warn("Product price verification warning:", e);
+      }
+    }
+    let calculatedSubtotal = 0;
+    const formattedItems = items.map((it) => {
+      const pid = it.product?._id || it.product?.id || it.productId || null;
+      const matched = pid ? dbProductMap.get(String(pid)) : null;
+      const verifiedPrice = matched ? Number(matched.price) : Math.max(0, Number(it.product?.price || it.price || 0));
+      const qty = Math.max(1, Math.floor(Number(it.quantity || it.qty || 1)));
+      calculatedSubtotal += verifiedPrice * qty;
+      return {
+        productId: pid,
+        name: String(matched?.name || it.product?.name || it.name || "Luxury Product").trim(),
+        qty,
+        price: verifiedPrice,
+        image: it.product?.image || it.image || matched?.image || "",
+        color: it.selectedColor || it.color || "",
+        size: it.selectedSize || it.size || ""
+      };
+    });
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
     const calculatedTax = Math.round(calculatedSubtotal * 0.18);
     const calculatedDelivery = calculatedSubtotal > 5e4 ? 0 : 250;
     const calculatedDiscount = 0;
@@ -35645,6 +39410,7 @@ app2.post("/api/orders", orderRateLimiter, async (req, res) => {
     const delivery = calculatedDelivery;
     const discount = calculatedDiscount;
     const orderTotal = calculatedTotal;
+<<<<<<< HEAD
     const commissionSnapshot = await calculateOrderCommissionSnapshot({
       items: formattedItems,
       subtotal: calculatedSubtotal,
@@ -35656,6 +39422,11 @@ app2.post("/api/orders", orderRateLimiter, async (req, res) => {
     const activeCommissionRate = commissionSnapshot.effectiveAverageRate;
     const commissionAmount = commissionSnapshot.totalCommissionAmount;
     const sellerPayout = commissionSnapshot.totalSellerPayout;
+=======
+    const activeCommissionRate = await getActiveCommissionRate();
+    const commissionAmount = Math.round(calculatedTotal * activeCommissionRate / 100);
+    const sellerPayout = Math.max(0, calculatedTotal - commissionAmount);
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
     let createdDoc = null;
     const nowApprovedAt = /* @__PURE__ */ new Date();
     if (isMongoConnected()) {
@@ -35664,10 +39435,13 @@ app2.post("/api/orders", orderRateLimiter, async (req, res) => {
           orderNumber,
           memberName,
           memberEmail,
+<<<<<<< HEAD
           userId: String(req.body.userId || ""),
           deliveryLocation: verifiedDeliveryLocation,
           deliveryType: verifiedDeliveryType,
           deliveryEtaText: verifiedEtaText,
+=======
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
           total: calculatedTotal,
           status: "processing",
           // Automatically approved on confirmed payment
@@ -35690,12 +39464,17 @@ app2.post("/api/orders", orderRateLimiter, async (req, res) => {
           approvedAt: nowApprovedAt,
           commissionRate: activeCommissionRate,
           commissionAmount,
+<<<<<<< HEAD
           eligibleCommissionAmount: commissionSnapshot.totalEligibleAmount,
           refundedCommissionAmount: 0,
           commissionReversed: false,
           sellerPayout,
           commissionStatus: "pending",
           commissionBreakdown: commissionSnapshot.breakdown
+=======
+          sellerPayout,
+          commissionStatus: "credited"
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
         });
         console.log(`\u2728 [ORDER PERSISTED & APPROVED] Order ${orderNumber} created in alikendshop.orders for ${memberName}`);
         try {
@@ -35728,6 +39507,7 @@ app2.post("/api/orders", orderRateLimiter, async (req, res) => {
       orderNumber,
       memberName,
       memberEmail,
+<<<<<<< HEAD
       userId: String(req.body.userId || ""),
       deliveryLocation: verifiedDeliveryLocation,
       deliveryType: verifiedDeliveryType,
@@ -35738,17 +39518,25 @@ app2.post("/api/orders", orderRateLimiter, async (req, res) => {
       discount: calculatedDiscount,
       delivery: calculatedDelivery,
       items: formattedItems,
+=======
+      total: orderTotal,
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
       status: "processing",
       trackingStep: 2,
       approvedAt: nowApprovedAt,
       commissionRate: activeCommissionRate,
       commissionAmount,
+<<<<<<< HEAD
       eligibleCommissionAmount: commissionSnapshot.totalEligibleAmount,
       refundedCommissionAmount: 0,
       commissionReversed: false,
       sellerPayout,
       commissionStatus: "credited",
       commissionBreakdown: commissionSnapshot.breakdown,
+=======
+      sellerPayout,
+      commissionStatus: "credited",
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
       paymentMethod: String(paymentMethod || "CARD").toUpperCase(),
       createdAt: /* @__PURE__ */ new Date()
     };
@@ -35899,6 +39687,7 @@ app2.use("/api/admin/database-hub", databaseHub_default);
 app2.use("/api/admin/customer-care", customerCare_default);
 app2.use(["/api/hotlines", "/api/support"], customerCare_default);
 app2.use(["/api/categories", "/api/admin/categories"], categories_default);
+<<<<<<< HEAD
 app2.use(["/api/returns", "/api/admin/returns"], returns_default);
 app2.use(["/api/advertisements", "/api/admin/advertisements"], advertisements_default);
 app2.use(["/api/rides", "/api/admin/rides"], rides_default);
@@ -35916,6 +39705,8 @@ app2.patch("/api/seller/orders/:id/live-location", (req, res, next) => {
   req.url = `/seller/${req.params.id}/live-location`;
   orderTracking_default(req, res, next);
 });
+=======
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
 var geminiRateLimitMap = /* @__PURE__ */ new Map();
 app2.post("/api/gemini/engine", async (req, res) => {
   try {

@@ -14,11 +14,22 @@ import sellerPortalRoutes from "./routes/sellerPortal";
 import customerRoutes from "./routes/customers";
 import bannerRoutes from "./routes/banners";
 import commissionRoutes, { getActiveCommissionRate } from "./routes/commission";
+<<<<<<< HEAD
 import { calculateOrderCommissionSnapshot } from "./services/commissionEngine";
+=======
+<<<<<<< HEAD
+import { calculateOrderCommissionSnapshot } from "./services/commissionEngine";
+=======
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
 import flashSaleRoutes from "./routes/flashSale";
 import categoryRoutes from "./routes/categories";
 import databaseHubRoutes from "./routes/databaseHub";
 import customerCareRoutes from "./routes/customerCare";
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
 import returnRoutes from "./routes/returns";
 import advertisementRoutes from "./routes/advertisements";
 import ridesRoutes from "./routes/rides";
@@ -31,17 +42,33 @@ import adminCentralRoutes from "./routes/adminCentral";
 import jwt from "jsonwebtoken";
 import { requireAdmin, requireCustomerAuth, CustomerAuthedRequest, ALL_ADMIN_ROLES, getJwtSecret } from "./middleware/auth";
 import { connectMongoDB, isMongoConnected, memoryStore, syncDatabaseWithMemory } from "./store";
+<<<<<<< HEAD
+=======
+=======
+import { requireAdmin, requireCustomerAuth, CustomerAuthedRequest } from "./middleware/auth";
+import { connectMongoDB, isMongoConnected, memoryStore } from "./store";
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
 import { startOrderAutomationJob, progressOrderStatuses } from "./services/orderAutomation";
 import { dispatchOrderNotificationEmails } from "./services/mailer";
 import Product from "./models/Product";
 import Order from "./models/Order";
 import Banner from "./models/Banner";
 import PlatformSetting from "./models/PlatformSetting";
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
 import User from "./models/User";
 import Seller from "./models/Seller";
 import FlashSale from "./models/FlashSale";
 import { PRODUCTS as STATIC_CATALOG_PRODUCTS } from "../src/data/mockData";
 import { isValidCoordinate, calculateDeliveryMetrics } from "./services/geoService";
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
 
 dotenv.config({ override: true });
 
@@ -57,7 +84,14 @@ connectMongoDB()
   });
 
 const app = express();
+<<<<<<< HEAD
 app.set("trust proxy", 1);
+=======
+<<<<<<< HEAD
+app.set("trust proxy", 1);
+=======
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
 
 // Configurable CORS origins with fallback to local development defaults
 const defaultAllowedOrigins = [
@@ -98,8 +132,13 @@ const isOriginAllowed = (origin: string): boolean => {
     return true;
   }
 
+<<<<<<< HEAD
   // Allow all Vercel deployments (*.vercel.app) and official custom domain (alikend.shop)
   if (/^https?:\/\/.*\.vercel\.app$/.test(clean) || /^https?:\/\/(www\.)?alikend\.shop$/.test(clean)) {
+=======
+  // Allow all Vercel deployments (*.vercel.app)
+  if (/^https?:\/\/.*\.vercel\.app$/.test(clean)) {
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
     return true;
   }
 
@@ -120,6 +159,10 @@ app.use(
     credentials: true,
   })
 );
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
 app.use(express.json({ limit: "10mb" }));
 app.use(express.urlencoded({ limit: "10mb", extended: true }));
 
@@ -138,12 +181,23 @@ app.use("/api", (_req, res, next) => {
   }) as any;
   next();
 });
+<<<<<<< HEAD
+=======
+=======
+app.use(express.json({ limit: "2mb" }));
+app.use(express.urlencoded({ limit: "2mb", extended: true }));
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
 
 // Health check endpoints for ingress and container probes
 app.get(["/api/health", "/health", "/healthz"], (_req, res) => {
   res.json({ status: "ok" });
 });
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
 // Database & Persistence Diagnostic Endpoint
 app.get("/api/db-status", async (_req, res) => {
   const mongoActive = isMongoConnected();
@@ -182,12 +236,21 @@ app.post("/api/admin/db-sync", requireAdmin, async (_req, res) => {
   }
 });
 
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
 // Public User Authentication & Registration Routes (MongoDB 'users' collection)
 app.use("/api/auth", userAuthRoutes);
 
 // Public & Authenticated Multi-Seller Marketplace Routes (Registration, Login, My Products, Wallet)
 app.use(["/api/sellers", "/api/seller"], sellerPortalRoutes);
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
 // Public & Admin Storefront Products Route (Synced with Super Admin / Admin catalog)
 app.get("/api/products", async (req, res) => {
   try {
@@ -249,11 +312,27 @@ app.get("/api/products", async (req, res) => {
           ? {}
           : { isHidden: { $ne: true }, isPublished: { $ne: false }, isDraft: { $ne: true } };
         prods = await Product.find(filter).sort({ createdAt: -1 });
+<<<<<<< HEAD
+=======
+=======
+// Public Storefront Products Route (Synced with Super Admin / Admin catalog)
+app.get("/api/products", async (_req, res) => {
+  try {
+    let prods: any[] = [];
+    if (isMongoConnected()) {
+      try {
+        prods = await Product.find().sort({ createdAt: -1 });
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
       } catch (e) {
         console.warn("MongoDB fetch storefront products fallback:", e);
       }
     }
     if (!prods || prods.length === 0) {
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
       prods = isAdmin
         ? (memoryStore.products || [])
         : (memoryStore.products || []).filter(
@@ -316,6 +395,21 @@ app.get("/api/products", async (req, res) => {
       sanitized.sort((a: any, b: any) => (a.distanceKm ?? 9999) - (b.distanceKm ?? 9999));
     }
 
+<<<<<<< HEAD
+=======
+=======
+      prods = memoryStore.products;
+    }
+    const sanitized = prods.map((p: any) => {
+      const doc = p && typeof p.toObject === "function" ? p.toObject() : { ...p };
+      return {
+        ...doc,
+        sellerId: doc.sellerId || "admin",
+        sellerShopName: doc.sellerShopName || (doc.sellerId === "admin" || !doc.sellerId ? "ALIKE-ND Official" : (doc.brand || "Atelier")),
+      };
+    });
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
     return res.json(sanitized);
   } catch (err: any) {
     return res.status(500).json({ error: err.message });
@@ -375,9 +469,18 @@ app.post("/api/orders", orderRateLimiter, async (req, res) => {
       address = {},
       paymentMethod = "CARD",
       memberEmail: rawMemberEmail,
+<<<<<<< HEAD
       deliveryLocation,
       deliveryType: clientRequestedDeliveryType = "standard",
       deliveryEtaText: clientEtaText,
+=======
+<<<<<<< HEAD
+      deliveryLocation,
+      deliveryType: clientRequestedDeliveryType = "standard",
+      deliveryEtaText: clientEtaText,
+=======
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
     } = req.body;
 
     if (!Array.isArray(items) || items.length === 0) {
@@ -388,6 +491,10 @@ app.post("/api/orders", orderRateLimiter, async (req, res) => {
       return res.status(400).json({ error: "Complete delivery address is required." });
     }
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
     // Validate deliveryLocation coordinates if provided
     let verifiedDeliveryLocation: { lat: number; lng: number; address?: string } | undefined = undefined;
     if (deliveryLocation && deliveryLocation.lat !== undefined && deliveryLocation.lng !== undefined) {
@@ -401,11 +508,20 @@ app.post("/api/orders", orderRateLimiter, async (req, res) => {
       };
     }
 
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
     // Problem #26: Securely generate collision-resistant order ID on server (do not trust client ID)
     const orderNumber = `ALK-${Date.now().toString().slice(-6)}${crypto.randomInt(100, 999)}`;
     const memberName = String(address.name || "Valued Client").trim();
     const memberEmail = String(address.email || rawMemberEmail || "").trim().toLowerCase();
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
     // Backend Restrictions Enforcement (Problem #2)
     if (memberEmail) {
       let orderingUser: any = null;
@@ -441,11 +557,25 @@ app.post("/api/orders", orderRateLimiter, async (req, res) => {
     }
 
     // Strict Server-Side Product & Price Verification (Zero Client Price Fallback)
+<<<<<<< HEAD
+=======
+=======
+    // Look up real product prices from DB where possible (Problem #6)
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
     const productIds = items
       .map((it: any) => it.product?._id || it.product?.id || it.productId)
       .filter(Boolean);
 
+<<<<<<< HEAD
     const dbProductMap = new Map<string, any>();
+=======
+<<<<<<< HEAD
+    const dbProductMap = new Map<string, any>();
+=======
+    let dbProductMap = new Map<string, any>();
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
     if (isMongoConnected() && productIds.length > 0) {
       try {
         const found = await Product.find({
@@ -456,6 +586,10 @@ app.post("/api/orders", orderRateLimiter, async (req, res) => {
         }).lean();
         for (const p of found) {
           if (p._id) dbProductMap.set(String(p._id), p);
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
           if (p.id !== undefined && p.id !== null) dbProductMap.set(String(p.id), p);
         }
       } catch (e) {
@@ -743,6 +877,37 @@ app.post("/api/orders", orderRateLimiter, async (req, res) => {
     } else if (clientEtaText && verifiedDeliveryType === "standard") {
       verifiedEtaText = "Standard Delivery";
     }
+<<<<<<< HEAD
+=======
+=======
+          if (p.id) dbProductMap.set(String(p.id), p);
+        }
+      } catch (e) {
+        console.warn("Product price verification warning:", e);
+      }
+    }
+
+    // Format items with verified or trusted positive price
+    let calculatedSubtotal = 0;
+    const formattedItems = items.map((it: any) => {
+      const pid = it.product?._id || it.product?.id || it.productId || null;
+      const matched = pid ? dbProductMap.get(String(pid)) : null;
+      const verifiedPrice = matched ? Number(matched.price) : Math.max(0, Number(it.product?.price || it.price || 0));
+      const qty = Math.max(1, Math.floor(Number(it.quantity || it.qty || 1)));
+      calculatedSubtotal += verifiedPrice * qty;
+
+      return {
+        productId: pid,
+        name: String(matched?.name || it.product?.name || it.name || "Luxury Product").trim(),
+        qty,
+        price: verifiedPrice,
+        image: it.product?.image || it.image || matched?.image || "",
+        color: it.selectedColor || it.color || "",
+        size: it.selectedSize || it.size || "",
+      };
+    });
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
 
     const calculatedTax = Math.round(calculatedSubtotal * 0.18);
     const calculatedDelivery = calculatedSubtotal > 50000 ? 0 : 250;
@@ -755,17 +920,33 @@ app.post("/api/orders", orderRateLimiter, async (req, res) => {
     const discount = calculatedDiscount;
     const orderTotal = calculatedTotal;
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
     const commissionSnapshot = await calculateOrderCommissionSnapshot({
       items: formattedItems,
       subtotal: calculatedSubtotal,
       discount: calculatedDiscount,
       tax: calculatedTax,
       delivery: calculatedDelivery,
+<<<<<<< HEAD
       productLookupMap: dbProductMap,
+=======
+      productLookupMap: productMap,
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
     });
     const activeCommissionRate = commissionSnapshot.effectiveAverageRate;
     const commissionAmount = commissionSnapshot.totalCommissionAmount;
     const sellerPayout = commissionSnapshot.totalSellerPayout;
+<<<<<<< HEAD
+=======
+=======
+    const activeCommissionRate = await getActiveCommissionRate();
+    const commissionAmount = Math.round((calculatedTotal * activeCommissionRate) / 100);
+    const sellerPayout = Math.max(0, calculatedTotal - commissionAmount);
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
 
     let createdDoc: any = null;
     const nowApprovedAt = new Date();
@@ -776,10 +957,19 @@ app.post("/api/orders", orderRateLimiter, async (req, res) => {
           orderNumber,
           memberName,
           memberEmail,
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
           userId: String(req.body.userId || ""),
           deliveryLocation: verifiedDeliveryLocation,
           deliveryType: verifiedDeliveryType,
           deliveryEtaText: verifiedEtaText,
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
           total: calculatedTotal,
           status: "processing", // Automatically approved on confirmed payment
           items: formattedItems,
@@ -800,12 +990,23 @@ app.post("/api/orders", orderRateLimiter, async (req, res) => {
           approvedAt: nowApprovedAt,
           commissionRate: activeCommissionRate,
           commissionAmount,
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
           eligibleCommissionAmount: commissionSnapshot.totalEligibleAmount,
           refundedCommissionAmount: 0,
           commissionReversed: false,
           sellerPayout,
           commissionStatus: "pending",
           commissionBreakdown: commissionSnapshot.breakdown,
+<<<<<<< HEAD
+=======
+=======
+          sellerPayout,
+          commissionStatus: "credited",
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
         });
         console.log(`✨ [ORDER PERSISTED & APPROVED] Order ${orderNumber} created in alikendshop.orders for ${memberName}`);
 
@@ -843,6 +1044,10 @@ app.post("/api/orders", orderRateLimiter, async (req, res) => {
       orderNumber,
       memberName,
       memberEmail,
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
       userId: String(req.body.userId || ""),
       deliveryLocation: verifiedDeliveryLocation,
       deliveryType: verifiedDeliveryType,
@@ -853,17 +1058,34 @@ app.post("/api/orders", orderRateLimiter, async (req, res) => {
       discount: calculatedDiscount,
       delivery: calculatedDelivery,
       items: formattedItems,
+<<<<<<< HEAD
+=======
+=======
+      total: orderTotal,
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
       status: "processing" as const,
       trackingStep: 2,
       approvedAt: nowApprovedAt,
       commissionRate: activeCommissionRate,
       commissionAmount,
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
       eligibleCommissionAmount: commissionSnapshot.totalEligibleAmount,
       refundedCommissionAmount: 0,
       commissionReversed: false,
       sellerPayout,
       commissionStatus: "credited" as const,
       commissionBreakdown: commissionSnapshot.breakdown,
+<<<<<<< HEAD
+=======
+=======
+      sellerPayout,
+      commissionStatus: "credited" as const,
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
       paymentMethod: String(paymentMethod || "CARD").toUpperCase(),
       createdAt: new Date(),
     };
@@ -1034,6 +1256,10 @@ app.use("/api/admin/database-hub", databaseHubRoutes);
 app.use("/api/admin/customer-care", customerCareRoutes);
 app.use(["/api/hotlines", "/api/support"], customerCareRoutes);
 app.use(["/api/categories", "/api/admin/categories"], categoryRoutes);
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
 app.use(["/api/returns", "/api/admin/returns"], returnRoutes);
 app.use(["/api/advertisements", "/api/admin/advertisements"], advertisementRoutes);
 app.use(["/api/rides", "/api/admin/rides"], ridesRoutes);
@@ -1053,6 +1279,11 @@ app.patch("/api/seller/orders/:id/live-location", (req, res, next) => {
   req.url = `/seller/${req.params.id}/live-location`;
   orderTrackingRoutes(req, res, next);
 });
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
+>>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
 
 // Track Gemini request counts per IP to prevent quota starvation
 const geminiRateLimitMap = new Map<string, { count: number; resetAt: number }>();
