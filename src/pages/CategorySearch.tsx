@@ -118,10 +118,13 @@ export default function CategorySearch({
             if (!p.isWholesale) return false;
           } else if (selectedCategory === 'luxury') {
             if (p.category !== 'luxury') return false;
+<<<<<<< HEAD
           } else if (selectedCategory === 'vip' || selectedCategory === 'premium') {
             if (p.category !== 'vip' && p.category !== 'electronics' && p.category !== 'mobiles' && p.category !== 'laptops' && p.badge !== 'HOT') return false;
           } else if (selectedCategory === 'simple') {
             if (p.category === 'luxury') return false;
+=======
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
           } else if (selectedCategory === 'delivery') {
             if (!p.eligibleFor20MinDelivery && p.category !== 'delivery' && p.category !== 'grocery' && p.category !== 'food_delivery') return false;
           } else if (selectedCategory === 'grocery') {
@@ -670,7 +673,11 @@ export default function CategorySearch({
                                 e.stopPropagation();
                                 onAddToCart(p);
                               }}
+<<<<<<< HEAD
                               className="px-4.5 py-2 bg-gradient-to-r from-[#FF1990] to-[#FF007F] hover:brightness-110 text-white font-black text-xs uppercase tracking-wider rounded-xl shadow-xs transition-all active:scale-95 cursor-pointer"
+=======
+                              className="px-4.5 py-2 bg-gradient-to-r from-[#F5A623] to-[#D4AF37] hover:brightness-110 text-[#0A0F24] font-black text-xs uppercase tracking-wider rounded-xl shadow-xs transition-all active:scale-95 cursor-pointer"
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
                             >
                               Add to Cart
                             </button>
@@ -701,7 +708,11 @@ export default function CategorySearch({
           }`}>
             <div className="flex items-center justify-between pb-3 border-b border-neutral-200 dark:border-neutral-800 mb-4">
               <div className="flex items-center gap-2">
+<<<<<<< HEAD
                 <SlidersHorizontal className="w-4 h-4 text-[#FF007F]" />
+=======
+                <SlidersHorizontal className="w-4 h-4 text-[#F5A623]" />
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
                 <h2 className="text-sm font-black uppercase tracking-wider">Refine By Audience</h2>
               </div>
               <button
@@ -728,7 +739,11 @@ export default function CategorySearch({
               <button
                 type="button"
                 onClick={() => setIsMobileFilterOpen(false)}
+<<<<<<< HEAD
                 className="flex-1 py-2.5 px-3 rounded-xl bg-gradient-to-r from-[#FF1990] to-[#FF007F] text-white text-xs font-black uppercase tracking-wider shadow-md hover:brightness-110 active:scale-95 transition-all cursor-pointer text-center"
+=======
+                className="flex-1 py-2.5 px-3 rounded-xl bg-gradient-to-r from-[#F5A623] to-[#D4AF37] text-[#0A0F24] text-xs font-black uppercase tracking-wider shadow-md hover:brightness-110 active:scale-95 transition-all cursor-pointer text-center"
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
               >
                 Show {filteredProducts.length} Result{filteredProducts.length !== 1 ? 's' : ''}
               </button>

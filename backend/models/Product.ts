@@ -34,6 +34,7 @@ export interface IProduct extends Document {
   countryOfOrigin: string;
   manufacturerDetails?: string;
   packInfo?: string;
+<<<<<<< HEAD
   isPublished?: boolean;
   isHidden?: boolean;
   deliveryCharge?: number;
@@ -173,6 +174,8 @@ export interface IProduct extends Document {
     note?: string;
     createdAt: Date;
   }>;
+=======
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
   createdAt: Date;
   updatedAt: Date;
 }
@@ -208,6 +211,7 @@ const ProductSchema = new Schema<IProduct>(
     sellerShopName: { type: String, default: "ALIKE-ND Official" },
     // Indian Marketplace Compliance Fields (Rule 6, Consumer Protection E-Commerce Rules, 2020)
     hsnCode: { type: String, default: "", trim: true },
+<<<<<<< HEAD
     gstRate: { type: Number, default: 18 },
     countryOfOrigin: { type: String, default: "India", trim: true },
     manufacturerDetails: { type: String, default: "", trim: true },
@@ -286,6 +290,12 @@ const ProductSchema = new Schema<IProduct>(
       ],
       default: [],
     },
+=======
+    gstRate: { type: Number, default: 18, enum: [0, 5, 12, 18, 28] },
+    countryOfOrigin: { type: String, default: "India", trim: true },
+    manufacturerDetails: { type: String, default: "", trim: true },
+    packInfo: { type: String, default: "", trim: true },
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
   },
   { timestamps: true, collection: "products" }
 );

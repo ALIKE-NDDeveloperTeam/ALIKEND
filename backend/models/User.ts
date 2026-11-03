@@ -1,5 +1,6 @@
 import mongoose, { Schema, Document, Model } from "mongoose";
 
+<<<<<<< HEAD
 export interface IUserRestriction {
   enabled: boolean;
   reason?: string;
@@ -42,6 +43,8 @@ export interface ISavedLocation {
   updatedAt: Date;
 }
 
+=======
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
 export interface IUser extends Document {
   fullName: string;
   username?: string;
@@ -53,6 +56,7 @@ export interface IUser extends Document {
   tier: "Silver" | "Gold" | "Platinum" | "VIP" | "Normal";
   verified: boolean;
   isBlocked: boolean;
+<<<<<<< HEAD
   avatar?: string;
   addresses?: IUserAddress[];
   savedLocation?: ISavedLocation | null;
@@ -60,6 +64,8 @@ export interface IUser extends Document {
   restrictions?: Record<string, IUserRestriction>;
   restrictionAuditLog?: IRestrictionAuditEntry[];
   securityAuditLog?: ISecurityAuditEntry[];
+=======
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
   createdAt: Date;
   updatedAt: Date;
 }
@@ -76,6 +82,7 @@ const UserSchema = new Schema<IUser>(
     tier: { type: String, enum: ["Silver", "Gold", "Platinum", "VIP", "Normal"], default: "Normal" },
     verified: { type: Boolean, default: true },
     isBlocked: { type: Boolean, default: false },
+<<<<<<< HEAD
     avatar: { type: String },
     addresses: [
       {
@@ -114,6 +121,8 @@ const UserSchema = new Schema<IUser>(
         timestamp: { type: Date, default: Date.now },
       },
     ],
+=======
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
   },
   {
     timestamps: true,

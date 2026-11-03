@@ -28,6 +28,7 @@ import {
   Watch,
   Smartphone,
   Shield,
+<<<<<<< HEAD
   ShieldAlert,
   Edit3,
   Shirt,
@@ -40,17 +41,32 @@ import Logo from './Logo';
 import { useAdminEdit } from '../context/AdminEditContext';
 import { rideApi } from '../services/rideApi';
 import { useLocation } from '../context/LocationContext';
+=======
+  Shirt,
+  Utensils
+} from 'lucide-react';
+import { PRODUCTS } from '../data/mockData';
+import Logo from './Logo';
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
 
 interface HeaderProps {
   currentView: string;
   onNavigate: (view: string, categoryFilter?: string) => void;
   cartCount: number;
+<<<<<<< HEAD
   wishlistCount?: number;
+=======
+  wishlistCount: number;
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
   unreadMessagesCount: number;
   unreadNotificationsCount: number;
   onClearUnreadMessages?: () => void;
   onClearUnreadNotifications?: () => void;
+<<<<<<< HEAD
   user: { name: string; email: string; phone: string; isSeller?: boolean; sellerStatus?: string | null; avatar?: string } | null;
+=======
+  user: { name: string; email: string; phone: string; isSeller?: boolean; sellerStatus?: string | null } | null;
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
   isSeller?: boolean;
   onLogout: () => void;
   onOpenAuthModal: (tab?: 'password' | 'otp' | 'register') => void;
@@ -80,6 +96,7 @@ export default function Header({
   onToggleTheme = () => {},
   selectedCategory = 'all',
 }: HeaderProps) {
+<<<<<<< HEAD
   const { isAdmin, isEditMode, toggleEditMode } = useAdminEdit();
   const { location, hasQuickDelivery, quickDeliveryEta, promptLocationCapture } = useLocation();
   const isApprovedSeller = Boolean(isSeller || user?.isSeller === true || user?.sellerStatus === 'approved');
@@ -101,6 +118,9 @@ export default function Header({
       onNavigate('delivery');
     }
   };
+=======
+  const isApprovedSeller = Boolean(isSeller || user?.isSeller === true || user?.sellerStatus === 'approved');
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
   const [searchQuery, setSearchQuery] = useState('');
   const [userDropdownOpen, setUserDropdownOpen] = useState(false);
   const [notificationsDropdownOpen, setNotificationsDropdownOpen] = useState(false);
@@ -112,6 +132,7 @@ export default function Header({
 
   // Smooth smart-header scroll state
   const [isScrolled, setIsScrolled] = useState(false);
+<<<<<<< HEAD
   const [onlineRideTypes, setOnlineRideTypes] = useState<string[]>(['BIKE', 'AUTO', 'CAB']);
 
   useEffect(() => {
@@ -121,6 +142,8 @@ export default function Header({
       }
     }).catch(() => {});
   }, []);
+=======
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
 
   useEffect(() => {
     let ticking = false;
@@ -195,6 +218,7 @@ export default function Header({
         ? 'bg-white/95 text-black border-neutral-200'
         : 'bg-black/95 text-white border-neutral-800'
     }`}>
+<<<<<<< HEAD
       {/* Real Top Storefront Banner (Quick Delivery 10-20M & Alike Rides Badges) */}
       <div className={`w-full border-b select-none transition-colors duration-200 ${
         isLightMode
@@ -272,6 +296,11 @@ export default function Header({
       {/* Top Header (~80px height standard, shrinks on scroll) */}
       <div className={`max-w-7xl mx-auto px-3 sm:px-4 md:px-6 flex items-center justify-between gap-2 sm:gap-4 transition-all duration-300 ease-in-out ${
         isScrolled ? 'py-1.5 md:py-2' : 'py-2 sm:py-3'
+=======
+      {/* Top Header (~80px height standard, shrinks on scroll) */}
+      <div className={`max-w-7xl mx-auto px-3 sm:px-4 md:px-6 flex items-center justify-between gap-2 sm:gap-4 transition-all duration-300 ease-in-out ${
+        isScrolled ? 'py-1.5 md:py-2' : 'py-2.5 sm:py-3'
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
       }`}>
         {/* Official ALIKE ND Brand Logo */}
         <div
@@ -291,7 +320,11 @@ export default function Header({
           >
             {/* Left Search Icon */}
             <div className="absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none flex items-center justify-center transition-colors">
+<<<<<<< HEAD
               <Search className={`transition-all duration-300 text-neutral-400 group-hover:text-[#FF007F] ${
+=======
+              <Search className={`transition-all duration-300 text-neutral-400 group-hover:text-[#F5A623] ${
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
                 isScrolled ? 'w-3.5 h-3.5' : 'w-4 h-4'
               }`} />
             </div>
@@ -309,8 +342,13 @@ export default function Header({
                   : 'py-2.5 pl-10 pr-28 rounded-full text-xs'
               } ${
                 isLightMode
+<<<<<<< HEAD
                   ? 'bg-neutral-100/90 text-black border-neutral-300 focus:border-[#FF007F] focus:bg-white focus:ring-2 focus:ring-[#FF007F]/20 shadow-xs placeholder-neutral-500'
                   : 'bg-neutral-900/90 text-white border-neutral-750 focus:border-[#FF007F] focus:bg-neutral-850 focus:ring-2 focus:ring-[#FF007F]/20 shadow-inner placeholder-neutral-400'
+=======
+                  ? 'bg-neutral-100/90 text-black border-neutral-300 focus:border-[#F5A623] focus:bg-white focus:ring-2 focus:ring-[#F5A623]/20 shadow-xs placeholder-neutral-500'
+                  : 'bg-neutral-900/90 text-white border-neutral-750 focus:border-[#F5A623] focus:bg-neutral-850 focus:ring-2 focus:ring-[#F5A623]/20 shadow-inner placeholder-neutral-400'
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
               }`}
             />
             
@@ -357,6 +395,7 @@ export default function Header({
         <div className="flex items-center gap-1.5 sm:gap-2.5 md:gap-3 shrink-0">
           {/* Desktop Only Actions */}
           <div className="hidden md:flex items-center gap-2.5">
+<<<<<<< HEAD
             {/* Direct Seller Panel Link */}
             <button
               id="header-nav-seller-panel-btn"
@@ -375,6 +414,8 @@ export default function Header({
               <span>Seller Panel</span>
             </button>
 
+=======
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
             {/* Notifications with interactive Dropdown panel */}
             <div className="relative" ref={notificationRef}>
               <button
@@ -481,6 +522,32 @@ export default function Header({
               )}
             </div>
 
+<<<<<<< HEAD
+=======
+            {/* Wishlist */}
+            <button
+              id="nav-wishlist-btn"
+              onClick={() => onNavigate('wishlist')}
+              className={`rounded-full relative border border-solid border-transparent transition-all duration-300 ease-in-out active:scale-95 ${
+                isScrolled ? 'p-2' : 'p-2.5'
+              } ${
+                isLightMode 
+                  ? 'text-neutral-700 hover:text-black hover:bg-neutral-100' 
+                  : 'text-neutral-300 hover:text-white hover:bg-neutral-900'
+              } ${
+                currentView === 'wishlist' ? (isLightMode ? 'text-black bg-neutral-100 border-neutral-300' : 'text-white bg-neutral-900 border-neutral-700') : ''
+              }`}
+              title="Wishlist"
+            >
+              <Heart className={`transition-all duration-300 ${isScrolled ? 'w-4.5 h-4.5' : 'w-[22px] h-[22px]'}`} />
+              {wishlistCount > 0 && (
+                <span className="absolute -top-0.5 -right-0.5 text-white font-extrabold text-[9px] w-[18px] h-[18px] rounded-full flex items-center justify-center bg-black border border-white/40 shadow-sm">
+                  {wishlistCount}
+                </span>
+              )}
+            </button>
+
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
             {/* Cart */}
             <button
               id="nav-cart-btn"
@@ -504,14 +571,23 @@ export default function Header({
               )}
             </button>
 
+<<<<<<< HEAD
             {/* User Profile / Picture Account Option */}
+=======
+            {/* User Profile Pill */}
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
             {user ? (
               <div className="relative" ref={dropdownRef}>
                 <button
                   id="user-menu-dropdown-trigger"
                   onClick={() => setUserDropdownOpen(!userDropdownOpen)}
+<<<<<<< HEAD
                   className={`flex items-center gap-1.5 rounded-full border border-solid transition-all duration-300 ease-in-out font-bold ${
                     isScrolled ? 'px-2.5 py-1 text-[11px]' : 'px-3 py-1.5 text-xs'
+=======
+                  className={`flex items-center gap-1.5 rounded-full border border-solid transition-all duration-300 ease-in-out uppercase tracking-wider font-extrabold ${
+                    isScrolled ? 'px-3 py-1 text-[11px]' : 'px-4 py-2 text-xs'
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
                   } ${
                     isLightMode
                       ? 'bg-neutral-100 hover:bg-neutral-200 border-neutral-300 text-black shadow-xs'
@@ -519,6 +595,7 @@ export default function Header({
                   }`}
                   title="Account Settings"
                 >
+<<<<<<< HEAD
                   {user.avatar ? (
                     <img
                       src={user.avatar}
@@ -543,16 +620,33 @@ export default function Header({
                   <div
                     id="user-menu-dropdown"
                     className={`absolute right-0 mt-2 w-56 border border-solid rounded-xl shadow-2xl z-50 overflow-hidden py-1 animate-fade-in ${
+=======
+                  <UserIcon className={`transition-all duration-300 ${isScrolled ? 'w-3.5 h-3.5' : 'w-4 h-4'}`} />
+                  <span className="hidden sm:inline max-w-[100px] truncate">{user.name || 'VIKRAM M...'}</span>
+                  <ChevronDown className="w-3.5 h-3.5" />
+                </button>
+
+                {/* Dropdown Box */}
+                {userDropdownOpen && (
+                  <div
+                    id="user-menu-dropdown"
+                    className={`absolute right-0 mt-2 w-52 border border-solid rounded-xl shadow-2xl z-50 overflow-hidden py-1 animate-fade-in ${
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
                       isLightMode
                         ? 'bg-white border-neutral-200 text-neutral-800 shadow-xl'
                         : 'bg-neutral-900 border-neutral-700 text-neutral-200 shadow-2xl'
                     }`}
                   >
+<<<<<<< HEAD
                     <div className={`px-4 py-3 border-b border-solid flex items-center gap-3 ${
+=======
+                    <div className={`px-4 py-2.5 border-b border-solid ${
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
                       isLightMode
                         ? 'border-neutral-100 bg-neutral-50'
                         : 'border-neutral-800 bg-neutral-950'
                     }`}>
+<<<<<<< HEAD
                       {user.avatar ? (
                         <img
                           src={user.avatar}
@@ -571,12 +665,19 @@ export default function Header({
                       </div>
                     </div>
 
+=======
+                      <p className="text-xs text-neutral-500">Logged in client</p>
+                      <p className={`text-sm font-bold truncate ${isLightMode ? 'text-black' : 'text-white'}`}>{user.name}</p>
+                      <p className="text-[10px] text-neutral-400 truncate">{user.email}</p>
+                    </div>
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
                     <button
                       id="menu-btn-profile"
                       onClick={() => {
                         onNavigate('profile');
                         setUserDropdownOpen(false);
                       }}
+<<<<<<< HEAD
                       className={`w-full text-left px-4 py-2 text-xs flex items-center gap-2.5 transition-colors ${
                         isLightMode ? 'hover:bg-neutral-50 text-neutral-700' : 'hover:bg-neutral-800 hover:text-white text-neutral-300'
                       }`}
@@ -585,12 +686,22 @@ export default function Header({
                       <span>My Profile</span>
                     </button>
 
+=======
+                      className={`w-full text-left px-4 py-2 text-xs flex items-center gap-2 transition-colors ${
+                        isLightMode ? 'hover:bg-neutral-50 text-neutral-700' : 'hover:bg-neutral-800 hover:text-white text-neutral-300'
+                      }`}
+                    >
+                      <UserIcon className="w-3.5 h-3.5" />
+                      My Profile
+                    </button>
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
                     <button
                       id="menu-btn-orders"
                       onClick={() => {
                         onNavigate('profile');
                         setUserDropdownOpen(false);
                       }}
+<<<<<<< HEAD
                       className={`w-full text-left px-4 py-2 text-xs flex items-center gap-2.5 transition-colors ${
                         isLightMode ? 'hover:bg-neutral-50 text-neutral-700' : 'hover:bg-neutral-800 hover:text-white text-neutral-300'
                       }`}
@@ -650,12 +761,22 @@ export default function Header({
                       </span>
                     </button>
 
+=======
+                      className={`w-full text-left px-4 py-2 text-xs flex items-center gap-2 transition-colors ${
+                        isLightMode ? 'hover:bg-neutral-50 text-neutral-700' : 'hover:bg-neutral-800 hover:text-white text-neutral-300'
+                      }`}
+                    >
+                      <CreditCard className="w-3.5 h-3.5" />
+                      Order History
+                    </button>
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
                     <button
                       id="menu-btn-wallet"
                       onClick={() => {
                         onNavigate('profile');
                         setUserDropdownOpen(false);
                       }}
+<<<<<<< HEAD
                       className={`w-full text-left px-4 py-2 text-xs flex items-center gap-2.5 transition-colors ${
                         isLightMode ? 'hover:bg-neutral-50 text-neutral-700' : 'hover:bg-neutral-800 hover:text-white text-neutral-300'
                       }`}
@@ -664,12 +785,22 @@ export default function Header({
                       <span>Alike Wallet</span>
                     </button>
 
+=======
+                      className={`w-full text-left px-4 py-2 text-xs flex items-center gap-2 transition-colors ${
+                        isLightMode ? 'hover:bg-neutral-50 text-neutral-700' : 'hover:bg-neutral-800 hover:text-white text-neutral-300'
+                      }`}
+                    >
+                      <Wallet className="w-3.5 h-3.5" />
+                      Alike Wallet
+                    </button>
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
                     <button
                       id="menu-btn-settings"
                       onClick={() => {
                         onNavigate('profile', 'settings');
                         setUserDropdownOpen(false);
                       }}
+<<<<<<< HEAD
                       className={`w-full text-left px-4 py-2 text-xs flex items-center gap-2.5 transition-colors ${
                         isLightMode ? 'hover:bg-neutral-50 text-neutral-700' : 'hover:bg-neutral-800 hover:text-white text-neutral-300'
                       }`}
@@ -678,12 +809,22 @@ export default function Header({
                       <span>Settings</span>
                     </button>
 
+=======
+                      className={`w-full text-left px-4 py-2 text-xs flex items-center gap-2 transition-colors ${
+                        isLightMode ? 'hover:bg-neutral-50 text-neutral-700' : 'hover:bg-neutral-800 hover:text-white text-neutral-300'
+                      }`}
+                    >
+                      <Settings className="w-3.5 h-3.5" />
+                      Settings
+                    </button>
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
                     <button
                       id="menu-btn-support"
                       onClick={() => {
                         onNavigate('support');
                         setUserDropdownOpen(false);
                       }}
+<<<<<<< HEAD
                       className={`w-full text-left px-4 py-2 text-xs flex items-center gap-2.5 transition-colors ${
                         isLightMode ? 'hover:bg-neutral-50 text-neutral-700' : 'hover:bg-neutral-800 hover:text-white text-neutral-300'
                       }`}
@@ -729,6 +870,48 @@ export default function Header({
                     </button>
 
                     {!isApprovedSeller && (
+=======
+                      className={`w-full text-left px-4 py-2 text-xs flex items-center gap-2 transition-colors ${
+                        isLightMode ? 'hover:bg-neutral-50 text-neutral-700' : 'hover:bg-neutral-800 hover:text-white text-neutral-300'
+                      }`}
+                    >
+                      <Headphones className="w-3.5 h-3.5 text-amber-500" />
+                      Support
+                    </button>
+                    {/* Admin Console Shortcut for Administrators */}
+                    {Boolean((user as any)?.isAdmin || (user as any)?.adminToken || (user as any)?.role === 'admin' || (user as any)?.role === 'superadmin' || (typeof window !== 'undefined' && (localStorage.getItem('alikend_admin_token') || localStorage.getItem('alikend_staff_token')))) && (
+                      <button
+                        id="menu-btn-admin-console"
+                        onClick={() => {
+                          onNavigate('admin');
+                          setUserDropdownOpen(false);
+                        }}
+                        className={`w-full text-left px-4 py-2 text-xs flex items-center gap-2 font-bold text-amber-500 hover:text-amber-400 transition-colors ${
+                          isLightMode ? 'hover:bg-amber-50' : 'hover:bg-neutral-800'
+                        }`}
+                      >
+                        <Shield className="w-3.5 h-3.5 text-amber-500" />
+                        <span>Admin Console</span>
+                      </button>
+                    )}
+                    {/* Seller Option - CONDITIONAL: ONLY one option rendered based on approved seller status */}
+                    {isApprovedSeller ? (
+                      <button
+                        id="menu-btn-seller-dash"
+                        type="button"
+                        onClick={() => {
+                          onNavigate('seller_dashboard');
+                          setUserDropdownOpen(false);
+                        }}
+                        className={`w-full text-left px-4 py-2 text-xs flex items-center gap-2 transition-colors ${
+                          isLightMode ? 'hover:bg-neutral-50 text-neutral-700' : 'hover:bg-neutral-800 hover:text-white text-neutral-300'
+                        }`}
+                      >
+                        <Store className="w-3.5 h-3.5 text-amber-500" />
+                        <span>Seller Dashboard</span>
+                      </button>
+                    ) : (
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
                       <button
                         id="menu-btn-seller-reg"
                         type="button"
@@ -738,6 +921,7 @@ export default function Header({
                           setUserDropdownOpen(false);
                           onNavigate('seller_register');
                         }}
+<<<<<<< HEAD
                         className={`w-full text-left px-4 py-2 text-xs flex items-center gap-2.5 transition-colors cursor-pointer ${
                           isLightMode ? 'hover:bg-neutral-50 text-neutral-700' : 'hover:bg-neutral-800 hover:text-white text-neutral-300'
                         }`}
@@ -747,6 +931,16 @@ export default function Header({
                       </button>
                     )}
 
+=======
+                        className={`w-full text-left px-4 py-2 text-xs flex items-center gap-2 transition-colors ${
+                          isLightMode ? 'hover:bg-neutral-50 text-neutral-700' : 'hover:bg-neutral-800 hover:text-white text-neutral-300'
+                        }`}
+                      >
+                        <Store className="w-3.5 h-3.5 text-amber-500" />
+                        <span>Become a Seller</span>
+                      </button>
+                    )}
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
                     <div className={`border-t border-solid my-1 ${isLightMode ? 'border-neutral-100' : 'border-neutral-800'}`}></div>
                     <button
                       id="menu-btn-logout"
@@ -754,15 +948,23 @@ export default function Header({
                         onLogout();
                         setUserDropdownOpen(false);
                       }}
+<<<<<<< HEAD
                       className="w-full text-left px-4 py-2 text-xs text-red-500 hover:bg-red-50/50 flex items-center gap-2.5"
                     >
                       <LogOut className="w-3.5 h-3.5 shrink-0" />
                       <span>Sign Out</span>
+=======
+                      className="w-full text-left px-4 py-2 text-xs text-red-500 hover:bg-red-50/50 flex items-center gap-2"
+                    >
+                      <LogOut className="w-3.5 h-3.5" />
+                      Sign Out
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
                     </button>
                   </div>
                 )}
               </div>
             ) : (
+<<<<<<< HEAD
               <div className="relative" ref={dropdownRef}>
                 <div className="flex items-center gap-1.5">
                   <button
@@ -934,10 +1136,25 @@ export default function Header({
                   </div>
                 )}
               </div>
+=======
+              <button
+                id="header-login-btn"
+                type="button"
+                onClick={() => onOpenAuthModal('password')}
+                className={`px-4 py-1.5 uppercase font-extrabold text-[11px] tracking-wider rounded-lg shadow-sm transition-all active:scale-[0.98] cursor-pointer ${
+                  isLightMode
+                    ? 'bg-black text-white hover:bg-neutral-800'
+                    : 'bg-white text-black hover:bg-neutral-200'
+                }`}
+              >
+                Sign In
+              </button>
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
             )}
           </div>
 
           {/* Mobile Only Header Actions */}
+<<<<<<< HEAD
           <div className="flex md:hidden items-center gap-1.5">
             {/* Quick Seller Panel Pill on Mobile */}
             <button
@@ -959,13 +1176,21 @@ export default function Header({
             </button>
 
             {/* Cart (Mobile - 40px touch hitbox) */}
+=======
+          <div className="flex md:hidden items-center gap-1.5 sm:gap-2">
+            {/* Cart (Mobile) */}
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
             <button
               id="mobile-nav-cart-btn"
               onClick={() => {
                 onNavigate('cart');
                 setMobileMenuOpen(false);
               }}
+<<<<<<< HEAD
               className={`w-10 h-10 rounded-full relative transition-all duration-200 border border-solid active:scale-90 flex items-center justify-center cursor-pointer shadow-xs ${
+=======
+              className={`w-8.5 h-8.5 rounded-full relative transition-all duration-200 border border-solid active:scale-90 flex items-center justify-center cursor-pointer shadow-xs ${
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
                 isLightMode 
                   ? 'bg-neutral-100 hover:bg-neutral-200 text-neutral-900 border-neutral-300' 
                   : 'bg-neutral-900 hover:bg-neutral-800 text-white border-neutral-700'
@@ -981,17 +1206,29 @@ export default function Header({
             >
               <ShoppingCart className="w-4 h-4" />
               {cartCount > 0 && (
+<<<<<<< HEAD
                 <span className="absolute -top-1 -right-1 text-white dark:text-black font-mono font-bold text-[9px] w-4 h-4 rounded-full flex items-center justify-center bg-black dark:bg-white border border-white/60 dark:border-black/60 shadow-xs">
+=======
+                <span className="absolute -top-1 -right-1 text-white dark:text-black font-mono font-bold text-[8.5px] w-4 h-4 rounded-full flex items-center justify-center bg-black dark:bg-white border border-white/60 dark:border-black/60 shadow-xs">
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
                   {cartCount}
                 </span>
               )}
             </button>
 
+<<<<<<< HEAD
             {/* Hamburger Toggle (40px touch hitbox) */}
             <button
               id="mobile-nav-menu-toggle-btn"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className={`w-10 h-10 rounded-full transition-all duration-200 border border-solid active:scale-90 flex items-center justify-center cursor-pointer shadow-xs ${
+=======
+            {/* Hamburger Toggle */}
+            <button
+              id="mobile-nav-menu-toggle-btn"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className={`w-8.5 h-8.5 rounded-full transition-all duration-200 border border-solid active:scale-90 flex items-center justify-center cursor-pointer shadow-xs ${
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
                 isLightMode 
                   ? 'bg-neutral-100 hover:bg-neutral-200 text-neutral-900 border-neutral-300' 
                   : 'bg-neutral-900 hover:bg-neutral-800 text-white border-neutral-700'
@@ -999,7 +1236,11 @@ export default function Header({
               title={mobileMenuOpen ? 'Close Menu' : 'Open Menu'}
               aria-label={mobileMenuOpen ? 'Close Menu' : 'Open Menu'}
             >
+<<<<<<< HEAD
               {mobileMenuOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
+=======
+              {mobileMenuOpen ? <X className="w-4.5 h-4.5" /> : <Menu className="w-4.5 h-4.5" />}
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
             </button>
           </div>
 
@@ -1007,8 +1248,13 @@ export default function Header({
       </div>
 
       {/* Mobile Search Bar (Always visible on mobile below top header bar) */}
+<<<<<<< HEAD
       <div className={`md:hidden px-3 transition-all duration-200 ease-in-out ${
         isScrolled ? 'pb-1.5 pt-0' : 'pb-2 pt-0.5'
+=======
+      <div className={`md:hidden px-4 transition-all duration-300 ease-in-out ${
+        isScrolled ? 'pb-1.5 pt-0' : 'pb-2.5 pt-0.5'
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
       }`}>
         <form
           onSubmit={(e) => {
@@ -1018,8 +1264,13 @@ export default function Header({
           id="mobile-header-search-form"
         >
           {/* Left Search Icon */}
+<<<<<<< HEAD
           <div className="absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none flex items-center justify-center">
             <Search className="w-4 h-4 text-neutral-400 group-hover:text-[#FF007F] transition-colors" />
+=======
+          <div className="absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none flex items-center justify-center">
+            <Search className="w-3.5 h-3.5 text-neutral-400 group-hover:text-[#F5A623] transition-colors" />
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
           </div>
 
           <input
@@ -1028,6 +1279,7 @@ export default function Header({
             placeholder="Search products, brands, deals..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
+<<<<<<< HEAD
             className={`w-full font-sans transition-all duration-200 ease-in-out border border-solid outline-none ${
               isScrolled
                 ? 'py-1.5 pl-9 pr-20 rounded-full text-xs'
@@ -1036,12 +1288,28 @@ export default function Header({
               isLightMode
                 ? 'bg-neutral-100/95 text-black border-neutral-300 focus:border-[#FF007F] focus:bg-white placeholder-neutral-500 shadow-xs'
                 : 'bg-neutral-900/95 text-white border-neutral-750 focus:border-[#FF007F] placeholder-neutral-400 shadow-inner'
+=======
+            className={`w-full font-sans transition-all duration-300 ease-in-out border border-solid outline-none ${
+              isScrolled
+                ? 'py-1.5 pl-8 pr-16 rounded-full text-[11px]'
+                : 'py-2 pl-8.5 pr-18 rounded-full text-xs'
+            } ${
+              isLightMode
+                ? 'bg-neutral-100/95 text-black border-neutral-300 focus:border-[#F5A623] placeholder-neutral-500 shadow-xs'
+                : 'bg-neutral-900/95 text-white border-neutral-750 focus:border-[#F5A623] placeholder-neutral-400 shadow-inner'
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
             }`}
           />
           <button
             id="mobile-header-search-submit"
             type="submit"
+<<<<<<< HEAD
             className="absolute right-1 top-1/2 -translate-y-1/2 flex items-center justify-center px-3 h-7 bg-[#0d0d0d] hover:bg-black text-white font-extrabold text-[10px] uppercase tracking-wider rounded-full transition-all duration-200 cursor-pointer shadow-xs active:scale-95 border border-[#0d0d0d]"
+=======
+            className={`absolute right-1 top-1/2 -translate-y-1/2 flex items-center justify-center px-2.5 bg-[#0d0d0d] hover:bg-black text-white font-extrabold text-[10px] uppercase tracking-wider rounded-full transition-all duration-300 cursor-pointer shadow-xs active:scale-95 border border-[#0d0d0d] ${
+              isScrolled ? 'h-6' : 'h-6.5'
+            }`}
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
             title="Search"
           >
             <span>Search</span>
@@ -1051,26 +1319,68 @@ export default function Header({
 
       {/* Mobile Drawer Slide-out/Dropdown Panel */}
       {mobileMenuOpen && (
+<<<<<<< HEAD
         <div className={`md:hidden border-t border-solid py-4 px-4 animate-slide-down shadow-2xl relative z-55 max-h-[80vh] overflow-y-auto space-y-5 ${
+=======
+        <div className={`md:hidden border-t border-solid py-5 px-5 animate-slide-down shadow-2xl relative z-55 max-h-[85vh] overflow-y-auto space-y-6 ${
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
           isLightMode
             ? 'bg-white border-neutral-200 text-neutral-900 shadow-2xl'
             : 'bg-black border-neutral-800 text-white shadow-2xl'
         }`}>
+<<<<<<< HEAD
 
           {/* Direct Store Modes */}
           <div className="flex flex-col gap-2">
             <h4 className={`text-[10px] font-mono tracking-widest uppercase font-bold border-b pb-1.5 ${isLightMode ? 'text-neutral-500 border-neutral-200' : 'text-neutral-400 border-neutral-800'}`}>Store Modes</h4>
+=======
+          
+          {/* Mobile Search Input */}
+          <div className="relative">
+            <form
+              onSubmit={(e) => {
+                setMobileMenuOpen(false);
+                handleSearchSubmit(e);
+              }}
+              className="relative"
+            >
+              <input
+                type="text"
+                placeholder="Search luxury products, boutiques..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className={`w-full px-4 py-2.5 pr-10 border border-solid rounded-xl text-xs outline-none ${
+                  isLightMode
+                    ? 'bg-neutral-50 text-neutral-900 border-neutral-200 focus:border-[#F5A623]'
+                    : 'bg-neutral-900 text-white border-neutral-800 focus:border-[#F5A623]'
+                }`}
+              />
+              <button type="submit" className="absolute right-2 top-1/2 -translate-y-1/2 p-1.5 text-neutral-400 hover:text-[#F5A623] cursor-pointer">
+                <Search className="w-4 h-4" />
+              </button>
+            </form>
+          </div>
+
+          {/* Direct Navigation Links */}
+          <div className="flex flex-col gap-2">
+            <h4 className={`text-[10px] font-mono tracking-widest uppercase font-bold border-b pb-1.5 ${isLightMode ? 'text-neutral-500 border-neutral-200' : 'text-neutral-400 border-neutral-800'}`}>Directives</h4>
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
             
             <button
               onClick={() => { setMobileMenuOpen(false); onNavigate('home'); }}
               className={`w-full text-left py-2 px-3 rounded-lg text-xs font-semibold flex items-center justify-between transition-all ${
+<<<<<<< HEAD
                 currentView === 'home' && (!selectedCategory || selectedCategory === 'all')
+=======
+                currentView === 'home' 
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
                   ? isLightMode ? 'bg-black text-white font-extrabold' : 'bg-white text-black font-extrabold' 
                   : isLightMode 
                     ? 'hover:bg-neutral-100 text-neutral-800' 
                     : 'hover:bg-neutral-900 text-neutral-300'
               }`}
             >
+<<<<<<< HEAD
               <span>🛍️ Simple Store</span>
               <span className="text-[10px] text-emerald-500 font-bold uppercase">Regular</span>
             </button>
@@ -1087,20 +1397,33 @@ export default function Header({
             >
               <span>✨ Premium VIP</span>
               <span className="text-[10px] font-mono text-purple-400 font-bold uppercase">Curated</span>
+=======
+              <span>Home Screen</span>
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
             </button>
 
             <button
               onClick={() => { setMobileMenuOpen(false); onNavigate('category_search', 'luxury'); }}
+<<<<<<< HEAD
               className={`w-full text-left py-2 px-3 rounded-lg text-xs font-bold flex items-center justify-between border border-solid transition-all ${
                 currentView === 'category_search' && selectedCategory === 'luxury' 
                   ? 'bg-gradient-to-r from-amber-400 to-amber-600 text-black border-amber-400 shadow-sm' 
+=======
+              className={`w-full text-left py-2 px-3 rounded-lg text-xs font-bold flex items-center gap-2 border border-solid transition-all ${
+                currentView === 'category_search' && selectedCategory === 'luxury' 
+                  ? isLightMode ? 'bg-black text-white border-black' : 'bg-white text-black border-white' 
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
                   : isLightMode
                     ? 'text-neutral-900 hover:bg-neutral-100 border-neutral-200'
                     : 'text-white hover:bg-neutral-900 border-neutral-800'
               }`}
             >
+<<<<<<< HEAD
               <span>👑 Luxury Edition</span>
               <span className="text-[10px] font-mono text-amber-500 font-bold uppercase">Elite</span>
+=======
+              <span>✨ Luxury Edition</span>
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
             </button>
           </div>
 
@@ -1135,6 +1458,7 @@ export default function Header({
                 </button>
 
                 <button
+<<<<<<< HEAD
                   id="mobile-menu-btn-wishlist"
                   onClick={() => { setMobileMenuOpen(false); onNavigate('wishlist'); }}
                   className={`w-full text-left px-3 py-2 text-xs font-medium rounded-lg flex items-center justify-between transition-colors ${
@@ -1153,6 +1477,8 @@ export default function Header({
                 </button>
 
                 <button
+=======
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
                   onClick={() => { setMobileMenuOpen(false); onNavigate('profile'); }}
                   className={`w-full text-left px-3 py-2 text-xs font-medium rounded-lg flex items-center gap-2.5 transition-colors ${
                     isLightMode ? 'text-neutral-800 hover:bg-neutral-100' : 'text-neutral-300 hover:bg-neutral-900'
@@ -1184,6 +1510,7 @@ export default function Header({
                   <span>Support Center</span>
                 </button>
 
+<<<<<<< HEAD
                 {/* Mobile Admin Controls & Live Edit Mode */}
                 <button
                   id="mobile-menu-btn-admin-edit-toggle"
@@ -1218,6 +1545,8 @@ export default function Header({
                   <span>Admin Console</span>
                 </button>
 
+=======
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
                 {/* Mobile Seller Option - CONDITIONAL */}
                 {isApprovedSeller ? (
                   <button
@@ -1256,6 +1585,7 @@ export default function Header({
               </div>
             ) : (
               <div className="space-y-2">
+<<<<<<< HEAD
                 {/* Mobile Guest Wishlist */}
                 <button
                   id="mobile-guest-wishlist-btn"
@@ -1315,6 +1645,8 @@ export default function Header({
                   <span>Seller Panel (মার্চেন্ট প্যানেল)</span>
                 </button>
 
+=======
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
                 <button
                   id="mobile-become-seller-btn"
                   type="button"
@@ -1324,10 +1656,17 @@ export default function Header({
                     setMobileMenuOpen(false);
                     onNavigate('seller_register');
                   }}
+<<<<<<< HEAD
                   className={`w-full py-2 text-xs font-medium rounded-xl text-center flex items-center justify-center gap-2 border cursor-pointer ${
                     isLightMode
                       ? 'border-neutral-200 bg-neutral-50 text-neutral-800 hover:bg-neutral-100'
                       : 'border-neutral-800 bg-neutral-900 text-neutral-300 hover:bg-neutral-800'
+=======
+                  className={`w-full py-2.5 text-xs font-bold rounded-xl text-center flex items-center justify-center gap-2 border cursor-pointer ${
+                    isLightMode
+                      ? 'border-amber-300 bg-amber-50 text-amber-950 hover:bg-amber-100'
+                      : 'border-amber-500/30 bg-amber-950/30 text-amber-300 hover:bg-amber-950/50'
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
                   }`}
                 >
                   <Store className="w-4 h-4 text-amber-500" />

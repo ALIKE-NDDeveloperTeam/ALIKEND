@@ -24,6 +24,7 @@ import AdminCategoryManager from "../components/AdminCategoryManager";
 import DatabaseHubSection from "../components/admin/DatabaseHubSection";
 import AdminMinisterSection from "../components/admin/AdminMinisterSection";
 import CustomerCareModule from "../components/admin/customerCare/CustomerCareModule";
+<<<<<<< HEAD
 import AdvancedCustomerManagement from "../components/admin/AdvancedCustomerManagement";
 import ReturnOrdersManagement from "../components/admin/ReturnOrdersManagement";
 import { SellerManagementModule } from "../components/admin/SellerManagementModule";
@@ -31,6 +32,11 @@ import { DynamicCategory } from "../types";
 import Logo from "../components/Logo";
 import GlassIconButton from "../components/GlassIconButton";
 import { useAdminEdit } from "../context/AdminEditContext";
+=======
+import { DynamicCategory } from "../types";
+import Logo from "../components/Logo";
+import GlassIconButton from "../components/GlassIconButton";
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
 import { CATEGORIES } from "../data/mockData";
 import { 
   ShieldCheck, 
@@ -94,11 +100,15 @@ import {
   ArrowLeft,
   Download,
   Database,
+<<<<<<< HEAD
   Headphones,
   RotateCcw,
   Truck,
   Car,
   Settings
+=======
+  Headphones
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
 } from "lucide-react";
 import {
   exportDataToExcel,
@@ -112,6 +122,7 @@ import {
   formatBannersForExcel,
   formatAdminUsersForExcel
 } from "../utils/exportToExcel";
+<<<<<<< HEAD
 import { AdminDeliveryDispatchSection } from "../components/admin/AdminDeliveryDispatchSection";
 import { AdminRidesSection } from "../components/admin/AdminRidesSection";
 import CentralAdminPanelModule from "../components/admin/CentralAdminPanelModule";
@@ -119,6 +130,10 @@ import DarazAddProductStudio from "../components/admin/DarazAddProductStudio";
 import { MarketplaceSettingsDashboard } from "../components/settings/MarketplaceSettingsDashboard";
 
 export type Section = "centralCommand" | "dashboard" | "products" | "addProductStudio" | "orders" | "returnOrders" | "deliveryDispatch" | "rides" | "sellers" | "customers" | "banners" | "categories" | "reports" | "adminUsers" | "activity" | "commission" | "flashSale" | "databaseHub" | "customerCare" | "settingsHub";
+=======
+
+export type Section = "dashboard" | "products" | "orders" | "sellers" | "customers" | "banners" | "categories" | "reports" | "adminUsers" | "activity" | "commission" | "flashSale" | "databaseHub" | "customerCare";
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
 
 const SEAL_LABEL: Record<string, string> = {
   pending: "Pending Approval",
@@ -172,7 +187,10 @@ export default function AdminPanel({
   onProductsChange,
   initialAdmin,
 }: AdminPanelProps) {
+<<<<<<< HEAD
   const { loginAdmin, logoutAdmin } = useAdminEdit();
+=======
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
   const [loggedIn, setLoggedIn] = useState(adminApi.hasToken() || !!initialAdmin);
   const [currentAdmin, setCurrentAdmin] = useState<AdminProfile | null>(
     initialAdmin
@@ -212,6 +230,7 @@ export default function AdminPanel({
   // Search and Filter states
   const [prodSearch, setProdSearch] = useState("");
   const [prodCategory, setProdCategory] = useState("");
+<<<<<<< HEAD
   const [prodSellerFilter, setProdSellerFilter] = useState("");
   const [prodStockFilter, setProdStockFilter] = useState<"" | "in_stock" | "low_stock" | "out_of_stock">("");
   const [prodSortBy, setProdSortBy] = useState<"newest" | "price_asc" | "price_desc" | "stock_asc" | "score_desc">("newest");
@@ -230,6 +249,9 @@ export default function AdminPanel({
     | "flash"
     | "regular"
   >("all");
+=======
+  const [prodFlashFilter, setProdFlashFilter] = useState<"all" | "flash" | "regular">("all");
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
   const [orderSearch, setOrderSearch] = useState("");
   const [orderStatusFilter, setOrderStatusFilter] = useState("");
   const [sellerSearch, setSellerSearch] = useState("");
@@ -249,12 +271,15 @@ export default function AdminPanel({
   const [productToDelete, setProductToDelete] = useState<{ id: string; name: string } | null>(null);
   const [confirmProductNameInput, setConfirmProductNameInput] = useState("");
   const [isDeletingProduct, setIsDeletingProduct] = useState(false);
+<<<<<<< HEAD
   const [rejectingProduct, setRejectingProduct] = useState<Product | null>(null);
   const [rejectionReasonInput, setRejectionReasonInput] = useState("");
   const [auditModalProduct, setAuditModalProduct] = useState<Product | null>(null);
   const [csvImportModalOpen, setCsvImportModalOpen] = useState(false);
   const [csvRawInput, setCsvRawInput] = useState("");
   const [isImportingCsv, setIsImportingCsv] = useState(false);
+=======
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
 
   // Admin Accounts Management Modal State (Super Admin Only)
   const [createAdminModalOpen, setCreateAdminModalOpen] = useState(false);
@@ -289,9 +314,15 @@ export default function AdminPanel({
     currentAdmin && currentAdmin.role === "superadmin"
   );
 
+<<<<<<< HEAD
   // Strictly redirect away from superadmin-only sections (reports) if logged in as regular admin
   useEffect(() => {
     if (!isSuperAdmin && section === "reports") {
+=======
+  // Strictly redirect away from superadmin-only sections (reports and commission) if logged in as regular admin
+  useEffect(() => {
+    if (!isSuperAdmin && (section === "commission" || section === "reports")) {
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
       setSection("dashboard");
     }
   }, [isSuperAdmin, section]);
@@ -313,7 +344,10 @@ export default function AdminPanel({
           role: initialAdmin.role === "superadmin" ? "superadmin" : "admin",
         };
         setCurrentAdmin(formattedAdmin);
+<<<<<<< HEAD
         loginAdmin(formattedAdmin);
+=======
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
         setLoggedIn(true);
         setIsAutoChecking(false);
         loadAll(formattedAdmin);
@@ -326,12 +360,15 @@ export default function AdminPanel({
           const res = await adminApi.getMe();
           if (res && res.valid && res.admin && isMounted) {
             setCurrentAdmin(res.admin);
+<<<<<<< HEAD
             loginAdmin({
               _id: res.admin._id,
               name: res.admin.name || "Administrator",
               email: res.admin.email,
               role: res.admin.role || "admin",
             });
+=======
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
             setLoggedIn(true);
             setIsAutoChecking(false);
             loadAll(res.admin);
@@ -357,6 +394,7 @@ export default function AdminPanel({
           if (bridgeRes && bridgeRes.success && bridgeRes.token && isMounted) {
             adminApi.setToken(bridgeRes.token);
             setCurrentAdmin(bridgeRes.admin);
+<<<<<<< HEAD
             loginAdmin(
               {
                 _id: bridgeRes.admin._id,
@@ -366,6 +404,8 @@ export default function AdminPanel({
               },
               bridgeRes.token
             );
+=======
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
             setLoggedIn(true);
             setIsAutoChecking(false);
             loadAll(bridgeRes.admin);
@@ -421,6 +461,7 @@ export default function AdminPanel({
         console.warn("Could not load admin users list:", e);
       }
 
+<<<<<<< HEAD
       // Always load Commission Management data for all logged-in Admins
       try {
         const comm = await adminApi.getCommissionData();
@@ -429,6 +470,8 @@ export default function AdminPanel({
         console.warn("Could not load commission data:", e);
       }
 
+=======
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
       // Load SuperAdmin exclusive datasets ONLY if role is superadmin
       const effectiveAdmin = activeAdmin !== undefined ? activeAdmin : currentAdmin;
       const isSuper = effectiveAdmin?.role === "superadmin" || effectiveAdmin?.email?.toLowerCase() === "developer.alikend@gmail.com" || effectiveAdmin?.email?.toLowerCase() === "noyondey176@gmail.com";
@@ -439,8 +482,21 @@ export default function AdminPanel({
         } catch (e) {
           console.warn("Could not load sales report:", e);
         }
+<<<<<<< HEAD
       } else {
         setSalesReport(null);
+=======
+        try {
+          const comm = await adminApi.getCommissionData();
+          setCommissionData(comm);
+        } catch (e) {
+          console.warn("Could not load commission data:", e);
+        }
+      } else {
+        // Clear reports and commission for non-superadmin
+        setSalesReport(null);
+        setCommissionData(null);
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
       }
     } catch (err: any) {
       setError(err.message || "Failed to load database records");
@@ -473,21 +529,36 @@ export default function AdminPanel({
     }
   }
 
+<<<<<<< HEAD
   // Load items when switching tabs if needed
+=======
+  // Load superadmin items when switching tabs if needed, and kick non-superadmin back to dashboard for reports and commission
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
   useEffect(() => {
     if (loggedIn) {
       if (section === "adminUsers" && adminUsers.length === 0) {
         adminApi.getAdminUsers().then(res => setAdminUsers(res || [])).catch(() => {});
       }
+<<<<<<< HEAD
       if (section === "commission") {
         loadCommission();
       }
+=======
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
       if (isSuperAdmin) {
         if (section === "reports" && !salesReport) {
           adminApi.getSalesReport().then(res => setSalesReport(res)).catch(() => {});
         }
+<<<<<<< HEAD
       } else {
         if (section === "reports") {
+=======
+        if (section === "commission") {
+          loadCommission();
+        }
+      } else {
+        if (section === "reports" || section === "commission") {
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
           setSection("dashboard");
         }
       }
@@ -499,11 +570,14 @@ export default function AdminPanel({
     setTimeout(() => setSuccessMsg(""), 4000);
   }
 
+<<<<<<< HEAD
   function flashError(msg: string) {
     setError(msg);
     setTimeout(() => setError(""), 5000);
   }
 
+=======
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
   async function handleLogin(e: FormEvent) {
     e.preventDefault();
     setLoginError("");
@@ -514,6 +588,7 @@ export default function AdminPanel({
         adminApi.setToken(res.token);
         localStorage.setItem("alikend_admin_token", res.token);
         setCurrentAdmin(res.admin);
+<<<<<<< HEAD
         loginAdmin(
           {
             _id: res.admin._id,
@@ -523,6 +598,8 @@ export default function AdminPanel({
           },
           res.token
         );
+=======
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
         setLoggedIn(true);
         setLoginPassword("");
         loadAll(res.admin);
@@ -539,7 +616,10 @@ export default function AdminPanel({
   function handleLogout() {
     adminApi.clearToken();
     localStorage.removeItem("alikend_admin_token");
+<<<<<<< HEAD
     logoutAdmin();
+=======
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
     setCurrentAdmin(null);
     setLoggedIn(false);
   }
@@ -599,12 +679,17 @@ export default function AdminPanel({
       setProductToDelete(null);
       setConfirmProductNameInput("");
     } catch (err: any) {
+<<<<<<< HEAD
       flashError(err.message || "Failed to remove product");
+=======
+      alert(err.message || "Failed to remove product");
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
     } finally {
       setIsDeletingProduct(false);
     }
   }
 
+<<<<<<< HEAD
   async function handleDuplicateAdminProduct(prod: Product) {
     const targetId = prod._id || String(prod.id);
     setActionLoadingId(targetId);
@@ -705,6 +790,8 @@ export default function AdminPanel({
     }
   }
 
+=======
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
   // --- Orders: Status Transitions ---
   async function handleOrderStatus(id: string, status: OrderStatus) {
     setActionLoadingId(id);
@@ -733,6 +820,7 @@ export default function AdminPanel({
     }
   }
 
+<<<<<<< HEAD
   const [sellerDetailsMap, setSellerDetailsMap] = useState<
     Record<string, { products: Product[]; activityLogs: ActivityLogItem[]; loading?: boolean }>
   >({});
@@ -788,6 +876,8 @@ export default function AdminPanel({
     }
   }
 
+=======
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
   // --- Sellers: Verify / Unverify KYC ---
   async function handleToggleSellerKyc(id: string, currentVerified: boolean) {
     setActionLoadingId(id);
@@ -1095,6 +1185,7 @@ export default function AdminPanel({
 
   // Filter computations
   const categories = [...new Set(products.map((p) => p.category).filter(Boolean))];
+<<<<<<< HEAD
   const filteredProducts = products
     .filter((p) => {
       const q = (prodSearch || "").trim().toLowerCase();
@@ -1167,6 +1258,27 @@ export default function AdminPanel({
     (prodPage - 1) * PROD_PAGE_SIZE,
     prodPage * PROD_PAGE_SIZE
   );
+=======
+  const filteredProducts = products.filter((p) => {
+    const q = (prodSearch || "").trim().toLowerCase();
+    const matchSearch = !q || 
+      (p.name || "").toLowerCase().includes(q) || 
+      (p.category || "").toLowerCase().includes(q) ||
+      (p.brand && (p.brand || "").toLowerCase().includes(q)) ||
+      (p.description && (p.description || "").toLowerCase().includes(q));
+    
+    const matchCat = !prodCategory || p.category === prodCategory;
+
+    let matchFlash = true;
+    if (prodFlashFilter === "flash") {
+      matchFlash = p.badge === "SALE" || p.isFlashSale === true;
+    } else if (prodFlashFilter === "regular") {
+      matchFlash = p.badge !== "SALE" && !p.isFlashSale;
+    }
+
+    return matchSearch && matchCat && matchFlash;
+  });
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
 
   const filteredOrders = orders.filter((o) => {
     const q = (orderSearch || "").trim().toLowerCase();
@@ -1414,6 +1526,7 @@ export default function AdminPanel({
             </div>
 
             <div
+<<<<<<< HEAD
               className={`ap-nav-item ${section === "addProductStudio" ? "active" : ""}`}
               onClick={() => {
                 setEditingProduct(null);
@@ -1429,6 +1542,8 @@ export default function AdminPanel({
             </div>
 
             <div
+=======
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
               className={`ap-nav-item ${section === "orders" ? "active" : ""}`}
               onClick={() => { setSection("orders"); setMobileSidebarOpen(false); }}
             >
@@ -1437,6 +1552,7 @@ export default function AdminPanel({
             </div>
 
             <div
+<<<<<<< HEAD
               className={`ap-nav-item ${section === "returnOrders" ? "active" : ""}`}
               onClick={() => { setSection("returnOrders"); setMobileSidebarOpen(false); }}
             >
@@ -1482,6 +1598,13 @@ export default function AdminPanel({
               <span className="ml-auto text-[10px] bg-amber-500/20 text-amber-300 px-1.5 py-0.5 rounded font-mono font-bold">
                 {sellers.length}
               </span>
+=======
+              className={`ap-nav-item ${section === "sellers" ? "active" : ""}`}
+              onClick={() => { setSection("sellers"); setMobileSidebarOpen(false); }}
+            >
+              <Store className="w-4 h-4" />
+              <span>Sellers ({sellers.length})</span>
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
             </div>
 
             <div
@@ -1519,6 +1642,7 @@ export default function AdminPanel({
               <span className="ml-auto text-[9px] bg-orange-500/20 text-orange-300 px-1.5 py-0.5 rounded font-mono font-bold">LIVE</span>
             </div>
 
+<<<<<<< HEAD
             {/* ADMIN PANEL: Commission Management & Platform Wallet */}
             <div
               className={`ap-nav-item ${section === "commission" ? "active" : ""}`}
@@ -1530,6 +1654,21 @@ export default function AdminPanel({
                 {commissionData ? `${commissionData.commissionRate}%` : "5%"}
               </span>
             </div>
+=======
+            {/* SUPER ADMIN EXCLUSIVE: Platform Commission & Wallet */}
+            {isSuperAdmin && (
+              <div
+                className={`ap-nav-item ${section === "commission" ? "active" : ""}`}
+                onClick={() => { setSection("commission"); setMobileSidebarOpen(false); }}
+              >
+                <Wallet className="w-4 h-4 text-emerald-400" />
+                <span className="text-emerald-200 font-semibold">Platform Earnings</span>
+                <span className="ml-auto text-[9px] bg-emerald-500/20 text-emerald-300 px-1.5 py-0.5 rounded font-mono font-bold">
+                  {commissionData ? `${commissionData.commissionRate}%` : "5%"}
+                </span>
+              </div>
+            )}
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
 
             {/* SUPER ADMIN EXCLUSIVE: Sales Reports */}
             {isSuperAdmin && (
@@ -1588,6 +1727,7 @@ export default function AdminPanel({
                 6 CLOUD
               </span>
             </div>
+<<<<<<< HEAD
 
             {/* Daraz-Inspired Marketplace Settings Dashboard */}
             <div
@@ -1600,6 +1740,8 @@ export default function AdminPanel({
                 35 MODULES
               </span>
             </div>
+=======
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
           </nav>
 
           <div className="ap-sidebar-foot space-y-2">
@@ -1636,12 +1778,19 @@ export default function AdminPanel({
               </button>
               <div>
                 <h1 className="ap-page-title capitalize">
+<<<<<<< HEAD
                   {section === "settingsHub" ? "Settings · Platform Business, Finance, Logistics, RBAC & Governance" : section === "centralCommand" ? "কেন্দ্রীয় এডমিন প্যানেল · Central ALIKE ND Command (মডিউল ৩)" : section === "sellers" ? "Seller Management · Applications, Stores, Products, Orders & Payouts" : section === "rides" ? "Alike Rides & Driver Operations (রাইড ও ড্রাইভার অপারেশন)" : section === "deliveryDispatch" ? "ডেলিভারি ও ফ্লিট ডিসপ্যাচ (Delivery Dispatch & Fleet)" : section === "banners" ? "Hero Carousel Banners" : section === "flashSale" ? "Flash Premium Hours & Countdown" : section === "adminUsers" ? "এডমিন মিনিস্টার (Admin Minister)" : section === "reports" ? "Sales & Revenue Analytics" : section === "commission" ? "Commission Management · Categories, Subcategories, Rules & Reports" : section === "returnOrders" ? "রিটার্ন অর্ডার ম্যানেজমেন্ট (Return Orders)" : section === "customers" ? "গ্রাহক ও ব্যবহারকারী ব্যবস্থাপনা (Customers Management)" : section}
                 </h1>
                 <p className="ap-page-sub">
                   {section === "centralCommand"
                     ? "Central Sovereign Command · Unified Dispatch, Partner Compliance, Financials & Business Rules"
                     : section === "adminUsers"
+=======
+                  {section === "banners" ? "Hero Carousel Banners" : section === "flashSale" ? "Flash Premium Hours & Countdown" : section === "adminUsers" ? "এডমিন মিনিস্টার (Admin Minister)" : section === "reports" ? "Sales & Revenue Analytics" : section === "commission" ? "Platform Earnings & Commission Wallet" : section}
+                </h1>
+                <p className="ap-page-sub">
+                  {section === "adminUsers"
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
                     ? "Sovereign Administration Directorate · কেন্দ্রীয় প্রশাসনিক মন্ত্রণালয় ও পরিচালনা"
                     : isSuperAdmin
                     ? "Root Administrator Console · alikendshop database"
@@ -1699,7 +1848,11 @@ export default function AdminPanel({
                   type="button"
                   onClick={() => {
                     setEditingProduct(null);
+<<<<<<< HEAD
                     setSection("addProductStudio");
+=======
+                    setModalOpen(true);
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
                   }}
                   className="h-9 px-3.5 bg-gradient-to-r from-pink-600 via-rose-600 to-amber-600 hover:from-pink-500 hover:to-amber-500 text-white text-xs font-bold rounded-xl border border-rose-500/30 shadow-xs shadow-rose-600/25 transition-all hover:scale-[1.02] active:scale-95 cursor-pointer whitespace-nowrap flex items-center gap-1.5 shrink-0"
                 >
@@ -1737,6 +1890,7 @@ export default function AdminPanel({
           )}
 
           <div className="ap-content">
+<<<<<<< HEAD
             {/* SECTION: CENTRAL COMMAND (MODULE 3) */}
             {section === "centralCommand" && (
               <CentralAdminPanelModule
@@ -1745,6 +1899,8 @@ export default function AdminPanel({
               />
             )}
 
+=======
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
             {/* SECTION 1: DASHBOARD */}
             {section === "dashboard" && (
               <div className="space-y-6">
@@ -1957,6 +2113,7 @@ export default function AdminPanel({
               </div>
             )}
 
+<<<<<<< HEAD
             {/* SECTION 2: DARAZ-STYLE ADMIN PRODUCT MANAGEMENT SYSTEM */}
             {section === "products" && (
               <div className="space-y-4">
@@ -2150,12 +2307,33 @@ export default function AdminPanel({
                           setProdPage(1);
                         }}
                         className="ap-input ap-input-search mkt-input !pl-10 h-9 w-full"
+=======
+            {/* SECTION 2: PRODUCTS & FLASH HOURS */}
+            {section === "products" && (
+              <div className="space-y-4">
+                {/* Search, Category, and Flash filter */}
+                <div className="ap-toolbar-row">
+                  <div className="flex flex-wrap gap-2 flex-1">
+                    <div className="relative min-w-[200px] flex-1">
+                      <Search className="w-4 h-4 text-neutral-400 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none z-10" />
+                      <input
+                        type="text"
+                        placeholder="Search products by title, brand, or category..."
+                        value={prodSearch}
+                        onChange={(e) => setProdSearch(e.target.value)}
+                        className="ap-input ap-input-search !pl-11 h-10 text-xs sm:text-sm"
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
                       />
                       {prodSearch && (
                         <button
                           type="button"
                           onClick={() => setProdSearch("")}
+<<<<<<< HEAD
                           className="absolute right-2.5 top-1/2 -translate-y-1/2 text-neutral-400 hover:text-neutral-600 cursor-pointer"
+=======
+                          className="absolute right-3 top-1/2 -translate-y-1/2 text-neutral-400 hover:text-neutral-600 cursor-pointer p-0.5 rounded-full hover:bg-neutral-100"
+                          title="Clear search"
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
                         >
                           <X className="w-3.5 h-3.5" />
                         </button>
@@ -2164,11 +2342,16 @@ export default function AdminPanel({
 
                     <select
                       value={prodCategory}
+<<<<<<< HEAD
                       onChange={(e) => {
                         setProdCategory(e.target.value);
                         setProdPage(1);
                       }}
                       className="ap-select mkt-select h-9"
+=======
+                      onChange={(e) => setProdCategory(e.target.value)}
+                      className="ap-select w-auto min-w-[140px]"
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
                     >
                       <option value="">All Categories</option>
                       {categories.map((cat) => (
@@ -2178,6 +2361,7 @@ export default function AdminPanel({
                       ))}
                     </select>
 
+<<<<<<< HEAD
                     <select
                       value={prodSellerFilter}
                       onChange={(e) => {
@@ -2223,10 +2407,58 @@ export default function AdminPanel({
                       </select>
                     </div>
                   </div>
+=======
+                    <div className="flex rounded-lg border border-neutral-300 overflow-hidden bg-white">
+                      <button
+                        onClick={() => {
+                          setProdFlashFilter("all");
+                          setProdCategory("");
+                          setProdSearch("");
+                        }}
+                        className={`px-3 py-1.5 text-xs font-semibold cursor-pointer transition-colors ${
+                          prodFlashFilter === "all" && !prodCategory && !prodSearch ? "bg-purple-900 text-white" : "text-neutral-700 hover:bg-neutral-100"
+                        }`}
+                        title="Click to reset filters and view all products"
+                      >
+                        All ({products.length})
+                      </button>
+                      <button
+                        onClick={() => setProdFlashFilter("flash")}
+                        className={`px-3 py-1.5 text-xs font-semibold cursor-pointer flex items-center gap-1 transition-colors ${
+                          prodFlashFilter === "flash" ? "bg-amber-500 text-black font-black" : "text-neutral-700 hover:bg-neutral-100"
+                        }`}
+                      >
+                        <Flame className="w-3.5 h-3.5" />
+                        <span>Flash Sales ({products.filter(p => p.badge === 'SALE' || p.isFlashSale).length})</span>
+                      </button>
+                      <button
+                        onClick={() => setProdFlashFilter("regular")}
+                        className={`px-3 py-1.5 text-xs font-semibold cursor-pointer transition-colors ${
+                          prodFlashFilter === "regular" ? "bg-purple-900 text-white" : "text-neutral-700 hover:bg-neutral-100"
+                        }`}
+                      >
+                        Standard
+                      </button>
+                    </div>
+                  </div>
+
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setEditingProduct(null);
+                      setModalOpen(true);
+                    }}
+                    className="h-10 px-4 bg-gradient-to-r from-pink-600 via-rose-600 to-amber-600 hover:from-pink-500 hover:to-amber-500 text-white text-xs font-bold rounded-xl shadow-xs shadow-rose-600/25 transition-all hover:scale-[1.02] active:scale-95 cursor-pointer whitespace-nowrap flex items-center gap-1.5 shrink-0"
+                  >
+                    <Plus className="w-4 h-4 shrink-0" />
+                    <span>Add New Product</span>
+                  </button>
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
                 </div>
 
                 {/* Products Table */}
                 <div className="ap-card">
+<<<<<<< HEAD
                   <div className="p-3 bg-neutral-50/70 border-b border-neutral-200 flex flex-wrap items-center justify-between gap-2 text-xs text-neutral-500">
                     <span className="flex items-center gap-1.5 font-medium">
                       <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
@@ -2255,10 +2487,22 @@ export default function AdminPanel({
                     </div>
                   </div>
 
+=======
+                  <div className="p-3 bg-neutral-50/70 border-b border-neutral-200 flex items-center justify-between text-xs text-neutral-500">
+                    <span className="flex items-center gap-1.5 font-medium">
+                      <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
+                      Showing {filteredProducts.length} items • Scroll horizontally if needed to view all columns
+                    </span>
+                    <span className="text-[11px] font-mono text-neutral-400">
+                      Actions column is pinned to the right
+                    </span>
+                  </div>
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
                   <div className="ap-table-wrap">
                     <table className="ap-table">
                       <thead>
                         <tr>
+<<<<<<< HEAD
                           <th className="min-w-[250px]">Product & Content Score</th>
                           <th className="min-w-[140px]">Product ID & SKU</th>
                           <th className="min-w-[140px]">Category</th>
@@ -2295,6 +2539,30 @@ export default function AdminPanel({
                               <td>
                                 <div className="flex items-center gap-3 min-w-[230px]">
                                   <div className="w-11 h-11 rounded-lg overflow-hidden bg-neutral-100 shrink-0 border border-neutral-200 relative">
+=======
+                          <th className="min-w-[240px]">Item</th>
+                          <th className="min-w-[140px]">Brand</th>
+                          <th className="min-w-[120px]">Category</th>
+                          <th className="min-w-[130px]">Price & MRP</th>
+                          <th className="min-w-[100px]">Discount</th>
+                          <th className="min-w-[120px]">Stock & Status</th>
+                          <th className="min-w-[120px]">Badge / Flash</th>
+                          <th className="min-w-[100px]">Rating</th>
+                          <th className="text-right min-w-[140px] ap-sticky-col-header font-bold text-neutral-800">Actions</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {filteredProducts.map((p) => {
+                          const mrp = p.mrp || p.price;
+                          const discount = Math.max(0, Math.round(((mrp - p.price) / mrp) * 100));
+                          const isFlash = p.badge === "SALE" || p.isFlashSale === true;
+
+                          return (
+                            <tr key={p._id || p.id}>
+                              <td>
+                                <div className="flex items-center gap-3 min-w-[220px]">
+                                  <div className="w-10 h-10 rounded-lg overflow-hidden bg-neutral-100 shrink-0 border border-neutral-200">
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
                                     {p.image ? (
                                       <img
                                         src={p.image}
@@ -2306,6 +2574,7 @@ export default function AdminPanel({
                                       <div className="w-full h-full flex items-center justify-center text-xs">📦</div>
                                     )}
                                   </div>
+<<<<<<< HEAD
                                   <div className="min-w-0 flex-1">
                                     <div className="font-semibold text-neutral-900 truncate">{p.name}</div>
                                     {p.localizedName && (
@@ -2464,10 +2733,76 @@ export default function AdminPanel({
                                     <Eye className="w-3.5 h-3.5" />
                                   </button>
 
+=======
+                                  <div className="min-w-0">
+                                    <div className="font-bold text-neutral-900 truncate">{p.name}</div>
+                                    <div className="text-[11px] text-neutral-500 truncate">{p.description?.slice(0, 45)}...</div>
+                                  </div>
+                                </div>
+                              </td>
+                              <td className="font-mono text-xs font-semibold text-neutral-700">{p.brand || "Alike Sovereign"}</td>
+                              <td className="capitalize text-xs text-neutral-600">{p.category}</td>
+                              <td>
+                                <div className="font-bold text-neutral-900">₹{(p.price ?? 0).toLocaleString("en-IN")}</div>
+                                {p.mrp && p.mrp > p.price && (
+                                  <div className="text-[11px] text-neutral-400 line-through">₹{(p.mrp ?? 0).toLocaleString("en-IN")}</div>
+                                )}
+                              </td>
+                              <td>
+                                {discount > 0 ? (
+                                  <span className="px-1.5 py-0.5 rounded bg-emerald-100 text-emerald-800 text-[10px] font-black font-mono">
+                                    {discount}% OFF
+                                  </span>
+                                ) : (
+                                  <span className="text-[10px] text-neutral-400 font-mono">—</span>
+                                )}
+                              </td>
+                              <td>
+                                <div className="flex flex-col gap-0.5">
+                                  <span className="text-xs font-bold text-neutral-800">{p.stock} units</span>
+                                  <span className="text-[10px] text-neutral-500 font-medium">{(p.stockStatus === '20-Min Express' || p.stockStatus === '20 Min Express') ? 'Fast Express' : (p.stockStatus || "In Stock")}</span>
+                                </div>
+                              </td>
+                              <td>
+                                <div className="flex items-center gap-1.5 flex-wrap">
+                                  {p.badge && (
+                                    <span className={`px-2 py-0.5 rounded text-[9px] font-black uppercase ${
+                                      p.badge === 'SALE' ? 'bg-amber-500 text-black' : p.badge === 'HOT' ? 'bg-red-600 text-white' : 'bg-neutral-900 text-white'
+                                    }`}>
+                                      {p.badge}
+                                    </span>
+                                  )}
+                                  {isFlash && (
+                                    <span className="px-1.5 py-0.5 rounded bg-orange-100 text-orange-800 text-[9px] font-black flex items-center gap-0.5">
+                                      <Flame className="w-3 h-3 text-orange-600" /> Flash
+                                    </span>
+                                  )}
+                                </div>
+                              </td>
+                              <td>
+                                <div className="flex items-center gap-1 text-xs">
+                                  <Star className="w-3 h-3 fill-amber-400 text-amber-400" />
+                                  <span className="font-bold">{p.rating?.toFixed(1) || "4.8"}</span>
+                                  <span className="text-[10px] text-neutral-400">({p.reviewsCount || 0})</span>
+                                </div>
+                              </td>
+                              <td className="text-right ap-sticky-col-cell">
+                                <div className="flex items-center justify-end gap-1.5 min-w-[120px]">
+                                  <button
+                                    type="button"
+                                    onClick={() => setViewingProduct(p)}
+                                    className="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-blue-50 hover:bg-blue-100 text-blue-600 border border-blue-200 shadow-xs transition-all hover:scale-105 active:scale-95 cursor-pointer"
+                                    title="View Product Details"
+                                    aria-label="View Product"
+                                  >
+                                    <Eye className="w-4 h-4" />
+                                  </button>
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
                                   <button
                                     type="button"
                                     onClick={() => {
                                       setEditingProduct(p);
+<<<<<<< HEAD
                                       setSection("addProductStudio");
                                     }}
                                     className="inline-flex items-center justify-center w-7 h-7 rounded-lg bg-amber-50 hover:bg-amber-100 text-amber-700 border border-amber-200 cursor-pointer"
@@ -2556,6 +2891,24 @@ export default function AdminPanel({
                                     title="Delete Product"
                                   >
                                     <Trash2 className="w-3.5 h-3.5" />
+=======
+                                      setModalOpen(true);
+                                    }}
+                                    className="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-amber-50 hover:bg-amber-100 text-amber-700 border border-amber-200 shadow-xs transition-all hover:scale-105 active:scale-95 cursor-pointer"
+                                    title="Edit Product"
+                                    aria-label="Edit Product"
+                                  >
+                                    <Edit3 className="w-4 h-4" />
+                                  </button>
+                                  <button
+                                    type="button"
+                                    onClick={() => handleDeleteProduct(p._id || String(p.id), p.name)}
+                                    className="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-rose-50 hover:bg-rose-100 text-rose-600 border border-rose-200 shadow-xs transition-all hover:scale-105 active:scale-95 cursor-pointer"
+                                    title="Delete Product"
+                                    aria-label="Delete Product"
+                                  >
+                                    <Trash2 className="w-4 h-4" />
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
                                   </button>
                                 </div>
                               </td>
@@ -2568,6 +2921,7 @@ export default function AdminPanel({
                               <div className="flex flex-col items-center justify-center gap-2">
                                 <Package className="w-8 h-8 text-neutral-300" />
                                 <p className="font-semibold text-sm">No products found matching the criteria</p>
+<<<<<<< HEAD
                                 <p className="text-xs text-neutral-400">
                                   Try clearing filters or search terms to see all catalog items.
                                 </p>
@@ -2581,6 +2935,12 @@ export default function AdminPanel({
                                     setProdFlashFilter("all");
                                     setProdPage(1);
                                   }}
+=======
+                                <p className="text-xs text-neutral-400">Try clearing filters or search terms to see all catalog items.</p>
+                                <button
+                                  type="button"
+                                  onClick={() => { setProdSearch(""); setProdCategory(""); setProdFlashFilter("all"); }}
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
                                   className="mt-2 px-3.5 py-1.5 text-xs font-semibold bg-purple-900 hover:bg-purple-800 text-white rounded-lg transition-colors cursor-pointer"
                                 >
                                   Reset All Filters
@@ -2593,6 +2953,7 @@ export default function AdminPanel({
                     </table>
                   </div>
                 </div>
+<<<<<<< HEAD
 
                 {/* Reject Product Modal */}
                 {rejectingProduct && (
@@ -2810,6 +3171,11 @@ export default function AdminPanel({
               />
             )}
 
+=======
+              </div>
+            )}
+
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
             {/* SECTION 3: ORDERS */}
             {section === "orders" && (
               <div className="space-y-4">
@@ -2910,6 +3276,7 @@ export default function AdminPanel({
               </div>
             )}
 
+<<<<<<< HEAD
             {/* SECTION 4: SELLER MANAGEMENT */}
             {section === "sellers" && (
               <SellerManagementModule
@@ -2968,6 +3335,515 @@ export default function AdminPanel({
             {/* SECTION: ALIKE RIDES & DRIVER OPERATIONS */}
             {section === "rides" && (
               <AdminRidesSection />
+=======
+            {/* SECTION 4: SELLERS */}
+            {section === "sellers" && (
+              <div className="space-y-4">
+                {/* Pending Applications Review Alert Banner */}
+                {sellers.filter((s) => s.status === "pending").length > 0 && (
+                  <div className="p-4 bg-amber-50 border border-amber-300 rounded-xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-amber-900 shadow-xs">
+                    <div className="flex items-center gap-3">
+                      <div className="w-9 h-9 rounded-xl bg-amber-200 text-amber-900 flex items-center justify-center font-bold text-sm shrink-0">
+                        {sellers.filter((s) => s.status === "pending").length}
+                      </div>
+                      <div>
+                        <div className="font-bold text-sm">
+                          {sellers.filter((s) => s.status === "pending").length} Pending Seller Application{sellers.filter((s) => s.status === "pending").length > 1 ? "s" : ""}
+                        </div>
+                        <div className="text-xs text-amber-800">
+                          Review merchant applications and approve verified businesses to enable their Seller Dashboard and catalog listing tools.
+                        </div>
+                      </div>
+                    </div>
+                    <button
+                      type="button"
+                      onClick={() => setSellerStatusFilter(sellerStatusFilter === "pending" ? "" : "pending")}
+                      className="px-3.5 py-1.5 bg-amber-600 hover:bg-amber-700 text-white rounded-lg text-xs font-bold transition-all shadow-xs shrink-0"
+                    >
+                      {sellerStatusFilter === "pending" ? "Show All Sellers" : "Review Pending Applications"}
+                    </button>
+                  </div>
+                )}
+
+                <div className="ap-toolbar-row">
+                  <div className="relative min-w-[240px] flex-1">
+                    <Search className="w-4 h-4 text-neutral-400 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none z-10" />
+                    <input
+                      type="text"
+                      placeholder="Search by shop name, owner, phone, email, or address..."
+                      value={sellerSearch}
+                      onChange={(e) => setSellerSearch(e.target.value)}
+                      className="ap-input ap-input-search !pl-11 h-10 text-xs sm:text-sm"
+                    />
+                    {sellerSearch && (
+                      <button
+                        type="button"
+                        onClick={() => setSellerSearch("")}
+                        className="absolute right-3 top-1/2 -translate-y-1/2 text-neutral-400 hover:text-neutral-600 cursor-pointer p-0.5 rounded-full hover:bg-neutral-100"
+                        title="Clear search"
+                      >
+                        <X className="w-3.5 h-3.5" />
+                      </button>
+                    )}
+                  </div>
+                  <select
+                    value={sellerStatusFilter}
+                    onChange={(e) => setSellerStatusFilter(e.target.value)}
+                    className="ap-select w-auto min-w-[150px] font-medium"
+                  >
+                    <option value="">All Statuses ({sellers.length})</option>
+                    <option value="pending">Pending Approval ({sellers.filter((s) => s.status === "pending").length})</option>
+                    <option value="approved">Approved ({sellers.filter((s) => s.status === "approved").length})</option>
+                    <option value="review">In Review</option>
+                    <option value="suspended">Suspended</option>
+                    <option value="rejected">Rejected</option>
+                  </select>
+                </div>
+
+                <div className="ap-card">
+                  <div className="ap-table-wrap">
+                    <table className="ap-table">
+                      <thead>
+                        <tr>
+                          <th>Shop / Storefront</th>
+                          <th>Owner & Contact</th>
+                          <th>KYC / Tax & Bank</th>
+                          <th>Catalog Listings</th>
+                          <th>Status</th>
+                          <th className="text-right">Admin Approval & Actions</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {filteredSellers.length === 0 ? (
+                          <tr>
+                            <td colSpan={6} className="text-center py-8 text-neutral-500 text-sm">
+                              No sellers found matching the current search or status filter.
+                            </td>
+                          </tr>
+                        ) : (
+                          filteredSellers.map((s, sIdx) => {
+                            const sellerId = String(s._id || (s as any).id || `seller-${sIdx}`);
+                            const isPending = s.status === "pending";
+                            const displayName = s.shopName || s.storefront || "Storefront";
+                            const contactEmail = s.email || s.ownerEmail || "—";
+                            const contactPhone = s.mobileNumber || "—";
+                            const address = s.businessAddress || "—";
+                            const isExpanded = expandedKycSellerId === sellerId;
+                            const isKycVerified = Boolean(s.kycVerified);
+
+                            return (
+                              <React.Fragment key={sellerId}>
+                                <tr className={isPending ? "bg-amber-50/40" : undefined}>
+                                  <td>
+                                    <div className="flex items-center gap-2">
+                                      <div className="w-8 h-8 rounded-lg bg-neutral-100 flex items-center justify-center text-neutral-700 shrink-0">
+                                        <Store className="w-4 h-4" />
+                                      </div>
+                                      <div>
+                                        <div className="font-serif font-bold text-neutral-900">{displayName}</div>
+                                        <div className="text-[11px] text-neutral-400 font-mono">
+                                          ID: {sellerId ? sellerId.slice(-6) : "—"}
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </td>
+                                  <td>
+                                    <div className="font-medium text-neutral-900">{s.ownerName}</div>
+                                    <div className="text-[11px] text-neutral-600 font-mono flex items-center gap-1 mt-0.5">
+                                      <Mail className="w-3 h-3 text-neutral-400" />
+                                      <span>{contactEmail}</span>
+                                    </div>
+                                    {contactPhone !== "—" && (
+                                      <div className="text-[11px] text-neutral-600 font-mono flex items-center gap-1 mt-0.5">
+                                        <Phone className="w-3 h-3 text-neutral-400" />
+                                        <span>{contactPhone}</span>
+                                      </div>
+                                    )}
+                                  </td>
+                                  <td>
+                                    <div className="space-y-1">
+                                      <div className="flex items-center gap-1.5 flex-wrap">
+                                        {isKycVerified ? (
+                                          <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-800 border border-emerald-300">
+                                            <ShieldCheck className="w-3 h-3 text-emerald-600" />
+                                            KYC Verified
+                                          </span>
+                                        ) : (
+                                          <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold bg-amber-100 text-amber-800 border border-amber-300">
+                                            <Clock className="w-3 h-3 text-amber-600" />
+                                            KYC Pending
+                                          </span>
+                                        )}
+                                        <button
+                                          type="button"
+                                          onClick={() => setExpandedKycSellerId(isExpanded ? null : sellerId)}
+                                          className="text-[11px] font-semibold text-blue-600 hover:text-blue-800 inline-flex items-center gap-0.5 transition-colors cursor-pointer"
+                                        >
+                                          {isExpanded ? (
+                                            <>Hide Details <ChevronUp className="w-3 h-3" /></>
+                                          ) : (
+                                            <>View Details <ChevronDown className="w-3 h-3" /></>
+                                          )}
+                                        </button>
+                                      </div>
+                                      <div className="text-[11px] text-neutral-500 font-mono">
+                                        PAN: {s.panNumber || "—"}
+                                      </div>
+                                    </div>
+                                  </td>
+                                  <td className="font-bold text-xs">
+                                    <span className="px-2 py-0.5 rounded-full bg-neutral-100 text-neutral-800 text-[11px]">
+                                      {s.listingsCount || 0} items
+                                    </span>
+                                  </td>
+                                  <td>
+                                    <Seal status={s.status} />
+                                  </td>
+                                  <td className="text-right">
+                                    <div className="inline-flex items-center justify-end gap-1.5 flex-wrap">
+                                      <button
+                                        type="button"
+                                        onClick={() => handleToggleSellerKyc(sellerId, isKycVerified)}
+                                        disabled={actionLoadingId === sellerId}
+                                        className={`px-2.5 py-1 rounded-lg text-xs font-bold inline-flex items-center gap-1 shadow-xs transition-colors cursor-pointer ${
+                                          isKycVerified
+                                            ? "bg-neutral-100 hover:bg-neutral-200 text-neutral-700 border border-neutral-300"
+                                            : "bg-emerald-50 hover:bg-emerald-100 text-emerald-700 border border-emerald-300"
+                                        }`}
+                                        title={isKycVerified ? "Mark KYC as unverified" : "Approve and verify seller KYC"}
+                                      >
+                                        <ShieldCheck className="w-3.5 h-3.5" />
+                                        {isKycVerified ? "Revoke KYC" : "Verify KYC"}
+                                      </button>
+
+                                      {isPending ? (
+                                        <>
+                                          <button
+                                            type="button"
+                                            onClick={() => handleSellerStatus(sellerId, "approved")}
+                                            disabled={actionLoadingId === sellerId}
+                                            className="px-3 py-1 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg text-xs font-bold inline-flex items-center gap-1 shadow-xs transition-colors cursor-pointer"
+                                            title="Approve seller application"
+                                          >
+                                            <Check className="w-3.5 h-3.5" /> Approve
+                                          </button>
+                                          <button
+                                            type="button"
+                                            onClick={() => handleSellerStatus(sellerId, "rejected")}
+                                            disabled={actionLoadingId === sellerId}
+                                            className="px-3 py-1 bg-rose-600 hover:bg-rose-700 text-white rounded-lg text-xs font-bold inline-flex items-center gap-1 shadow-xs transition-colors cursor-pointer"
+                                            title="Reject seller application"
+                                          >
+                                            <X className="w-3.5 h-3.5" /> Reject
+                                          </button>
+                                        </>
+                                      ) : (
+                                        <select
+                                          value={s.status}
+                                          onChange={(e) => handleSellerStatus(sellerId, e.target.value as SellerStatus)}
+                                          disabled={actionLoadingId === sellerId}
+                                          className="ap-select py-1 text-xs w-auto font-medium"
+                                        >
+                                          <option value="approved">Approved</option>
+                                          <option value="review">In Review</option>
+                                          <option value="pending">Pending</option>
+                                          <option value="suspended">Suspended</option>
+                                          <option value="rejected">Rejected</option>
+                                        </select>
+                                      )}
+                                    </div>
+                                  </td>
+                                </tr>
+
+                                {isExpanded && (
+                                  <tr className="bg-neutral-50/80 dark:bg-neutral-900/30">
+                                    <td colSpan={6} className="p-4">
+                                      <div className="bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-xl p-4 text-xs shadow-xs space-y-4">
+                                        <div className="flex items-center justify-between border-b border-neutral-100 dark:border-neutral-800 pb-2.5">
+                                          <div className="flex items-center gap-2">
+                                            <FileCheck className="w-4 h-4 text-neutral-700" />
+                                            <span className="font-bold text-neutral-900 uppercase tracking-wider text-xs">
+                                              KYC & Banking Dossier: {displayName}
+                                            </span>
+                                          </div>
+                                          <div className="flex items-center gap-2">
+                                            <span className="text-[11px] text-neutral-500">KYC Status:</span>
+                                            <span
+                                              className={`inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-bold ${
+                                                isKycVerified
+                                                  ? "bg-emerald-100 text-emerald-800"
+                                                  : "bg-amber-100 text-amber-800"
+                                              }`}
+                                            >
+                                              <ShieldCheck className="w-3 h-3" />
+                                              {isKycVerified ? "Verified" : "Pending Verification"}
+                                            </span>
+                                            <button
+                                              type="button"
+                                              onClick={() => handleToggleSellerKyc(sellerId, isKycVerified)}
+                                              disabled={actionLoadingId === sellerId}
+                                              className={`px-3 py-1 rounded-lg text-xs font-bold transition-colors cursor-pointer ${
+                                                isKycVerified
+                                                  ? "bg-rose-100 text-rose-800 hover:bg-rose-200"
+                                                  : "bg-emerald-600 text-white hover:bg-emerald-700"
+                                              }`}
+                                            >
+                                              {isKycVerified ? "Revoke Verification" : "Mark as Verified"}
+                                            </button>
+                                          </div>
+                                        </div>
+
+                                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                          {/* KYC & Identity Column */}
+                                          <div className="space-y-2.5 bg-neutral-50 dark:bg-neutral-950 p-3.5 rounded-lg border border-neutral-200 dark:border-neutral-800">
+                                            <div className="flex items-center gap-1.5 font-bold text-neutral-800 border-b border-neutral-200 dark:border-neutral-800 pb-1">
+                                              <CreditCard className="w-3.5 h-3.5 text-neutral-500" />
+                                              <span>Identity & Tax Details</span>
+                                            </div>
+                                            <div className="grid grid-cols-3 gap-1">
+                                              <span className="text-neutral-500">PAN Number:</span>
+                                              <span className="col-span-2 font-mono font-bold text-neutral-900">
+                                                {s.panNumber || <span className="text-neutral-400 font-normal">Not Provided</span>}
+                                              </span>
+                                            </div>
+                                            <div className="grid grid-cols-3 gap-1">
+                                              <span className="text-neutral-500">GSTIN:</span>
+                                              <span className="col-span-2 font-mono text-neutral-900">
+                                                {s.gstin || <span className="text-neutral-400 font-normal">Not Provided / Unregistered</span>}
+                                              </span>
+                                            </div>
+                                            <div className="grid grid-cols-3 gap-1">
+                                              <span className="text-neutral-500">Business Address:</span>
+                                              <span className="col-span-2 text-neutral-800 leading-relaxed">
+                                                {address}
+                                              </span>
+                                            </div>
+                                          </div>
+
+                                          {/* Payout Bank Details Column */}
+                                          <div className="space-y-2.5 bg-neutral-50 dark:bg-neutral-950 p-3.5 rounded-lg border border-neutral-200 dark:border-neutral-800">
+                                            <div className="flex items-center gap-1.5 font-bold text-neutral-800 border-b border-neutral-200 dark:border-neutral-800 pb-1">
+                                              <Landmark className="w-3.5 h-3.5 text-neutral-500" />
+                                              <span>Settlement & Bank Details</span>
+                                            </div>
+                                            <div className="grid grid-cols-3 gap-1">
+                                              <span className="text-neutral-500">Bank Name:</span>
+                                              <span className="col-span-2 font-medium text-neutral-900">
+                                                {s.bankName || <span className="text-neutral-400 font-normal">Not Provided</span>}
+                                              </span>
+                                            </div>
+                                            <div className="grid grid-cols-3 gap-1">
+                                              <span className="text-neutral-500">Account Holder:</span>
+                                              <span className="col-span-2 font-medium text-neutral-900">
+                                                {s.bankAccountHolderName || <span className="text-neutral-400 font-normal">Not Provided</span>}
+                                              </span>
+                                            </div>
+                                            <div className="grid grid-cols-3 gap-1">
+                                              <span className="text-neutral-500">Account Number:</span>
+                                              <span className="col-span-2 font-mono font-bold text-neutral-900">
+                                                {s.bankAccountNumber || <span className="text-neutral-400 font-normal">Not Provided</span>}
+                                              </span>
+                                            </div>
+                                            <div className="grid grid-cols-3 gap-1">
+                                              <span className="text-neutral-500">IFSC Code:</span>
+                                              <span className="col-span-2 font-mono font-bold text-neutral-900">
+                                                {s.bankIFSC || <span className="text-neutral-400 font-normal">Not Provided</span>}
+                                              </span>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </td>
+                                  </tr>
+                                )}
+                              </React.Fragment>
+                            );
+                          })
+                        )}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {/* SECTION 5: CUSTOMERS */}
+            {section === "customers" && (
+              <div className="space-y-4">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-white dark:bg-[#141B2D] p-4 rounded-2xl border border-neutral-200 dark:border-neutral-800 shadow-xs">
+                  <div>
+                    <h3 className="text-base font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                      <span>Customers Management</span>
+                      <span className="text-[10px] font-mono font-bold bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/20 px-2 py-0.5 rounded-full">
+                        {customers.length} Members
+                      </span>
+                    </h3>
+                    <p className="text-xs text-slate-500 dark:text-neutral-400">
+                      Auto-VIP tagging active for members with &gt; 10 orders
+                    </p>
+                  </div>
+
+                  {/* Filter Buttons */}
+                  <div className="flex bg-slate-100 dark:bg-neutral-800 p-1 rounded-xl gap-1 self-start sm:self-auto">
+                    <button
+                      type="button"
+                      onClick={() => setCustTierFilter("")}
+                      className={`px-3 py-1.5 text-xs font-bold rounded-lg transition-all cursor-pointer ${
+                        !custTierFilter ? "bg-white dark:bg-neutral-900 text-slate-900 dark:text-white shadow-xs" : "text-slate-600 dark:text-neutral-400 hover:text-slate-900"
+                      }`}
+                    >
+                      All Members
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setCustTierFilter("VIP")}
+                      className={`px-3 py-1.5 text-xs font-bold rounded-lg transition-all flex items-center gap-1.5 cursor-pointer ${
+                        custTierFilter === "VIP" ? "bg-amber-500 text-slate-950 shadow-xs font-black" : "text-slate-600 dark:text-neutral-400 hover:text-amber-500"
+                      }`}
+                    >
+                      <Crown className="w-3.5 h-3.5" />
+                      <span>VIP Members</span>
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setCustTierFilter("Normal")}
+                      className={`px-3 py-1.5 text-xs font-bold rounded-lg transition-all cursor-pointer ${
+                        custTierFilter === "Normal" ? "bg-white dark:bg-neutral-900 text-slate-900 dark:text-white shadow-xs" : "text-slate-600 dark:text-neutral-400 hover:text-slate-900"
+                      }`}
+                    >
+                      Normal Members
+                    </button>
+                  </div>
+                </div>
+
+                <div className="ap-toolbar-row">
+                  <div className="relative min-w-[240px] flex-1">
+                    <Search className="w-4 h-4 text-neutral-400 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none z-10" />
+                    <input
+                      type="text"
+                      placeholder="Search customers by name, email, or phone..."
+                      value={custSearch}
+                      onChange={(e) => setCustSearch(e.target.value)}
+                      className="ap-input ap-input-search !pl-11 h-10 text-xs sm:text-sm"
+                    />
+                    {custSearch && (
+                      <button
+                        type="button"
+                        onClick={() => setCustSearch("")}
+                        className="absolute right-3 top-1/2 -translate-y-1/2 text-neutral-400 hover:text-neutral-600 cursor-pointer p-0.5 rounded-full hover:bg-neutral-100"
+                        title="Clear search"
+                      >
+                        <X className="w-3.5 h-3.5" />
+                      </button>
+                    )}
+                  </div>
+                </div>
+
+                {!isSuperAdmin && (
+                  <div className="p-3 bg-blue-50 border border-blue-200 text-blue-800 text-xs rounded-xl flex items-center gap-2">
+                    <Shield className="w-4 h-4 text-blue-600 flex-shrink-0" />
+                    <span>Regular Admin Notice: Customer roster is view-only. Member blocking and loyalty tier adjustments are reserved for Super Administrators.</span>
+                  </div>
+                )}
+
+                <div className="ap-card">
+                  <div className="ap-table-wrap">
+                    <table className="ap-table">
+                      <thead>
+                        <tr>
+                          <th>Member</th>
+                          <th>Contact</th>
+                          <th>Total Orders</th>
+                          <th>Total Spend</th>
+                          <th>VIP Tier Status</th>
+                          <th>Account Status</th>
+                          {isSuperAdmin && <th className="text-right">Super Admin Control</th>}
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {filteredCustomers.map((c) => (
+                          <tr key={c._id}>
+                            <td>
+                              <div className="font-bold text-neutral-900 dark:text-white">{c.name}</div>
+                              <div className="text-[11px] text-neutral-500 font-mono">{c.email}</div>
+                            </td>
+                            <td className="text-xs font-mono">{c.phone || c.mobileNumber || "—"}</td>
+                            <td className="font-bold text-slate-800 dark:text-neutral-200 text-xs">
+                              {c.ordersCount || 0} Orders
+                            </td>
+                            <td className="font-bold text-xs">₹{c.lifetimeSpend?.toLocaleString("en-IN") || 0}</td>
+                            <td>
+                              {(() => {
+                                const isAutoVip = (c.ordersCount || 0) > 10;
+                                const isVip = c.tier === "VIP" || c.tier === "Platinum" || isAutoVip;
+
+                                return (
+                                  <div className="flex items-center gap-2">
+                                    {isVip ? (
+                                      <span className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-amber-500/10 border border-amber-500/30 text-amber-600 dark:text-amber-400 font-extrabold text-[11px] rounded-lg">
+                                        <Crown className="w-3.5 h-3.5 text-amber-500 shrink-0" />
+                                        <span>{isAutoVip ? "VIP (Auto-Tagged)" : "VIP"}</span>
+                                      </span>
+                                    ) : (
+                                      <span className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-slate-100 dark:bg-neutral-800 text-slate-600 dark:text-neutral-300 font-semibold text-[11px] rounded-lg border border-slate-200 dark:border-neutral-700">
+                                        <UserCheck className="w-3.5 h-3.5 text-slate-400 shrink-0" />
+                                        <span>Normal</span>
+                                      </span>
+                                    )}
+
+                                    {isSuperAdmin && (
+                                      <select
+                                        value={isVip ? "VIP" : "Normal"}
+                                        onChange={(e) => handleUpdateTier(c._id, e.target.value)}
+                                        className="ap-select py-1 px-2 text-[11px] w-auto font-bold ml-1"
+                                        title="Manually override tier"
+                                      >
+                                        <option value="VIP">VIP</option>
+                                        <option value="Normal">Normal</option>
+                                      </select>
+                                    )}
+                                  </div>
+                                );
+                              })()}
+                            </td>
+                            <td>
+                              {c.isBlocked ? (
+                                <span className="ap-seal ap-seal-blocked">Blocked</span>
+                              ) : (
+                                <span className="ap-seal ap-seal-active">Active</span>
+                              )}
+                            </td>
+                            {isSuperAdmin && (
+                              <td className="text-right">
+                                <button
+                                  onClick={() => handleToggleUserBlock(c)}
+                                  disabled={actionLoadingId === c._id}
+                                  className={`ap-btn ap-btn-sm ${
+                                    c.isBlocked
+                                      ? "bg-emerald-600 hover:bg-emerald-700 text-white"
+                                      : "bg-rose-600 hover:bg-rose-700 text-white"
+                                  }`}
+                                >
+                                  {c.isBlocked ? (
+                                    <>
+                                      <Unlock className="w-3.5 h-3.5 mr-1" /> Unblock
+                                    </>
+                                  ) : (
+                                    <>
+                                      <Ban className="w-3.5 h-3.5 mr-1" /> Block
+                                    </>
+                                  )}
+                                </button>
+                              </td>
+                            )}
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
             )}
 
             {/* SECTION 6: SALES REPORTS (Super Admin Exclusive) */}
@@ -3069,16 +3945,24 @@ export default function AdminPanel({
               />
             )}
 
+<<<<<<< HEAD
             {/* SECTION: COMMISSION MANAGEMENT & PLATFORM WALLET */}
             {section === "commission" && (
+=======
+            {/* SECTION: PLATFORM COMMISSION & WALLET (Super Admin Exclusive) */}
+            {section === "commission" && isSuperAdmin && (
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
               <CommissionWallet
                 data={commissionData}
                 loading={loading}
                 onRefresh={loadCommission}
                 onUpdateRate={handleUpdateCommissionRate}
                 isUpdatingRate={isUpdatingCommissionRate}
+<<<<<<< HEAD
                 products={products}
                 sellers={sellers}
+=======
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
               />
             )}
 
@@ -3216,6 +4100,7 @@ export default function AdminPanel({
                 onError={setError}
               />
             )}
+<<<<<<< HEAD
 
             {/* SECTION: DARAZ-INSPIRED SETTINGS DASHBOARD */}
             {section === "settingsHub" && (
@@ -3226,6 +4111,8 @@ export default function AdminPanel({
                 />
               </div>
             )}
+=======
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
           </div>
         </main>
       </div>

@@ -30,7 +30,10 @@
     "jsonwebtoken": "^9.0.3",
     "jspdf": "^4.2.1",
     "jspdf-autotable": "^5.0.8",
+<<<<<<< HEAD
     "leaflet": "^1.9.4",
+=======
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
     "lucide-react": "^0.546.0",
     "mongoose": "^9.9.4",
     "motion": "^12.23.24",
@@ -38,7 +41,10 @@
     "react": "^19.0.1",
     "react-dom": "^19.0.1",
     "react-hook-form": "^7.80.0",
+<<<<<<< HEAD
     "react-leaflet": "^5.0.0",
+=======
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
     "vite": "^6.2.3",
     "xlsx": "^0.18.5",
     "zod": "^4.4.3"
@@ -49,15 +55,27 @@
     "@types/express": "^4.17.21",
     "@types/jsdom": "^30.0.0",
     "@types/jsonwebtoken": "^9.0.10",
+<<<<<<< HEAD
     "@types/leaflet": "^1.9.22",
+=======
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
     "@types/node": "^22.14.0",
     "@types/nodemailer": "^8.0.1",
     "@types/react": "^19.2.18",
     "@types/react-dom": "^19.2.4",
     "autoprefixer": "^10.4.21",
+<<<<<<< HEAD
     "jsdom": "^30.0.1",
     "tailwindcss": "^4.1.14",
     "tsx": "^4.21.0",
     "typescript": "~5.8.2"
+=======
+    "esbuild": "^0.25.0",
+    "jsdom": "^30.0.1",
+    "tailwindcss": "^4.1.14",
+    "tsx": "^4.21.0",
+    "typescript": "~5.8.2",
+    "vite": "^6.2.3"
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
   }
 }

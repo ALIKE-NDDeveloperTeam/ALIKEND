@@ -3,7 +3,11 @@ import ActivityLog, { IActivityLog } from "../models/ActivityLog";
 import { isMongoConnected, memoryStore } from "../store";
 
 export interface LogActivityParams {
+<<<<<<< HEAD
   eventType: string;
+=======
+  eventType: "Registration" | "Login" | "Failed Login";
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
   userName: string;
   email: string;
   status?: "success" | "failed";

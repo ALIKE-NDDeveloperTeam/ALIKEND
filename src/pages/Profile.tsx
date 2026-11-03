@@ -20,6 +20,7 @@ import {
   FileText,
   Check,
   ArrowLeft,
+<<<<<<< HEAD
   Radio,
   Navigation,
 } from 'lucide-react';
@@ -28,6 +29,12 @@ import InvoiceModal from '../components/InvoiceModal';
 import OrderLiveTrackingModal from '../components/orders/OrderLiveTrackingModal';
 import PhoneInput from '../components/PhoneInput';
 import { useLocation } from '../context/LocationContext';
+=======
+} from 'lucide-react';
+import { Address, Order, Product, WalletTransaction } from '../types';
+import InvoiceModal from '../components/InvoiceModal';
+import PhoneInput from '../components/PhoneInput';
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
 
 interface ProfileProps {
   user: { _id?: string; name: string; email: string; phone: string; avatar?: string; tier?: string; dob?: string } | null;
@@ -66,7 +73,10 @@ export default function Profile({
   isLightMode = false,
   onOpenLogin,
 }: ProfileProps) {
+<<<<<<< HEAD
   const { location, clearLocation, promptLocationCapture } = useLocation();
+=======
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
   const [activeTab, setActiveTab] = useState<'orders' | 'addresses' | 'settings' | 'wishlist'>(initialTab);
 
   useEffect(() => {
@@ -75,7 +85,10 @@ export default function Profile({
     }
   }, [initialTab]);
   const [selectedInvoiceOrder, setSelectedInvoiceOrder] = useState<Order | null>(null);
+<<<<<<< HEAD
   const [liveTrackingOrder, setLiveTrackingOrder] = useState<Order | null>(null);
+=======
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
 
   // Account Form states
   const [name, setName] = useState(user?.name || '');
@@ -492,6 +505,7 @@ export default function Profile({
                             );
                           })}
                         </div>
+<<<<<<< HEAD
 
                         {/* PHASE 2: LIVE MAP TRACKER TRIGGER */}
                         <div className="pt-2 flex flex-wrap items-center justify-between gap-2">
@@ -508,6 +522,8 @@ export default function Profile({
                             <span>Open Live Map Tracker</span>
                           </button>
                         </div>
+=======
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
                       </div>
 
                     </div>
@@ -814,6 +830,7 @@ export default function Profile({
                   </button>
                 </div>
               </div>
+<<<<<<< HEAD
 
               {/* Saved Location & Privacy segment */}
               <div className={`pt-6 border-t space-y-3 ${isLightMode ? 'border-neutral-200' : 'border-neutral-800'}`}>
@@ -861,6 +878,8 @@ export default function Profile({
                   </div>
                 </div>
               </div>
+=======
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
             </div>
           )}
 
@@ -921,6 +940,7 @@ export default function Profile({
           showToast={showToast}
         />
       )}
+<<<<<<< HEAD
 
       {liveTrackingOrder && (
         <OrderLiveTrackingModal
@@ -931,6 +951,8 @@ export default function Profile({
           isLightMode={isLightMode}
         />
       )}
+=======
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
     </div>
   );
 }

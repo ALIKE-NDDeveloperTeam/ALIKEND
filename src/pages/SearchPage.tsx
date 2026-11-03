@@ -82,7 +82,10 @@ export default function SearchPage({
   const [internalQuery, setInternalQuery] = useState(externalSearchQuery);
   const [selectedCategory, setSelectedCategory] = useState<string>(initialCategory);
   const [sortBy, setSortBy] = useState<string>('relevance');
+<<<<<<< HEAD
   const [quickDeliveryOnly, setQuickDeliveryOnly] = useState<boolean>(false);
+=======
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
   const [isGridView, setIsGridView] = useState<boolean>(true);
 
   const searchInputRef = useRef<HTMLInputElement>(null);
@@ -122,7 +125,10 @@ export default function SearchPage({
     if (onSearchChange) onSearchChange('');
     handleCategorySelect('all');
     setSortBy('relevance');
+<<<<<<< HEAD
     setQuickDeliveryOnly(false);
+=======
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
     showToast('Search reset to catalog default.', 'info');
   };
 
@@ -136,10 +142,13 @@ export default function SearchPage({
             if (!p.isWholesale) return false;
           } else if (selectedCategory === 'luxury') {
             if (p.category !== 'luxury') return false;
+<<<<<<< HEAD
           } else if (selectedCategory === 'vip' || selectedCategory === 'premium') {
             if (p.category !== 'vip' && p.category !== 'electronics' && p.category !== 'mobiles' && p.category !== 'laptops' && p.badge !== 'HOT') return false;
           } else if (selectedCategory === 'simple') {
             if (p.category === 'luxury') return false;
+=======
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
           } else if (selectedCategory === 'delivery') {
             if (!p.eligibleFor20MinDelivery && p.category !== 'delivery' && p.category !== 'grocery' && p.category !== 'food_delivery') return false;
           } else if (selectedCategory === 'jewellery' || selectedCategory === 'watches') {
@@ -153,11 +162,14 @@ export default function SearchPage({
           }
         }
 
+<<<<<<< HEAD
         // Quick Delivery Only Filter
         if (quickDeliveryOnly && !p.quickDelivery) {
           return false;
         }
 
+=======
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
         // Search Query Filter
         if (internalQuery.trim()) {
           const q = internalQuery.toLowerCase().trim();
@@ -166,14 +178,21 @@ export default function SearchPage({
           const matchCat = p.category ? p.category.toLowerCase().includes(q) : false;
           const matchSub = p.subCategory ? p.subCategory.toLowerCase().includes(q) : false;
           const matchDesc = p.description ? p.description.toLowerCase().includes(q) : false;
+<<<<<<< HEAD
           const matchShop = p.sellerShopName ? p.sellerShopName.toLowerCase().includes(q) : false;
           if (!matchName && !matchBrand && !matchCat && !matchSub && !matchDesc && !matchShop) return false;
+=======
+          if (!matchName && !matchBrand && !matchCat && !matchSub && !matchDesc) return false;
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
         }
 
         return true;
       })
       .sort((a, b) => {
+<<<<<<< HEAD
         if (sortBy === 'nearest') return (a.distanceKm ?? 9999) - (b.distanceKm ?? 9999);
+=======
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
         if (sortBy === 'price_asc') return a.price - b.price;
         if (sortBy === 'price_desc') return b.price - a.price;
         if (sortBy === 'rating') return b.rating - a.rating;
@@ -189,8 +208,12 @@ export default function SearchPage({
     products,
     selectedCategory,
     internalQuery,
+<<<<<<< HEAD
     sortBy,
     quickDeliveryOnly
+=======
+    sortBy
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
   ]);
 
   return (
@@ -335,6 +358,7 @@ export default function SearchPage({
               )}
             </div>
 
+<<<<<<< HEAD
             {/* Right: Quick Delivery Filter + Sort Dropdown + View Toggle (Grid / List) */}
             <div className="flex items-center gap-2.5 flex-wrap">
               {/* Quick Delivery Only Toggle */}
@@ -353,6 +377,10 @@ export default function SearchPage({
                 <span>⚡ Quick Delivery only</span>
               </button>
 
+=======
+            {/* Right: Sort Dropdown + View Toggle (Grid / List) */}
+            <div className="flex items-center gap-2.5">
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
               {/* Sort Selector */}
               <div className="flex items-center gap-1.5 text-xs">
                 <ArrowUpDown className="w-3.5 h-3.5 text-amber-500" />
@@ -367,7 +395,10 @@ export default function SearchPage({
                   }`}
                 >
                   <option value="relevance">Sort: Relevance</option>
+<<<<<<< HEAD
                   <option value="nearest">Sort by: Nearest</option>
+=======
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
                   <option value="price_asc">Price: Low to High</option>
                   <option value="price_desc">Price: High to Low</option>
                   <option value="rating">Customer Rating</option>

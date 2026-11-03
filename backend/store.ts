@@ -8,8 +8,11 @@ import ActivityLog from "./models/ActivityLog";
 import Banner from "./models/Banner";
 import Category from "./models/Category";
 import PlatformSetting from "./models/PlatformSetting";
+<<<<<<< HEAD
 import Seller from "./models/Seller";
 import Order from "./models/Order";
+=======
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
 
 export interface InMemoryStore {
   admins: Array<{
@@ -33,6 +36,7 @@ export interface InMemoryStore {
     mobileNumber: string;
     phone?: string;
     passwordHash: string;
+<<<<<<< HEAD
     tier: "Silver" | "Gold" | "Platinum" | "VIP" | "Normal";
     verified: boolean;
     isBlocked?: boolean;
@@ -69,6 +73,10 @@ export interface InMemoryStore {
       details: string;
       timestamp: Date;
     }>;
+=======
+    tier: "Silver" | "Gold" | "Platinum";
+    verified: boolean;
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
     createdAt: Date;
   }>;
   products: Array<{
@@ -112,6 +120,7 @@ export interface InMemoryStore {
     orderNumber: string;
     memberName: string;
     memberEmail?: string;
+<<<<<<< HEAD
     userId?: string;
     total: number;
     status:
@@ -125,6 +134,10 @@ export interface InMemoryStore {
       | "delivered"
       | "cancelled"
       | "rejected";
+=======
+    total: number;
+    status: "pending" | "processing" | "shipped" | "delivered" | "cancelled";
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
     commissionRate?: number;
     commissionAmount?: number;
     sellerPayout?: number;
@@ -133,6 +146,7 @@ export interface InMemoryStore {
     walletCredited?: boolean;
     deliveredAt?: Date;
     items?: Array<any>;
+<<<<<<< HEAD
     address?: any;
     deliveryLocation?: {
       lat: number;
@@ -145,6 +159,8 @@ export interface InMemoryStore {
       seller?: { lat: number; lng: number; updatedAt: Date; sharing: boolean };
       expiresAt?: Date;
     };
+=======
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
     createdAt: Date;
   }>;
   sellers: Array<{
@@ -168,6 +184,7 @@ export interface InMemoryStore {
     walletBalance?: number;
     totalEarnings?: number;
     pendingWithdrawals?: number;
+<<<<<<< HEAD
     shopAddress?: string;
     location?: {
       type: "Point";
@@ -184,13 +201,19 @@ export interface InMemoryStore {
     verifiedBadge?: boolean;
     identityVerification?: any;
     notifications?: Array<any>;
+=======
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
     status: "pending" | "approved" | "review" | "suspended" | "rejected";
     createdAt: Date;
   }>;
   customers: Array<{ _id: string; name: string; email: string; tier: "Silver" | "Gold" | "Platinum"; ordersCount: number; lifetimeSpend: number; createdAt: Date }>;
   activityLogs: Array<{
     _id: string;
+<<<<<<< HEAD
     eventType: string;
+=======
+    eventType: "Registration" | "Login" | "Failed Login";
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
     userName: string;
     email: string;
     status: "success" | "failed";
@@ -390,6 +413,7 @@ export interface InMemoryStore {
     defaultSlaHours: number;
     updatedAt: Date;
   };
+<<<<<<< HEAD
   returnRequests: Array<{
     _id: string;
     returnId: string;
@@ -477,6 +501,8 @@ export interface InMemoryStore {
   deliveryDisputes: Array<any>;
   deliveryAnnouncements: Array<any>;
   deliveryReviews: Array<any>;
+=======
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
 }
 
 // Initial seed hash and credentials derived from environment variables
@@ -1108,6 +1134,7 @@ export const memoryStore: InMemoryStore = {
       passwordHash: INITIAL_ADMIN_SEED_HASH,
       tier: "Platinum",
       verified: true,
+<<<<<<< HEAD
       isBlocked: false,
       adminNotes: "Platform super administrator account.",
       addresses: [
@@ -1276,6 +1303,16 @@ export const memoryStore: InMemoryStore = {
       sellerShopName: idx % 2 === 0 ? "Atelier Vesper" : "Royal Heritage Boutiques",
     };
   }),
+=======
+      createdAt: new Date(),
+    },
+  ],
+  products: INITIAL_PRODUCTS_SEED.map((p) => ({
+    ...p,
+    sellerId: "admin",
+    sellerShopName: "ALIKE-ND Official",
+  })),
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
   orders: [
     {
       _id: "ord_1",
@@ -1329,6 +1366,7 @@ export const memoryStore: InMemoryStore = {
       ownerEmail: "sara@example.com",
       email: "sara@example.com",
       mobileNumber: "+91 98765 43210",
+<<<<<<< HEAD
       businessAddress: "42 Connaught Place, New Delhi",
       shopAddress: "Block B, Inner Circle, Connaught Place, New Delhi 110001",
       location: {
@@ -1520,6 +1558,10 @@ export const memoryStore: InMemoryStore = {
           },
         ],
       },
+=======
+      businessAddress: "42 Rue de la Paix, Paris",
+      listingsCount: 34,
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
       status: "approved",
       createdAt: new Date(),
     },
@@ -1533,6 +1575,7 @@ export const memoryStore: InMemoryStore = {
       mobileNumber: "+91 98765 43211",
       businessAddress: "15 Gangnam-daero, Seoul",
       listingsCount: 12,
+<<<<<<< HEAD
       kycVerified: false,
       verificationStatus: "pending_admin_review",
       verifiedBadge: false,
@@ -1562,6 +1605,8 @@ export const memoryStore: InMemoryStore = {
           },
         ],
       },
+=======
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
       status: "pending",
       createdAt: new Date(),
     },
@@ -1573,6 +1618,7 @@ export const memoryStore: InMemoryStore = {
       ownerEmail: "claire@example.com",
       email: "claire@example.com",
       mobileNumber: "+91 98765 43212",
+<<<<<<< HEAD
       businessAddress: "88 Linking Road, Bandra West, Mumbai",
       shopAddress: "88 Linking Road, Near National College, Bandra West, Mumbai 400050",
       location: {
@@ -1586,10 +1632,14 @@ export const memoryStore: InMemoryStore = {
       category: "Luxury Fashion & Silk",
       logo: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=200&auto=format&fit=crop&q=80",
       rating: 4.8,
+=======
+      businessAddress: "88 Kensington High St, London",
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
       listingsCount: 19,
       status: "approved",
       createdAt: new Date(),
     },
+<<<<<<< HEAD
     {
       _id: "sel_4",
       shopName: "Royal Heritage Boutiques",
@@ -1615,6 +1665,8 @@ export const memoryStore: InMemoryStore = {
       status: "approved",
       createdAt: new Date(),
     },
+=======
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
   ],
   customers: [
     { _id: "cust_1", name: "Vikram Malhotra", email: "vikram@example.com", tier: "Platinum", ordersCount: 14, lifetimeSpend: 28400, createdAt: new Date() },
@@ -2197,6 +2249,7 @@ export const memoryStore: InMemoryStore = {
     defaultSlaHours: 12,
     updatedAt: new Date(),
   },
+<<<<<<< HEAD
   returnRequests: [
     {
       _id: "ret_seed_1",
@@ -2506,6 +2559,8 @@ export const memoryStore: InMemoryStore = {
   deliveryDisputes: [],
   deliveryAnnouncements: [],
   deliveryReviews: [],
+=======
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
 };
 
 let lastConnectionError: string | null = null;
@@ -2805,6 +2860,7 @@ export async function connectMongoDB(force = false): Promise<typeof mongoose | n
         });
       }
 
+<<<<<<< HEAD
       // 7. Seed Initial Approved Sellers if empty in alikendshop.sellers
       const sellerCount = await Seller.countDocuments();
       if (sellerCount === 0 && memoryStore.sellers && memoryStore.sellers.length > 0) {
@@ -2834,6 +2890,9 @@ export async function connectMongoDB(force = false): Promise<typeof mongoose | n
       }
 
       // 9. Ensure Platform Settings exist in alikendshop.platform_settings
+=======
+      // 5. Ensure Platform Settings exist in alikendshop.platform_settings
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
       const existingSetting = await PlatformSetting.findOne({ key: "commission_settings" });
       if (!existingSetting) {
         await PlatformSetting.create({
@@ -2845,9 +2904,12 @@ export async function connectMongoDB(force = false): Promise<typeof mongoose | n
         });
         console.log("💰 [MONGODB SEED] Platform Commission settings initialized with default 5% rate in alikendshop.platform_settings");
       }
+<<<<<<< HEAD
 
       // 10. Perform bidirectional sync so memoryStore matches live MongoDB state
       await syncDatabaseWithMemory();
+=======
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
     } catch (e: any) {
       console.warn("⚠️ [MONGODB SEED NOTICE]:", e?.message || e);
     }
@@ -2855,6 +2917,7 @@ export async function connectMongoDB(force = false): Promise<typeof mongoose | n
     return mongoose;
 }
 
+<<<<<<< HEAD
 /**
  * Bidirectional Database <-> InMemory Synchronization
  * Ensures MongoDB is the primary source of truth while keeping
@@ -2971,6 +3034,8 @@ export async function syncDatabaseWithMemory(): Promise<{
   }
 }
 
+=======
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
 // Background auto-reconnect interval (every 30 seconds if disconnected)
 setInterval(() => {
   if (!isMongoConnected() && mongoose.connection.readyState !== 2 && !isConnecting && !authFailed) {

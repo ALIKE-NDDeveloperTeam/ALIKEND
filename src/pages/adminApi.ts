@@ -1,5 +1,6 @@
 const API_BASE = "/api/admin";
 
+<<<<<<< HEAD
 export function getAdminToken(): string {
   return localStorage.getItem("alikend_admin_token") || sessionStorage.getItem("alikend_admin_token") || "";
 }
@@ -7,6 +8,14 @@ const getToken = getAdminToken;
 
 async function request(path: string, options: RequestInit = {}) {
   const token = getAdminToken();
+=======
+function getToken() {
+  return localStorage.getItem("alikend_admin_token") || sessionStorage.getItem("alikend_admin_token");
+}
+
+async function request(path: string, options: RequestInit = {}) {
+  const token = getToken();
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
   const res = await fetch(`${API_BASE}${path}`, {
     ...options,
     headers: {
@@ -23,7 +32,10 @@ async function request(path: string, options: RequestInit = {}) {
 }
 
 export const adminApi = {
+<<<<<<< HEAD
   getToken: getAdminToken,
+=======
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
   login: (email: string, password: string) =>
     request("/login", { method: "POST", body: JSON.stringify({ email, password }) }),
 
@@ -41,6 +53,7 @@ export const adminApi = {
   createProduct: (data: unknown) => request("/products", { method: "POST", body: JSON.stringify(data) }),
   updateProduct: (id: string, data: unknown) =>
     request(`/products/${id}`, { method: "PUT", body: JSON.stringify(data) }),
+<<<<<<< HEAD
   toggleProductVisibility: (id: string | number) =>
     request(`/products/${id}/toggle-visibility`, { method: "PATCH" }),
   deleteProduct: (id: string | number) => request(`/products/${id}`, { method: "DELETE" }),
@@ -59,6 +72,9 @@ export const adminApi = {
   ) => request(`/products/${id}/status`, { method: "PATCH", body: JSON.stringify(data) }),
   importProductsCsv: (items: Array<Record<string, any>>) =>
     request("/products/import-csv", { method: "POST", body: JSON.stringify({ items }) }),
+=======
+  deleteProduct: (id: string) => request(`/products/${id}`, { method: "DELETE" }),
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
 
   getOrders: () => request("/orders"),
   updateOrderStatus: (id: string, status: string) =>
@@ -68,6 +84,7 @@ export const adminApi = {
     const res = await request("/sellers");
     return Array.isArray(res) ? res : (res?.sellers || []);
   },
+<<<<<<< HEAD
   getSellerOverview: () => request("/sellers/overview"),
   getSellerDetails: (id: string) => request(`/sellers/${id}/details`),
   updateSellerStatus: (
@@ -158,11 +175,20 @@ export const adminApi = {
   resetCustomerPassword: (id: string, data: { mode?: "link" | "temporary"; reason?: string }) =>
     request(`/customers/${id}/password-reset`, { method: "POST", body: JSON.stringify(data) }),
   getCustomerPreviewData: (id: string) => request(`/customers/${id}/preview-data`),
+=======
+  updateSellerStatus: (id: string, status: string) =>
+    request(`/sellers/${id}/status`, { method: "PATCH", body: JSON.stringify({ status }) }),
+  verifySellerKyc: (id: string, kycVerified: boolean) =>
+    request(`/sellers/${id}/verify-kyc`, { method: "PATCH", body: JSON.stringify({ kycVerified }) }),
+
+  getCustomers: () => request("/customers"),
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
   blockCustomer: (id: string, isBlocked: boolean) =>
     request(`/customers/${id}/block`, { method: "PATCH", body: JSON.stringify({ isBlocked }) }),
   updateCustomerTier: (id: string, tier: string) =>
     request(`/customers/${id}/tier`, { method: "PATCH", body: JSON.stringify({ tier }) }),
 
+<<<<<<< HEAD
   // Return Orders Management Panel APIs
   getReturns: (params?: { status?: string; search?: string; resolution?: string }) => {
     const q = new URLSearchParams();
@@ -190,6 +216,8 @@ export const adminApi = {
   assignReturnStaff: (id: string, data: { staffId?: string; staffName?: string; staffEmail?: string }) =>
     request(`/returns/${id}/assign`, { method: "POST", body: JSON.stringify(data) }),
 
+=======
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
   getActivityLogs: async (filter?: string, search?: string) => {
     const params = new URLSearchParams();
     if (filter && filter !== "all") params.append("filter", filter);
@@ -225,6 +253,7 @@ export const adminApi = {
   // Superadmin Exclusive Sales & Revenue Reports
   getSalesReport: () => request("/reports"),
 
+<<<<<<< HEAD
   // Platform Commission Management, Rules, Reports & Wallet
   getCommissionData: (params?: {
     period?: string;
@@ -269,6 +298,14 @@ export const adminApi = {
     request("/commission/settings", {
       method: "PATCH",
       body: JSON.stringify({ commissionRate, reason }),
+=======
+  // Superadmin Exclusive Platform Commission & Wallet
+  getCommissionData: () => request("/commission"),
+  updateCommissionRate: (commissionRate: number) =>
+    request("/commission/settings", {
+      method: "PATCH",
+      body: JSON.stringify({ commissionRate }),
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
     }),
   withdrawPlatformFunds: (amount: number, note?: string) =>
     request("/commission/withdraw", {
@@ -297,6 +334,7 @@ export const adminApi = {
   reorderBanners: (bannerIds: string[]) =>
     request("/banners/reorder", { method: "PUT", body: JSON.stringify({ bannerIds }) }),
 
+<<<<<<< HEAD
   // Advertisement Management (Main Website Advertisements & Creatives)
   getAdvertisements: async (all: boolean = true) => {
     const res = await request(`/advertisements${all ? '/all' : ''}`);
@@ -311,6 +349,8 @@ export const adminApi = {
   deleteAdvertisement: (id: string) =>
     request(`/advertisements/${id}`, { method: "DELETE" }),
 
+=======
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
   // Flash Sale Management (Countdown & Products)
   getFlashSale: () => request("/flash-sale"),
   updateFlashSaleConfig: (data: { title?: string; subtitle?: string; bannerText?: string; targetEndTime?: string }) =>

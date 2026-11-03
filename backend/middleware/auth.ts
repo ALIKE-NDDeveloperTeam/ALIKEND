@@ -92,12 +92,17 @@ export function resolveAdminRole(recordOrRole?: { role?: string; email?: string 
 export async function requireAdmin(req: AuthedRequest, res: Response, next: NextFunction) {
   const secret = getJwtSecret();
   if (!secret) {
+<<<<<<< HEAD
     return res.status(500).json({
+=======
+    return res.status(503).json({
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
       success: false,
       error: "Authentication service is temporarily misconfigured. Please contact support.",
     });
   }
 
+<<<<<<< HEAD
   const isSettingsHubRoute =
     req.path.startsWith("/settings-hub") ||
     req.path.startsWith("/seller-reviews") ||
@@ -123,6 +128,10 @@ export async function requireAdmin(req: AuthedRequest, res: Response, next: Next
   const header = req.headers.authorization;
   if (!header || !header.startsWith("Bearer ")) {
     if (isSettingsHubRoute && fallbackToPrimaryAdmin()) return;
+=======
+  const header = req.headers.authorization;
+  if (!header || !header.startsWith("Bearer ")) {
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
     return res.status(401).json({
       success: false,
       error: "Authentication required: Missing or invalid Authorization header.",
@@ -134,15 +143,21 @@ export async function requireAdmin(req: AuthedRequest, res: Response, next: Next
   try {
     payload = jwt.verify(token, secret);
   } catch (err: any) {
+<<<<<<< HEAD
     if (isSettingsHubRoute && fallbackToPrimaryAdmin()) return;
     return res.status(401).json({
       success: false,
       code: err.name === "TokenExpiredError" ? "TOKEN_EXPIRED" : "INVALID_TOKEN",
+=======
+    return res.status(401).json({
+      success: false,
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
       error: "Invalid or expired admin session token.",
     });
   }
 
   // Strict decoded JWT role check: role must be one of the recognized admin roles
+<<<<<<< HEAD
   const tokenRole = payload?.role;
   const hasValidAdminRole = ALL_ADMIN_ROLES.includes(tokenRole);
 
@@ -159,6 +174,16 @@ export async function requireAdmin(req: AuthedRequest, res: Response, next: Next
     return res.status(401).json({
       success: false,
       error: "Access denied: Admin privileges required. Customer and Seller accounts cannot access admin routes.",
+=======
+  // Regular customer tokens (role: 'customer', userId presence) or invalid roles are strictly rejected with 403
+  const tokenRole = payload?.role;
+  const hasValidAdminRole = ALL_ADMIN_ROLES.includes(tokenRole);
+
+  if (!payload || !payload.adminId || !hasValidAdminRole || payload.role === "customer" || payload.userId) {
+    return res.status(403).json({
+      success: false,
+      error: "Access denied: Admin privileges required. Regular customer accounts cannot access admin routes.",
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
     });
   }
 
@@ -168,7 +193,11 @@ export async function requireAdmin(req: AuthedRequest, res: Response, next: Next
       const adminDoc = await Admin.findById(payload.adminId);
       if (adminDoc) {
         if (adminDoc.isActive === false) {
+<<<<<<< HEAD
           return res.status(401).json({
+=======
+          return res.status(403).json({
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
             success: false,
             error: "Access denied: Admin account is inactive or suspended.",
           });
@@ -192,6 +221,7 @@ export async function requireAdmin(req: AuthedRequest, res: Response, next: Next
   }
 
   // 2. Fallback check in memoryStore.admins
+<<<<<<< HEAD
   let memAdmin = (memoryStore.admins || []).find(
     (a) => a.email.toLowerCase() === (payload.email || "").toLowerCase() || a._id === payload.adminId
   );
@@ -215,6 +245,14 @@ export async function requireAdmin(req: AuthedRequest, res: Response, next: Next
   if (memAdmin) {
     if (memAdmin.isActive === false) {
       return res.status(401).json({
+=======
+  const memAdmin = (memoryStore.admins || []).find(
+    (a) => a.email.toLowerCase() === (payload.email || "").toLowerCase() || a._id === payload.adminId
+  );
+  if (memAdmin) {
+    if (memAdmin.isActive === false) {
+      return res.status(403).json({
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
         success: false,
         error: "Access denied: Admin account is inactive.",
       });
@@ -233,7 +271,11 @@ export async function requireAdmin(req: AuthedRequest, res: Response, next: Next
     return next();
   }
 
+<<<<<<< HEAD
   return res.status(401).json({
+=======
+  return res.status(403).json({
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
     success: false,
     error: "Access denied: Admin account not found.",
   });
@@ -257,7 +299,10 @@ export function requireSuperAdmin(req: AuthedRequest, res: Response, next: NextF
 /**
  * Middleware to authenticate customer accounts (Bearer token)
  * Prevents IDOR by populating req.userEmail from the verified token
+<<<<<<< HEAD
  * Explicitly rejects Seller and Admin tokens to enforce strict account separation
+=======
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
  */
 export async function requireCustomerAuth(req: CustomerAuthedRequest, res: Response, next: NextFunction) {
   const secret = getJwtSecret();
@@ -283,6 +328,7 @@ export async function requireCustomerAuth(req: CustomerAuthedRequest, res: Respo
       return res.status(401).json({ success: false, error: "Invalid customer session token." });
     }
 
+<<<<<<< HEAD
     // Strict separation: Seller tokens must not gain customer privileges
     if (payload.role === "seller" || payload.sellerId || payload.accountType === "seller") {
       return res.status(403).json({
@@ -291,6 +337,8 @@ export async function requireCustomerAuth(req: CustomerAuthedRequest, res: Respo
       });
     }
 
+=======
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
     req.userId = payload.userId ? String(payload.userId) : undefined;
     req.userEmail = payload.email ? String(payload.email).toLowerCase().trim() : undefined;
     req.user = {
@@ -302,7 +350,10 @@ export async function requireCustomerAuth(req: CustomerAuthedRequest, res: Respo
   } catch (err: any) {
     return res.status(401).json({
       success: false,
+<<<<<<< HEAD
       code: err.name === "TokenExpiredError" ? "TOKEN_EXPIRED" : "INVALID_TOKEN",
+=======
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
       error: "Session expired or invalid. Please sign in again.",
     });
   }

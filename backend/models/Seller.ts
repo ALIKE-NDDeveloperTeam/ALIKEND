@@ -1,6 +1,7 @@
 import mongoose, { Schema, Document } from "mongoose";
 
 export type SellerStatus = "pending" | "approved" | "rejected" | "suspended" | "review";
+<<<<<<< HEAD
 export type SellerStoreStatus = "active" | "temporarily_disabled" | "closed";
 export type SellerVerificationStatus =
   | "not_submitted"
@@ -179,6 +180,8 @@ export interface SellerReviewReply {
   replyText: string;
   createdAt: Date;
 }
+=======
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
 
 export interface ISeller extends Document {
   shopName: string;
@@ -188,6 +191,7 @@ export interface ISeller extends Document {
   email: string;
   mobileNumber: string;
   businessAddress: string;
+<<<<<<< HEAD
   shopAddress?: string;
   location?: {
     type: "Point";
@@ -227,6 +231,8 @@ export interface ISeller extends Document {
   };
   notificationPreferences?: SellerNotificationPreferences;
   rating?: number;
+=======
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
   panNumber: string;
   gstin?: string;
   bankAccountHolderName: string;
@@ -234,6 +240,7 @@ export interface ISeller extends Document {
   bankIFSC: string;
   bankName: string;
   kycVerified: boolean;
+<<<<<<< HEAD
   emailVerified: boolean;
   agreedToTerms: boolean;
   agreedToTermsAt?: Date;
@@ -249,17 +256,23 @@ export interface ISeller extends Document {
   lastPasswordResetAt?: Date;
   adminNotes?: SellerAdminNote[];
   applicationHistory?: SellerApplicationHistoryEntry[];
+=======
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
   password?: string;
   listingsCount: number;
   status: SellerStatus;
   walletBalance: number;
   totalEarnings: number;
   pendingWithdrawals: number;
+<<<<<<< HEAD
   settingsHub?: Record<string, any>;
+=======
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
   createdAt: Date;
   updatedAt: Date;
 }
 
+<<<<<<< HEAD
 const SellerAdminNoteSchema = new Schema<SellerAdminNote>(
   {
     id: { type: String, required: true },
@@ -354,6 +367,8 @@ const SellerIdentityVerificationSchema = new Schema<SellerIdentityVerification>(
   { _id: false }
 );
 
+=======
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
 const SellerSchema = new Schema<ISeller>(
   {
     shopName: { type: String, required: true, trim: true },
@@ -362,6 +377,7 @@ const SellerSchema = new Schema<ISeller>(
     ownerEmail: { type: String, trim: true },
     email: { type: String, required: true, unique: true, lowercase: true, trim: true },
     mobileNumber: { type: String, required: true, trim: true },
+<<<<<<< HEAD
     businessAddress: { type: String, default: "", trim: true },
     shopAddress: { type: String, trim: true },
     location: {
@@ -477,18 +493,32 @@ const SellerSchema = new Schema<ISeller>(
     lastPasswordResetAt: { type: Date },
     adminNotes: { type: [SellerAdminNoteSchema], default: [] },
     applicationHistory: { type: [SellerApplicationHistorySchema], default: [] },
+=======
+    businessAddress: { type: String, required: true, trim: true },
+    panNumber: { type: String, required: true, uppercase: true, trim: true },
+    gstin: { type: String, uppercase: true, trim: true },
+    bankAccountHolderName: { type: String, required: true, trim: true },
+    bankAccountNumber: { type: String, required: true, trim: true },
+    bankIFSC: { type: String, required: true, uppercase: true, trim: true },
+    bankName: { type: String, required: true, trim: true },
+    kycVerified: { type: Boolean, default: false },
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
     password: { type: String, required: true },
     listingsCount: { type: Number, default: 0 },
     walletBalance: { type: Number, default: 0, min: 0 },
     totalEarnings: { type: Number, default: 0, min: 0 },
     pendingWithdrawals: { type: Number, default: 0, min: 0 },
+<<<<<<< HEAD
     settingsHub: { type: Schema.Types.Mixed, default: {} },
+=======
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
     status: {
       type: String,
       enum: ["pending", "approved", "rejected", "suspended", "review"],
       default: "pending",
     },
   },
+<<<<<<< HEAD
   { timestamps: true, collection: "sellers", strict: false }
 );
 
@@ -496,4 +526,9 @@ const SellerSchema = new Schema<ISeller>(
 SellerSchema.index({ location: "2dsphere" }, { sparse: true });
 SellerSchema.index({ mobileNumber: 1 });
 
+=======
+  { timestamps: true, collection: "sellers" }
+);
+
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
 export default mongoose.model<ISeller>("Seller", SellerSchema);

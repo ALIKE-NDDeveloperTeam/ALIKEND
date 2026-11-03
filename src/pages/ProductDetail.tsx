@@ -1,13 +1,20 @@
 import { useState, useEffect, useRef, useMemo, FormEvent, ChangeEvent, TouchEvent } from 'react';
 import { createPortal } from 'react-dom';
+<<<<<<< HEAD
 import { Star, ShieldCheck, Truck, RotateCcw, RotateCw, Heart, ShoppingBag, ShoppingCart, Plus, Minus, Check, Users, Loader2, Building2, Percent, Camera, X, ArrowLeft, Zap, Clock, Sparkles, MessageSquare, PenLine, Info, Lock, Share2, CheckCircle2, ChevronDown, ChevronLeft, ChevronRight, Play, Pause, Maximize2, ZoomIn, ZoomOut, QrCode, MapPin, FileText, Sliders, HelpCircle, ThumbsUp, Search, Navigation, Compass, Store, Edit, Eye, EyeOff, Trash2 } from 'lucide-react';
+=======
+import { Star, ShieldCheck, Truck, RotateCcw, RotateCw, Heart, ShoppingBag, ShoppingCart, Plus, Minus, Check, Users, Loader2, Building2, Percent, Camera, X, ArrowLeft, Zap, Clock, Sparkles, MessageSquare, PenLine, Info, Lock, Share2, CheckCircle2, ChevronDown, ChevronLeft, ChevronRight, Play, Pause, Maximize2, ZoomIn, ZoomOut, QrCode, MapPin, FileText, Sliders, HelpCircle, ThumbsUp, Search, Navigation, Compass, Store } from 'lucide-react';
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
 import { motion, AnimatePresence } from 'motion/react';
 import { Product } from '../types';
 import { CATEGORIES } from '../data/mockData';
 import ProductCard from '../components/ProductCard';
 import GlassCloseButton from '../components/GlassCloseButton';
 import FavoriteButton from '../components/FavoriteButton';
+<<<<<<< HEAD
 import { useAdminEdit } from '../context/AdminEditContext';
+=======
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
 
 const POPULAR_LOCATIONS = [
   { city: 'New Delhi', pincode: '110001', state: 'Delhi' },
@@ -413,8 +420,11 @@ export default function ProductDetail({
   onBack,
   showBackButton = true,
 }: ProductDetailProps) {
+<<<<<<< HEAD
   const { isAdmin, isEditMode, openEditProduct, openDeleteProduct, toggleProductVisibility } = useAdminEdit();
   const [togglingVisibility, setTogglingVisibility] = useState(false);
+=======
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
   const {
     id,
     name,
@@ -898,8 +908,13 @@ export default function ProductDetail({
     <div id="product-detail-root" className={`relative w-full font-['Inter',sans-serif] text-xs pb-16 transition-colors duration-200 overflow-visible ${
       isLightMode ? 'bg-[#FAFAF7] text-[#0F172A]' : 'bg-[#011014] text-[#E2E8F0]'
     }`}>
+<<<<<<< HEAD
       {/* 1. TOP BAR: Sovereign brand logo hot-pink hairline accent at the very top */}
       <div className="h-[2px] bg-gradient-to-r from-[#FF1990] via-[#FF007F] to-[#D80068] w-full" />
+=======
+      {/* 1. TOP BAR: Sovereign luxury gold hairline accent at the very top */}
+      <div className="h-[2px] bg-gradient-to-r from-[#F5A623] via-[#FBD088] to-[#D4AF37] w-full" />
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
 
       {/* Top Header & Navigation Bar */}
       <div className={`px-4 sm:px-6 lg:px-8 py-3 space-y-2 border-b relative z-20 transition-colors ${
@@ -1112,6 +1127,7 @@ export default function ProductDetail({
           {/* Sovereign Atelier Reserve / Flash Deal Banner */}
           <div className={`p-3 rounded-xl border flex flex-wrap items-center justify-between gap-2 shadow-md transition-all ${
             isLightMode
+<<<<<<< HEAD
               ? 'bg-gradient-to-r from-[#FF007F]/15 via-[#FFF5F9] to-[#FAFAF7] border-[#FF007F]/30 text-[#0F172A]'
               : 'bg-gradient-to-r from-[#1B0B1D] via-[#2A102E] to-[#0A0F24] border-[#FF007F]/40 text-[#E2E8F0] shadow-[0_0_15px_rgba(255,0,127,0.18)]'
           }`}>
@@ -1121,21 +1137,41 @@ export default function ProductDetail({
               </div>
               <div>
                 <span className="font-black uppercase tracking-wider text-xs block text-[#FF007F]">ATELIER RESERVE SALE</span>
+=======
+              ? 'bg-gradient-to-r from-[#F5A623]/15 via-[#FFF9EE] to-[#FAFAF7] border-[#F5A623]/30 text-[#0F172A]'
+              : 'bg-gradient-to-r from-[#0B1B32] via-[#162744] to-[#0A0F24] border-[#F5A623]/40 text-[#E2E8F0] shadow-[0_0_15px_rgba(245,166,35,0.12)]'
+          }`}>
+            <div className="flex items-center gap-2">
+              <div className="w-7 h-7 rounded-lg bg-[#F5A623]/20 flex items-center justify-center text-[#F5A623]">
+                <Zap className="w-4 h-4 fill-[#F5A623]" />
+              </div>
+              <div>
+                <span className="font-black uppercase tracking-wider text-xs block text-[#F5A623]">ATELIER RESERVE SALE</span>
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
                 <span className="text-[10px] opacity-70">Exclusive Vault Pricing</span>
               </div>
             </div>
 
             <div className="flex items-center gap-1.5">
               <div className="text-[10px] opacity-80">Ends in:</div>
+<<<<<<< HEAD
               <div className="bg-black/60 px-2.5 py-1 rounded-lg text-[#FF007F] font-bold font-mono text-xs border border-[#FF007F]/30 shadow-inner">
+=======
+              <div className="bg-black/60 px-2.5 py-1 rounded-lg text-[#F5A623] font-bold font-mono text-xs border border-[#F5A623]/30 shadow-inner">
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
                 {formatTimeLeft(timeLeft)}
               </div>
             </div>
 
             <div className="w-full flex items-center justify-between text-[10px] pt-1.5 border-t border-black/10 dark:border-white/10 mt-0.5">
               <span className="opacity-80 font-medium">342 reserved in last 24 hours</span>
+<<<<<<< HEAD
               <div className="w-28 bg-black/40 rounded-full h-1.5 overflow-hidden border border-[#FF007F]/20">
                 <div className="bg-gradient-to-r from-[#FF1990] to-[#FF007F] h-full w-[78%]" />
+=======
+              <div className="w-28 bg-black/40 rounded-full h-1.5 overflow-hidden border border-[#F5A623]/20">
+                <div className="bg-gradient-to-r from-[#F5A623] to-[#FBD088] h-full w-[78%]" />
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
               </div>
             </div>
           </div>
@@ -1166,6 +1202,7 @@ export default function ProductDetail({
                 }`}>
                   <Store className="w-3.5 h-3.5 text-[#F5A623] shrink-0" />
                   <span>Sold by: <strong className="font-bold">{product.sellerShopName || 'ALIKE-ND Official'}</strong></span>
+<<<<<<< HEAD
                   {product.sellerVerified && (
                     <span
                       className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-500/20 border border-emerald-500/40 text-emerald-600 dark:text-emerald-300 text-[10px] font-bold ml-1"
@@ -1175,10 +1212,13 @@ export default function ProductDetail({
                       <span>Verified Seller</span>
                     </span>
                   )}
+=======
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
                 </div>
               </div>
             </div>
 
+<<<<<<< HEAD
             {/* Admin Live Controls */}
             {isAdmin && isEditMode && (
               <div className="flex items-center gap-2 mb-3 flex-wrap">
@@ -1245,6 +1285,8 @@ export default function ProductDetail({
               </div>
             )}
 
+=======
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
             {/* Product title */}
             <h1 id="product-detail-name" className={`text-lg sm:text-xl font-bold font-serif leading-snug line-clamp-2 ${
               isLightMode ? 'text-[#0F172A]' : 'text-white'
@@ -1354,7 +1396,11 @@ export default function ProductDetail({
                 ₹{mrp.toLocaleString('en-IN')}
               </span>
               {discountPercent > 0 && (
+<<<<<<< HEAD
                 <span className="bg-gradient-to-r from-[#FF1990] to-[#FF007F] text-white text-[11px] font-black px-2 py-0.5 rounded-full shadow-xs">
+=======
+                <span className="bg-gradient-to-r from-[#F5A623] to-[#D4AF37] text-[#0A0F24] text-[11px] font-black px-2 py-0.5 rounded-full shadow-xs">
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
                   -{discountPercent}% OFF
                 </span>
               )}
@@ -1480,7 +1526,11 @@ export default function ProductDetail({
             <button
               id="buy-now-action-btn"
               onClick={handleBuyNow}
+<<<<<<< HEAD
               className="w-full h-12 rounded-xl bg-gradient-to-r from-[#FF1990] via-[#FF007F] to-[#D80068] hover:brightness-110 text-white font-black text-xs uppercase tracking-wider flex items-center justify-center gap-2 cursor-pointer shadow-[0_0_20px_rgba(255,0,127,0.35)] active:scale-[0.98] transition-all"
+=======
+              className="w-full h-12 rounded-xl bg-gradient-to-r from-[#F5A623] via-[#E5A823] to-[#D4AF37] hover:brightness-110 text-[#0A0F24] font-black text-xs uppercase tracking-wider flex items-center justify-center gap-2 cursor-pointer shadow-[0_0_20px_rgba(245,166,35,0.3)] active:scale-[0.98] transition-all"
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
             >
               <Zap className="w-4 h-4 fill-current" />
               <span>Buy Now</span>
@@ -1658,7 +1708,11 @@ export default function ProductDetail({
               <FileText className="w-4 h-4 text-current" />
               <span>Product Description</span>
               {activeTab === 'desc' && (
+<<<<<<< HEAD
                 <span className="absolute bottom-0 left-3 right-3 h-[3px] bg-gradient-to-r from-[#FF1990] via-[#FF007F] to-[#D80068] rounded-full shadow-[0_0_8px_rgba(255,0,127,0.6)]" />
+=======
+                <span className="absolute bottom-0 left-3 right-3 h-[3px] bg-gradient-to-r from-[#F5A623] via-[#E5A823] to-[#D4AF37] rounded-full shadow-[0_0_8px_rgba(245,166,35,0.6)]" />
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
               )}
             </button>
 
@@ -1670,7 +1724,11 @@ export default function ProductDetail({
                 activeTab === 'reviews' 
                   ? isLightMode
                     ? 'bg-white text-[#0F172A] shadow-sm'
+<<<<<<< HEAD
                     : 'bg-[#162744] text-[#FF007F] shadow-sm'
+=======
+                    : 'bg-[#162744] text-[#F5A623] shadow-sm'
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
                   : isLightMode
                     ? 'text-gray-600 hover:text-gray-900 hover:bg-black/5'
                     : 'text-slate-400 hover:text-white hover:bg-white/5'
@@ -1679,7 +1737,11 @@ export default function ProductDetail({
               <Star className="w-4 h-4 fill-current text-current" />
               <span>Reviews & Ratings ({reviewsList.length})</span>
               {activeTab === 'reviews' && (
+<<<<<<< HEAD
                 <span className="absolute bottom-0 left-3 right-3 h-[3px] bg-gradient-to-r from-[#FF1990] via-[#FF007F] to-[#D80068] rounded-full shadow-[0_0_8px_rgba(255,0,127,0.6)]" />
+=======
+                <span className="absolute bottom-0 left-3 right-3 h-[3px] bg-gradient-to-r from-[#F5A623] via-[#E5A823] to-[#D4AF37] rounded-full shadow-[0_0_8px_rgba(245,166,35,0.6)]" />
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
               )}
             </button>
 
@@ -1691,7 +1753,11 @@ export default function ProductDetail({
                 activeTab === 'qa' 
                   ? isLightMode
                     ? 'bg-white text-[#0F172A] shadow-sm'
+<<<<<<< HEAD
                     : 'bg-[#162744] text-[#FF007F] shadow-sm'
+=======
+                    : 'bg-[#162744] text-[#F5A623] shadow-sm'
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
                   : isLightMode
                     ? 'text-gray-600 hover:text-gray-900 hover:bg-black/5'
                     : 'text-slate-400 hover:text-white hover:bg-white/5'
@@ -1700,7 +1766,11 @@ export default function ProductDetail({
               <HelpCircle className="w-4 h-4 text-current" />
               <span>Questions & Answers</span>
               {activeTab === 'qa' && (
+<<<<<<< HEAD
                 <span className="absolute bottom-0 left-3 right-3 h-[3px] bg-gradient-to-r from-[#FF1990] via-[#FF007F] to-[#D80068] rounded-full shadow-[0_0_8px_rgba(255,0,127,0.6)]" />
+=======
+                <span className="absolute bottom-0 left-3 right-3 h-[3px] bg-gradient-to-r from-[#F5A623] via-[#E5A823] to-[#D4AF37] rounded-full shadow-[0_0_8px_rgba(245,166,35,0.6)]" />
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
               )}
             </button>
           </div>
@@ -1735,6 +1805,7 @@ export default function ProductDetail({
                 ? 'bg-[#FAFAF7] border-[#EADFC9]' 
                 : 'bg-[#0B1B32]/60 border-[#162744]'
             }`}>
+<<<<<<< HEAD
               {/* Key Highlights if configured in Daraz Studio */}
               {Array.isArray(product.highlights) && product.highlights.filter(Boolean).length > 0 && (
                 <div className={`p-4 rounded-xl border space-y-2 ${
@@ -1804,6 +1875,11 @@ export default function ProductDetail({
                   )}
                 </div>
               )}
+=======
+              <p className={`text-sm sm:text-base leading-relaxed ${isLightMode ? 'text-gray-700' : 'text-slate-200'}`}>
+                {description}
+              </p>
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
 
               <p className="text-xs sm:text-sm opacity-70 leading-relaxed">
                 Crafted to high standards, this product offers superior reliability and style. Sourced directly from authorized distributors ensuring authentic product quality and verified craftsmanship.
@@ -2176,7 +2252,11 @@ export default function ProductDetail({
                   <button
                     type="submit"
                     id="submit-comment-button"
+<<<<<<< HEAD
                     className="px-6 py-2.5 rounded-xl bg-gradient-to-r from-[#FF1990] via-[#FF007F] to-[#D80068] hover:brightness-110 text-white font-black text-xs sm:text-sm shadow-md shadow-[#FF007F]/20 cursor-pointer transition-all active:scale-[0.98]"
+=======
+                    className="px-6 py-2.5 rounded-xl bg-gradient-to-r from-[#F5A623] via-[#E5A823] to-[#D4AF37] hover:brightness-110 text-[#0A0F24] font-black text-xs sm:text-sm shadow-md shadow-amber-500/20 cursor-pointer transition-all active:scale-[0.98]"
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
                   >
                     Submit Review
                   </button>
@@ -2193,6 +2273,7 @@ export default function ProductDetail({
                     key={`review-${rev.id}-${rIdx}`} 
                     className={`p-5 sm:p-6 rounded-2xl border shadow-2xs space-y-3 relative overflow-hidden transition-all ${
                       isLightMode 
+<<<<<<< HEAD
                         ? 'bg-white border-[#EADFC9] hover:border-[#FF007F]/60' 
                         : 'bg-[#0B1B32]/70 border-[#162744] hover:border-[#FF007F]/40'
                     }`}
@@ -2204,6 +2285,19 @@ export default function ProductDetail({
                       <div className="flex items-center gap-3">
                         {/* Avatar with Pink Accent */}
                         <div className="w-9 h-9 rounded-xl bg-[#FF007F] text-white font-black text-xs flex items-center justify-center shrink-0 shadow-xs">
+=======
+                        ? 'bg-white border-[#EADFC9] hover:border-[#F5A623]/60' 
+                        : 'bg-[#0B1B32]/70 border-[#162744] hover:border-[#F5A623]/40'
+                    }`}
+                  >
+                    {/* Vertical Gold Accent Line */}
+                    <div className="absolute left-0 top-0 bottom-0 w-[4px] bg-gradient-to-b from-[#F5A623] to-[#D4AF37]" />
+
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-3">
+                        {/* Avatar with Gold Ring */}
+                        <div className="w-9 h-9 rounded-xl bg-[#F5A623] text-[#0A0F24] font-black text-xs flex items-center justify-center shrink-0 shadow-xs">
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
                           {rev.name ? rev.name.charAt(0).toUpperCase() : 'U'}
                         </div>
                         <div>
@@ -2540,7 +2634,11 @@ export default function ProductDetail({
                     type="button"
                     id="add-all-fbt-to-cart-btn"
                     onClick={handleAddFbtBundleToCart}
+<<<<<<< HEAD
                     className="w-full py-2.5 rounded-xl bg-gradient-to-r from-[#FF1990] to-[#FF007F] hover:brightness-110 text-white font-black text-xs uppercase tracking-wider shadow-sm shadow-[#FF007F]/20 cursor-pointer transition-all active:scale-[0.98]"
+=======
+                    className="w-full py-2.5 rounded-xl bg-gradient-to-r from-[#F5A623] to-[#D4AF37] hover:brightness-110 text-[#0A0F24] font-black text-xs uppercase tracking-wider shadow-sm shadow-amber-500/20 cursor-pointer transition-all active:scale-[0.98]"
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
                   >
                     Add Bundle to Cart
                   </button>

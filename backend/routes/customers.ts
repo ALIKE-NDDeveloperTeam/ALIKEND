@@ -1,4 +1,5 @@
 import { Router } from "express";
+<<<<<<< HEAD
 import crypto from "crypto";
 import bcrypt from "bcryptjs";
 import User, { IUser } from "../models/User";
@@ -6,12 +7,18 @@ import Customer from "../models/Customer";
 import Order from "../models/Order";
 import ReturnRequest from "../models/ReturnRequest";
 import { Ticket } from "../models/CustomerCare";
+=======
+import User from "../models/User";
+import Customer from "../models/Customer";
+import Order from "../models/Order";
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
 import { requireAdmin, requireSuperAdmin } from "../middleware/auth";
 import { isMongoConnected, memoryStore } from "../store";
 
 const router = Router();
 router.use(requireAdmin);
 
+<<<<<<< HEAD
 // Standard 12 individual restriction keys
 export const VALID_RESTRICTIONS = [
   "login_block",
@@ -40,6 +47,9 @@ function getAdminInfo(req: any) {
 // =========================================================================
 // 1. GET /api/admin/customers - List all registered customers with stats
 // =========================================================================
+=======
+// GET /api/admin/customers - Fetch all registered users (Admins & Superadmins)
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
 router.get("/", async (_req, res) => {
   try {
     if (isMongoConnected()) {
@@ -47,6 +57,7 @@ router.get("/", async (_req, res) => {
         const users = await User.find().sort({ createdAt: -1 });
         const orders = await Order.find().lean();
 
+<<<<<<< HEAD
         const formattedUsers = users.map((u) => {
           const userOrders = orders.filter(
             (o) =>
@@ -62,10 +73,21 @@ router.get("/", async (_req, res) => {
           const activeRestrictionsCount = Object.values(restrictions).filter(
             (r: any) => r && r.enabled
           ).length;
+=======
+        // Map users with calculated order stats
+        const formattedUsers = users.map((u) => {
+          const userOrders = orders.filter(
+            (o) => o.memberName?.toLowerCase() === u.fullName?.toLowerCase() || o.memberEmail?.toLowerCase() === u.email?.toLowerCase()
+          );
+          const spend = userOrders.reduce((sum, o) => sum + (Number(o.total) || 0), 0);
+          const isAutoVip = userOrders.length > 10;
+          const normalizedTier = (u.tier === "VIP" || u.tier === "Platinum" || isAutoVip) ? "VIP" : "Normal";
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
 
           return {
             _id: String(u._id),
             name: u.fullName,
+<<<<<<< HEAD
             fullName: u.fullName,
             email: u.email,
             phone: u.phone || `${u.country || "+880"} ${u.mobileNumber || ""}`,
@@ -82,18 +104,35 @@ router.get("/", async (_req, res) => {
             adminNotes: u.adminNotes || "",
             createdAt: u.createdAt,
             updatedAt: u.updatedAt,
+=======
+            email: u.email,
+            phone: u.phone || `${u.country} ${u.mobileNumber}`,
+            country: u.country,
+            mobileNumber: u.mobileNumber,
+            tier: normalizedTier,
+            isBlocked: Boolean(u.isBlocked),
+            verified: Boolean(u.verified),
+            ordersCount: userOrders.length,
+            lifetimeSpend: spend,
+            createdAt: u.createdAt,
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
           };
         });
 
         return res.json(formattedUsers);
       } catch (err) {
+<<<<<<< HEAD
         console.warn("MongoDB fetch users failed, checking in-memory:", err);
+=======
+        console.warn("MongoDB fetch users failed, checking Customer collection or in-memory:", err);
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
       }
     }
 
     // In-memory fallback
     const memList = (memoryStore.users || []).map((u) => {
       const userOrders = (memoryStore.orders || []).filter(
+<<<<<<< HEAD
         (o) =>
           o.memberName?.toLowerCase() === u.fullName?.toLowerCase() ||
           o.memberEmail?.toLowerCase() === u.email?.toLowerCase()
@@ -131,11 +170,34 @@ router.get("/", async (_req, res) => {
     });
 
     return res.json(memList);
+=======
+        (o) => o.memberName?.toLowerCase() === u.fullName?.toLowerCase() || o.memberEmail?.toLowerCase() === u.email?.toLowerCase()
+      );
+      const isAutoVip = userOrders.length > 10;
+      return {
+        _id: u._id,
+        name: u.fullName,
+        email: u.email,
+        phone: u.phone || `${u.country} ${u.mobileNumber}`,
+        country: u.country,
+        mobileNumber: u.mobileNumber,
+        tier: ((u.tier as string) === "VIP" || u.tier === "Platinum" || isAutoVip) ? "VIP" : "Normal",
+        isBlocked: false,
+        verified: true,
+        ordersCount: userOrders.length,
+        lifetimeSpend: userOrders.reduce((sum, o) => sum + (Number(o.total) || 0), 0),
+        createdAt: u.createdAt,
+      };
+    });
+
+    return res.json(memList.length > 0 ? memList : memoryStore.customers);
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
   } catch (err: any) {
     res.status(500).json({ error: err.message || "Failed to fetch customer list" });
   }
 });
 
+<<<<<<< HEAD
 // =========================================================================
 // 2. GET /api/admin/customers/:id - Detailed customer dossier with tabs
 // =========================================================================
@@ -343,11 +405,38 @@ router.put("/:id/profile", async (req, res) => {
           success: true,
           message: "Customer profile information updated successfully.",
           user,
+=======
+// PATCH /api/admin/customers/:id/block - Block or Unblock a customer account (SUPER ADMIN ONLY)
+router.patch("/:id/block", requireSuperAdmin, async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { isBlocked } = req.body;
+
+    if (typeof isBlocked !== "boolean") {
+      return res.status(400).json({ error: "isBlocked boolean field is required" });
+    }
+
+    if (isMongoConnected()) {
+      const updatedUser = await User.findByIdAndUpdate(id, { isBlocked }, { new: true });
+      if (updatedUser) {
+        console.log(`🛡️ [SUPER ADMIN ACTION] User ${updatedUser.email} isBlocked set to ${isBlocked}`);
+        return res.json({
+          success: true,
+          message: `User ${updatedUser.email} has been ${isBlocked ? "blocked" : "unblocked"}.`,
+          user: {
+            _id: String(updatedUser._id),
+            name: updatedUser.fullName,
+            email: updatedUser.email,
+            isBlocked: updatedUser.isBlocked,
+            tier: updatedUser.tier,
+          },
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
         });
       }
     }
 
     // In-memory fallback
+<<<<<<< HEAD
     const memUser = (memoryStore.users || []).find((u) => u._id === id || u.email === id);
     if (memUser) {
       Object.assign(memUser, updateFields);
@@ -442,10 +531,47 @@ router.post("/:id/restrictions", async (req, res) => {
           message: `Restriction "${restrictionKey}" has been ${enabled ? "applied" : "removed"}.`,
           restrictions: user.restrictions,
           auditLog: user.restrictionAuditLog,
+=======
+    const userInMem = (memoryStore.users || []).find((u) => u._id === id || u.email === id);
+    if (userInMem) {
+      return res.json({
+        success: true,
+        message: `User ${userInMem.email} has been ${isBlocked ? "blocked" : "unblocked"}.`,
+        user: { ...userInMem, isBlocked },
+      });
+    }
+
+    return res.status(404).json({ error: "User document not found in database" });
+  } catch (err: any) {
+    res.status(500).json({ error: err.message || "Failed to update user block status" });
+  }
+});
+
+// PATCH /api/admin/customers/:id/tier - Update member loyalty tier (SUPER ADMIN ONLY)
+router.patch("/:id/tier", requireSuperAdmin, async (req, res) => {
+  try {
+    const { id } = req.params;
+    let { tier } = req.body;
+    if (!["VIP", "Normal", "Silver", "Gold", "Platinum"].includes(tier)) {
+      return res.status(400).json({ error: "Invalid tier value" });
+    }
+    const finalTier = tier === "VIP" ? "VIP" : "Normal";
+
+    if (isMongoConnected()) {
+      const updatedUser = await User.findByIdAndUpdate(id, { tier: finalTier }, { new: true });
+      if (updatedUser) {
+        return res.json({
+          success: true,
+          user: {
+            ...updatedUser.toObject(),
+            tier: finalTier,
+          },
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
         });
       }
     }
 
+<<<<<<< HEAD
     // In-memory fallback
     const memUser = (memoryStore.users || []).find((u) => u._id === id || u.email === id);
     if (memUser) {
@@ -761,7 +887,23 @@ router.get("/:id/preview-data", async (req, res) => {
     });
   } catch (err: any) {
     res.status(500).json({ error: err.message || "Failed to generate preview snapshot" });
+=======
+    const userInMem = (memoryStore.users || []).find((u) => u._id === id || u.email === id);
+    if (userInMem) {
+      userInMem.tier = finalTier as any;
+      return res.json({ success: true, user: userInMem });
+    }
+
+    return res.status(404).json({ error: "User document not found in database" });
+  } catch (err: any) {
+    res.status(500).json({ error: err.message || "Failed to update member tier" });
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
   }
 });
 
 export default router;
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58

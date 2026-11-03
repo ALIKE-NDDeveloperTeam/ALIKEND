@@ -48,6 +48,7 @@ service cloud.firestore {
       allow read: if true;
       allow write: if isStaffAdmin();
     }
+<<<<<<< HEAD
 
     // Dedicated Seller Accounts: isolated from Customer Accounts; sellers cannot self-approve or escalate role or verifiedBadge
     match /sellers/{sellerId} {
@@ -90,5 +91,7 @@ service cloud.firestore {
       );
       allow delete: if isStaffAdmin();
     }
+=======
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
   }
 }

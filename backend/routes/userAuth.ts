@@ -15,7 +15,10 @@ import { resolveAdminRole, timingSafePasswordEqual } from "../middleware/auth";
 import { getJwtSecret } from "../config/jwt";
 import { firebaseAuth } from "../utils/firebaseAdmin";
 import { checkLoginRateLimit, recordFailedLoginAttempt, resetLoginAttempts } from "../utils/bruteForce";
+<<<<<<< HEAD
 import { isValidCoordinate } from "../services/geoService";
+=======
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
 
 const router = Router();
 
@@ -1195,7 +1198,10 @@ router.post("/login", async (req, res) => {
         country: user.country,
         mobileNumber: user.mobileNumber,
         tier: user.tier || "Silver",
+<<<<<<< HEAD
         savedLocation: user.savedLocation || null,
+=======
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
       },
       token,
       isAdmin,
@@ -1748,7 +1754,10 @@ router.get("/me", async (req, res) => {
         country: user.country,
         mobileNumber: user.mobileNumber,
         tier: user.tier,
+<<<<<<< HEAD
         savedLocation: user.savedLocation || null,
+=======
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
       },
       isAdmin,
       adminToken,
@@ -1836,6 +1845,7 @@ router.post("/change-password", async (req, res) => {
   }
 });
 
+<<<<<<< HEAD
 // ==========================================
 // PATCH /api/auth/profile/location & /api/auth/saved-location - Save or Clear Customer Location
 // ==========================================
@@ -1907,4 +1917,6 @@ router.patch(["/profile/location", "/saved-location"], async (req, res) => {
   }
 });
 
+=======
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
 export default router;

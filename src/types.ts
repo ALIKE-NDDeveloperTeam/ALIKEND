@@ -32,12 +32,16 @@ export interface Product {
   emoji?: string;
   sellerId?: string;
   sellerShopName?: string;
+<<<<<<< HEAD
   sellerVerified?: boolean;
+=======
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
   hsnCode?: string;
   gstRate?: number;
   countryOfOrigin?: string;
   manufacturerDetails?: string;
   packInfo?: string;
+<<<<<<< HEAD
   isHidden?: boolean;
   isPublished?: boolean;
   isVisible?: boolean;
@@ -176,6 +180,8 @@ export interface Product {
   etaMin?: number;
   etaMax?: number;
   deliveryEtaText?: string;
+=======
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
 }
 
 export interface CategoryItem {
@@ -207,6 +213,7 @@ export interface DynamicCategory {
   updatedAt?: string | Date;
 }
 
+<<<<<<< HEAD
 export type SellerVerificationStatus =
   | 'not_submitted'
   | 'pending_admin_review'
@@ -357,6 +364,8 @@ export interface SellerNotificationPreferences {
   securityAlerts: boolean;
 }
 
+=======
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
 export interface SellerProfile {
   _id: string;
   shopName: string;
@@ -365,6 +374,7 @@ export interface SellerProfile {
   email: string;
   mobileNumber: string;
   businessAddress: string;
+<<<<<<< HEAD
   shopAddress?: string;
   category?: string;
   logo?: string;
@@ -403,6 +413,8 @@ export interface SellerProfile {
   quickDeliveryEnabled?: boolean;
   prepTimeMin?: number;
   deliveryRadiusKm?: number;
+=======
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
   panNumber?: string;
   gstin?: string;
   bankAccountHolderName?: string;
@@ -410,6 +422,7 @@ export interface SellerProfile {
   bankIFSC?: string;
   bankName?: string;
   kycVerified?: boolean;
+<<<<<<< HEAD
   emailVerified?: boolean;
   verificationStatus?: SellerVerificationStatus;
   verifiedBadge?: boolean;
@@ -435,6 +448,10 @@ export interface SellerProfile {
   lastLoginAt?: string | Date;
   lastPasswordResetAt?: string | Date;
   createdAt?: string | Date;
+=======
+  status: 'pending' | 'approved' | 'rejected' | 'suspended' | 'review';
+  listingsCount?: number;
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
 }
 
 export interface Job {
@@ -485,6 +502,7 @@ export interface Order {
   trackingStep: number; // 1: Order Placed, 2: Processing, 3: Shipped, 4: Delivered
   memberEmail?: string;
   userId?: string;
+<<<<<<< HEAD
   deliveryLocation?: {
     lat: number;
     lng: number;
@@ -496,6 +514,8 @@ export interface Order {
     customer?: { lat: number; lng: number; accuracy?: number; updatedAt: string | Date; sharing: boolean };
     seller?: { lat: number; lng: number; updatedAt: string | Date; sharing: boolean };
   };
+=======
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
 }
 
 export interface Message {
@@ -591,6 +611,7 @@ export interface Banner {
   updatedAt?: string;
 }
 
+<<<<<<< HEAD
 // ---------------------------------------------------------------------
 // ---------------------------------------------------------------------
 // ALIKE ND Rides (Passenger Ride Booking System inspired by Ola / Uber)
@@ -961,3 +982,5 @@ export interface DeliveryTask {
 }
 
 
+=======
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58

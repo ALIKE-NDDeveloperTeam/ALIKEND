@@ -1,5 +1,6 @@
 import mongoose, { Schema, Document } from "mongoose";
 
+<<<<<<< HEAD
 export type OrderStatus =
   | "pending"
   | "confirmed"
@@ -30,17 +31,26 @@ export interface ILiveTracking {
   };
   expiresAt?: Date;
 }
+=======
+export type OrderStatus = "pending" | "processing" | "shipped" | "delivered" | "cancelled";
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
 
 export interface IOrder extends Document {
   orderNumber: string;
   memberName: string;
   memberEmail?: string;
+<<<<<<< HEAD
   userId?: string;
   total: number;
   status: OrderStatus;
   trackingNumber?: string;
   courierName?: string;
   items?: { productId?: any; name: string; qty: number; price: number; image?: string; color?: string; size?: string; sellerId?: string }[];
+=======
+  total: number;
+  status: OrderStatus;
+  items?: { productId?: any; name: string; qty: number; price: number; image?: string; color?: string; size?: string }[];
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
   address?: {
     name?: string;
     phone?: string;
@@ -49,6 +59,7 @@ export interface IOrder extends Document {
     state?: string;
     zip?: string;
   };
+<<<<<<< HEAD
   deliveryLocation?: {
     lat: number;
     lng: number;
@@ -56,12 +67,15 @@ export interface IOrder extends Document {
   };
   deliveryType?: "quick" | "standard";
   deliveryEtaText?: string;
+=======
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
   paymentMethod?: string;
   subtotal?: number;
   tax?: number;
   discount?: number;
   delivery?: number;
   trackingStep?: number;
+<<<<<<< HEAD
   liveTracking?: ILiveTracking;
   commissionRate?: number;
   commissionAmount?: number;
@@ -95,6 +109,12 @@ export interface IOrder extends Document {
     commissionAmount: number;
     sellerNetAmount: number;
   }>;
+=======
+  commissionRate?: number;
+  commissionAmount?: number;
+  sellerPayout?: number;
+  commissionStatus?: "credited" | "pending";
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
   approvedAt?: Date;
   shippedAt?: Date;
   deliveredAt?: Date;
@@ -109,6 +129,7 @@ const OrderSchema = new Schema<IOrder>(
     orderNumber: { type: String, required: true, unique: true },
     memberName: { type: String, required: true },
     memberEmail: { type: String },
+<<<<<<< HEAD
     userId: { type: String },
     total: { type: Number, required: true, min: 0 },
     status: {
@@ -133,6 +154,17 @@ const OrderSchema = new Schema<IOrder>(
       {
         productId: { type: Schema.Types.Mixed },
         sellerId: { type: String },
+=======
+    total: { type: Number, required: true, min: 0 },
+    status: {
+      type: String,
+      enum: ["pending", "processing", "shipped", "delivered", "cancelled"],
+      default: "processing",
+    },
+    items: [
+      {
+        productId: { type: Schema.Types.Mixed },
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
         name: String,
         qty: Number,
         price: Number,
@@ -149,6 +181,7 @@ const OrderSchema = new Schema<IOrder>(
       state: String,
       zip: String,
     },
+<<<<<<< HEAD
     deliveryLocation: {
       lat: Number,
       lng: Number,
@@ -156,12 +189,15 @@ const OrderSchema = new Schema<IOrder>(
     },
     deliveryType: { type: String, enum: ["quick", "standard"], default: "standard" },
     deliveryEtaText: { type: String },
+=======
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
     paymentMethod: { type: String, default: "CARD" },
     subtotal: { type: Number, default: 0 },
     tax: { type: Number, default: 0 },
     discount: { type: Number, default: 0 },
     delivery: { type: Number, default: 0 },
     trackingStep: { type: Number, default: 2 },
+<<<<<<< HEAD
     liveTracking: {
       customer: {
         lat: Number,
@@ -197,6 +233,12 @@ const OrderSchema = new Schema<IOrder>(
       default: "credited",
     },
     commissionBreakdown: { type: [Schema.Types.Mixed], default: [] },
+=======
+    commissionRate: { type: Number, default: 5 },
+    commissionAmount: { type: Number, default: 0 },
+    sellerPayout: { type: Number, default: 0 },
+    commissionStatus: { type: String, enum: ["credited", "pending"], default: "credited" },
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
     approvedAt: { type: Date },
     shippedAt: { type: Date },
     deliveredAt: { type: Date },

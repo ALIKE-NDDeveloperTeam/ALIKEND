@@ -1273,6 +1273,7 @@ router.patch("/seller-withdrawals/:id/reject", requireAdmin, async (req: AuthedR
   }
 });
 
+<<<<<<< HEAD
 import adminCentralRoutes from "./adminCentral";
 router.use("/central", adminCentralRoutes);
 
@@ -1280,3 +1281,8 @@ export default router;
 
 
 
+=======
+export default router;
+
+
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58

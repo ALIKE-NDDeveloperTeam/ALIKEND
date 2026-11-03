@@ -88,6 +88,7 @@
         "updatedAt": { "type": "string", "format": "date-time" }
       },
       "required": ["autoResponderEnabled", "emergencyBannerActive"]
+<<<<<<< HEAD
     },
     "SellerAccount": {
       "title": "SellerAccount",
@@ -126,6 +127,8 @@
         "createdAt": { "type": "string", "format": "date-time" }
       },
       "required": ["name", "email", "role"]
+=======
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
     }
   },
   "firestore": {
@@ -144,6 +147,7 @@
     "/customerCareSettings/global": {
       "schema": "CustomerCareSettings",
       "description": "Global settings for Customer Care system"
+<<<<<<< HEAD
     },
     "/sellers/{sellerId}": {
       "schema": "SellerAccount",
@@ -152,6 +156,8 @@
     "/users/{userId}": {
       "schema": "CustomerAccount",
       "description": "Dedicated customer accounts isolated from seller accounts"
+=======
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
     }
   }
 }

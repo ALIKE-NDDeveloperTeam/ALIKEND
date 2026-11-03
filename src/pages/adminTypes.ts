@@ -32,6 +32,7 @@ export interface Product {
   countryOfOrigin?: string;
   manufacturerDetails?: string;
   packInfo?: string;
+<<<<<<< HEAD
   audience?: string;
   sku?: string;
   videoUrl?: string;
@@ -169,6 +170,8 @@ export interface Product {
     note?: string;
     createdAt: string;
   }>;
+=======
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
   createdAt?: string;
   updatedAt?: string;
 }
@@ -318,6 +321,7 @@ export interface Banner {
   updatedAt?: string;
 }
 
+<<<<<<< HEAD
 export interface CommissionRuleItem {
   ruleId: string;
   ruleType: "category" | "subcategory" | "product_override" | "seller_override";
@@ -370,12 +374,15 @@ export interface CommissionAuditItem {
   createdAt: string;
 }
 
+=======
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
 export interface CommissionOrderLog {
   _id: string;
   orderNumber: string;
   date: string;
   memberName: string;
   memberEmail?: string;
+<<<<<<< HEAD
   subtotal?: number;
   discount?: number;
   tax?: number;
@@ -386,10 +393,16 @@ export interface CommissionOrderLog {
   commissionAmount: number;
   originalCommissionAmount?: number;
   refundedCommissionAmount?: number;
+=======
+  total: number;
+  commissionRate: number;
+  commissionAmount: number;
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
   sellerPayout: number;
   paymentMethod?: string;
   status: OrderStatus;
   commissionStatus?: string;
+<<<<<<< HEAD
   items?: Array<{
     productId?: any;
     productName: string;
@@ -409,6 +422,8 @@ export interface CommissionOrderLog {
     commissionAmount: number;
     sellerNetAmount: number;
   }>;
+=======
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
 }
 
 export interface PlatformWithdrawal {
@@ -423,6 +438,7 @@ export interface PlatformWithdrawal {
 
 export interface CommissionData {
   commissionRate: number;
+<<<<<<< HEAD
   config?: CommissionConfigType;
   rules?: CommissionRuleItem[];
   auditLogs?: CommissionAuditItem[];
@@ -471,3 +487,15 @@ export interface CommissionData {
   orders: CommissionOrderLog[];
   withdrawals?: PlatformWithdrawal[];
 }
+=======
+  totalCommissionEarned: number;
+  runningBalance: number;
+  totalWithdrawn?: number;
+  totalOrdersCount: number;
+  orders: CommissionOrderLog[];
+  withdrawals?: PlatformWithdrawal[];
+}
+
+
+
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58

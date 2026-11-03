@@ -12,6 +12,7 @@ export type AdminRole =
   | "support_admin"    // হেল্পডেস্ক ও সাপোর্ট এডমিন (Support Admin)
   | "admin";           // জেনারেল এডমিন (General Admin)
 
+<<<<<<< HEAD
 export interface AdminSellerPermissions {
   viewSellers: boolean;
   approveSellers: boolean;
@@ -25,6 +26,8 @@ export interface AdminSellerPermissions {
   manageSellerSupport: boolean;
 }
 
+=======
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
 export interface IAdmin extends Document {
   email: string;
   passwordHash: string;
@@ -34,7 +37,10 @@ export interface IAdmin extends Document {
   department?: string;
   designation?: string;
   isActive: boolean;
+<<<<<<< HEAD
   sellerManagementPermissions?: AdminSellerPermissions;
+=======
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
   createdAt: Date;
   updatedAt: Date;
 }
@@ -64,6 +70,7 @@ const AdminSchema = new Schema<IAdmin>(
     department: { type: String, default: "" },
     designation: { type: String, default: "" },
     isActive: { type: Boolean, default: true },
+<<<<<<< HEAD
     sellerManagementPermissions: {
       viewSellers: { type: Boolean, default: true },
       approveSellers: { type: Boolean, default: true },
@@ -76,6 +83,8 @@ const AdminSchema = new Schema<IAdmin>(
       managePayouts: { type: Boolean, default: true },
       manageSellerSupport: { type: Boolean, default: true },
     },
+=======
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
   },
   {
     timestamps: true,
@@ -83,6 +92,12 @@ const AdminSchema = new Schema<IAdmin>(
   }
 );
 
+<<<<<<< HEAD
 const Admin: Model<IAdmin> =
   (mongoose.models.Admin as Model<IAdmin>) || mongoose.model<IAdmin>("Admin", AdminSchema, "admins");
 export default Admin;
+=======
+const Admin: Model<IAdmin> = mongoose.models.Admin as Model<IAdmin> || mongoose.model<IAdmin>("Admin", AdminSchema, "admins");
+export default Admin;
+
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58

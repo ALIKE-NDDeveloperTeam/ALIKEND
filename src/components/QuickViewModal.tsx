@@ -11,7 +11,10 @@ import {
   PackageOpen,
   Check,
   Zap,
+<<<<<<< HEAD
   Store,
+=======
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
 } from 'lucide-react';
 import { Product } from '../types';
 import GlassCloseButton from './GlassCloseButton';
@@ -295,6 +298,7 @@ export const QuickViewModal: React.FC<QuickViewModalProps> = ({
                   {product.name}
                 </h1>
 
+<<<<<<< HEAD
                 {/* Sold By & Verified Seller Badge */}
                 <div className="flex items-center gap-2 flex-wrap">
                   <div className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg border text-xs font-semibold ${
@@ -314,6 +318,8 @@ export const QuickViewModal: React.FC<QuickViewModalProps> = ({
                   )}
                 </div>
 
+=======
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
                 {/* Rating & Review Counter */}
                 <div className="flex items-center gap-2.5 flex-wrap">
                   <div
@@ -362,7 +368,11 @@ export const QuickViewModal: React.FC<QuickViewModalProps> = ({
                       <span className="text-base text-neutral-400 dark:text-neutral-500 line-through font-medium">
                         ₹{product.mrp.toLocaleString('en-IN')}
                       </span>
+<<<<<<< HEAD
                       <span className="bg-gradient-to-r from-[#FF1990] to-[#FF007F] text-white text-[11px] font-black px-2.5 py-0.5 rounded-full shadow-xs uppercase tracking-wider">
+=======
+                      <span className="bg-gradient-to-r from-[#F5A623] to-[#D4AF37] text-[#0A0F24] text-[11px] font-black px-2.5 py-0.5 rounded-full shadow-xs uppercase tracking-wider">
+>>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
                         {discountPercent}% OFF
                       </span>
                     </>
