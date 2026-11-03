@@ -1510,25 +1510,11 @@ export default function Messenger({
               <h3 className={`text-xs uppercase tracking-widest font-black font-sans flex items-center gap-2 ${
                 isLightMode ? 'text-neutral-700' : 'text-white'
               }`}>
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
                 <span className={`w-2.5 h-2.5 rounded-full ${isLightMode ? 'bg-[#9C4B8A]' : 'bg-[#FF007F]'} animate-pulse`}></span>
                 Secure Concierge
               </h3>
               <span className={`px-2 py-0.5 rounded-full text-[9px] font-bold ${
                 isLightMode ? 'bg-[#9C4B8A]/10 text-[#9C4B8A]' : 'bg-[#FF007F]/10 text-[#FF007F]'
-<<<<<<< HEAD
-=======
-=======
-                <span className={`w-2.5 h-2.5 rounded-full ${isLightMode ? 'bg-[#9C4B8A]' : 'bg-[#D4AF37]'} animate-pulse`}></span>
-                Secure Concierge
-              </h3>
-              <span className={`px-2 py-0.5 rounded-full text-[9px] font-bold ${
-                isLightMode ? 'bg-[#9C4B8A]/10 text-[#9C4B8A]' : 'bg-[#D4AF37]/10 text-[#D4AF37]'
->>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
               }`}>
                 WhatsApp Protocol
               </span>
@@ -1572,15 +1558,7 @@ export default function Messenger({
                       isActive
                         ? isLightMode
                           ? 'bg-[#9C4B8A] text-white'
-<<<<<<< HEAD
                           : 'bg-[#FF007F] text-neutral-900 font-extrabold'
-=======
-<<<<<<< HEAD
-                          : 'bg-[#FF007F] text-neutral-900 font-extrabold'
-=======
-                          : 'bg-[#D4AF37] text-neutral-900 font-extrabold'
->>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
                         : isLightMode
                           ? 'bg-neutral-100 hover:bg-neutral-200 text-neutral-600 border border-solid border-neutral-200/50'
                           : 'bg-[#202C33] hover:bg-[#2A3942] text-neutral-300 border border-solid border-[#2c3e46]'
@@ -1621,15 +1599,7 @@ export default function Messenger({
                     isActive
                       ? isLightMode
                         ? 'bg-[#EAE6DF] border-l-4 border-solid border-[#9C4B8A] shadow-sm'
-<<<<<<< HEAD
                         : 'bg-[#2A3942] border-l-4 border-solid border-[#FF007F] shadow-md shadow-black/15'
-=======
-<<<<<<< HEAD
-                        : 'bg-[#2A3942] border-l-4 border-solid border-[#FF007F] shadow-md shadow-black/15'
-=======
-                        : 'bg-[#2A3942] border-l-4 border-solid border-[#D4AF37] shadow-md shadow-black/15'
->>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
                       : isLightMode
                         ? 'hover:bg-neutral-50 border-l-4 border-solid border-transparent text-neutral-850'
                         : 'hover:bg-[#202C33]/50 border-l-4 border-solid border-transparent text-white'
@@ -1693,15 +1663,7 @@ export default function Messenger({
           {/* Active Chat Header */}
           {isSelectionMode ? (
             <div className={`px-4 sm:px-6 py-3 border-b border-solid flex items-center justify-between shrink-0 relative z-10 shadow-sm ${
-<<<<<<< HEAD
               isLightMode ? 'border-[#9C4B8A]/35 bg-[#EAE6DF] text-neutral-800' : 'border-[#FF007F]/35 bg-[#222E35] text-white'
-=======
-<<<<<<< HEAD
-              isLightMode ? 'border-[#9C4B8A]/35 bg-[#EAE6DF] text-neutral-800' : 'border-[#FF007F]/35 bg-[#222E35] text-white'
-=======
-              isLightMode ? 'border-[#9C4B8A]/35 bg-[#EAE6DF] text-neutral-800' : 'border-[#D4AF37]/35 bg-[#222E35] text-white'
->>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
             }`}>
               <div className="flex items-center gap-3.5">
                 <button 
@@ -1711,15 +1673,7 @@ export default function Messenger({
                     setSelectedMsgIds([]);
                   }}
                   className={`p-1.5 rounded-xl transition-colors cursor-pointer shrink-0 ${
-<<<<<<< HEAD
                     isLightMode ? 'hover:bg-neutral-200 text-neutral-700' : 'hover:bg-[#2A3942] text-[#FF007F]'
-=======
-<<<<<<< HEAD
-                    isLightMode ? 'hover:bg-neutral-200 text-neutral-700' : 'hover:bg-[#2A3942] text-[#FF007F]'
-=======
-                    isLightMode ? 'hover:bg-neutral-200 text-neutral-700' : 'hover:bg-[#2A3942] text-[#D4AF37]'
->>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
                   }`}
                   title="Cancel selection"
                 >
@@ -1836,15 +1790,7 @@ export default function Messenger({
                   className={`p-2 rounded-lg transition-all cursor-pointer ${
                     isLightMode 
                       ? isSearchingChat ? 'bg-[#9C4B8A]/10 text-[#9C4B8A]' : 'text-neutral-600 hover:bg-neutral-200' 
-<<<<<<< HEAD
                       : isSearchingChat ? 'bg-[#FF007F]/10 text-[#FF007F]' : 'text-neutral-300 hover:bg-neutral-800'
-=======
-<<<<<<< HEAD
-                      : isSearchingChat ? 'bg-[#FF007F]/10 text-[#FF007F]' : 'text-neutral-300 hover:bg-neutral-800'
-=======
-                      : isSearchingChat ? 'bg-[#D4AF37]/10 text-[#D4AF37]' : 'text-neutral-300 hover:bg-neutral-800'
->>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
                   }`}
                   title="Search messages in this channel"
                 >
@@ -1959,15 +1905,7 @@ export default function Messenger({
               isLightMode ? 'bg-[#FCFAF7] border-neutral-100' : 'bg-[#182229] border-neutral-800 text-white'
             }`}>
               <div className="flex items-center gap-2 flex-grow max-w-md relative">
-<<<<<<< HEAD
                 <Search className={`w-3.5 h-3.5 ${isLightMode ? 'text-neutral-500' : 'text-[#FF007F]'}`} />
-=======
-<<<<<<< HEAD
-                <Search className={`w-3.5 h-3.5 ${isLightMode ? 'text-neutral-500' : 'text-[#FF007F]'}`} />
-=======
-                <Search className={`w-3.5 h-3.5 ${isLightMode ? 'text-neutral-500' : 'text-[#D4AF37]'}`} />
->>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
                 <input
                   type="text"
                   placeholder="Filter messages in this stream..."
@@ -2023,25 +1961,11 @@ export default function Messenger({
                         className={`px-2 py-1 rounded-lg border border-solid text-[10.5px] max-w-[140px] truncate transition-all duration-300 flex items-center gap-1 cursor-pointer ${
                           isLightMode 
                             ? 'bg-neutral-100/80 border-neutral-200 hover:bg-[#9C4B8A]/10 text-neutral-700' 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
                             : 'bg-neutral-850/80 border-neutral-750 hover:bg-[#FF007F]/10 text-neutral-200'
                         }`}
                         title="Scroll to pinned message"
                       >
                         <span className="font-extrabold text-[#FF007F]">#{pinIdx + 1}:</span>
-<<<<<<< HEAD
-=======
-=======
-                            : 'bg-neutral-850/80 border-neutral-750 hover:bg-[#D4AF37]/10 text-neutral-200'
-                        }`}
-                        title="Scroll to pinned message"
-                      >
-                        <span className="font-extrabold text-[#D4AF37]">#{pinIdx + 1}:</span>
->>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
                         <span className="truncate">{pinMsg.text || 'Voice/Media'}</span>
                       </button>
                     );
@@ -2061,15 +1985,7 @@ export default function Messenger({
                   }));
                   showToast('All messages unpinned', 'info');
                 }}
-<<<<<<< HEAD
                 className={`text-[9.5px] uppercase font-black tracking-widest text-[#FF007F] hover:brightness-125 shrink-0 cursor-pointer`}
-=======
-<<<<<<< HEAD
-                className={`text-[9.5px] uppercase font-black tracking-widest text-[#FF007F] hover:brightness-125 shrink-0 cursor-pointer`}
-=======
-                className={`text-[9.5px] uppercase font-black tracking-widest text-[#D4AF37] hover:brightness-125 shrink-0 cursor-pointer`}
->>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
               >
                 Unpin All
               </button>
@@ -2111,15 +2027,7 @@ export default function Messenger({
                           highlightedMsgId === m.id
                             ? isLightMode
                               ? 'bg-amber-150/40 border-l-4 border-solid border-[#9C4B8A]'
-<<<<<<< HEAD
                               : 'bg-[#FF007F]/15 border-l-4 border-solid border-[#FF007F]'
-=======
-<<<<<<< HEAD
-                              : 'bg-[#FF007F]/15 border-l-4 border-solid border-[#FF007F]'
-=======
-                              : 'bg-[#D4AF37]/15 border-l-4 border-solid border-[#D4AF37]'
->>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
                             : ''
                         } ${
                           m.reactions && m.reactions.length > 0 ? 'pb-3.5' : 'pb-1'
@@ -2136,15 +2044,7 @@ export default function Messenger({
                           >
                             <div className={`w-4 h-4 rounded border border-solid flex items-center justify-center transition-all ${
                               selectedMsgIds.includes(m.id)
-<<<<<<< HEAD
                                 ? 'bg-[#FF007F] border-[#FF007F] text-white'
-=======
-<<<<<<< HEAD
-                                ? 'bg-[#FF007F] border-[#FF007F] text-white'
-=======
-                                ? 'bg-[#D4AF37] border-[#D4AF37] text-white'
->>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
                                 : isLightMode ? 'border-neutral-400 bg-white' : 'border-neutral-700 bg-neutral-900'
                             }`}>
                               {selectedMsgIds.includes(m.id) && <Check className="w-2.5 h-2.5 stroke-[3px] text-black" />}
@@ -2272,15 +2172,7 @@ export default function Messenger({
                             <div className={`p-2 rounded-lg text-[10.5px] border-l-4 border-solid mb-1.5 leading-relaxed truncate max-w-full ${
                               isLightMode
                                 ? 'bg-neutral-900/5 border-[#9C4B8A] text-neutral-700'
-<<<<<<< HEAD
                                 : 'bg-black/20 border-[#FF007F] text-neutral-300'
-=======
-<<<<<<< HEAD
-                                : 'bg-black/20 border-[#FF007F] text-neutral-300'
-=======
-                                : 'bg-black/20 border-[#D4AF37] text-neutral-300'
->>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
                             }`}>
                               <p className="font-extrabold text-[9px] uppercase tracking-wide">
                                 Replying to {m.replyToSender === 'user' ? 'You' : 'Advisor'}
@@ -2310,15 +2202,7 @@ export default function Messenger({
                                 className={`w-full p-2 text-xs rounded-lg focus:outline-none focus:ring-1 border border-solid font-semibold leading-relaxed ${
                                   isLightMode
                                     ? 'bg-white border-neutral-300 text-neutral-900 focus:ring-[#9C4B8A]'
-<<<<<<< HEAD
                                     : 'bg-[#2A3942] border-[#FF007F]/55 text-white focus:ring-[#FF007F]'
-=======
-<<<<<<< HEAD
-                                    : 'bg-[#2A3942] border-[#FF007F]/55 text-white focus:ring-[#FF007F]'
-=======
-                                    : 'bg-[#2A3942] border-[#D4AF37]/55 text-white focus:ring-[#D4AF37]'
->>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
                                 }`}
                                 rows={2}
                                 autoFocus
@@ -2364,15 +2248,7 @@ export default function Messenger({
                                     }}
                                     className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-colors ${
                                       fromMe
-<<<<<<< HEAD
                                         ? isLightMode ? 'bg-[#9C4B8A] text-white' : 'bg-[#FF007F] text-neutral-900'
-=======
-<<<<<<< HEAD
-                                        ? isLightMode ? 'bg-[#9C4B8A] text-white' : 'bg-[#FF007F] text-neutral-900'
-=======
-                                        ? isLightMode ? 'bg-[#9C4B8A] text-white' : 'bg-[#D4AF37] text-neutral-900'
->>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
                                         : isLightMode ? 'bg-neutral-100 text-neutral-800' : 'bg-neutral-800 text-white'
                                     } cursor-pointer`}
                                   >
@@ -2421,15 +2297,7 @@ export default function Messenger({
 
                           {/* Footer with Timestamp and WhatsApp ticking checks */}
                           <div className="flex items-center justify-end gap-1 px-0.5 mt-1.5 text-[8.5px] font-mono opacity-80 leading-none select-none">
-<<<<<<< HEAD
                             {m.isEdited && <span className="italic mr-1 text-[#FF007F] font-semibold font-sans">edited</span>}
-=======
-<<<<<<< HEAD
-                            {m.isEdited && <span className="italic mr-1 text-[#FF007F] font-semibold font-sans">edited</span>}
-=======
-                            {m.isEdited && <span className="italic mr-1 text-[#D4AF37] font-semibold font-sans">edited</span>}
->>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
                             <span>{m.timestamp}</span>
 
                             {fromMe && (
@@ -2468,15 +2336,7 @@ export default function Messenger({
                                 <span key={rIdx}>{r.emoji}</span>
                               ))}
                               {m.reactions.length > 1 && (
-<<<<<<< HEAD
                                 <span className="font-mono text-[8px] font-extrabold opacity-95 text-[#FF007F] ml-0.5">{m.reactions.length}</span>
-=======
-<<<<<<< HEAD
-                                <span className="font-mono text-[8px] font-extrabold opacity-95 text-[#FF007F] ml-0.5">{m.reactions.length}</span>
-=======
-                                <span className="font-mono text-[8px] font-extrabold opacity-95 text-[#D4AF37] ml-0.5">{m.reactions.length}</span>
->>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
                               )}
                             </div>
                           )}
@@ -2975,15 +2835,7 @@ export default function Messenger({
                       setContextMenu(null);
                     }}
                     className={`text-base hover:scale-130 transition-transform duration-200 cursor-pointer p-0.5 rounded ${
-<<<<<<< HEAD
                       hasReacted ? 'bg-[#FF007F]/20 scale-110' : ''
-=======
-<<<<<<< HEAD
-                      hasReacted ? 'bg-[#FF007F]/20 scale-110' : ''
-=======
-                      hasReacted ? 'bg-[#D4AF37]/20 scale-110' : ''
->>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
                     }`}
                   >
                     {emoji}
@@ -3197,18 +3049,8 @@ export default function Messenger({
               : 'bg-[#182229] border-neutral-800 text-white'
           }`} onClick={(e) => e.stopPropagation()}>
             <div className="flex items-center justify-between border-b border-solid pb-3 border-neutral-800/10">
-<<<<<<< HEAD
               <h3 className="text-sm font-serif font-black uppercase tracking-wider flex items-center gap-1.5 text-[#FF007F]">
                 <Info className="w-4 h-4 text-[#FF007F] animate-bounce" />
-=======
-<<<<<<< HEAD
-              <h3 className="text-sm font-serif font-black uppercase tracking-wider flex items-center gap-1.5 text-[#FF007F]">
-                <Info className="w-4 h-4 text-[#FF007F] animate-bounce" />
-=======
-              <h3 className="text-sm font-serif font-black uppercase tracking-wider flex items-center gap-1.5 text-[#D4AF37]">
-                <Info className="w-4 h-4 text-[#D4AF37] animate-bounce" />
->>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
                 <span>Message Info</span>
               </h3>
               <button 
@@ -3251,15 +3093,7 @@ export default function Messenger({
                 <div className="flex items-start gap-3">
                   <span className="text-sm">👁️</span>
                   <div>
-<<<<<<< HEAD
                     <p className="font-bold uppercase text-[9.5px] tracking-wider text-[#FF007F]">Read Receipt</p>
-=======
-<<<<<<< HEAD
-                    <p className="font-bold uppercase text-[9.5px] tracking-wider text-[#FF007F]">Read Receipt</p>
-=======
-                    <p className="font-bold uppercase text-[9.5px] tracking-wider text-[#D4AF37]">Read Receipt</p>
->>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
                     <p className="font-semibold mt-0.5">{infoMsg.timestamp} <span className="text-amber-500 font-extrabold">· Read by Advisor</span></p>
                   </div>
                 </div>
@@ -3270,15 +3104,7 @@ export default function Messenger({
               <button
                 type="button"
                 onClick={() => setInfoMsg(null)}
-<<<<<<< HEAD
                 className="w-full py-2 bg-[#FF007F] hover:brightness-110 text-black font-black uppercase text-xs tracking-widest rounded-xl transition-all cursor-pointer"
-=======
-<<<<<<< HEAD
-                className="w-full py-2 bg-[#FF007F] hover:brightness-110 text-black font-black uppercase text-xs tracking-widest rounded-xl transition-all cursor-pointer"
-=======
-                className="w-full py-2 bg-[#D4AF37] hover:brightness-110 text-black font-black uppercase text-xs tracking-widest rounded-xl transition-all cursor-pointer"
->>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
               >
                 Dismiss Info
               </button>
@@ -3339,15 +3165,7 @@ export default function Messenger({
           }`} onClick={(e) => e.stopPropagation()}>
             
             <div className="flex items-center justify-between border-b border-solid pb-3 border-neutral-800/10">
-<<<<<<< HEAD
               <h3 className="text-sm font-serif font-black uppercase tracking-wider flex items-center gap-1.5 text-[#FF007F]">
-=======
-<<<<<<< HEAD
-              <h3 className="text-sm font-serif font-black uppercase tracking-wider flex items-center gap-1.5 text-[#FF007F]">
-=======
-              <h3 className="text-sm font-serif font-black uppercase tracking-wider flex items-center gap-1.5 text-[#D4AF37]">
->>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
                 <Forward className="w-4 h-4 text-purple-400 animate-pulse" />
                 <span>Forward Message</span>
               </h3>
@@ -3369,15 +3187,7 @@ export default function Messenger({
 
             {/* Checklists */}
             <div className="space-y-1.5 max-h-56 overflow-y-auto custom-scrollbar pr-1 select-none">
-<<<<<<< HEAD
               <p className="text-[10px] font-black uppercase tracking-widest text-[#FF007F] mb-1.5">Deliver to:</p>
-=======
-<<<<<<< HEAD
-              <p className="text-[10px] font-black uppercase tracking-widest text-[#FF007F] mb-1.5">Deliver to:</p>
-=======
-              <p className="text-[10px] font-black uppercase tracking-widest text-[#D4AF37] mb-1.5">Deliver to:</p>
->>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
               {contacts.map((c) => {
                 const isSelected = selectedForwardContactIds.includes(c.id);
                 return (
@@ -3388,15 +3198,7 @@ export default function Messenger({
                       isSelected 
                         ? isLightMode 
                           ? 'bg-[#EAE6DF]/60 border-[#9C4B8A]' 
-<<<<<<< HEAD
                           : 'bg-[#2A3942] border-[#FF007F]'
-=======
-<<<<<<< HEAD
-                          : 'bg-[#2A3942] border-[#FF007F]'
-=======
-                          : 'bg-[#2A3942] border-[#D4AF37]'
->>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
                         : isLightMode
                           ? 'bg-transparent border-neutral-100 hover:bg-neutral-50'
                           : 'bg-transparent border-transparent hover:bg-[#202C33]/50'

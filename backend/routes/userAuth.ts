@@ -15,14 +15,7 @@ import { resolveAdminRole, timingSafePasswordEqual } from "../middleware/auth";
 import { getJwtSecret } from "../config/jwt";
 import { firebaseAuth } from "../utils/firebaseAdmin";
 import { checkLoginRateLimit, recordFailedLoginAttempt, resetLoginAttempts } from "../utils/bruteForce";
-<<<<<<< HEAD
 import { isValidCoordinate } from "../services/geoService";
-=======
-<<<<<<< HEAD
-import { isValidCoordinate } from "../services/geoService";
-=======
->>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
 
 const router = Router();
 
@@ -1202,14 +1195,7 @@ router.post("/login", async (req, res) => {
         country: user.country,
         mobileNumber: user.mobileNumber,
         tier: user.tier || "Silver",
-<<<<<<< HEAD
         savedLocation: user.savedLocation || null,
-=======
-<<<<<<< HEAD
-        savedLocation: user.savedLocation || null,
-=======
->>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
       },
       token,
       isAdmin,
@@ -1229,7 +1215,6 @@ router.post("/login", async (req, res) => {
 router.post("/google", async (req, res) => {
   try {
     const secret = getJwtSecret();
-<<<<<<< HEAD
 
     const { idToken, email, fullName, name, photoURL, autoRegister = true } = req.body || {};
 
@@ -1305,47 +1290,6 @@ router.post("/google", async (req, res) => {
       } catch {}
     }
 
-=======
-    if (!secret) {
-      return res.status(503).json({
-        success: false,
-        error: "Authentication service is temporarily misconfigured. Please contact support.",
-      });
-    }
-
-    const { idToken, autoRegister = true } = req.body;
-    if (!idToken || typeof idToken !== "string") {
-      return res.status(401).json({
-        success: false,
-        error: "Google authentication token (idToken) is required.",
-      });
-    }
-
-    // Verify Google ID token cryptographically using Firebase Admin SDK
-    let decoded: any;
-    try {
-      decoded = await firebaseAuth.verifyIdToken(idToken);
-    } catch (verifyErr: any) {
-      console.warn("Firebase verifyIdToken failed:", verifyErr?.message || verifyErr);
-      return res.status(401).json({
-        success: false,
-        error: "Invalid or expired Google authentication token. Please sign in again.",
-      });
-    }
-
-    if (!decoded || !decoded.email || decoded.email_verified !== true) {
-      return res.status(401).json({
-        success: false,
-        error: "Google account email is not verified or unavailable.",
-      });
-    }
-
-    const cleanEmail = String(decoded.email).toLowerCase().trim();
-    const cleanName = String(decoded.name || cleanEmail.split("@")[0] || "Google Member").trim();
-
-    console.log(`🔍 [GOOGLE AUTH] Verified token for: ${cleanEmail}`);
-
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
     let existingUser: any = null;
 
     if (isMongoConnected()) {
@@ -1360,7 +1304,6 @@ router.post("/google", async (req, res) => {
 
     if (!existingUser) {
       existingUser = (memoryStore.users || []).find(
-<<<<<<< HEAD
         (u) => u.email && u.email.toLowerCase().trim() === cleanEmail
       );
     }
@@ -1386,12 +1329,6 @@ router.post("/google", async (req, res) => {
       }
     } catch {}
 
-=======
-        (u) => u.email.toLowerCase().trim() === cleanEmail
-      );
-    }
-
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
     // 1. If user already exists in database, log them in directly
     if (existingUser) {
       if (existingUser.isBlocked) {
@@ -1407,21 +1344,13 @@ router.post("/google", async (req, res) => {
         { expiresIn: "7d" }
       );
 
-<<<<<<< HEAD
-=======
-      // Security directive: Never issue admin token from Google login route
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
       await logActivity(
         {
           eventType: "Login",
           status: "success",
           userName: existingUser.fullName || cleanName,
           email: existingUser.email,
-<<<<<<< HEAD
           details: "Google authentication verified via Firebase OAuth",
-=======
-          details: "Google authentication verified via Firebase ID Token",
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
         },
         req
       );
@@ -1431,12 +1360,9 @@ router.post("/google", async (req, res) => {
         isExisting: true,
         isNew: false,
         token,
-<<<<<<< HEAD
         isSeller,
         sellerStatus,
         sellerShopName,
-=======
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
         user: {
           _id: String(existingUser._id),
           name: existingUser.fullName || cleanName,
@@ -1444,10 +1370,7 @@ router.post("/google", async (req, res) => {
           phone: existingUser.phone || existingUser.mobileNumber || "",
           tier: existingUser.tier || "Silver",
           country: existingUser.country || "Bangladesh",
-<<<<<<< HEAD
           avatar: existingUser.avatar || avatarUrl || undefined,
-=======
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
         },
       });
     }
@@ -1471,7 +1394,6 @@ router.post("/google", async (req, res) => {
             tier: "Silver",
             verified: true,
             isBlocked: false,
-<<<<<<< HEAD
             avatar: avatarUrl || undefined,
           });
           await userDoc.save();
@@ -1492,13 +1414,6 @@ router.post("/google", async (req, res) => {
           } catch {}
         } catch (saveErr: any) {
           console.warn("MongoDB Google auto-register save error:", saveErr?.message);
-=======
-          });
-          await userDoc.save();
-          newUser = userDoc;
-        } catch (saveErr: any) {
-          console.warn("MongoDB auto-register save error:", saveErr?.message);
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
         }
       }
 
@@ -1514,7 +1429,6 @@ router.post("/google", async (req, res) => {
           tier: "Silver",
           verified: true,
           isBlocked: false,
-<<<<<<< HEAD
           avatar: avatarUrl || undefined,
           createdAt: new Date(),
         };
@@ -1539,11 +1453,6 @@ router.post("/google", async (req, res) => {
           avatar: avatarUrl || undefined,
           createdAt: new Date(),
         });
-=======
-          createdAt: new Date(),
-        };
-        memoryStore.users.push(newUser);
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
       }
 
       const token = jwt.sign(
@@ -1558,11 +1467,7 @@ router.post("/google", async (req, res) => {
           status: "success",
           userName: newUser.fullName,
           email: newUser.email,
-<<<<<<< HEAD
           details: "New user registered via Google OAuth",
-=======
-          details: "New user registered via Google OAuth (Firebase ID Token verified)",
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
         },
         req
       );
@@ -1572,12 +1477,9 @@ router.post("/google", async (req, res) => {
         isExisting: false,
         isNew: true,
         token,
-<<<<<<< HEAD
         isSeller,
         sellerStatus,
         sellerShopName,
-=======
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
         user: {
           _id: String(newUser._id),
           name: newUser.fullName,
@@ -1585,10 +1487,7 @@ router.post("/google", async (req, res) => {
           phone: "",
           tier: "Silver",
           country: "Bangladesh",
-<<<<<<< HEAD
           avatar: avatarUrl || undefined,
-=======
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
         },
       });
     }
@@ -1949,14 +1848,7 @@ router.get("/me", async (req, res) => {
         country: user.country,
         mobileNumber: user.mobileNumber,
         tier: user.tier,
-<<<<<<< HEAD
         savedLocation: user.savedLocation || null,
-=======
-<<<<<<< HEAD
-        savedLocation: user.savedLocation || null,
-=======
->>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
       },
       isAdmin,
       adminToken,
@@ -2044,10 +1936,6 @@ router.post("/change-password", async (req, res) => {
   }
 });
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
 // ==========================================
 // PATCH /api/auth/profile/location & /api/auth/saved-location - Save or Clear Customer Location
 // ==========================================
@@ -2119,9 +2007,4 @@ router.patch(["/profile/location", "/saved-location"], async (req, res) => {
   }
 });
 
-<<<<<<< HEAD
-=======
-=======
->>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
 export default router;

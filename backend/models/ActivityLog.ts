@@ -1,15 +1,7 @@
 import mongoose, { Schema, Document, Model } from "mongoose";
 
 export interface IActivityLog extends Document {
-<<<<<<< HEAD
   eventType: string;
-=======
-<<<<<<< HEAD
-  eventType: string;
-=======
-  eventType: "Registration" | "Login" | "Failed Login";
->>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
   userName: string;
   email: string;
   status: "success" | "failed";
@@ -27,13 +19,6 @@ const ActivityLogSchema = new Schema<IActivityLog>(
     eventType: {
       type: String,
       required: true,
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-      enum: ["Registration", "Login", "Failed Login"],
->>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
       index: true,
     },
     userName: { type: String, required: true, trim: true },

@@ -1,19 +1,8 @@
 import { Router } from "express";
 import Product from "../models/Product";
-<<<<<<< HEAD
 import { requireAdmin, AuthedRequest } from "../middleware/auth";
 import { isMongoConnected, memoryStore } from "../store";
 import { logActivity } from "../utils/activityLogger";
-=======
-<<<<<<< HEAD
-import { requireAdmin, AuthedRequest } from "../middleware/auth";
-import { isMongoConnected, memoryStore } from "../store";
-import { logActivity } from "../utils/activityLogger";
-=======
-import { requireAdmin } from "../middleware/auth";
-import { isMongoConnected, memoryStore } from "../store";
->>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
 
 const router = Router();
 router.use(requireAdmin);
@@ -50,10 +39,6 @@ router.get("/", async (_req, res) => {
   }
 });
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
 // Helper to sanitize rich HTML description against XSS / script injection
 function sanitizeRichHtml(rawHtml: string): string {
   if (!rawHtml || typeof rawHtml !== "string") return "";
@@ -128,22 +113,6 @@ router.post("/", async (req: AuthedRequest, res) => {
       maxOrderQty = 50,
       bundleInfo = "",
       lowStockThreshold = 5,
-<<<<<<< HEAD
-=======
-=======
-// POST /api/admin/products
-router.post("/", async (req, res) => {
-  try {
-    const {
-      name,
-      brand = "Alike Sovereign",
-      category,
-      subCategory = "",
-      eligibleFor20MinDelivery,
-      price,
-      mrp,
->>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
       rating = 4.8,
       reviewsCount = 120,
       stock = 10,
@@ -152,10 +121,6 @@ router.post("/", async (req, res) => {
       isFlashSale = false,
       image = "",
       images = [],
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
       whiteBgImage = "",
       promoBannerImage = "",
       videoUrl = "",
@@ -171,13 +136,6 @@ router.post("/", async (req, res) => {
       customSpecifications = [],
       variants = [],
       variantOptionGroups = [],
-<<<<<<< HEAD
-=======
-=======
-      description = "",
-      specifications = {},
->>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
       isWholesale = false,
       wholesalePrice = 0,
       wholesaleMinQty = 1,
@@ -191,10 +149,6 @@ router.post("/", async (req, res) => {
       countryOfOrigin = "India",
       manufacturerDetails = "",
       packInfo = "",
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
       sku = "",
       deliveryCharge = 0,
       packageWeightKg = 0.5,
@@ -383,79 +337,12 @@ router.post("/", async (req, res) => {
       lastDraftSavedAt: isDraft ? new Date() : undefined,
       changeHistory: initialHistory,
     };
-<<<<<<< HEAD
-=======
-=======
-    } = req.body;
-
-    if (!name || !category) {
-      return res.status(400).json({ error: "Product name and category are required" });
-    }
-
-    const numericPrice = Number(price);
-    if (isNaN(numericPrice) || numericPrice <= 0) {
-      return res.status(400).json({ error: "Product price must be a valid positive number greater than 0." });
-    }
-
-    const numericMrp = mrp !== undefined && mrp !== null ? Number(mrp) : numericPrice;
-    if (isNaN(numericMrp) || numericMrp < numericPrice) {
-      return res.status(400).json({ error: "MRP must be greater than or equal to the selling price." });
-    }
-
-    const numericStock = Math.max(0, Math.floor(Number(stock) || 0));
-    const numericRating = Math.min(5, Math.max(0, Number(rating) || 4.8));
-    const numericReviews = Math.max(0, Math.floor(Number(reviewsCount) || 0));
-
-    const is20Min = eligibleFor20MinDelivery !== undefined
-      ? Boolean(eligibleFor20MinDelivery)
-      : (category.trim() === 'grocery' || category.trim() === 'food_delivery' || category.trim() === 'delivery');
->>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
 
     let createdProduct: any = null;
 
     if (isMongoConnected()) {
       try {
-<<<<<<< HEAD
         createdProduct = await Product.create(productPayload);
-=======
-<<<<<<< HEAD
-        createdProduct = await Product.create(productPayload);
-=======
-        createdProduct = await Product.create({
-          name: name.trim(),
-          brand: brand.trim(),
-          category: category.trim(),
-          subCategory: String(subCategory || "").trim(),
-          eligibleFor20MinDelivery: is20Min,
-          price: numericPrice,
-          mrp: numericMrp,
-          rating: numericRating,
-          reviewsCount: Number(reviewsCount) || 120,
-          stock: numericStock,
-          stockStatus: stockStatus || (numericStock <= 0 ? "Out of Stock" : numericStock <= 3 ? "Only 2 left!" : "In Stock"),
-          badge,
-          isFlashSale: Boolean(isFlashSale),
-          image: image || "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&q=80&w=600",
-          images: Array.isArray(images) && images.length > 0 ? images : [image || "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&q=80&w=600"],
-          description,
-          specifications,
-          isWholesale: Boolean(isWholesale),
-          wholesalePrice: Number(wholesalePrice) || 0,
-          wholesaleMinQty: Number(wholesaleMinQty) || 1,
-          colors,
-          sizes,
-          emoji: emoji || "📦",
-          sellerId: sellerId || "admin",
-          sellerShopName: sellerShopName || "ALIKE-ND Official",
-          hsnCode: String(hsnCode || "").trim(),
-          gstRate: Number(gstRate) || 18,
-          countryOfOrigin: String(countryOfOrigin || "India").trim(),
-          manufacturerDetails: String(manufacturerDetails || "").trim(),
-          packInfo: String(packInfo || "").trim(),
-        });
->>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
       } catch (err) {
         console.warn("MongoDB create product failed, storing in-memory:", err);
       }
@@ -464,10 +351,6 @@ router.post("/", async (req, res) => {
     const newProd = {
       _id: createdProduct ? String(createdProduct._id) : `prod_${Date.now()}`,
       id: Date.now(),
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
       ...productPayload,
       createdAt: new Date(),
       updatedAt: new Date(),
@@ -486,45 +369,6 @@ router.post("/", async (req, res) => {
       req
     ).catch(() => {});
 
-<<<<<<< HEAD
-=======
-=======
-      name: name.trim(),
-      brand: brand.trim(),
-      category: category.trim(),
-      subCategory: String(subCategory || "").trim(),
-      eligibleFor20MinDelivery: is20Min,
-      price: numericPrice,
-      mrp: numericMrp,
-      rating: Number(rating) || 4.8,
-      reviewsCount: Number(reviewsCount) || 120,
-      stock: numericStock,
-      stockStatus: stockStatus || (numericStock <= 0 ? "Out of Stock" : numericStock <= 3 ? "Only 2 left!" : "In Stock"),
-      badge,
-      isFlashSale: Boolean(isFlashSale),
-      image: image || "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&q=80&w=600",
-      images: Array.isArray(images) && images.length > 0 ? images : [image || "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&q=80&w=600"],
-      description,
-      specifications,
-      isWholesale: Boolean(isWholesale),
-      wholesalePrice: Number(wholesalePrice) || 0,
-      wholesaleMinQty: Number(wholesaleMinQty) || 1,
-      colors,
-      sizes,
-      emoji: emoji || "📦",
-      sellerId: sellerId || "admin",
-      sellerShopName: sellerShopName || "ALIKE-ND Official",
-      hsnCode: String(hsnCode || "").trim(),
-      gstRate: Number(gstRate) || 18,
-      countryOfOrigin: String(countryOfOrigin || "India").trim(),
-      manufacturerDetails: String(manufacturerDetails || "").trim(),
-      packInfo: String(packInfo || "").trim(),
-      createdAt: new Date(),
-    };
-
-    memoryStore.products.unshift(newProd);
->>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
     return res.status(201).json(createdProduct || newProd);
   } catch (err: any) {
     res.status(500).json({ error: err.message || "Failed to create product" });
@@ -532,10 +376,6 @@ router.post("/", async (req, res) => {
 });
 
 // PUT /api/admin/products/:id
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
 router.put("/:id", async (req: AuthedRequest, res) => {
   try {
     const { id } = req.params;
@@ -569,24 +409,6 @@ router.put("/:id", async (req: AuthedRequest, res) => {
     if (body.maxOrderQty !== undefined) updateData.maxOrderQty = Math.max(1, Number(body.maxOrderQty) || 50);
     if (body.bundleInfo !== undefined) updateData.bundleInfo = String(body.bundleInfo || "").trim();
     if (body.lowStockThreshold !== undefined) updateData.lowStockThreshold = Math.max(1, Number(body.lowStockThreshold) || 5);
-<<<<<<< HEAD
-=======
-=======
-router.put("/:id", async (req, res) => {
-  try {
-    const { id } = req.params;
-    const body = req.body;
-
-    const updateData: any = {};
-    if (body.name !== undefined) updateData.name = body.name.trim();
-    if (body.brand !== undefined) updateData.brand = body.brand.trim();
-    if (body.category !== undefined) updateData.category = body.category.trim();
-    if (body.subCategory !== undefined) updateData.subCategory = body.subCategory.trim();
-    if (body.eligibleFor20MinDelivery !== undefined) updateData.eligibleFor20MinDelivery = Boolean(body.eligibleFor20MinDelivery);
-    if (body.price !== undefined) updateData.price = Number(body.price);
-    if (body.mrp !== undefined) updateData.mrp = Number(body.mrp);
->>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
     if (body.rating !== undefined) updateData.rating = Number(body.rating);
     if (body.reviewsCount !== undefined) updateData.reviewsCount = Number(body.reviewsCount);
     if (body.stock !== undefined) updateData.stock = Number(body.stock);
@@ -595,10 +417,6 @@ router.put("/:id", async (req, res) => {
     if (body.isFlashSale !== undefined) updateData.isFlashSale = Boolean(body.isFlashSale);
     if (body.image !== undefined) updateData.image = body.image;
     if (body.images !== undefined) updateData.images = body.images;
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
     if (body.whiteBgImage !== undefined) updateData.whiteBgImage = body.whiteBgImage;
     if (body.promoBannerImage !== undefined) updateData.promoBannerImage = body.promoBannerImage;
     if (body.videoUrl !== undefined) updateData.videoUrl = String(body.videoUrl || "").trim();
@@ -614,23 +432,12 @@ router.put("/:id", async (req, res) => {
     if (body.customSpecifications !== undefined) updateData.customSpecifications = Array.isArray(body.customSpecifications) ? body.customSpecifications : [];
     if (body.variants !== undefined) updateData.variants = Array.isArray(body.variants) ? body.variants : [];
     if (body.variantOptionGroups !== undefined) updateData.variantOptionGroups = Array.isArray(body.variantOptionGroups) ? body.variantOptionGroups : [];
-<<<<<<< HEAD
-=======
-=======
-    if (body.description !== undefined) updateData.description = body.description;
-    if (body.specifications !== undefined) updateData.specifications = body.specifications;
->>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
     if (body.isWholesale !== undefined) updateData.isWholesale = Boolean(body.isWholesale);
     if (body.wholesalePrice !== undefined) updateData.wholesalePrice = Number(body.wholesalePrice);
     if (body.wholesaleMinQty !== undefined) updateData.wholesaleMinQty = Number(body.wholesaleMinQty);
     if (body.colors !== undefined) updateData.colors = body.colors;
     if (body.sizes !== undefined) updateData.sizes = body.sizes;
     if (body.emoji !== undefined) updateData.emoji = body.emoji;
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
     if (body.sellerId !== undefined) updateData.sellerId = body.sellerId;
     if (body.sellerShopName !== undefined) updateData.sellerShopName = body.sellerShopName;
     if (body.hsnCode !== undefined) updateData.hsnCode = String(body.hsnCode || "").trim();
@@ -678,24 +485,10 @@ router.put("/:id", async (req, res) => {
     if (body.inventoryHistory !== undefined) updateData.inventoryHistory = body.inventoryHistory;
 
     const actorName = req.admin?.name || req.admin?.email || "Admin";
-<<<<<<< HEAD
-=======
-=======
-    if (body.hsnCode !== undefined) updateData.hsnCode = String(body.hsnCode || "").trim();
-    if (body.gstRate !== undefined) updateData.gstRate = Number(body.gstRate) || 18;
-    if (body.countryOfOrigin !== undefined) updateData.countryOfOrigin = String(body.countryOfOrigin || "India").trim();
-    if (body.manufacturerDetails !== undefined) updateData.manufacturerDetails = String(body.manufacturerDetails || "").trim();
-    if (body.packInfo !== undefined) updateData.packInfo = String(body.packInfo || "").trim();
->>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
 
     let updatedMongo: any = null;
     if (isMongoConnected()) {
       try {
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
         updatedMongo = await Product.findByIdAndUpdate(
           id,
           {
@@ -711,12 +504,6 @@ router.put("/:id", async (req, res) => {
           },
           { new: true }
         );
-<<<<<<< HEAD
-=======
-=======
-        updatedMongo = await Product.findByIdAndUpdate(id, updateData, { new: true });
->>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
       } catch (err) {
         console.warn("MongoDB update product failed, checking in-memory store:", err);
       }
@@ -724,10 +511,6 @@ router.put("/:id", async (req, res) => {
 
     const index = memoryStore.products.findIndex((p) => p._id === id || String(p.id) === id);
     if (index !== -1) {
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
       const existingHistory = Array.isArray((memoryStore.products[index] as any).changeHistory)
         ? (memoryStore.products[index] as any).changeHistory
         : [];
@@ -770,20 +553,6 @@ router.put("/:id", async (req, res) => {
         },
         req
       ).catch(() => {});
-<<<<<<< HEAD
-=======
-=======
-      memoryStore.products[index] = {
-        ...memoryStore.products[index],
-        ...updateData,
-        updatedAt: new Date(),
-      };
-      return res.json(updatedMongo || memoryStore.products[index]);
-    }
-
-    if (updatedMongo) {
->>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
       return res.json(updatedMongo);
     }
 
@@ -793,10 +562,6 @@ router.put("/:id", async (req, res) => {
   }
 });
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
 // POST /api/admin/products/:id/duplicate - Duplicate a product as a Draft copy
 router.post("/:id/duplicate", async (req: AuthedRequest, res) => {
   try {
@@ -1235,19 +1000,6 @@ router.delete("/:id", async (req: AuthedRequest, res) => {
       try {
         const doc = await Product.findByIdAndDelete(id);
         if (doc) deletedTitle = doc.name;
-<<<<<<< HEAD
-=======
-=======
-// DELETE /api/admin/products/:id
-router.delete("/:id", async (req, res) => {
-  try {
-    const { id } = req.params;
-
-    if (isMongoConnected()) {
-      try {
-        await Product.findByIdAndDelete(id);
->>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
       } catch (err) {
         console.warn("MongoDB delete product failed, checking in-memory store:", err);
       }
@@ -1255,10 +1007,6 @@ router.delete("/:id", async (req, res) => {
 
     const index = memoryStore.products.findIndex((p) => p._id === id || String(p.id) === id);
     if (index !== -1) {
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
       if (!deletedTitle) deletedTitle = memoryStore.products[index].name;
       memoryStore.products.splice(index, 1);
     }
@@ -1275,15 +1023,6 @@ router.delete("/:id", async (req, res) => {
     ).catch(() => {});
 
     return res.json({ ok: true, message: `Product "${deletedTitle || id}" removed from catalog` });
-<<<<<<< HEAD
-=======
-=======
-      memoryStore.products.splice(index, 1);
-    }
-
-    return res.json({ ok: true, message: "Product removed from catalog" });
->>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
   } catch (err: any) {
     res.status(500).json({ error: err.message || "Failed to delete product" });
   }
@@ -1291,11 +1030,4 @@ router.delete("/:id", async (req, res) => {
 
 export default router;
 
-<<<<<<< HEAD
 
-=======
-<<<<<<< HEAD
-
-=======
->>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995

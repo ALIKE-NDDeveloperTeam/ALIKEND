@@ -68,16 +68,6 @@ export async function checkLoginRateLimit(
   }
 
   if (!isMongoConnected()) {
-<<<<<<< HEAD
-=======
-    if (process.env.NODE_ENV === "production") {
-      return {
-        allowed: false,
-        status: 503,
-        error: "Authentication service is temporarily unavailable. Please try again shortly.",
-      };
-    }
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
     return { allowed: true };
   }
 
@@ -114,16 +104,6 @@ export async function checkLoginRateLimit(
 
     return { allowed: true };
   } catch (err) {
-<<<<<<< HEAD
-=======
-    if (process.env.NODE_ENV === "production") {
-      return {
-        allowed: false,
-        status: 503,
-        error: "Authentication service is temporarily unavailable. Please try again shortly.",
-      };
-    }
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
     return { allowed: true };
   }
 }

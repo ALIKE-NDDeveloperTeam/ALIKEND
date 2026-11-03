@@ -25,10 +25,6 @@ export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundarySt
 
   componentDidCatch(error: Error, errorInfo: ErrorInfo) {
     console.error('App runtime error caught by boundary:', error, errorInfo);
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
 
     // Auto-recover from dynamic module loading errors (e.g. after deployment or Vite dev server rebuild)
     const isModuleError =
@@ -55,15 +51,6 @@ export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundarySt
   private handleReload = () => {
     try {
       sessionStorage.removeItem('eb_dynamic_import_reloaded');
-<<<<<<< HEAD
-=======
-=======
-  }
-
-  private handleReload = () => {
-    try {
->>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
       localStorage.clear();
     } catch (e) {}
     window.location.reload();
@@ -71,30 +58,17 @@ export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundarySt
 
   render(): ReactNode {
     if (this.state.hasError) {
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
       const isDynamicImport =
         this.state.error?.name === 'ChunkLoadError' ||
         /failed to fetch dynamically imported module/i.test(this.state.error?.message || '') ||
         /loading chunk/i.test(this.state.error?.message || '');
 
-<<<<<<< HEAD
-=======
-=======
->>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
       return (
         <div className="min-h-screen bg-neutral-950 text-white flex flex-col items-center justify-center p-6 text-center">
           <div className="w-16 h-16 rounded-2xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400 mb-6 shadow-lg">
             <AlertTriangle className="w-8 h-8" />
           </div>
           <h1 className="text-2xl font-black tracking-tight text-white mb-2 uppercase">
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
             {isDynamicImport ? 'মডিউল সিঙ্ক আপডেট / Module Sync' : 'Application Recovery'}
           </h1>
           <p className="text-neutral-400 text-sm max-w-md mb-6 leading-relaxed">
@@ -110,17 +84,6 @@ export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundarySt
               <RefreshCw className="w-4 h-4" />
               <span>পুনরায় চেষ্টা করুন (Try Again)</span>
             </button>
-<<<<<<< HEAD
-=======
-=======
-            Application Recovery
-          </h1>
-          <p className="text-neutral-400 text-sm max-w-md mb-6 leading-relaxed">
-            A temporary display sync occurred. Click below to refresh the page and restore the application view.
-          </p>
-          <div className="flex gap-3">
->>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
             <button
               onClick={() => window.location.reload()}
               className="px-6 py-3 bg-white text-black font-extrabold text-xs uppercase tracking-wider rounded-xl hover:bg-neutral-200 transition-all flex items-center gap-2 cursor-pointer shadow-md"

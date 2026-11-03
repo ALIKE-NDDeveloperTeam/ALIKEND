@@ -9,10 +9,6 @@ import Toast from './components/Toast';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import { BottomNav } from './components/BottomNav';
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
 
 // Primary Landing Page (eagerly loaded for zero-delay First Contentful Paint)
 import Home from './pages/Home';
@@ -97,39 +93,6 @@ const AdminBannerEditModal = lazyWithRetry(() => import('./components/admin/Admi
 const AdminAdEditModal = lazyWithRetry(() => import('./components/admin/AdminAdEditModal').then(m => ({ default: m.AdminAdEditModal })));
 const AdminFlashSaleModal = lazyWithRetry(() => import('./components/admin/AdminFlashSaleModal').then(m => ({ default: m.AdminFlashSaleModal })));
 const AdminConfirmDeleteModal = lazyWithRetry(() => import('./components/admin/AdminConfirmDeleteModal').then(m => ({ default: m.AdminConfirmDeleteModal })));
-<<<<<<< HEAD
-=======
-=======
-import LoginModal from './components/LoginModal';
-
-// Primary Landing Page (eagerly loaded for zero-delay First Contentful Paint)
-import Home from './pages/Home';
-
-// On-demand code-split sub-pages and modals
-const ProductDetail = lazy(() => import('./pages/ProductDetail'));
-const SearchPage = lazy(() => import('./pages/SearchPage'));
-const Cart = lazy(() => import('./pages/Cart'));
-const Checkout = lazy(() => import('./pages/Checkout'));
-const Profile = lazy(() => import('./pages/Profile'));
-const WishlistPage = lazy(() => import('./pages/Wishlist'));
-const Messenger = lazy(() => import('./pages/Messenger'));
-const JobsPortal = lazy(() => import('./pages/JobsPortal'));
-const TermsAndConditions = lazy(() => import('./pages/TermsAndConditions'));
-const PrivacyPolicy = lazy(() => import('./pages/PrivacyPolicy'));
-const ReturnRefundPolicy = lazy(() => import('./pages/ReturnRefundPolicy'));
-const GrievanceRedressalPolicy = lazy(() => import('./pages/GrievanceRedressalPolicy'));
-const SellerPolicy = lazy(() => import('./pages/SellerPolicy'));
-const SellerDashboard = lazy(() => import('./pages/SellerDashboard'));
-const SellerRegister = lazy(() => import('./pages/SellerRegister'));
-const NotificationsPage = lazy(() => import('./pages/Notifications'));
-const AIRecommendations = lazy(() => import('./pages/AIRecommendations'));
-const AdminPanel = lazy(() => import('./pages/AdminPanel'));
-const SuperAdminLogin = lazy(() => import('./pages/SuperAdminLogin'));
-const StaffAdminLogin = lazy(() => import('./pages/StaffAdminLogin'));
-const SupportCenter = lazy(() => import('./pages/SupportCenter'));
-const SearchModal = lazy(() => import('./components/SearchModal'));
->>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
 import { adminApi } from './pages/adminApi';
 
 // Dedicated secret administration path (prevents unauthorized discovery of the ops console)
@@ -216,31 +179,16 @@ export function parseRouteFromUrl(): ParsedRoute {
   if (pathname === '/returns' || pathname === '/return-refund-policy' || pathname === '/return_refund_policy' || pathname === '/refunds') return { view: 'return_refund_policy', category: 'all', searchQuery: '', productId: null };
   if (pathname === '/grievance' || pathname === '/grievance-redressal' || pathname === '/grievance_policy' || pathname === '/grievance-policy') return { view: 'grievance_policy', category: 'all', searchQuery: '', productId: null };
   if (pathname === '/seller-policy' || pathname === '/seller_policy' || pathname === '/merchant-policy') return { view: 'seller_policy', category: 'all', searchQuery: '', productId: null };
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
   if (pathname === '/seller/login' || pathname === '/seller-login' || pathname === '/seller_login') return { view: 'seller_login', category: 'all', searchQuery: '', productId: null };
   if (pathname === '/seller/signup' || pathname === '/seller-signup' || pathname === '/seller_signup') return { view: 'seller_signup', category: 'all', searchQuery: '', productId: null };
   if (pathname === '/seller/forgot-password' || pathname === '/seller-forgot-password' || pathname === '/seller_forgot_password') return { view: 'seller_forgot_password', category: 'all', searchQuery: '', productId: null };
   if (pathname === '/seller_register' || pathname === '/seller-register' || pathname === '/seller') return { view: 'seller_register', category: 'all', searchQuery: '', productId: null };
   if (pathname === '/seller/dashboard' || pathname === '/seller_dashboard' || pathname === '/seller-dashboard') return { view: 'seller_dashboard', category: 'all', searchQuery: '', productId: null };
-<<<<<<< HEAD
-=======
-=======
-  if (pathname === '/seller_register' || pathname === '/seller-register') return { view: 'seller_register', category: 'all', searchQuery: '', productId: null };
-  if (pathname === '/seller_dashboard' || pathname === '/seller-dashboard') return { view: 'seller_dashboard', category: 'all', searchQuery: '', productId: null };
->>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
   if (pathname === '/notifications') return { view: 'notifications', category: 'all', searchQuery: '', productId: null };
   if (pathname === '/support' || pathname === '/help' || pathname === '/customer-care') return { view: 'support', category: 'all', searchQuery: '', productId: null };
   if (pathname === '/ai_recs' || pathname === '/ai-recs') return { view: 'ai_recs', category: 'all', searchQuery: '', productId: null };
   if (pathname === '/superadmin_login') return { view: 'superadmin_login', category: 'all', searchQuery: '', productId: null };
   if (pathname === '/staffadmin_login') return { view: 'staffadmin_login', category: 'all', searchQuery: '', productId: null };
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
   if (pathname === '/rides' || pathname === '/book-ride' || pathname === '/ride') return { view: 'rides', category: 'all', searchQuery: '', productId: null };
   if (pathname === '/driver' || pathname === '/driver-portal' || pathname === '/driver_portal') return { view: 'driver_portal', category: 'all', searchQuery: '', productId: null };
   if (pathname === '/delivery' || pathname === '/delivery-hub' || pathname === '/quick-delivery') return { view: 'delivery', category: 'all', searchQuery: '', productId: null };
@@ -255,11 +203,6 @@ export function parseRouteFromUrl(): ParsedRoute {
       productId: null,
     };
   }
-<<<<<<< HEAD
-=======
-=======
->>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
 
   // Default to home
   return { view: 'home', category: 'all', searchQuery: '', productId: null };
@@ -317,31 +260,16 @@ export function buildRouteUrl(
   if (view === 'return_refund_policy' || view === 'returns') return '/returns';
   if (view === 'grievance_policy' || view === 'grievance') return '/grievance';
   if (view === 'seller_policy') return '/seller-policy';
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
   if (view === 'seller_login') return '/seller/login';
   if (view === 'seller_signup') return '/seller/signup';
   if (view === 'seller_forgot_password') return '/seller/forgot-password';
   if (view === 'seller_register') return '/seller/login';
   if (view === 'seller_dashboard') return '/seller/dashboard';
-<<<<<<< HEAD
-=======
-=======
-  if (view === 'seller_register') return '/seller_register';
-  if (view === 'seller_dashboard') return '/seller_dashboard';
->>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
   if (view === 'notifications') return '/notifications';
   if (view === 'support' || view === 'help') return '/support';
   if (view === 'ai_recs') return '/ai_recs';
   if (view === 'superadmin_login') return '/superadmin_login';
   if (view === 'staffadmin_login') return '/staffadmin_login';
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
   if (view === 'rides') return '/rides';
   if (view === 'driver_portal' || view === 'driver') return '/driver';
   if (view === 'delivery') return '/delivery';
@@ -350,11 +278,6 @@ export function buildRouteUrl(
     const sid = view.startsWith('store_') ? view.replace('store_', '') : category;
     return sid ? `/store/${encodeURIComponent(sid)}` : '/';
   }
-<<<<<<< HEAD
-=======
-=======
->>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
 
   return '/';
 }
@@ -362,14 +285,6 @@ export function buildRouteUrl(
 import { X, ShoppingCart, Star, Heart, ArrowRight } from 'lucide-react';
 import GlassCloseButton from './components/GlassCloseButton';
 import FavoriteButton from './components/FavoriteButton';
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-import QuickViewModal from './components/QuickViewModal';
-import ComparisonCorridorBar from './components/ComparisonCorridorBar';
->>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
 import PageLoader from './components/PageLoader';
 
 const PageLoadingFallback = () => (
@@ -413,10 +328,6 @@ const MessengerLoadingFallback = () => (
 );
 
 export default function App() {
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
   const { location, setLocation, showLocationModal, setShowLocationModal, promptLocationCapture } = useLocation();
   // Live Website Admin Editing System Hook
   const {
@@ -442,11 +353,6 @@ export default function App() {
     triggerRefresh,
     refreshTrigger,
   } = useAdminEdit();
-<<<<<<< HEAD
-=======
-=======
->>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
 
   // Core Persistent State with database-backed session validation
   const [user, setUser] = useState<{ _id?: string; name: string; email: string; phone: string; avatar?: string; tier?: string } | null>(() => {
@@ -474,32 +380,15 @@ export default function App() {
         .then((res) => {
           if (res && res.success && res.token) {
             adminApi.setToken(res.token);
-<<<<<<< HEAD
             if (res.admin) {
               loginAdmin(res.admin, res.token);
             }
-=======
-<<<<<<< HEAD
-            if (res.admin) {
-              loginAdmin(res.admin, res.token);
-            }
-=======
->>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
             console.log("👑 [ADMIN AUTO-AUTHENTICATED] Admin privileges bridged for:", user.email);
           }
         })
         .catch(() => {});
     }
-<<<<<<< HEAD
   }, [user, loginAdmin]);
-=======
-<<<<<<< HEAD
-  }, [user, loginAdmin]);
-=======
-  }, [user]);
->>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
 
   const [isSeller, setIsSeller] = useState<boolean>(() => {
     try {
@@ -607,14 +496,7 @@ export default function App() {
       name: p.name,
       brand: p.brand || "Alike Sovereign",
       category: p.category,
-<<<<<<< HEAD
       subCategory: p.subCategory,
-=======
-<<<<<<< HEAD
-      subCategory: p.subCategory,
-=======
->>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
       price: p.price,
       mrp: p.mrp || p.price,
       rating: p.rating || 4.8,
@@ -633,10 +515,6 @@ export default function App() {
       wholesaleMinQty: p.wholesaleMinQty,
       colors: p.colors || ['Black', 'Gold', 'Silver'],
       sizes: p.sizes || ['Standard'],
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
       emoji: p.emoji || '✨',
       sellerId: p.sellerId,
       sellerShopName: p.sellerShopName,
@@ -670,20 +548,6 @@ export default function App() {
         ...(token ? { Authorization: `Bearer ${token}` } : {}),
       },
     })
-<<<<<<< HEAD
-=======
-=======
-      emoji: p.emoji || '✨'
-    }));
-    setProducts(normalized);
-    localStorage.setItem('alike_products', JSON.stringify(normalized));
-  };
-
-  // Sync catalog live from MongoDB storefront /api/products
-  useEffect(() => {
-    fetch('/api/products')
->>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
       .then((res) => res.json())
       .then((data) => {
         if (Array.isArray(data) && data.length > 0) {
@@ -691,15 +555,7 @@ export default function App() {
         }
       })
       .catch((err) => console.warn('Storefront products API fallback:', err));
-<<<<<<< HEAD
   }, [refreshTrigger, adminUser, location?.lat, location?.lng]);
-=======
-<<<<<<< HEAD
-  }, [refreshTrigger, adminUser, location?.lat, location?.lng]);
-=======
-  }, []);
->>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
 
   // Global keyboard shortcut for search experience (⌘K or Ctrl+K)
   useEffect(() => {
@@ -741,10 +597,6 @@ export default function App() {
   }, [quickViewProduct]);
 
   // App Routing Visibility & URL Navigation state
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
   const [currentAdminUser, setCurrentAdminUser] = useState<{ _id?: string; name: string; email: string; role: string } | null>(() => adminUser);
 
   useEffect(() => {
@@ -754,12 +606,6 @@ export default function App() {
       setCurrentAdminUser(null);
     }
   }, [adminUser]);
-<<<<<<< HEAD
-=======
-=======
-  const [currentAdminUser, setCurrentAdminUser] = useState<{ _id?: string; name: string; email: string; role: string } | null>(null);
->>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
 
   // (a) Route State Initialization: restores view, category, product ID, and search query on reload or direct link
   const [currentView, setCurrentView] = useState<string>(() => parseRouteFromUrl().view);
@@ -806,32 +652,6 @@ export default function App() {
     localStorage.setItem('alike_theme', 'light');
   }, []);
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('revealed');
-          }
-        });
-      }, { threshold: 0.08 });
-
-      const elts = document.querySelectorAll('.product-card, .category-card, .section-header, .reveal-entry');
-      elts.forEach(el => {
-        el.classList.add('reveal-entry');
-        observer.observe(el);
-      });
-    }, 120);
-
-    return () => clearTimeout(timer);
-  }, [currentView]);
-
->>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
   // Close floating chat widget on click outside
   useEffect(() => {
     const handleOutsideClick = (e: MouseEvent | TouchEvent) => {
@@ -924,10 +744,6 @@ export default function App() {
             tier: data.user.tier,
           });
           setIsSeller(Boolean(data.isSeller));
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
           if (!location && data.user.savedLocation && typeof data.user.savedLocation.lat === 'number' && typeof data.user.savedLocation.lng === 'number') {
             setLocation(
               {
@@ -939,11 +755,6 @@ export default function App() {
               false
             );
           }
-<<<<<<< HEAD
-=======
-=======
->>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
         } else {
           // Token or user not found in MongoDB
           console.warn("Session verification failed against MongoDB. Resetting session:", data?.error);
@@ -1261,10 +1072,6 @@ export default function App() {
     } else if (view === 'detail') {
       nextView = 'detail';
       nextProductId = selectedProductId;
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
     } else if (view === 'profile' || view === 'orders') {
       nextView = 'profile';
       nextProductId = null;
@@ -1272,35 +1079,16 @@ export default function App() {
       if (view === 'orders') {
         setProfileInitialTab('orders');
       } else if (categoryFilter === 'settings' || categoryFilter === 'addresses' || categoryFilter === 'orders' || categoryFilter === 'wishlist') {
-<<<<<<< HEAD
-=======
-=======
-    } else if (view === 'profile') {
-      nextView = 'profile';
-      nextProductId = null;
-      setSelectedProductId(null);
-      if (categoryFilter === 'settings' || categoryFilter === 'addresses' || categoryFilter === 'orders' || categoryFilter === 'wishlist') {
->>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
         setProfileInitialTab(categoryFilter);
       } else {
         setProfileInitialTab('orders');
       }
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
     } else if (view.startsWith('store_') || view === 'seller_store') {
       nextView = 'seller_store';
       nextCategory = view.startsWith('store_') ? view.replace('store_', '') : (categoryFilter || selectedCategory);
       nextProductId = null;
       setSelectedCategory(nextCategory);
       setSelectedProductId(null);
-<<<<<<< HEAD
-=======
-=======
->>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
     } else {
       nextView = view;
       nextProductId = null;
@@ -1348,10 +1136,6 @@ export default function App() {
 
       {/* 2. Global Toast and Login overlays */}
       <Toast toasts={toastList} onDismiss={removeToast} />
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
 
       {/* Customer Location Capture Modal */}
       {showLocationModal && (
@@ -1365,13 +1149,6 @@ export default function App() {
       
       {loginOpen && (
         <Suspense fallback={null}>
-<<<<<<< HEAD
-=======
-=======
-      
-      {loginOpen && (
->>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
         <LoginModal
           isOpen={loginOpen}
           onClose={() => setLoginOpen(false)}
@@ -1389,14 +1166,7 @@ export default function App() {
                 role: adminRole,
               };
               setCurrentAdminUser(adminObj);
-<<<<<<< HEAD
               loginAdmin(adminObj, (userData as any).adminToken);
-=======
-<<<<<<< HEAD
-              loginAdmin(adminObj, (userData as any).adminToken);
-=======
->>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
               setUser({
                 _id: userData._id,
                 name: userData.name,
@@ -1454,10 +1224,6 @@ export default function App() {
             } else {
               showToast(`Welcome inside Alike luxury corridors, ${userData.name}!`, 'success');
             }
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
 
             // Restore savedLocation from user profile if available, or prompt location capture after login
             const savedLoc = (userData as any)?.savedLocation;
@@ -1474,11 +1240,6 @@ export default function App() {
             } else if (!location) {
               setTimeout(() => promptLocationCapture(), 500);
             }
-<<<<<<< HEAD
-=======
-=======
->>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
           }}
           onShowForgotPassword={() => {
             setLoginOpen(false);
@@ -1487,14 +1248,7 @@ export default function App() {
           showToast={showToast}
           isLightMode={isLightMode}
         />
-<<<<<<< HEAD
         </Suspense>
-=======
-<<<<<<< HEAD
-        </Suspense>
-=======
->>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
       )}
 
       {/* Global Search Modal Experience */}
@@ -1520,10 +1274,6 @@ export default function App() {
         </Suspense>
       )}
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
       {/* 3. Sticky top navigational Header block (hidden inside standalone Seller/Admin workspaces) */}
       {currentView !== 'seller_dashboard' && currentView !== 'admin' && (
         <Header
@@ -1603,77 +1353,6 @@ export default function App() {
 
       {/* 4. Sub-page router dispatcher */}
       <main className={`flex-grow pt-0 relative z-10 ${currentView === 'seller_dashboard' || currentView === 'admin' ? 'pb-0' : 'pb-16'}`} id="main-spa-body">
-<<<<<<< HEAD
-=======
-=======
-      {/* 3. Sticky top navigational Header block */}
-      <Header
-        currentView={currentView}
-        onNavigate={handleNavigate}
-        cartCount={cart.reduce((sum, item) => sum + item.quantity, 0)}
-        wishlistCount={wishlist.length}
-        unreadMessagesCount={unreadMessagesCount}
-        unreadNotificationsCount={unreadNotificationsCount}
-        onClearUnreadMessages={() => setUnreadMessagesCount(0)}
-        onClearUnreadNotifications={() => setUnreadNotificationsCount(0)}
-        user={user}
-        isSeller={isSeller}
-        onLogout={() => {
-          localStorage.removeItem('alike_user');
-          localStorage.removeItem('alike_user_token');
-          localStorage.removeItem('alikend_admin_token');
-          adminApi.clearToken();
-          signOut(auth)
-            .then(() => {
-              setUser(null);
-              setIsSeller(false);
-              setWalletBalance(0);
-              setCart([]);
-              setWishlist([]);
-              setOrders([]);
-              showToast('Logged out of luxury segment session.', 'info');
-              handleNavigate('home');
-            })
-            .catch((err) => {
-              console.error("Firebase signOut failed:", err);
-              setUser(null);
-              setIsSeller(false);
-              setWalletBalance(0);
-              setCart([]);
-              setWishlist([]);
-              setOrders([]);
-              showToast('Logged out of luxury segment session.', 'info');
-              handleNavigate('home');
-            });
-        }}
-        onOpenAuthModal={(tab) => {
-          setLoginOpen(true);
-        }}
-        onSearch={(q) => {
-          setSearchQuery(q);
-          if (typeof window !== 'undefined') {
-            const targetUrl = buildRouteUrl('search', selectedCategory, q, null);
-            const currentUrl = window.location.pathname + window.location.search;
-            if (currentUrl !== targetUrl) {
-              window.history.pushState({ view: 'search', q, category: selectedCategory }, '', targetUrl);
-            }
-          }
-          if (currentView !== 'search') {
-            setCurrentView('search');
-          }
-        }}
-        onOpenSearchModal={(initialQ) => {
-          if (initialQ !== undefined) setSearchQuery(initialQ);
-          setSearchModalOpen(true);
-        }}
-        isLightMode={isLightMode}
-        selectedCategory={selectedCategory}
-      />
-
-      {/* 4. Sub-page router dispatcher */}
-      <main className="flex-grow pt-0 pb-16 relative z-10" id="main-spa-body">
->>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
         <div key={currentView} className="animate-page-in">
           {currentView === 'home' && (
           <Home
@@ -1878,10 +1557,6 @@ export default function App() {
           />
         )}
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
         {(currentView === 'seller_register' ||
           currentView === 'seller_login' ||
           currentView === 'seller_signup' ||
@@ -1899,20 +1574,6 @@ export default function App() {
               setIsSeller(true);
             }}
             onLoginSuccess={() => {
-<<<<<<< HEAD
-=======
-=======
-        {currentView === 'seller_register' && (
-          <SellerRegister
-            onRegisterSuccess={(seller) => {
-              if (seller && seller.status === 'approved') {
-                setIsSeller(true);
-                handleNavigate('seller_dashboard');
-              }
-            }}
-            onLoginSuccess={(seller) => {
->>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
               setIsSeller(true);
               handleNavigate('seller_dashboard');
             }}
@@ -1952,10 +1613,6 @@ export default function App() {
           />
         )}
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
         {currentView === 'seller_store' && (
           <PublicSellerStore
             sellerId={selectedCategory}
@@ -1967,11 +1624,6 @@ export default function App() {
           />
         )}
 
-<<<<<<< HEAD
-=======
-=======
->>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
         {currentView === 'notifications' && (
           <NotificationsPage
             notifications={INITIAL_NOTIFICATIONS}
@@ -2014,14 +1666,7 @@ export default function App() {
             <SuperAdminLogin
               onLoginSuccess={(admin) => {
                 setCurrentAdminUser(admin);
-<<<<<<< HEAD
                 loginAdmin(admin);
-=======
-<<<<<<< HEAD
-                loginAdmin(admin);
-=======
->>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
                 showToast(`Welcome Master Administrator, ${admin.name}.`, 'success');
               }}
               onSuccess={() => {
@@ -2039,14 +1684,7 @@ export default function App() {
             <StaffAdminLogin
               onLoginSuccess={(admin) => {
                 setCurrentAdminUser(admin);
-<<<<<<< HEAD
                 loginAdmin(admin);
-=======
-<<<<<<< HEAD
-                loginAdmin(admin);
-=======
->>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
                 showToast(`Welcome Operations Staff, ${admin.name}.`, 'success');
               }}
               onSuccess={() => {
@@ -2058,10 +1696,6 @@ export default function App() {
             />
           </div>
         )}
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
 
         {/* ALIKE ND Rides Passenger Booking View */}
         {currentView === 'rides' && (
@@ -2102,11 +1736,6 @@ export default function App() {
             isLightMode={isLightMode}
           />
         )}
-<<<<<<< HEAD
-=======
-=======
->>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
           </Suspense>
         )}
         </div>
@@ -2147,10 +1776,6 @@ export default function App() {
         );
       })()}
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
       {/* Mobile Sticky Bottom Navigation Bar (Simple • Premium • Luxury • Cart • Account) */}
       {currentView !== 'seller_dashboard' && currentView !== 'admin' && (
         <BottomNav
@@ -2199,50 +1824,6 @@ export default function App() {
             onCompare={() => setShowCompareModal(true)}
           />
         </Suspense>
-<<<<<<< HEAD
-=======
-=======
-      {/* Mobile Sticky Bottom Navigation Bar */}
-      <BottomNav
-        currentView={currentView}
-        cartCount={cart.reduce((sum, item) => sum + item.quantity, 0)}
-        wishlistCount={wishlist.length}
-        user={user}
-        isLightMode={isLightMode}
-        onNavigate={handleNavigate}
-        onOpenAuthModal={() => setLoginOpen(true)}
-      />
-
-      {/* 2.1 Product Quick View Modal */}
-      <QuickViewModal
-        product={quickViewProduct}
-        isOpen={Boolean(quickViewProduct)}
-        onClose={() => setQuickViewProduct(null)}
-        onAddToCart={handleAddToCart}
-        onToggleWishlist={handleToggleWishlist}
-        isWishlisted={Boolean(quickViewProduct && wishlist.some((p) => p.id === quickViewProduct.id))}
-        onNavigateToDetail={(p) => handleNavigate('product_' + p.id)}
-        isLightMode={isLightMode}
-      />
-
-      {/* 2.5 Compare Sticky Bottom Drawer Panel */}
-      {comparedProducts.length > 0 && !isCompareBarDismissed && (
-        <ComparisonCorridorBar
-          selectedItems={comparedProducts}
-          onRemoveItem={(id) => {
-            const next = comparedProducts.filter((item) => item.id !== id);
-            setComparedProducts(next);
-            if (next.length === 0) setIsCompareBarDismissed(false);
-          }}
-          onCloseBar={() => setIsCompareBarDismissed(true)}
-          onPurge={() => {
-            setComparedProducts([]);
-            setIsCompareBarDismissed(false);
-          }}
-          onCompare={() => setShowCompareModal(true)}
-        />
->>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
       )}
 
       {/* 2.5 Detailed Attribute Compare Specification Modal */}
@@ -2343,15 +1924,7 @@ export default function App() {
       {/* Floating Messenger Side Widget/Popup */}
       {isChatOpen && (
         <Suspense fallback={<MessengerLoadingFallback />}>
-<<<<<<< HEAD
           <div id="chat-widget-container" className="fixed bottom-16 sm:bottom-6 right-3 sm:right-6 z-[90] w-[380px] max-w-[calc(100vw-24px)] h-[min(540px,calc(100vh-120px))] rounded-3xl overflow-hidden shadow-2xl border-2 border-solid border-[#D1D1D1]/40 flex flex-col bg-white animate-slide-up animate-page-in">
-=======
-<<<<<<< HEAD
-          <div id="chat-widget-container" className="fixed bottom-16 sm:bottom-6 right-3 sm:right-6 z-[90] w-[380px] max-w-[calc(100vw-24px)] h-[min(540px,calc(100vh-120px))] rounded-3xl overflow-hidden shadow-2xl border-2 border-solid border-[#D1D1D1]/40 flex flex-col bg-white animate-slide-up animate-page-in">
-=======
-          <div id="chat-widget-container" className="fixed bottom-6 right-6 z-[90] w-[380px] max-w-[calc(100vw-32px)] h-[min(580px,calc(100vh-100px))] rounded-3xl overflow-hidden shadow-2xl border-2 border-solid border-[#D1D1D1]/40 flex flex-col bg-white animate-slide-up animate-page-in">
->>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
             <div className="flex-1 min-h-0 overflow-hidden flex flex-col">
               <Messenger
                 contacts={contacts}
@@ -2367,10 +1940,6 @@ export default function App() {
           </div>
         </Suspense>
       )}
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
 
       <Suspense fallback={null}>
         {/* Product Edit Modal */}
@@ -2493,11 +2062,6 @@ export default function App() {
           />
         )}
       </Suspense>
-<<<<<<< HEAD
-=======
-=======
->>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
     </div>
   );
 }

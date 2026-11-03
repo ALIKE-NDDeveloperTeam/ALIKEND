@@ -1,15 +1,6 @@
 import React, { useState, useEffect, useRef, useMemo, useCallback } from 'react';
-<<<<<<< HEAD
 import { ChevronLeft, ChevronRight, Edit, Trash2, Plus, Eye, EyeOff, Sparkles } from 'lucide-react';
 import { useAdminEdit } from '../context/AdminEditContext';
-=======
-<<<<<<< HEAD
-import { ChevronLeft, ChevronRight, Edit, Trash2, Plus, Eye, EyeOff, Sparkles } from 'lucide-react';
-import { useAdminEdit } from '../context/AdminEditContext';
-=======
-import { ChevronLeft, ChevronRight } from 'lucide-react';
->>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
 
 export interface BannerItem {
   _id?: string;
@@ -52,10 +43,6 @@ export const HeroBanners: React.FC<HeroBannersProps> = ({
   autoPlayInterval = 3800,
   className = '',
 }) => {
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
   const { isAdmin, isEditMode, openEditBanner, openDeleteBanner, openCreateBanner } = useAdminEdit();
 
   // In admin edit mode, show all banners (active and inactive) so admin can re-activate or modify them
@@ -66,16 +53,6 @@ export const HeroBanners: React.FC<HeroBannersProps> = ({
     const list = banners.filter((b) => b.active !== false && b.isActive !== false);
     return list.length > 0 ? list : banners;
   }, [banners, isAdmin, isEditMode]);
-<<<<<<< HEAD
-=======
-=======
-  // Filter active banners and ensure at least 1 banner exists
-  const activeBanners = useMemo(() => {
-    const list = banners.filter((b) => b.active !== false && b.isActive !== false);
-    return list.length > 0 ? list : banners;
-  }, [banners]);
->>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
 
   // Center / Featured index
   const [currentIndex, setCurrentIndex] = useState(() => {
@@ -265,10 +242,6 @@ export const HeroBanners: React.FC<HeroBannersProps> = ({
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
       {/* Admin Mode: Add Banner shortcut button */}
       {isAdmin && isEditMode && (
         <div className="flex justify-end mb-1">
@@ -284,11 +257,6 @@ export const HeroBanners: React.FC<HeroBannersProps> = ({
         </div>
       )}
 
-<<<<<<< HEAD
-=======
-=======
->>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
       {/* ========================================================
           DESKTOP 3-BANNER SLIDING TRACK (md / lg screens)
           Cards physically slide across the screen with smooth 60fps easing
@@ -318,10 +286,6 @@ export const HeroBanners: React.FC<HeroBannersProps> = ({
                     : 'bg-neutral-950 border-white/10'
               }`}
             >
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
               {/* Admin Banner Controls Overlay */}
               {isAdmin && isEditMode && (
                 <div
@@ -358,11 +322,6 @@ export const HeroBanners: React.FC<HeroBannersProps> = ({
                 </div>
               )}
 
-<<<<<<< HEAD
-=======
-=======
->>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
               {/* Center Radiant Top Light Spill Accent */}
               {isCenter && (
                 <>
@@ -394,32 +353,16 @@ export const HeroBanners: React.FC<HeroBannersProps> = ({
       {/* ========================================================
           MOBILE SLIDING CAROUSEL (Responsive Swipeable Track)
           ======================================================== */}
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
       <div className="md:hidden relative w-full h-[200px] sm:h-[260px] overflow-hidden py-1">
         {activeBanners.map((banner, idx) => {
           const style = getMobileCardStyle(idx);
           const isCurrent = idx === currentIndex;
-<<<<<<< HEAD
-=======
-=======
-      <div className="md:hidden relative w-full h-[230px] sm:h-[290px] overflow-hidden py-2">
-        {activeBanners.map((banner, idx) => {
-          const style = getMobileCardStyle(idx);
->>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
 
           return (
             <div
               key={banner._id || idx}
               onClick={() => handleBannerClick(banner)}
               style={style}
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
               className="absolute top-1 w-[94%] h-[188px] sm:h-[248px] rounded-2xl overflow-hidden shadow-lg border-2 border-[#F5A623] cursor-pointer bg-neutral-950 transition-all duration-500 ease-[cubic-bezier(0.2,0.8,0.2,1)]"
             >
               {/* Mobile Admin Controls */}
@@ -478,20 +421,6 @@ export const HeroBanners: React.FC<HeroBannersProps> = ({
                   ))}
                 </div>
               )}
-<<<<<<< HEAD
-=======
-=======
-              className="absolute top-2 w-[92%] h-[215px] sm:h-[275px] rounded-2xl overflow-hidden shadow-2xl border-2 border-[#F5A623] cursor-pointer bg-neutral-950 transition-all duration-500 ease-[cubic-bezier(0.2,0.8,0.2,1)]"
-            >
-              <img
-                src={getSafeImageUrl(banner.imageUrl)}
-                alt=""
-                loading="lazy"
-                onError={handleImgError}
-                className="w-full h-full object-cover object-center"
-              />
->>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
             </div>
           );
         })}
@@ -504,46 +433,20 @@ export const HeroBanners: React.FC<HeroBannersProps> = ({
       <button
         type="button"
         onClick={prevSlide}
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
         className="absolute left-3.5 sm:left-3 top-1/2 -translate-y-1/2 z-30 w-8 h-8 sm:w-11 sm:h-11 rounded-full bg-black/55 hover:bg-black/85 text-white backdrop-blur-md border border-white/20 flex items-center justify-center transition-all shadow-md hover:scale-105 active:scale-95 cursor-pointer"
         aria-label="Previous banner"
       >
         <ChevronLeft className="w-4 h-4 sm:w-6 sm:h-6 text-white" />
-<<<<<<< HEAD
-=======
-=======
-        className="absolute left-1.5 sm:left-3 top-1/2 -translate-y-1/2 z-30 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-black/60 hover:bg-black/90 text-white backdrop-blur-xl border border-white/20 flex items-center justify-center transition-all shadow-[0_10px_25px_rgba(0,0,0,0.5)] hover:scale-108 active:scale-95 cursor-pointer"
-        aria-label="Previous banner"
-      >
-        <ChevronLeft className="w-6 h-6 text-white" />
->>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
       </button>
 
       {/* Next Arrow */}
       <button
         type="button"
         onClick={nextSlide}
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
         className="absolute right-3.5 sm:right-3 top-1/2 -translate-y-1/2 z-30 w-8 h-8 sm:w-11 sm:h-11 rounded-full bg-black/55 hover:bg-black/85 text-white backdrop-blur-md border border-white/20 flex items-center justify-center transition-all shadow-md hover:scale-105 active:scale-95 cursor-pointer"
         aria-label="Next banner"
       >
         <ChevronRight className="w-4 h-4 sm:w-6 sm:h-6 text-white" />
-<<<<<<< HEAD
-=======
-=======
-        className="absolute right-1.5 sm:right-3 top-1/2 -translate-y-1/2 z-30 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-black/60 hover:bg-black/90 text-white backdrop-blur-xl border border-white/20 flex items-center justify-center transition-all shadow-[0_10px_25px_rgba(0,0,0,0.5)] hover:scale-108 active:scale-95 cursor-pointer"
-        aria-label="Next banner"
-      >
-        <ChevronRight className="w-6 h-6 text-white" />
->>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
       </button>
     </section>
   );

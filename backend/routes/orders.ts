@@ -1,23 +1,10 @@
 import { Router } from "express";
 import Order, { OrderStatus } from "../models/Order";
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
 import { requireAdmin, AuthedRequest } from "../middleware/auth";
 import { isMongoConnected, memoryStore } from "../store";
 import { progressOrderStatuses } from "../services/orderAutomation";
 import { creditSellerWalletsForOrder } from "../services/sellerWallet";
 import { reconcileOrderCommissionOnStatusChange } from "../services/commissionEngine";
-<<<<<<< HEAD
-=======
-=======
-import { requireAdmin } from "../middleware/auth";
-import { isMongoConnected, memoryStore } from "../store";
-import { progressOrderStatuses } from "../services/orderAutomation";
-import { creditSellerWalletsForOrder } from "../services/sellerWallet";
->>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
 
 const router = Router();
 router.use(requireAdmin);
@@ -43,15 +30,7 @@ router.get("/", async (_req, res) => {
 });
 
 // PATCH /api/admin/orders/:id/status (Admin Manual Override)
-<<<<<<< HEAD
 router.patch("/:id/status", async (req: AuthedRequest, res) => {
-=======
-<<<<<<< HEAD
-router.patch("/:id/status", async (req: AuthedRequest, res) => {
-=======
-router.patch("/:id/status", async (req, res) => {
->>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
   try {
     const { status } = req.body;
     const { id } = req.params;
@@ -76,10 +55,6 @@ router.patch("/:id/status", async (req, res) => {
     };
     if (status === "processing") updateFields.approvedAt = new Date();
     if (status === "shipped") updateFields.shippedAt = new Date();
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
     if (status === "delivered") {
       updateFields.deliveredAt = new Date();
       updateFields.commissionStatus = "settled";
@@ -96,25 +71,11 @@ router.patch("/:id/status", async (req, res) => {
           mongoUpdate.$unset = { liveTracking: 1 };
         }
         const order = await Order.findByIdAndUpdate(id, mongoUpdate, { new: true });
-<<<<<<< HEAD
-=======
-=======
-    if (status === "delivered") updateFields.deliveredAt = new Date();
-
-    if (isMongoConnected()) {
-      try {
-        const order = await Order.findByIdAndUpdate(id, updateFields, { new: true });
->>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
         if (order) {
           if (status === "delivered") {
             await creditSellerWalletsForOrder(order).catch((err) => {
               console.warn("Wallet crediting notice (admin manual route):", err);
             });
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
           } else if (status === "cancelled") {
             await reconcileOrderCommissionOnStatusChange({
               order,
@@ -123,11 +84,6 @@ router.patch("/:id/status", async (req, res) => {
               adminOrActorEmail: req.admin?.email || "admin@alikend.com",
               reason: "Order cancelled by Admin",
             }).catch(() => {});
-<<<<<<< HEAD
-=======
-=======
->>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
           }
           return res.json(order);
         }
@@ -146,10 +102,6 @@ router.patch("/:id/status", async (req, res) => {
       await creditSellerWalletsForOrder(memoryStore.orders[index]).catch((err) => {
         console.warn("Wallet crediting notice (memory store):", err);
       });
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
     } else if (status === "cancelled") {
       await reconcileOrderCommissionOnStatusChange({
         order: memoryStore.orders[index],
@@ -158,11 +110,6 @@ router.patch("/:id/status", async (req, res) => {
         adminOrActorEmail: req.admin?.email || "admin@alikend.com",
         reason: "Order cancelled by Admin",
       }).catch(() => {});
-<<<<<<< HEAD
-=======
-=======
->>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
     }
     return res.json(memoryStore.orders[index]);
   } catch (err: any) {

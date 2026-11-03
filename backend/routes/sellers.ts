@@ -1,8 +1,4 @@
 import { Router } from "express";
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
 import Seller, {
   SellerStatus,
   SellerStoreStatus,
@@ -22,22 +18,10 @@ import { isMongoConnected, memoryStore } from "../store";
 import { logActivity } from "../utils/activityLogger";
 import { sendOtpEmail } from "../services/mailer";
 import { sellerOtpStore } from "./sellerPortal";
-<<<<<<< HEAD
-=======
-=======
-import Seller, { SellerStatus } from "../models/Seller";
-import { requireAdmin } from "../middleware/auth";
-import { isMongoConnected, memoryStore } from "../store";
->>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
 
 const router = Router();
 router.use(requireAdmin);
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
 const DEFAULT_ADMIN_SELLER_PERMISSIONS: AdminSellerManagementPermissions = {
   viewSellers: true,
   approveSellers: true,
@@ -82,13 +66,6 @@ async function checkAdminSellerPermission(
 
 // Helper to mask sensitive bank and PAN data and never expose passwords
 function maskSensitiveSeller(s: any, isSuperAdmin: boolean = false, includeVerificationDocs: boolean = false) {
-<<<<<<< HEAD
-=======
-=======
-// Helper to mask sensitive bank and PAN data
-function maskSensitiveSeller(s: any, isSuperAdmin: boolean = false) {
->>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
   const doc = s && typeof s.toObject === "function" ? s.toObject() : { ...s };
   delete doc.password;
   delete doc.passwordHash;
@@ -99,10 +76,6 @@ function maskSensitiveSeller(s: any, isSuperAdmin: boolean = false) {
     doc._id = String(doc._id);
   }
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
   doc.storeStatus = doc.storeStatus || "active";
   doc.storePolicy = doc.storePolicy || "";
   doc.rejectionReason = doc.rejectionReason || "";
@@ -159,11 +132,6 @@ function maskSensitiveSeller(s: any, isSuperAdmin: boolean = false) {
     ...(doc.permissions || {}),
   };
 
-<<<<<<< HEAD
-=======
-=======
->>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
   if (!isSuperAdmin) {
     if (doc.bankAccountNumber) {
       const acc = String(doc.bankAccountNumber);
@@ -177,10 +145,6 @@ function maskSensitiveSeller(s: any, isSuperAdmin: boolean = false) {
   return doc;
 }
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
 async function getAllSellersRaw(): Promise<any[]> {
   if (isMongoConnected()) {
     try {
@@ -227,37 +191,12 @@ router.get("/", async (req: AuthedRequest, res) => {
     return res.json({
       success: true,
       sellers: sellers.map((s) => maskSensitiveSeller(s, isSuper)),
-<<<<<<< HEAD
-=======
-=======
-// GET /api/admin/sellers
-router.get("/", async (req: any, res) => {
-  try {
-    const isSuper = req.admin?.role === "superadmin";
-    if (isMongoConnected()) {
-      try {
-        const sellers = await Seller.find().select("-password").sort({ createdAt: -1 });
-        const masked = sellers.map((s) => maskSensitiveSeller(s, isSuper));
-        return res.json({ success: true, sellers: masked });
-      } catch (err) {
-        console.warn("MongoDB fetch sellers failed, using in-memory store:", err);
-      }
-    }
-    return res.json({
-      success: true,
-      sellers: memoryStore.sellers.map((s) => maskSensitiveSeller(s, isSuper)),
->>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
     });
   } catch (err: any) {
     return res.status(500).json({ success: false, error: err.message || "Failed to fetch sellers" });
   }
 });
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
 // ==========================================
 // 2. GET /api/admin/sellers/overview — Real DB Statistics
 // ==========================================
@@ -1173,34 +1112,11 @@ router.patch("/:id/status", async (req: AuthedRequest, res) => {
           { new: true }
         ).select("-password");
         if (seller) updatedSeller = seller;
-<<<<<<< HEAD
-=======
-=======
-// PATCH /api/admin/sellers/:id/status
-router.patch("/:id/status", async (req, res) => {
-  try {
-    const { status } = req.body;
-    const { id } = req.params;
-    const allowed = ["pending", "approved", "review", "suspended", "rejected"];
-    if (!allowed.includes(status)) {
-      return res.status(400).json({ success: false, error: "Invalid status value. Must be pending, approved, review, suspended, or rejected." });
-    }
-
-    if (isMongoConnected()) {
-      try {
-        const seller = await Seller.findByIdAndUpdate(id, { status }, { new: true }).select("-password");
-        if (seller) return res.json({ success: true, seller, status: seller.status });
->>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
       } catch (err) {
         console.warn("MongoDB update seller status failed, checking in-memory store:", err);
       }
     }
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
     if (memIndex !== -1) {
       const target = memoryStore.sellers[memIndex] as any;
       Object.assign(target, setUpdate);
@@ -1233,28 +1149,11 @@ router.patch("/:id/status", async (req, res) => {
       seller: maskSensitiveSeller(updatedSeller, isSuper),
       status: updatedSeller.status,
     });
-<<<<<<< HEAD
-=======
-=======
-    const index = memoryStore.sellers.findIndex((s) => s._id === id);
-    if (index === -1) {
-      return res.status(404).json({ success: false, error: "Seller not found" });
-    }
-
-    memoryStore.sellers[index].status = status as SellerStatus;
-    const { passwordHash, ...safe } = memoryStore.sellers[index];
-    return res.json({ success: true, seller: safe, status: safe.status });
->>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
   } catch (err: any) {
     return res.status(500).json({ success: false, error: err.message || "Failed to update seller status" });
   }
 });
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
 // ==========================================
 // 10. PUT /api/admin/sellers/:id/profile — Edit Permitted Seller Profile & Store Info
 // ==========================================
@@ -1434,45 +1333,21 @@ router.patch("/:id/store-status", async (req: AuthedRequest, res) => {
 // 12. PATCH /api/admin/sellers/:id/verify-kyc — Verify / Revoke KYC
 // ==========================================
 router.patch("/:id/verify-kyc", async (req: AuthedRequest, res) => {
-<<<<<<< HEAD
-=======
-=======
-// PATCH /api/admin/sellers/:id/verify-kyc
-router.patch("/:id/verify-kyc", async (req, res) => {
->>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
   try {
     const { kycVerified } = req.body;
     const { id } = req.params;
     const verified = Boolean(kycVerified);
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
     let updatedSeller: any = null;
     if (isMongoConnected()) {
       try {
         const seller = await Seller.findByIdAndUpdate(id, { kycVerified: verified }, { new: true }).select("-password");
         if (seller) updatedSeller = seller;
-<<<<<<< HEAD
-=======
-=======
-    if (isMongoConnected()) {
-      try {
-        const seller = await Seller.findByIdAndUpdate(id, { kycVerified: verified }, { new: true }).select("-password");
-        if (seller) return res.json({ success: true, seller, kycVerified: seller.kycVerified });
->>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
       } catch (err) {
         console.warn("MongoDB update seller kycVerified failed, checking in-memory store:", err);
       }
     }
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
     const index = (memoryStore.sellers || []).findIndex((s) => String(s._id) === String(id));
     if (index !== -1) {
       memoryStore.sellers[index].kycVerified = verified;
@@ -2046,21 +1921,6 @@ router.post("/:id/verification/review", async (req: AuthedRequest, res) => {
       success: false,
       error: err.message || "Failed to process seller verification review decision",
     });
-<<<<<<< HEAD
-=======
-=======
-    const index = memoryStore.sellers.findIndex((s) => s._id === id);
-    if (index === -1) {
-      return res.status(404).json({ success: false, error: "Seller not found" });
-    }
-
-    memoryStore.sellers[index].kycVerified = verified;
-    const { passwordHash, ...safe } = memoryStore.sellers[index];
-    return res.json({ success: true, seller: safe, kycVerified: safe.kycVerified });
-  } catch (err: any) {
-    return res.status(500).json({ success: false, error: err.message || "Failed to update seller KYC verification status" });
->>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
   }
 });
 

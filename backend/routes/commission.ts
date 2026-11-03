@@ -1,9 +1,5 @@
 import { Router } from "express";
 import Order from "../models/Order";
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
 import Product from "../models/Product";
 import Seller from "../models/Seller";
 import PlatformSetting from "../models/PlatformSetting";
@@ -22,25 +18,11 @@ import {
   reconcileOrderCommissionOnStatusChange,
   CommissionRuleRecord,
 } from "../services/commissionEngine";
-<<<<<<< HEAD
-=======
-=======
-import PlatformSetting from "../models/PlatformSetting";
-import PlatformWithdrawal from "../models/PlatformWithdrawal";
-import { requireAdmin, requireSuperAdmin, AuthedRequest } from "../middleware/auth";
-import { isMongoConnected, memoryStore } from "../store";
-import { logActivity } from "../utils/activityLogger";
->>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
 
 const router = Router();
 
 // Helper to get active commission rate
 export async function getActiveCommissionRate(): Promise<number> {
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
   const cfg = await getCommissionConfig();
   return cfg.globalDefaultRate ?? 5;
 }
@@ -492,126 +474,27 @@ router.get("/", requireAdmin, async (req: AuthedRequest, res) => {
     const auditLogs = await getCommissionAuditLogs(150);
 
     // Fetch platform withdrawals
-<<<<<<< HEAD
-=======
-=======
-  if (isMongoConnected()) {
-    try {
-      const setting = await PlatformSetting.findOne({ key: "commission_settings" });
-      if (setting && typeof setting.commissionRate === "number") {
-        return setting.commissionRate;
-      }
-    } catch (err) {
-      console.warn("MongoDB commission rate query notice:", err);
-    }
-  }
-  return memoryStore.platformSettings?.commissionRate ?? 5;
-}
-
-// GET /api/admin/commission - Fetch platform earnings, commission wallet balance, orders ledger & withdrawal history
-router.get("/", requireAdmin, requireSuperAdmin, async (_req: AuthedRequest, res) => {
-  try {
-    const activeRate = await getActiveCommissionRate();
-    let ordersList: any[] = [];
-
-    if (isMongoConnected()) {
-      try {
-        ordersList = await Order.find().sort({ createdAt: -1 }).lean();
-      } catch (err) {
-        console.warn("MongoDB order query error in commission route, using memoryStore:", err);
-        ordersList = memoryStore.orders || [];
-      }
-    } else {
-      ordersList = memoryStore.orders || [];
-    }
-
-    // Process all orders to compute real commission values
-    let calculatedTotalCommission = 0;
-    const ledger = ordersList.map((ord) => {
-      const orderTotal = Number(ord.total) || 0;
-      const rate = typeof ord.commissionRate === "number" ? ord.commissionRate : activeRate;
-      const commissionAmount =
-        typeof ord.commissionAmount === "number" && ord.commissionAmount > 0
-          ? ord.commissionAmount
-          : Math.round((orderTotal * rate) / 100);
-      const sellerPayout =
-        typeof ord.sellerPayout === "number" && ord.sellerPayout > 0
-          ? ord.sellerPayout
-          : Math.max(0, orderTotal - commissionAmount);
-
-      calculatedTotalCommission += commissionAmount;
-
-      return {
-        _id: String(ord._id || ord.orderNumber),
-        orderNumber: ord.orderNumber || "AN-UNKNOWN",
-        date: ord.createdAt ? new Date(ord.createdAt).toISOString() : new Date().toISOString(),
-        memberName: ord.memberName || "Valued Client",
-        memberEmail: ord.memberEmail || "",
-        total: orderTotal,
-        commissionRate: rate,
-        commissionAmount,
-        sellerPayout,
-        paymentMethod: ord.paymentMethod || "CARD",
-        status: ord.status || "pending",
-        commissionStatus: ord.commissionStatus || "credited",
-      };
-    });
-
-    // Fetch withdrawals from MongoDB or memoryStore
->>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
     let withdrawalsList: any[] = [];
     if (isMongoConnected()) {
       try {
         withdrawalsList = await PlatformWithdrawal.find().sort({ date: -1 }).lean();
       } catch (err) {
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-        console.warn("MongoDB withdrawal query error, using memoryStore:", err);
->>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
         withdrawalsList = memoryStore.platformWithdrawals || [];
       }
     } else {
       withdrawalsList = memoryStore.platformWithdrawals || [];
     }
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-    // Merge memory withdrawals if any weren't in Mongo
->>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
     const mongoIds = new Set(withdrawalsList.map((w) => String(w._id)));
     for (const memW of memoryStore.platformWithdrawals || []) {
       if (!mongoIds.has(String(memW._id))) {
         withdrawalsList.push(memW);
       }
     }
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
     withdrawalsList.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
     const totalWithdrawn = withdrawalsList.reduce((sum, w) => sum + (Number(w.amount) || 0), 0);
     const runningBalance = Math.max(0, analytics.totalCommissionEarned - totalWithdrawn);
-<<<<<<< HEAD
-=======
-=======
-
-    // Sort withdrawals newest first
-    withdrawalsList.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
-
-    const totalWithdrawn = withdrawalsList.reduce((sum, w) => sum + (Number(w.amount) || 0), 0);
-
-    // Running balance is the total commission earned in the platform wallet minus internal withdrawals
-    const runningBalance = Math.max(0, calculatedTotalCommission - totalWithdrawn);
->>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
 
     const formattedWithdrawals = withdrawalsList.map((w) => ({
       _id: String(w._id),
@@ -625,10 +508,6 @@ router.get("/", requireAdmin, requireSuperAdmin, async (_req: AuthedRequest, res
 
     return res.json({
       success: true,
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
       commissionRate: analytics.config.globalDefaultRate,
       config: analytics.config,
       rules: analytics.rules,
@@ -645,25 +524,10 @@ router.get("/", requireAdmin, requireSuperAdmin, async (_req: AuthedRequest, res
       sellerBreakdown: analytics.sellerBreakdown,
       productBreakdown: analytics.productBreakdown,
       orders: analytics.ledger,
-<<<<<<< HEAD
-=======
-=======
-      commissionRate: activeRate,
-      totalCommissionEarned: calculatedTotalCommission,
-      runningBalance,
-      totalWithdrawn,
-      totalOrdersCount: ledger.length,
-      orders: ledger,
->>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
       withdrawals: formattedWithdrawals,
     });
   } catch (err: any) {
     console.error("Commission fetch error:", err);
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
     return res
       .status(500)
       .json({ success: false, error: err.message || "Failed to load commission data" });
@@ -1110,19 +974,6 @@ router.put("/config", requireAdmin, async (req: AuthedRequest, res) => {
 router.patch("/settings", requireAdmin, async (req: AuthedRequest, res) => {
   try {
     const { commissionRate, reason } = req.body;
-<<<<<<< HEAD
-=======
-=======
-    return res.status(500).json({ success: false, error: err.message || "Failed to load commission data" });
-  }
-});
-
-// PATCH /api/admin/commission/settings - Super Admin sets global commission rate
-router.patch("/settings", requireAdmin, requireSuperAdmin, async (req: AuthedRequest, res) => {
-  try {
-    const { commissionRate } = req.body;
->>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
     const rateNum = Number(commissionRate);
 
     if (isNaN(rateNum) || rateNum < 0 || rateNum > 100) {
@@ -1132,10 +983,6 @@ router.patch("/settings", requireAdmin, requireSuperAdmin, async (req: AuthedReq
       });
     }
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
     const updated = await updateCommissionConfig(
       { globalDefaultRate: rateNum },
       {
@@ -1145,69 +992,17 @@ router.patch("/settings", requireAdmin, requireSuperAdmin, async (req: AuthedReq
       reason || `Updated global default commission rate to ${rateNum}%`
     );
 
-<<<<<<< HEAD
-=======
-=======
-    const roundedRate = Math.round(rateNum * 100) / 100;
-
-    // Update in MongoDB
-    if (isMongoConnected()) {
-      try {
-        await PlatformSetting.findOneAndUpdate(
-          { key: "commission_settings" },
-          {
-            commissionRate: roundedRate,
-            updatedBy: req.admin?.email || "superadmin",
-            updatedAt: new Date(),
-          },
-          { upsert: true, new: true }
-        );
-      } catch (dbErr: any) {
-        console.warn("MongoDB commission update error:", dbErr.message);
-      }
-    }
-
-    // Update in memoryStore
-    if (!memoryStore.platformSettings) {
-      memoryStore.platformSettings = {
-        commissionRate: roundedRate,
-        platformBalance: 0,
-        totalCommissionEarned: 0,
-        updatedAt: new Date(),
-      };
-    } else {
-      memoryStore.platformSettings.commissionRate = roundedRate;
-      memoryStore.platformSettings.updatedAt = new Date();
-    }
-
-    // Audit log
->>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
     await logActivity(
       {
         eventType: "Login",
         status: "success",
         userName: req.admin?.name || "Super Admin",
-<<<<<<< HEAD
         email: req.admin?.email || "admin@system",
         details: `Updated Platform Global Commission Rate to ${updated.globalDefaultRate}%`,
-=======
-<<<<<<< HEAD
-        email: req.admin?.email || "admin@system",
-        details: `Updated Platform Global Commission Rate to ${updated.globalDefaultRate}%`,
-=======
-        email: req.admin?.email || process.env.SUPERADMIN_EMAIL || "admin@system",
-        details: `Updated Platform Global Commission Rate to ${roundedRate}%`,
->>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
       },
       req
     );
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
     return res.json({
       success: true,
       commissionRate: updated.globalDefaultRate,
@@ -1276,26 +1071,6 @@ router.post("/orders/:orderId/adjust", requireAdmin, async (req: AuthedRequest, 
 // 10. POST /api/admin/commission/withdraw - Platform Wallet Withdrawal
 // ============================================================================
 router.post("/withdraw", requireAdmin, async (req: AuthedRequest, res) => {
-<<<<<<< HEAD
-=======
-=======
-    console.log(`💰 [COMMISSION UPDATE] Global commission rate set to ${roundedRate}% by ${req.admin?.email}`);
-
-    return res.json({
-      success: true,
-      commissionRate: roundedRate,
-      message: `Global platform commission rate successfully updated to ${roundedRate}%`,
-    });
-  } catch (err: any) {
-    console.error("Failed to update commission rate:", err);
-    return res.status(500).json({ success: false, error: err.message || "Failed to update commission settings" });
-  }
-});
-
-// POST /api/admin/commission/withdraw - Super Admin logs internal withdrawal from platform wallet balance
-router.post("/withdraw", requireAdmin, requireSuperAdmin, async (req: AuthedRequest, res) => {
->>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
   try {
     const { amount, note } = req.body;
     const withdrawAmount = Math.round(Number(amount));
@@ -1307,43 +1082,9 @@ router.post("/withdraw", requireAdmin, requireSuperAdmin, async (req: AuthedRequ
       });
     }
 
-<<<<<<< HEAD
     const analytics = await buildCommissionAnalytics();
     const calculatedTotalCommission = analytics.totalCommissionEarned;
 
-=======
-<<<<<<< HEAD
-    const analytics = await buildCommissionAnalytics();
-    const calculatedTotalCommission = analytics.totalCommissionEarned;
-
-=======
-    // 1. Calculate lifetime commission earned across all orders
-    let ordersList: any[] = [];
-    if (isMongoConnected()) {
-      try {
-        ordersList = await Order.find().lean();
-      } catch (err) {
-        ordersList = memoryStore.orders || [];
-      }
-    } else {
-      ordersList = memoryStore.orders || [];
-    }
-
-    const activeRate = await getActiveCommissionRate();
-    let calculatedTotalCommission = 0;
-    for (const ord of ordersList) {
-      const orderTotal = Number(ord.total) || 0;
-      const rate = typeof ord.commissionRate === "number" ? ord.commissionRate : activeRate;
-      const commissionAmount =
-        typeof ord.commissionAmount === "number" && ord.commissionAmount > 0
-          ? ord.commissionAmount
-          : Math.round((orderTotal * rate) / 100);
-      calculatedTotalCommission += commissionAmount;
-    }
-
-    // 2. Calculate existing withdrawals
->>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
     let existingWithdrawals: any[] = [];
     if (isMongoConnected()) {
       try {
@@ -1355,13 +1096,6 @@ router.post("/withdraw", requireAdmin, requireSuperAdmin, async (req: AuthedRequ
       existingWithdrawals = memoryStore.platformWithdrawals || [];
     }
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-    // Include any in-memory records
->>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
     const mongoIds = new Set(existingWithdrawals.map((w) => String(w._id)));
     for (const memW of memoryStore.platformWithdrawals || []) {
       if (!mongoIds.has(String(memW._id))) {
@@ -1369,20 +1103,10 @@ router.post("/withdraw", requireAdmin, requireSuperAdmin, async (req: AuthedRequ
       }
     }
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
     const currentTotalWithdrawn = existingWithdrawals.reduce(
       (sum, w) => sum + (Number(w.amount) || 0),
       0
     );
-<<<<<<< HEAD
-=======
-=======
-    const currentTotalWithdrawn = existingWithdrawals.reduce((sum, w) => sum + (Number(w.amount) || 0), 0);
->>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
     const currentRunningBalance = Math.max(0, calculatedTotalCommission - currentTotalWithdrawn);
 
     if (withdrawAmount > currentRunningBalance) {
@@ -1427,13 +1151,6 @@ router.post("/withdraw", requireAdmin, requireSuperAdmin, async (req: AuthedRequ
 
     const newRunningBalance = currentRunningBalance - withdrawAmount;
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-    // Log to activity logs
->>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
     await logActivity(
       {
         eventType: "Login",
@@ -1445,14 +1162,6 @@ router.post("/withdraw", requireAdmin, requireSuperAdmin, async (req: AuthedRequ
       req
     );
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-    console.log(`💸 [PLATFORM WITHDRAWAL] ₹${withdrawAmount} withdrawn by ${adminEmail}. Note: ${newRecord.note || "None"}`);
-
->>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
     return res.json({
       success: true,
       message: `Successfully logged withdrawal of ₹${withdrawAmount.toLocaleString("en-IN")}`,
@@ -1465,19 +1174,9 @@ router.post("/withdraw", requireAdmin, requireSuperAdmin, async (req: AuthedRequ
     });
   } catch (err: any) {
     console.error("Platform withdrawal error:", err);
-<<<<<<< HEAD
     return res
       .status(500)
       .json({ success: false, error: err.message || "Failed to process withdrawal" });
-=======
-<<<<<<< HEAD
-    return res
-      .status(500)
-      .json({ success: false, error: err.message || "Failed to process withdrawal" });
-=======
-    return res.status(500).json({ success: false, error: err.message || "Failed to process withdrawal" });
->>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
   }
 });
 

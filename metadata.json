@@ -1,16 +1,6 @@
 {
-<<<<<<< HEAD
   "name": "Alikendshop - Luxury Ecommerce & Multi-Seller Platform",
   "description": "Premium e-commerce platform with multi-seller support, dynamic product catalog, and comprehensive admin dashboard",
-=======
-<<<<<<< HEAD
-  "name": "Alikendshop - Luxury Ecommerce & Multi-Seller Platform",
-  "description": "Premium e-commerce platform with multi-seller support, dynamic product catalog, and comprehensive admin dashboard",
-=======
-  "name": "Remix: Remix: Niyon",
-  "description": "Alike-ND is a premium sovereign luxury marketplace, wholesale atelier guild, and interactive trade portal featuring a Swiss-grade UI, custom item matching, secure wallets, and AI-driven recommendations.",
->>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
   "requestFramePermissions": [],
   "majorCapabilities": [
     "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"

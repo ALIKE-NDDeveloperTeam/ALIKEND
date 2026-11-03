@@ -553,7 +553,6 @@ export default function LoginModal({
   };
 
   const handleGoogleSignIn = async () => {
-<<<<<<< HEAD
     let firebaseUser: any = null;
     let idToken = '';
     let cleanEmail = '';
@@ -592,29 +591,15 @@ export default function LoginModal({
 
     try {
       // Send Firebase idToken & verified user profile to backend
-=======
-    try {
-      showToast('Connecting to Google Auth...', 'info');
-      const result = await signInWithPopup(auth, googleProvider);
-      const user = result.user;
-      const cleanEmail = (user.email || '').toLowerCase().trim();
-      const userName = user.displayName || cleanEmail.split('@')[0] || 'Google Member';
-      const idToken = await user.getIdToken();
-
-      // Send Firebase idToken to backend for cryptographic verification
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
       const res = await fetch('/api/auth/google', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           idToken,
-<<<<<<< HEAD
           email: cleanEmail,
           fullName: userName,
           uid: firebaseUser?.uid || '',
           photoURL: firebaseUser?.photoURL || '',
-=======
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
           autoRegister: true,
         }),
       });
@@ -627,38 +612,22 @@ export default function LoginModal({
         }
 
         const authenticatedUser = {
-<<<<<<< HEAD
           _id: data.user?._id || firebaseUser?.uid || `google_${Date.now()}`,
           name: data.user?.name || userName,
           email: data.user?.email || cleanEmail,
           phone: data.user?.phone || firebaseUser?.phoneNumber || '',
-=======
-          _id: data.user?._id || user.uid,
-          name: data.user?.name || user.displayName || 'Google Member',
-          email: data.user?.email || cleanEmail,
-          phone: data.user?.phone || user.phoneNumber || '',
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
           tier: data.user?.tier || 'Silver',
         };
 
         if (data.isExisting) {
-<<<<<<< HEAD
           onLoginSuccess(authenticatedUser, false);
           showToast(`Welcome back, ${authenticatedUser.name}!`, 'success');
         } else {
-=======
-          // Existing user login
-          onLoginSuccess(authenticatedUser, false);
-          showToast(`Welcome back, ${authenticatedUser.name}!`, 'success');
-        } else {
-          // Brand new user auto-registered with verified email
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
           onLoginSuccess(authenticatedUser, true);
           showToast(`Account created successfully! Welcome, ${authenticatedUser.name}!`, 'success');
         }
         onClose();
         return;
-<<<<<<< HEAD
       }
 
       // If account is explicitly blocked (403), show the block message
@@ -704,14 +673,6 @@ export default function LoginModal({
         return;
       }
       showToast(netErr?.message || 'Google authentication failed. Please try again.', 'error');
-=======
-      } else {
-        showToast(data?.error || 'Google authentication check failed. Please try again.', 'error');
-      }
-    } catch (error: any) {
-      console.warn('Google login notification:', error);
-      showToast('Google Popup blocked or cancelled. Please try again or open in a new tab!', 'error');
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
     }
   };
 

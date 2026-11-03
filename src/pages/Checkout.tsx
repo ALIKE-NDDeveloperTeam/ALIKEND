@@ -30,10 +30,6 @@ import {
   PackageCheck,
   Trash2,
   Printer,
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
   Heart,
   Radio,
   Navigation,
@@ -43,15 +39,6 @@ import { Address, CartItem, Order } from '../types';
 import InvoiceModal from '../components/InvoiceModal';
 import OrderLiveTrackingModal from '../components/orders/OrderLiveTrackingModal';
 import { useLocation } from '../context/LocationContext';
-<<<<<<< HEAD
-=======
-=======
-  Heart
-} from 'lucide-react';
-import { Address, CartItem, Order } from '../types';
-import InvoiceModal from '../components/InvoiceModal';
->>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
 
 interface CheckoutProps {
   cartItems: CartItem[];
@@ -101,14 +88,7 @@ export default function Checkout({
   showToast,
   user,
 }: CheckoutProps) {
-<<<<<<< HEAD
   const { location, nearbySellers, promptLocationCapture } = useLocation();
-=======
-<<<<<<< HEAD
-  const { location, nearbySellers, promptLocationCapture } = useLocation();
-=======
->>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
   const [step, setStep] = useState<number>(2); // Start at Step 2 (Address selection)
   
   // Scoped addresses from user storage - new accounts start with ZERO addresses
@@ -139,14 +119,7 @@ export default function Checkout({
   const [paymentMethod, setPaymentMethod] = useState<string>('cod');
   const [placedOrder, setPlacedOrder] = useState<Order | null>(null);
   const [showInvoiceModal, setShowInvoiceModal] = useState<boolean>(false);
-<<<<<<< HEAD
   const [showLiveTrackingModal, setShowLiveTrackingModal] = useState<boolean>(false);
-=======
-<<<<<<< HEAD
-  const [showLiveTrackingModal, setShowLiveTrackingModal] = useState<boolean>(false);
-=======
->>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
   const paymentTabsRef = useRef<HTMLDivElement>(null);
 
   const scrollTabs = (direction: 'left' | 'right') => {
@@ -196,10 +169,6 @@ export default function Checkout({
 
   // Calculations (Use active cart items only - no demo/mock fallbacks)
   const activeCheckoutItems = cartItems || [];
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
 
   // Re-evaluate Quick Delivery (10-20 min) eligibility for every item in the cart
   const quickEligibility = (() => {
@@ -273,11 +242,6 @@ export default function Checkout({
   const effectiveDeliveryType: 'quick' | 'standard' =
     quickEligibility.eligible && deliveryType === 'quick' ? 'quick' : 'standard';
 
-<<<<<<< HEAD
-=======
-=======
->>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
   const subtotal = activeCheckoutItems.reduce((acc, item) => acc + (item.product?.price || 0) * item.quantity, 0);
   const discount = couponCode === 'ALIKE10' ? Math.round(subtotal * 0.1) : 0;
   const gst = Math.round((subtotal - discount) * 0.18);
@@ -374,10 +338,6 @@ export default function Checkout({
       trackingStep: 1, // Order Placed
       memberEmail: user?.email ? user.email.toLowerCase() : '',
       userId: user?._id || '',
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
       deliveryLocation: location
         ? {
             lat: location.lat,
@@ -387,11 +347,6 @@ export default function Checkout({
         : undefined,
       deliveryType: effectiveDeliveryType,
       deliveryEtaText: effectiveDeliveryType === 'quick' ? quickEligibility.etaText : 'Standard Delivery',
-<<<<<<< HEAD
-=======
-=======
->>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
     };
 
     // Persist order synchronously to MongoDB alikendshop.orders collection (Problem #13)
@@ -410,18 +365,9 @@ export default function Checkout({
         paymentMethod: paymentMethod.toUpperCase(),
         memberEmail: user?.email ? user.email.toLowerCase() : '',
         userId: user?._id || '',
-<<<<<<< HEAD
         deliveryLocation: newOrder.deliveryLocation,
         deliveryType: effectiveDeliveryType,
         deliveryEtaText: newOrder.deliveryEtaText,
-=======
-<<<<<<< HEAD
-        deliveryLocation: newOrder.deliveryLocation,
-        deliveryType: effectiveDeliveryType,
-        deliveryEtaText: newOrder.deliveryEtaText,
-=======
->>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
       }),
     })
       .then(async (res) => {
@@ -437,16 +383,8 @@ export default function Checkout({
           ...newOrder,
           id: confirmedOrderNumber,
           total: data?.order?.total || totalAmount,
-<<<<<<< HEAD
           deliveryType: data?.order?.deliveryType || effectiveDeliveryType,
           deliveryEtaText: data?.order?.deliveryEtaText || newOrder.deliveryEtaText,
-=======
-<<<<<<< HEAD
-          deliveryType: data?.order?.deliveryType || effectiveDeliveryType,
-          deliveryEtaText: data?.order?.deliveryEtaText || newOrder.deliveryEtaText,
-=======
->>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
         };
         setPlacedOrder(confirmedOrder);
         onPlaceOrder(confirmedOrder);
@@ -769,10 +707,6 @@ export default function Checkout({
           {/* Action Buttons */}
           <div className="space-y-3 pt-2">
             <button
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
               id="live-tracking-map-btn"
               type="button"
               onClick={() => setShowLiveTrackingModal(true)}
@@ -783,11 +717,6 @@ export default function Checkout({
             </button>
 
             <button
-<<<<<<< HEAD
-=======
-=======
->>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
               id="download-pdf-invoice-btn"
               type="button"
               onClick={() => setShowInvoiceModal(true)}
@@ -826,10 +755,6 @@ export default function Checkout({
               showToast={showToast}
             />
           )}
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
 
           {showLiveTrackingModal && placedOrder && (
             <OrderLiveTrackingModal
@@ -839,11 +764,6 @@ export default function Checkout({
               showToast={showToast}
             />
           )}
-<<<<<<< HEAD
-=======
-=======
->>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
         </div>
       ) : activeCheckoutItems.length === 0 ? (
         <div id="checkout-empty-cart-state" className="max-w-xl mx-auto p-10 bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-3xl text-center space-y-5 shadow-lg">
@@ -1066,10 +986,6 @@ export default function Checkout({
                   </div>
                 )}
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
                 {/* Delivery Speed Selection (Quick 10-20 min vs Standard Delivery) */}
                 <div className="p-4 rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-950 space-y-3">
                   <div className="flex flex-wrap items-center justify-between gap-2">
@@ -1160,11 +1076,6 @@ export default function Checkout({
                   </p>
                 </div>
 
-<<<<<<< HEAD
-=======
-=======
->>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
                 <div className="flex justify-end pt-3">
                   <button
                     id="address-proceed-payment"

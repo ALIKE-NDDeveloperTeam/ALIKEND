@@ -192,16 +192,8 @@ export const SupportTicket: Model<ISupportTicket> =
   (mongoose.models.SupportTicket as Model<ISupportTicket>) ||
   mongoose.model<ISupportTicket>("SupportTicket", SupportTicketSchema);
 
-<<<<<<< HEAD
 export const Ticket = SupportTicket;
 
-=======
-<<<<<<< HEAD
-export const Ticket = SupportTicket;
-
-=======
->>>>>>> e49d630f26038015b7a40f2bf00fed3f99b5ec58
->>>>>>> 82ae98257bf40180a83b583faa71acfdf64bd995
 export interface IKnowledgeArticle extends Document {
   title: string;
   category: string;
