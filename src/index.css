@@ -1,0 +1,1173 @@
+@import "tailwindcss";
+@variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: "Poppins", "Inter", "Roboto", "Hind Siliguri", "Noto Sans Bengali", "Outfit", ui-sans-serif, system-ui, sans-serif;
+  --font-dashboard: "Inter", "Roboto", "Hind Siliguri", "Noto Sans Bengali", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-bengali: "Hind Siliguri", "Noto Sans Bengali", "Inter", "Roboto", sans-serif;
+  --font-serif: "Playfair Display", Georgia, serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+
+  /* Custom Slow Animation Loops */
+  --animate-spin-slow: spin 16s linear infinite;
+  --animate-pulse-slow: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  --animate-fade-in: fadeIn 0.35s ease-out forwards;
+  --animate-slide-in: slideIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* ==========================================================================
+   MASTER FONT & TYPOGRAPHY SYSTEM — ADMIN PANEL + SELLER PANEL
+   Primary: Inter (Fallback: Roboto)
+   Bengali: Hind Siliguri (Fallback: Noto Sans Bengali)
+   ========================================================================== */
+:root {
+  --mkt-font-primary: "Inter", "Roboto", "Hind Siliguri", "Noto Sans Bengali", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --mkt-font-bengali: "Hind Siliguri", "Noto Sans Bengali", "Inter", "Roboto", sans-serif;
+  --mkt-font-mono: "JetBrains Mono", "Inter", "Roboto", monospace;
+
+  /* Global Font Scale Tokens */
+  --mkt-page-title-size: clamp(1.5rem, 2vw, 1.875rem);      /* 28–30px desktop, 24px mobile */
+  --mkt-page-title-weight: 700;
+  --mkt-page-title-lh: 1.25;
+
+  --mkt-section-heading-size: clamp(1.25rem, 1.5vw, 1.4375rem); /* 20–23px */
+  --mkt-section-heading-weight: 600;
+  --mkt-section-heading-lh: 1.3;
+
+  --mkt-card-heading-size: clamp(1rem, 1.15vw, 1.125rem);   /* 16–18px */
+  --mkt-card-heading-weight: 600;
+  --mkt-card-heading-lh: 1.35;
+
+  --mkt-label-size: 0.90625rem;                             /* 14.5px (14–15px) */
+  --mkt-label-weight: 500;
+  --mkt-label-lh: 1.4;
+
+  --mkt-input-size: 0.90625rem;                             /* 14.5px (14–15px) */
+  --mkt-input-weight: 400;
+  --mkt-input-lh: 1.5;
+
+  --mkt-table-size: 0.875rem;                               /* 14px */
+  --mkt-table-weight: 400;
+  --mkt-table-lh: 1.45;
+
+  --mkt-btn-size: 0.90625rem;                               /* 14.5px (14–15px) */
+  --mkt-btn-weight: 600;
+  --mkt-btn-lh: 1.4;
+
+  --mkt-helper-size: 0.78125rem;                            /* 12.5px (12–13px) */
+  --mkt-helper-weight: 400;
+  --mkt-helper-lh: 1.45;
+
+  --mkt-nav-size: 0.90625rem;                               /* 14.5px (14–15px) */
+  --mkt-nav-weight: 500;
+  --mkt-nav-lh: 1.4;
+
+  --mkt-price-size: 1.0625rem;                              /* 17px (15–18px) */
+  --mkt-price-weight: 600;
+  --mkt-price-lh: 1.3;
+}
+
+/* Unified Font Family Application for Admin Panel, Seller Panel & Daraz Product Studio */
+.ap-root,
+.ap-root *,
+#seller-dashboard-root,
+#seller-dashboard-root *,
+#seller-portal-root,
+#seller-portal-root *,
+.daraz-studio-root,
+.daraz-studio-root * {
+  font-family: var(--mkt-font-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Preserve tabular alignment for numeric / code elements inside Admin & Seller Panels */
+.ap-root .font-mono,
+.ap-root .ap-mono,
+#seller-dashboard-root .font-mono,
+#seller-portal-root .font-mono,
+.daraz-studio-root .font-mono,
+.mkt-price,
+.mkt-numeric {
+  font-family: var(--mkt-font-primary);
+  font-variant-numeric: tabular-nums;
+}
+
+.font-bengali,
+[lang="bn"] {
+  font-family: var(--mkt-font-bengali) !important;
+}
+
+/* Reusable Centralized Marketplace Typography Utility Classes */
+.mkt-page-title {
+  font-family: var(--mkt-font-primary);
+  font-size: var(--mkt-page-title-size) !important;
+  font-weight: var(--mkt-page-title-weight) !important;
+  line-height: var(--mkt-page-title-lh) !important;
+  letter-spacing: -0.02em;
+}
+
+.mkt-section-heading {
+  font-family: var(--mkt-font-primary);
+  font-size: var(--mkt-section-heading-size) !important;
+  font-weight: var(--mkt-section-heading-weight) !important;
+  line-height: var(--mkt-section-heading-lh) !important;
+  letter-spacing: -0.015em;
+}
+
+.mkt-card-heading {
+  font-family: var(--mkt-font-primary);
+  font-size: var(--mkt-card-heading-size) !important;
+  font-weight: var(--mkt-card-heading-weight) !important;
+  line-height: var(--mkt-card-heading-lh) !important;
+  letter-spacing: -0.01em;
+}
+
+.mkt-form-label {
+  font-family: var(--mkt-font-primary);
+  font-size: var(--mkt-label-size) !important;
+  font-weight: var(--mkt-label-weight) !important;
+  line-height: var(--mkt-label-lh) !important;
+}
+
+.mkt-input,
+.mkt-select {
+  font-family: var(--mkt-font-primary);
+  font-size: var(--mkt-input-size) !important;
+  font-weight: var(--mkt-input-weight) !important;
+  line-height: var(--mkt-input-lh) !important;
+}
+
+.mkt-table,
+.mkt-table td {
+  font-family: var(--mkt-font-primary);
+  font-size: var(--mkt-table-size) !important;
+  font-weight: var(--mkt-table-weight) !important;
+  line-height: var(--mkt-table-lh) !important;
+}
+
+.mkt-table th {
+  font-family: var(--mkt-font-primary);
+  font-size: 0.8125rem !important; /* 13px */
+  font-weight: 600 !important;
+  line-height: 1.4 !important;
+  letter-spacing: 0.01em;
+}
+
+.mkt-btn {
+  font-family: var(--mkt-font-primary);
+  font-size: var(--mkt-btn-size) !important;
+  font-weight: var(--mkt-btn-weight) !important;
+  line-height: var(--mkt-btn-lh) !important;
+}
+
+.mkt-helper {
+  font-family: var(--mkt-font-primary);
+  font-size: var(--mkt-helper-size) !important;
+  font-weight: var(--mkt-helper-weight) !important;
+  line-height: var(--mkt-helper-lh) !important;
+}
+
+.mkt-nav,
+.mkt-breadcrumb {
+  font-family: var(--mkt-font-primary);
+  font-size: var(--mkt-nav-size) !important;
+  font-weight: var(--mkt-nav-weight) !important;
+  line-height: var(--mkt-nav-lh) !important;
+}
+
+.mkt-price {
+  font-family: var(--mkt-font-primary);
+  font-size: var(--mkt-price-size) !important;
+  font-weight: var(--mkt-price-weight) !important;
+  line-height: var(--mkt-price-lh) !important;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Global Element Normalization inside Admin Panel, Seller Panel & Daraz Product Studio */
+#seller-dashboard-root label,
+#seller-portal-root label,
+.daraz-studio-root label {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+#seller-dashboard-root input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),
+#seller-dashboard-root select,
+#seller-dashboard-root textarea,
+#seller-portal-root input:not([type="checkbox"]):not([type="radio"]),
+#seller-portal-root select,
+#seller-portal-root textarea,
+.daraz-studio-root input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),
+.daraz-studio-root select,
+.daraz-studio-root textarea {
+  font-family: var(--mkt-font-primary);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+#seller-dashboard-root table,
+#seller-dashboard-root table td,
+.daraz-studio-root table,
+.daraz-studio-root table td {
+  font-family: var(--mkt-font-primary);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.45;
+}
+
+#seller-dashboard-root table th,
+.daraz-studio-root table th {
+  font-family: var(--mkt-font-primary);
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(3px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Ensure perfect responsive screen fit across all devices */
+html, body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  box-sizing: border-box;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* Global Cursor Pointer for all clickable and interactive elements */
+button,
+[role="button"],
+input[type="button"],
+input[type="submit"],
+input[type="reset"],
+input[type="checkbox"],
+input[type="radio"],
+input[type="file"],
+select,
+label[for],
+label.cursor-pointer,
+.cursor-pointer {
+  cursor: pointer !important;
+}
+
+button:disabled,
+[role="button"]:disabled,
+input:disabled {
+  cursor: not-allowed !important;
+}
+
+#root {
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+::-webkit-scrollbar {
+  width: 7px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #080D1F;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 0, 127, 0.45);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #FF007F;
+}
+
+/* Specific elements that need scrollbars hidden */
+.scrollbar-none::-webkit-scrollbar,
+.no-scrollbar::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+.scrollbar-none,
+.no-scrollbar {
+  -ms-overflow-style: none !important;  /* IE and Edge */
+  scrollbar-width: none !important;  /* Firefox */
+}
+
+/* Luxury Visible Horizontal Scrollbar for internal data tables */
+.custom-horizontal-scrollbar {
+  overflow-x: auto !important;
+  scrollbar-width: thin !important;
+  scrollbar-color: rgba(255, 0, 127, 0.6) rgba(0, 0, 0, 0.05) !important;
+}
+:is(.dark, .dark *) .custom-horizontal-scrollbar {
+  scrollbar-color: rgba(255, 0, 127, 0.7) rgba(255, 255, 255, 0.08) !important;
+}
+.custom-horizontal-scrollbar::-webkit-scrollbar {
+  height: 4px !important;
+  display: block !important;
+}
+.custom-horizontal-scrollbar::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.05) !important;
+  border-radius: 9999px !important;
+}
+:is(.dark, .dark *) .custom-horizontal-scrollbar::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.06) !important;
+}
+.custom-horizontal-scrollbar::-webkit-scrollbar-thumb {
+  background: linear-gradient(90deg, #FF1990, #FF007F) !important;
+  border-radius: 9999px !important;
+  transition: all 0.2s ease;
+}
+.custom-horizontal-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #FF007F !important;
+  height: 6px !important;
+}
+
+
+/* Luxury Transparent Mesh Backdrop - Pure Black & Pure White */
+.luxury-radial-bg {
+  background-color: #000000 !important;
+  background-image: 
+    radial-gradient(at 15% 15%, rgba(245, 166, 35, 0.06) 0px, transparent 45%),
+    radial-gradient(at 85% 20%, rgba(255, 255, 255, 0.04) 0px, transparent 45%),
+    radial-gradient(at 50% 75%, rgba(20, 20, 20, 0.6) 0px, transparent 50%) !important;
+  background-attachment: fixed;
+  background-size: cover;
+  position: relative;
+}
+
+/* Subtle dot-matrix overlay */
+.luxury-radial-bg::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 0px);
+  background-size: 32px 32px;
+  pointer-events: none;
+  opacity: 0.3;
+  z-index: 1;
+}
+
+/* Modern Glassmorphic Backdrop utility */
+.glass-panel {
+  background-color: rgba(10, 10, 10, 0.85) !important;
+  backdrop-filter: blur(16px) saturate(140%) !important;
+  -webkit-backdrop-filter: blur(16px) saturate(140%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5) !important;
+}
+
+.glass-panel-dark {
+  background-color: rgba(0, 0, 0, 0.9) !important;
+  backdrop-filter: blur(16px) saturate(160%) !important;
+  -webkit-backdrop-filter: blur(16px) saturate(160%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+/* =========================================================
+   DARK MODE = TRUE PURE BLACK (#000000) & WHITE TEXT
+   ========================================================= */
+body:not(.light-mode),
+html.dark body {
+  background-color: #000000 !important;
+  color: #FFFFFF !important;
+}
+
+body:not(.light-mode) .bg-neutral-950,
+body:not(.light-mode) #root .bg-neutral-950 {
+  background-color: #050505 !important;
+}
+body:not(.light-mode) .bg-neutral-900,
+body:not(.light-mode) #root .bg-neutral-900 {
+  background-color: #0D0D0D !important;
+}
+body:not(.light-mode) .bg-neutral-900\/40,
+body:not(.light-mode) #root .bg-neutral-900\/40 {
+  background-color: rgba(15, 15, 15, 0.65) !important;
+}
+body:not(.light-mode) .bg-neutral-950\/95,
+body:not(.light-mode) #root .bg-neutral-950\/95 {
+  background-color: rgba(5, 5, 5, 0.95) !important;
+}
+body:not(.light-mode) .bg-neutral-850,
+body:not(.light-mode) .bg-neutral-800,
+body:not(.light-mode) #root .bg-neutral-850,
+body:not(.light-mode) #root .bg-neutral-800 {
+  background-color: #141414 !important;
+}
+body:not(.light-mode) .border-neutral-800,
+body:not(.light-mode) .border-neutral-850,
+body:not(.light-mode) #root .border-neutral-800,
+body:not(.light-mode) #root .border-neutral-850 {
+  border-color: rgba(255, 255, 255, 0.12) !important;
+}
+body:not(.light-mode) .bg-black\/80,
+body:not(.light-mode) .bg-black\/85,
+body:not(.light-mode) .bg-black\/90,
+body:not(.light-mode) .bg-black,
+body:not(.light-mode) #root .bg-black\/80,
+body:not(.light-mode) #root .bg-black\/85,
+body:not(.light-mode) #root .bg-black\/90,
+body:not(.light-mode) #root .bg-black {
+  background-color: rgba(0, 0, 0, 0.92) !important;
+}
+body:not(.light-mode) [class*="text-[#D1D1D1]"] {
+  color: #E4E4E7 !important;
+}
+
+/* =========================================================
+   LIGHT MODE = TRUE CRISP WHITE (#FFFFFF) & RICH BLACK TEXT
+   ========================================================= */
+body.light-mode,
+html:not(.dark) body.light-mode {
+  background-color: #FFFFFF !important;
+  background-image: none !important;
+  color: #000000 !important;
+}
+
+body.light-mode::after {
+  opacity: 0 !important;
+}
+
+body.light-mode header,
+body.light-mode header nav {
+  background-color: #FFFFFF !important;
+  border-color: #E5E7EB !important;
+  color: #000000 !important;
+}
+
+body.light-mode input, 
+body.light-mode select {
+  background-color: #FFFFFF !important;
+  border-color: #D1D5DB !important;
+  color: #000000 !important;
+}
+
+body.light-mode input:focus,
+body.light-mode select:focus {
+  border-color: #000000 !important;
+}
+
+body.light-mode .bg-neutral-950,
+body.light-mode .bg-neutral-950\/95 {
+  background-color: #FAFAFA !important;
+  background-image: none !important;
+  border-color: #E5E7EB !important;
+  color: #000000 !important;
+}
+
+body.light-mode .bg-neutral-900,
+body.light-mode .bg-neutral-900\/90 {
+  background-color: #FFFFFF !important;
+  background-image: none !important;
+  border-color: #E5E7EB !important;
+  color: #000000 !important;
+}
+
+body.light-mode .bg-neutral-850,
+body.light-mode .bg-neutral-800,
+body.light-mode .bg-neutral-900\/40,
+body.light-mode .luxury-radial-bg,
+body.light-mode .glass-panel {
+  background-color: #FFFFFF !important;
+  background-image: none !important;
+  border-color: rgba(212, 175, 55, 0.25) !important;
+  color: #0F172A !important;
+}
+
+/* Ensure text inside white/light-background containers in light-mode is dark for high readability */
+body.light-mode .bg-neutral-950 .text-white,
+body.light-mode .bg-neutral-900 .text-white,
+body.light-mode .bg-neutral-850 .text-white,
+body.light-mode .bg-neutral-800 .text-white,
+body.light-mode .bg-neutral-900\/40 .text-white,
+body.light-mode .glass-panel .text-white,
+body.light-mode footer .text-white,
+body.light-mode .bg-neutral-950.text-white,
+body.light-mode .bg-neutral-900.text-white,
+body.light-mode .bg-neutral-850.text-white,
+body.light-mode .bg-neutral-800.text-white,
+body.light-mode .bg-neutral-900\/40.text-white,
+body.light-mode .glass-panel.text-white {
+  color: #0F172A !important;
+}
+
+/* Specific Footer contrast in light mode */
+body.light-mode footer {
+  background-color: #FAFAFA !important;
+  border-color: #E5E7EB !important;
+  color: #18181B !important;
+}
+
+/* ========================================================
+   HERO BANNER CONTRAST & VISUAL ISOLATION
+   Ensures text on dark hero overlays is always bright, crisp, and high-contrast
+   ======================================================== */
+#hero-carousel-root,
+.hero-banner-isolate,
+.hero-banner-isolate h1,
+.hero-banner-isolate h2,
+.hero-banner-isolate h3,
+.hero-banner-isolate h4,
+.hero-banner-isolate p,
+.hero-banner-isolate span,
+body.light-mode #hero-carousel-root .text-white,
+body.light-mode .hero-banner-isolate .text-white,
+body.light-mode #hero-carousel-root h3,
+body.light-mode .hero-banner-isolate h3,
+body.light-mode #hero-carousel-root h4,
+body.light-mode .hero-banner-isolate h4 {
+  color: #FFFFFF !important;
+}
+
+body.light-mode #hero-carousel-root .hero-text-gold,
+body.light-mode .hero-banner-isolate .hero-text-gold,
+#hero-carousel-root .hero-text-gold,
+.hero-banner-isolate .hero-text-gold {
+  color: #FF007F !important;
+}
+
+body.light-mode #hero-carousel-root .hero-text-amber,
+body.light-mode .hero-banner-isolate .hero-text-amber,
+#hero-carousel-root .hero-text-amber,
+.hero-banner-isolate .hero-text-amber {
+  color: #FF1990 !important;
+}
+
+body.light-mode #hero-carousel-root .hero-text-muted,
+body.light-mode .hero-banner-isolate .hero-text-muted,
+#hero-carousel-root .hero-text-muted,
+.hero-banner-isolate .hero-text-muted {
+  color: rgba(255, 255, 255, 0.88) !important;
+}
+
+body.light-mode #hero-carousel-root .hero-text-dim,
+body.light-mode .hero-banner-isolate .hero-text-dim,
+#hero-carousel-root .hero-text-dim,
+.hero-banner-isolate .hero-text-dim {
+  color: rgba(255, 255, 255, 0.65) !important;
+}
+
+body.light-mode footer h4 {
+  color: #0F172A !important;
+}
+
+/* Preserve white text on explicitly dark buttons & containers in light mode */
+body.light-mode .bg-black,
+body.light-mode .bg-black *,
+body.light-mode button.bg-black,
+body.light-mode button.bg-black *,
+body.light-mode .btn-primary,
+body.light-mode .btn-primary * {
+  color: #FFFFFF !important;
+}
+
+body.light-mode button.bg-white:not(.mkt-card-btn):not([class*="text-"]) {
+  color: #0F172A;
+}
+
+/* Global High-Definition Button Modern Look with Signature Brand Magenta-Pink */
+.btn-gold,
+button.btn-gold {
+  background: linear-gradient(135deg, #FF1990 0%, #FF007F 50%, #D80068 100%) !important;
+  color: #FFFFFF !important;
+  font-weight: 800 !important;
+  box-shadow: 0 4px 14px rgba(255, 0, 127, 0.35) !important;
+  border: 1px solid rgba(255, 0, 127, 0.45) !important;
+}
+.btn-gold:hover,
+button.btn-gold:hover {
+  background: linear-gradient(135deg, #FF33A0 0%, #FF1990 50%, #E6006E 100%) !important;
+  box-shadow: 0 6px 20px rgba(255, 0, 127, 0.5) !important;
+  transform: translateY(-1px);
+}
+
+/* Ensure clean contrast on add to cart and purchase buttons */
+body.light-mode button.bg-black:hover,
+body.light-mode button.bg-black:hover * {
+  background-color: #18181B !important;
+  color: #FFFFFF !important;
+}
+
+/* Clean Light-Surface Normalization for Admin Panel (.ap-root) Zinc Containers */
+.ap-root .bg-zinc-900 {
+  background-color: #FFFFFF !important;
+  border-color: #E2E8F0 !important;
+  color: #0F172A !important;
+}
+.ap-root .bg-zinc-950,
+.ap-root .bg-zinc-950\/60,
+.ap-root .bg-zinc-950\/70 {
+  background-color: #F8FAFC !important;
+  border-color: #E2E8F0 !important;
+  color: #0F172A !important;
+}
+.ap-root .bg-zinc-800 {
+  background-color: #F1F5F9 !important;
+  border-color: #CBD5E1 !important;
+  color: #1E293B !important;
+}
+.ap-root .border-zinc-800,
+.ap-root .border-zinc-700 {
+  border-color: #E2E8F0 !important;
+}
+.ap-root .text-zinc-100,
+.ap-root .text-zinc-200 {
+  color: #0F172A !important;
+}
+.ap-root .text-zinc-300 {
+  color: #334155 !important;
+}
+.ap-root .text-zinc-400,
+.ap-root .text-zinc-500 {
+  color: #64748B !important;
+}
+.ap-root .text-emerald-300,
+.ap-root .text-emerald-400 {
+  color: #047857 !important;
+}
+.ap-root .text-amber-300,
+.ap-root .text-amber-400 {
+  color: #B45309 !important;
+}
+.ap-root .text-sky-300,
+.ap-root .text-sky-400 {
+  color: #0369A1 !important;
+}
+.ap-root .text-rose-300,
+.ap-root .text-rose-400 {
+  color: #BE123C !important;
+}
+
+/* Clean Light-Surface Normalization for Seller Dashboard (#seller-dashboard-root) */
+body.light-mode #seller-dashboard-root .bg-neutral-900,
+body.light-mode #seller-dashboard-root .bg-neutral-900\/90,
+body.light-mode #seller-dashboard-root .bg-neutral-900\/80,
+body.light-mode #seller-dashboard-root .bg-neutral-900\/70,
+body.light-mode #seller-dashboard-root .bg-slate-900,
+body.light-mode #seller-dashboard-root .bg-slate-900\/90 {
+  background-color: #FFFFFF !important;
+  border-color: #E2E8F0 !important;
+  color: #0F172A !important;
+}
+
+body.light-mode #seller-dashboard-root .bg-neutral-950,
+body.light-mode #seller-dashboard-root .bg-neutral-950\/40,
+body.light-mode #seller-dashboard-root .bg-neutral-950\/50,
+body.light-mode #seller-dashboard-root .bg-neutral-950\/60,
+body.light-mode #seller-dashboard-root .bg-neutral-950\/70,
+body.light-mode #seller-dashboard-root .bg-neutral-950\/80,
+body.light-mode #seller-dashboard-root .bg-slate-950,
+body.light-mode #seller-dashboard-root .bg-slate-950\/90 {
+  background-color: #F8FAFC !important;
+  border-color: #E2E8F0 !important;
+  color: #0F172A !important;
+}
+
+body.light-mode #seller-dashboard-root .bg-neutral-800,
+body.light-mode #seller-dashboard-root .bg-neutral-800\/80,
+body.light-mode #seller-dashboard-root .bg-neutral-800\/90,
+body.light-mode #seller-dashboard-root .bg-slate-800 {
+  background-color: #F1F5F9 !important;
+  border-color: #CBD5E1 !important;
+  color: #1E293B !important;
+}
+
+body.light-mode #seller-dashboard-root .border-neutral-800,
+body.light-mode #seller-dashboard-root .border-neutral-800\/50,
+body.light-mode #seller-dashboard-root .border-neutral-800\/60,
+body.light-mode #seller-dashboard-root .border-neutral-800\/70,
+body.light-mode #seller-dashboard-root .border-neutral-800\/80,
+body.light-mode #seller-dashboard-root .border-neutral-700,
+body.light-mode #seller-dashboard-root .border-slate-800,
+body.light-mode #seller-dashboard-root .border-slate-800\/80,
+body.light-mode #seller-dashboard-root .border-slate-700 {
+  border-color: #E2E8F0 !important;
+}
+
+body.light-mode #seller-dashboard-root .divide-neutral-800 > :not([hidden]) ~ :not([hidden]),
+body.light-mode #seller-dashboard-root .divide-neutral-800\/60 > :not([hidden]) ~ :not([hidden]),
+body.light-mode #seller-dashboard-root .divide-neutral-800\/70 > :not([hidden]) ~ :not([hidden]) {
+  border-color: #E2E8F0 !important;
+}
+
+body.light-mode #seller-dashboard-root .text-white:not(.bg-rose-500):not(.bg-rose-600):not(.bg-red-600):not(.bg-emerald-500):not(.bg-emerald-600):not(.bg-blue-600):not(.bg-indigo-600):not(.bg-amber-500):not(.bg-amber-600):not(.bg-orange-500):not(.bg-orange-600):not(.bg-\[\#F85606\]):not(.bg-slate-900):not(.mkt-settings-root *) {
+  color: #0F172A !important;
+}
+
+body.light-mode #seller-dashboard-root .text-neutral-100,
+body.light-mode #seller-dashboard-root .text-neutral-200,
+body.light-mode #seller-dashboard-root .text-slate-100,
+body.light-mode #seller-dashboard-root .text-slate-200 {
+  color: #1E293B !important;
+}
+
+body.light-mode #seller-dashboard-root .text-neutral-300,
+body.light-mode #seller-dashboard-root .text-slate-300 {
+  color: #334155 !important;
+}
+
+body.light-mode #seller-dashboard-root .text-neutral-400,
+body.light-mode #seller-dashboard-root .text-neutral-500,
+body.light-mode #seller-dashboard-root .text-slate-400,
+body.light-mode #seller-dashboard-root .text-slate-500 {
+  color: #64748B !important;
+}
+
+body.light-mode .bg-neutral-950 .text-neutral-500,
+body.light-mode .bg-neutral-900 .text-neutral-500,
+body.light-mode .bg-neutral-850 .text-neutral-500,
+body.light-mode .bg-neutral-800 .text-neutral-500,
+body.light-mode .bg-neutral-900\/40 .text-neutral-500,
+body.light-mode .glass-panel .text-neutral-500 {
+  color: #71717A !important;
+}
+
+body.light-mode .bg-neutral-950 .text-neutral-400,
+body.light-mode .bg-neutral-900 .text-neutral-400,
+body.light-mode .bg-neutral-850 .text-neutral-400,
+body.light-mode .bg-neutral-800 .text-neutral-400,
+body.light-mode .bg-neutral-900\/40 .text-neutral-400,
+body.light-mode .glass-panel .text-neutral-400 {
+  color: #71717A !important;
+}
+
+body.light-mode .bg-neutral-950 .text-neutral-300,
+body.light-mode .bg-neutral-900 .text-neutral-300,
+body.light-mode .bg-neutral-850 .text-neutral-300,
+body.light-mode .bg-neutral-800 .text-neutral-300,
+body.light-mode .bg-neutral-900\/40 .text-neutral-300,
+body.light-mode .glass-panel .text-neutral-300 {
+  color: #3F3F46 !important;
+}
+
+/* Ensure SVG icons inside modified white-background areas in light mode are dark and visible */
+body.light-mode .bg-neutral-850 svg,
+body.light-mode .bg-neutral-800 svg,
+body.light-mode .bg-neutral-900\/40 svg,
+body.light-mode .glass-panel svg {
+  color: #000000 !important;
+  stroke: #000000 !important;
+}
+
+/* Specific product action buttons (Wishlist, Quick View, Compare) in light mode */
+body.light-mode .product-action-btn {
+  background-color: #FFFFFF !important;
+  border-color: #E5E7EB !important;
+  color: #000000 !important;
+}
+body.light-mode .product-action-btn svg {
+  color: #000000 !important;
+  stroke: #000000 !important;
+}
+body.light-mode .product-action-btn:hover {
+  background-color: #000000 !important;
+  border-color: #000000 !important;
+  color: #FFFFFF !important;
+}
+body.light-mode .product-action-btn:hover svg {
+  color: #FFFFFF !important;
+  stroke: #FFFFFF !important;
+}
+
+/* Category Filters in light mode */
+body.light-mode .category-filter-btn,
+body.light-mode .category-mobile-btn {
+  background-color: #FFFFFF !important;
+  color: #18181B !important;
+  border-color: #E4E4E7 !important;
+}
+body.light-mode .category-filter-btn:hover,
+body.light-mode .category-mobile-btn:hover {
+  background-color: #F4F4F5 !important;
+  color: #000000 !important;
+}
+body.light-mode .category-filter-btn.active-cat-btn,
+body.light-mode .category-mobile-btn.active-mobile-cat {
+  background-color: #FF007F !important;
+  color: #FFFFFF !important;
+  border-color: #FF007F !important;
+  font-weight: 700 !important;
+}
+body.light-mode .category-filter-btn.active-cat-btn svg,
+body.light-mode .category-mobile-btn.active-mobile-cat svg {
+  color: #FFFFFF !important;
+  stroke: #FFFFFF !important;
+}
+
+/* Beautiful custom slider track and circle thumb styles */
+input[type="range"] {
+  -webkit-appearance: none !important;
+  appearance: none !important;
+  background: transparent !important;
+  cursor: pointer !important;
+}
+input[type="range"]::-webkit-slider-runnable-track {
+  height: 6px !important;
+  border-radius: 9999px !important;
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none !important;
+  appearance: none !important;
+  width: 16px !important;
+  height: 16px !important;
+  border-radius: 50% !important;
+  margin-top: -5px !important;
+}
+
+body.light-mode input[type="range"]::-webkit-slider-runnable-track {
+  background-color: rgba(255, 255, 255, 0.3) !important;
+}
+body.light-mode input[type="range"]::-webkit-slider-thumb {
+  background-color: #ffffff !important;
+  border: 2px solid #FF007F !important;
+  box-shadow: 0 2px 6px rgba(255, 0, 127, 0.25) !important;
+}
+
+body:not(.light-mode) input[type="range"]::-webkit-slider-runnable-track {
+  background-color: #17171a !important;
+}
+body:not(.light-mode) input[type="range"]::-webkit-slider-thumb {
+  background-color: #FF007F !important;
+  border: 2px solid #17171a !important;
+  box-shadow: 0 0 8px rgba(255, 0, 127, 0.4) !important;
+}
+
+body.light-mode .from-neutral-950,
+body.light-mode .from-neutral-900 {
+  --tw-gradient-from: #FFFFFF !important;
+  --tw-gradient-to: #FFFFFF !important;
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to) !important;
+}
+
+body.light-mode .via-neutral-900 {
+  --tw-gradient-via: #FAFAF7 !important;
+}
+
+body.light-mode .to-neutral-950 {
+  --tw-gradient-to: #FAFAF7 !important;
+}
+
+body.light-mode .text-neutral-400,
+body.light-mode .text-neutral-500 {
+  color: #4B5563 !important; /* Medium gray text for high contrast on light mode */
+}
+
+body.light-mode .border-neutral-800,
+body.light-mode .border-neutral-850 {
+  border-color: #E5E7EB !important;
+}
+
+body.light-mode .text-neutral-300 {
+  color: #374151 !important;
+}
+
+body.light-mode .glass-panel {
+  background-color: rgba(255, 255, 255, 0.96) !important;
+  border-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+/* 1.3 Fast Instant Page Transitions keyframes (no transform so position:fixed modals always attach to viewport) */
+@keyframes pageIn {
+  from {
+    opacity: 0.96;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.animate-page-in {
+  animation: pageIn 0.12s ease-out;
+}
+
+/* 1.4 Instant Scroll Reveal (no invisible opacity delay on reload or mobile) */
+.reveal-entry,
+.reveal-entry.revealed {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+/* Mobile Touch & Viewport Ergonomics */
+@media (max-width: 767px) {
+  html, body {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-text-size-adjust: 100%;
+    overscroll-behavior-x: none;
+  }
+}
+
+/* 1.5 Silver Shimmer Skeleton Loading */
+.gold-shimmer {
+  background: linear-gradient(90deg, #101010 25%, #222222 50%, #101010 75%);
+  background-size: 200% 100%;
+  animation: goldShimmer 1.5s infinite linear;
+  border-radius: 12px;
+}
+@keyframes goldShimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* CSS Tooltip system (3.7) */
+[data-tooltip] {
+  position: relative;
+}
+[data-tooltip]::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 110%;
+  left: 50%;
+  transform: translateX(-50%) translateY(4px);
+  opacity: 0;
+  pointer-events: none;
+  background-color: rgba(10, 10, 10, 0.95);
+  border: 1px solid #D1D1D1;
+  color: #E5E5E5;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 9px;
+  white-space: nowrap;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  z-index: 50;
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+}
+[data-tooltip]:hover::after {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* Global Button Interactive Micro-interactions & Color Deepening */
+button,
+[role="button"],
+.clickable-btn {
+  cursor: pointer !important;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+button:hover,
+[role="button"]:hover,
+.clickable-btn:hover {
+  filter: brightness(1.08) saturate(1.05);
+}
+
+button:active,
+[role="button"]:active,
+.clickable-btn:active {
+  transform: scale(0.96) !important;
+  filter: brightness(0.82) contrast(1.08) !important;
+}
+
+/* Underline effect for sub-navbar links */
+.nav-underline-anim {
+  position: relative;
+  transition: color 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  letter-spacing: 0.08em !important;
+  font-family: var(--font-sans) !important;
+}
+
+.nav-underline-anim::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: -4px;
+  left: 0;
+  background: linear-gradient(90deg, #FF1990, #FF007F) !important;
+  transform-origin: bottom right;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.nav-underline-anim:hover::after,
+.nav-underline-anim.active::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+body.light-mode .nav-underline-anim::after {
+  background: #000000 !important;
+}
+
+/* Premium Navigation Icon Button Circle Scale & Hover Glows */
+.premium-nav-icon-btn {
+  padding: 10px !important;
+  border-radius: 9999px !important;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+}
+
+.premium-nav-icon-btn:hover {
+  background-color: rgba(255, 255, 255, 0.12) !important;
+  color: #FFFFFF !important;
+  transform: scale(1.12) !important;
+}
+
+.premium-nav-icon-btn:active {
+  transform: scale(0.94) !important;
+}
+
+body.light-mode .premium-nav-icon-btn:hover {
+  background-color: rgba(0, 0, 0, 0.08) !important;
+  color: #000000 !important;
+}
+
+/* Chat Widget Specific Scrollbars are now hidden globally */
+
+/* Invoice Modal Custom Scrollbar */
+.invoice-modal-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(245, 166, 35, 0.4) rgba(0, 0, 0, 0.05);
+}
+
+.invoice-modal-scroll::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.invoice-modal-scroll::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.04);
+  border-radius: 9999px;
+}
+
+.invoice-modal-scroll::-webkit-scrollbar-thumb {
+  background: rgba(245, 166, 35, 0.4);
+  border-radius: 9999px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+.invoice-modal-scroll::-webkit-scrollbar-thumb:hover {
+  background: rgba(245, 166, 35, 0.7);
+}
+
+/* Wishlist Heart Bounce / Pop Animation */
+@keyframes heartPop {
+  0% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 0px rgba(239, 68, 68, 0));
+  }
+  20% {
+    transform: scale(0.7);
+    filter: drop-shadow(0 0 2px rgba(239, 68, 68, 0.3));
+  }
+  45% {
+    transform: scale(1.38);
+    filter: drop-shadow(0 0 8px rgba(239, 68, 68, 0.6));
+  }
+  65% {
+    transform: scale(0.92);
+    filter: drop-shadow(0 0 4px rgba(239, 68, 68, 0.4));
+  }
+  82% {
+    transform: scale(1.1);
+    filter: drop-shadow(0 0 3px rgba(239, 68, 68, 0.25));
+  }
+  100% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 0px rgba(239, 68, 68, 0));
+  }
+}
+
+.animate-heart-pop {
+  animation: heartPop 0.48s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  transform-origin: center center;
+}
+
+/* ==========================================================================
+   Modern Luxury PageLoader Animations
+   ========================================================================== */
+
+@keyframes orbitSpinClockwise {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes orbitSpinCounter {
+  from { transform: rotate(360deg); }
+  to { transform: rotate(0deg); }
+}
+
+@keyframes glowAuraPulse {
+  0%, 100% {
+    opacity: 0.45;
+    transform: scale(0.96);
+  }
+  50% {
+    opacity: 0.85;
+    transform: scale(1.08);
+  }
+}
+
+@keyframes shimmerBeamSlide {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(250%); }
+}
+
+@keyframes microFadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-orbit-cw {
+  animation: orbitSpinClockwise 3.2s linear infinite;
+}
+
+.animate-orbit-ccw {
+  animation: orbitSpinCounter 4.8s linear infinite;
+}
+
+.animate-glow-aura {
+  animation: glowAuraPulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.animate-shimmer-beam {
+  animation: shimmerBeamSlide 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+.animate-micro-fade-in {
+  animation: microFadeIn 0.3s ease-out forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-orbit-cw,
+  .animate-orbit-ccw,
+  .animate-glow-aura,
+  .animate-shimmer-beam,
+  .animate-heart-pop {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
+
+
+

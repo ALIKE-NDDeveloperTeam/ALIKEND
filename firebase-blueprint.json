@@ -1,0 +1,157 @@
+{
+  "entities": {
+    "Hotline": {
+      "title": "Hotline",
+      "description": "Central verified website hotline and support concierge contact record",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string", "maxLength": 100 },
+        "phoneNumber": { "type": "string", "maxLength": 30 },
+        "extension": { "type": "string", "maxLength": 20 },
+        "department": { "type": "string", "maxLength": 60 },
+        "description": { "type": "string", "maxLength": 500 },
+        "operatingHours": { "type": "string", "maxLength": 100 },
+        "whatsappNumber": { "type": "string", "maxLength": 30 },
+        "emailAddress": { "type": "string", "format": "email", "maxLength": 120 },
+        "isEmergency": { "type": "boolean" },
+        "isPriority": { "type": "boolean" },
+        "isActive": { "type": "boolean" },
+        "displayOrder": { "type": "number" },
+        "callClickCount": { "type": "number" },
+        "createdBy": { "type": "string", "maxLength": 100 },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["name", "phoneNumber", "department", "operatingHours", "isActive"]
+    },
+    "SupportTicket": {
+      "title": "SupportTicket",
+      "description": "Customer support ticket with conversation thread, escalation state and SLA tracking",
+      "type": "object",
+      "properties": {
+        "ticketId": { "type": "string", "maxLength": 32 },
+        "customerName": { "type": "string", "maxLength": 120 },
+        "customerEmail": { "type": "string", "format": "email", "maxLength": 120 },
+        "customerPhone": { "type": "string", "maxLength": 30 },
+        "customerId": { "type": "string", "maxLength": 64 },
+        "subject": { "type": "string", "maxLength": 200 },
+        "description": { "type": "string", "maxLength": 4000 },
+        "category": { "type": "string", "maxLength": 80 },
+        "subcategory": { "type": "string", "maxLength": 80 },
+        "priority": { "type": "string", "enum": ["Low", "Normal", "High", "Urgent"] },
+        "status": {
+          "type": "string",
+          "enum": ["New", "Open", "In Progress", "Waiting for Customer", "Escalated", "Resolved", "Closed"]
+        },
+        "assignedAgentId": { "type": "string", "maxLength": 64 },
+        "assignedAgentName": { "type": "string", "maxLength": 120 },
+        "assignedDepartment": { "type": "string", "maxLength": 80 },
+        "tags": { "type": "array" },
+        "csatRating": { "type": "number" },
+        "csatFeedback": { "type": "string", "maxLength": 1000 },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["ticketId", "customerName", "customerEmail", "subject", "description", "category", "status", "priority"]
+    },
+    "KnowledgeArticle": {
+      "title": "KnowledgeArticle",
+      "description": "Knowledge Base & FAQ article for customer self-service and ticket resolution",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string", "maxLength": 200 },
+        "category": { "type": "string", "maxLength": 80 },
+        "summary": { "type": "string", "maxLength": 500 },
+        "content": { "type": "string", "maxLength": 10000 },
+        "status": { "type": "string", "enum": ["published", "draft", "archived"] },
+        "viewsCount": { "type": "number" },
+        "helpfulCount": { "type": "number" },
+        "author": { "type": "string", "maxLength": 100 },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["title", "category", "content", "status"]
+    },
+    "CustomerCareSettings": {
+      "title": "CustomerCareSettings",
+      "description": "Global operational settings for customer care center",
+      "type": "object",
+      "properties": {
+        "autoResponderEnabled": { "type": "boolean" },
+        "autoResponderMessage": { "type": "string", "maxLength": 500 },
+        "workingHoursNotice": { "type": "string", "maxLength": 500 },
+        "emergencyBannerText": { "type": "string", "maxLength": 300 },
+        "emergencyBannerActive": { "type": "boolean" },
+        "whatsappChatEnabled": { "type": "boolean" },
+        "emailNotificationsEnabled": { "type": "boolean" },
+        "defaultSlaHours": { "type": "number" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["autoResponderEnabled", "emergencyBannerActive"]
+    },
+    "SellerAccount": {
+      "title": "SellerAccount",
+      "description": "Dedicated seller store profile and account status record isolated from customer accounts",
+      "type": "object",
+      "properties": {
+        "shopName": { "type": "string", "maxLength": 120 },
+        "ownerName": { "type": "string", "maxLength": 120 },
+        "email": { "type": "string", "format": "email", "maxLength": 120 },
+        "mobileNumber": { "type": "string", "maxLength": 20 },
+        "role": { "type": "string", "enum": ["seller"] },
+        "status": { "type": "string", "enum": ["pending", "review", "approved", "suspended", "rejected"] },
+        "emailVerified": { "type": "boolean" },
+        "kycVerified": { "type": "boolean" },
+        "verificationStatus": {
+          "type": "string",
+          "enum": ["not_submitted", "pending_admin_review", "under_review", "resubmission_required", "approved", "rejected"]
+        },
+        "verifiedBadge": { "type": "boolean" },
+        "agreedToTerms": { "type": "boolean" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["shopName", "ownerName", "email", "mobileNumber", "role", "status"]
+    },
+    "CustomerAccount": {
+      "title": "CustomerAccount",
+      "description": "Dedicated customer profile isolated from seller accounts",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string", "maxLength": 120 },
+        "email": { "type": "string", "format": "email", "maxLength": 120 },
+        "phone": { "type": "string", "maxLength": 20 },
+        "role": { "type": "string", "enum": ["customer"] },
+        "isBlocked": { "type": "boolean" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["name", "email", "role"]
+    }
+  },
+  "firestore": {
+    "/hotlines/{hotlineId}": {
+      "schema": "Hotline",
+      "description": "Collection of verified hotline contact numbers"
+    },
+    "/supportTickets/{ticketId}": {
+      "schema": "SupportTicket",
+      "description": "Support tickets raised by customers or agents"
+    },
+    "/knowledgeArticles/{articleId}": {
+      "schema": "KnowledgeArticle",
+      "description": "Knowledge Base and FAQ items"
+    },
+    "/customerCareSettings/global": {
+      "schema": "CustomerCareSettings",
+      "description": "Global settings for Customer Care system"
+    },
+    "/sellers/{sellerId}": {
+      "schema": "SellerAccount",
+      "description": "Dedicated seller accounts isolated from customer accounts"
+    },
+    "/users/{userId}": {
+      "schema": "CustomerAccount",
+      "description": "Dedicated customer accounts isolated from seller accounts"
+    }
+  }
+}
