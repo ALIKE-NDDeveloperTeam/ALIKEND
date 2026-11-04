@@ -104,6 +104,7 @@ export interface InMemoryStore {
     countryOfOrigin?: string;
     manufacturerDetails?: string;
     packInfo?: string;
+<<<<<<< HEAD
     moderationStatus?: string;
     approvalStatus?: string;
     changeHistory?: Array<any>;
@@ -111,6 +112,10 @@ export interface InMemoryStore {
     createdAt: Date;
     updatedAt?: Date;
     [key: string]: any;
+=======
+    createdAt: Date;
+    updatedAt?: Date;
+>>>>>>> 3f5a3a1673ff92fe6382280c2d42a734871e72c8
   }>;
   orders: Array<{
     _id: string;
@@ -189,6 +194,7 @@ export interface InMemoryStore {
     verifiedBadge?: boolean;
     identityVerification?: any;
     notifications?: Array<any>;
+<<<<<<< HEAD
     bundleOffers?: Array<any>;
     warehouses?: Array<any>;
     reviewReplies?: Array<any>;
@@ -198,6 +204,10 @@ export interface InMemoryStore {
     status: "pending" | "approved" | "review" | "suspended" | "rejected";
     createdAt: Date;
     [key: string]: any;
+=======
+    status: "pending" | "approved" | "review" | "suspended" | "rejected";
+    createdAt: Date;
+>>>>>>> 3f5a3a1673ff92fe6382280c2d42a734871e72c8
   }>;
   customers: Array<{ _id: string; name: string; email: string; tier: "Silver" | "Gold" | "Platinum"; ordersCount: number; lifetimeSpend: number; createdAt: Date }>;
   activityLogs: Array<{

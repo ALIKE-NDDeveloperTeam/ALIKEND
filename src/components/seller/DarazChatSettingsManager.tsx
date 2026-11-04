@@ -82,9 +82,14 @@ export interface DarazChatSettingsManagerProps {
   draftData?: Record<string, any>;
   onUpdateField?: (key: string, value: any) => void;
   sellerProfile?: SellerProfile | null;
+<<<<<<< HEAD
   adminEmail?: string | any;
   onNavigateBreadcrumb?: (target: 'home' | 'setting' | any) => void;
   showToast?: (msg: string, type?: 'success' | 'error' | 'info' | 'warning') => void;
+=======
+  onNavigateBreadcrumb?: (target: 'home' | 'setting') => void;
+  showToast?: (msg: string, type?: 'success' | 'error' | 'info') => void;
+>>>>>>> 3f5a3a1673ff92fe6382280c2d42a734871e72c8
 }
 
 const CHAT_TABS: { id: ChatSettingsTabId; label: string }[] = [

@@ -133,7 +133,10 @@ export interface Product {
     returnEligible?: boolean;
     returnWindowDays?: number;
     dangerousGoods?: "none" | "battery" | "flammable" | "liquid" | "fragile" | string;
+<<<<<<< HEAD
     shippingClass?: string;
+=======
+>>>>>>> 3f5a3a1673ff92fe6382280c2d42a734871e72c8
   };
   warrantyConfig?: {
     warrantyType?: "manufacturer" | "seller" | "no_warranty" | string;
@@ -162,6 +165,7 @@ export interface Product {
   isDraft?: boolean;
   contentScore?: number;
   lastDraftSavedAt?: string;
+<<<<<<< HEAD
   approvalStatus?: "approved" | "pending" | "rejected" | "archived" | string;
   moderationStatus?: "approved" | "pending" | "rejected" | "archived" | "draft" | string;
   rejectionReason?: string;
@@ -176,6 +180,14 @@ export interface Product {
     actorName?: string;
     actorRole?: string;
     timestamp?: string;
+=======
+  moderationStatus?: "approved" | "pending" | "rejected" | "archived" | "draft" | string;
+  moderationNote?: string;
+  changeHistory?: Array<{
+    action: string;
+    actedBy: string;
+    note?: string;
+>>>>>>> 3f5a3a1673ff92fe6382280c2d42a734871e72c8
     createdAt: string;
   }>;
   createdAt?: string;
@@ -310,8 +322,11 @@ export interface ActivityLogEvent {
   createdAt: string;
 }
 
+<<<<<<< HEAD
 export type ActivityLogItem = ActivityLogEvent;
 
+=======
+>>>>>>> 3f5a3a1673ff92fe6382280c2d42a734871e72c8
 export interface Banner {
   _id: string;
   imageUrl: string;

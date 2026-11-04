@@ -5,7 +5,10 @@ import Seller, {
   SellerVerificationStatus,
   SellerIdentityVerification,
   SellerNotificationEntry,
+<<<<<<< HEAD
   SellerVerificationHistoryEntry,
+=======
+>>>>>>> 3f5a3a1673ff92fe6382280c2d42a734871e72c8
 } from "../models/Seller";
 import Product from "../models/Product";
 import Order from "../models/Order";
@@ -1814,6 +1817,7 @@ router.post("/:id/verification/review", async (req: AuthedRequest, res) => {
         "Your raw NID and selfie image files were purged from storage in accordance with the platform privacy and data retention policy.";
     }
 
+<<<<<<< HEAD
     const historyEntry: SellerVerificationHistoryEntry = {
       id: `vh_${Date.now()}_${Math.random().toString(36).slice(2, 6)}`,
       action: actionLabel,
@@ -1823,6 +1827,14 @@ router.post("/:id/verification/review", async (req: AuthedRequest, res) => {
       reviewerAdminId: adminId,
       reviewerAdminName: adminName,
       reviewerAdminEmail: adminEmail,
+=======
+    const historyEntry = {
+      status: nextStatus,
+      action: actionLabel,
+      note: cleanReason || `Decision recorded by ${adminName} (${adminEmail})`,
+      actedBy: `${adminName} (${adminEmail})`,
+      actedByAdminId: adminId,
+>>>>>>> 3f5a3a1673ff92fe6382280c2d42a734871e72c8
       createdAt: now,
     };
 

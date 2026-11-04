@@ -30,7 +30,10 @@ export interface AuthedRequest extends Request {
   adminId?: string;
   admin?: {
     _id: string;
+<<<<<<< HEAD
     adminId?: string;
+=======
+>>>>>>> 3f5a3a1673ff92fe6382280c2d42a734871e72c8
     email: string;
     name: string;
     role: string;

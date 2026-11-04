@@ -28,8 +28,11 @@ import deliveryPartnerRoutes from "./routes/deliveryPartner";
 import nearbyRoutes from "./routes/nearby";
 import orderTrackingRoutes from "./routes/orderTracking";
 import adminCentralRoutes from "./routes/adminCentral";
+<<<<<<< HEAD
 import { projectsRouter, apiDataRouter } from "./routes/projects";
 import { betterAuthRouter } from "./lib/betterAuth";
+=======
+>>>>>>> 3f5a3a1673ff92fe6382280c2d42a734871e72c8
 import jwt from "jsonwebtoken";
 import { requireAdmin, requireCustomerAuth, CustomerAuthedRequest, ALL_ADMIN_ROLES, getJwtSecret } from "./middleware/auth";
 import { connectMongoDB, isMongoConnected, memoryStore, syncDatabaseWithMemory } from "./store";
@@ -187,6 +190,7 @@ app.post("/api/admin/db-sync", requireAdmin, async (_req, res) => {
 // Public User Authentication & Registration Routes (MongoDB 'users' collection)
 app.use("/api/auth", userAuthRoutes);
 
+<<<<<<< HEAD
 // Better Auth (Next.js & Express compatible MongoDB session auth)
 app.use(["/api/better-auth", "/api/auth/better"], betterAuthRouter);
 
@@ -194,6 +198,8 @@ app.use(["/api/better-auth", "/api/auth/better"], betterAuthRouter);
 app.use("/api/projects", projectsRouter);
 app.use("/api/data", apiDataRouter);
 
+=======
+>>>>>>> 3f5a3a1673ff92fe6382280c2d42a734871e72c8
 // Public & Authenticated Multi-Seller Marketplace Routes (Registration, Login, My Products, Wallet)
 app.use(["/api/sellers", "/api/seller"], sellerPortalRoutes);
 

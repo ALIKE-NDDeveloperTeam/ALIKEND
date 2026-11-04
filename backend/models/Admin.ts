@@ -25,8 +25,11 @@ export interface AdminSellerPermissions {
   manageSellerSupport: boolean;
 }
 
+<<<<<<< HEAD
 export type AdminSellerManagementPermissions = AdminSellerPermissions;
 
+=======
+>>>>>>> 3f5a3a1673ff92fe6382280c2d42a734871e72c8
 export interface IAdmin extends Document {
   email: string;
   passwordHash: string;

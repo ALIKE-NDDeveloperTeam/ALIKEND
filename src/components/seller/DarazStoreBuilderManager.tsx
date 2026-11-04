@@ -327,9 +327,12 @@ const FALLBACK_DEMO_PRODUCTS: Product[] = [
     image: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600&auto=format&fit=crop&q=80',
     rating: 4.9,
     reviews: 128,
+<<<<<<< HEAD
     reviewsCount: 128,
     description: 'Precision chronograph with obsidian bezel.',
     specifications: { Movement: 'Swiss Quartz' },
+=======
+>>>>>>> 3f5a3a1673ff92fe6382280c2d42a734871e72c8
     stock: 15,
   },
   {
@@ -342,9 +345,12 @@ const FALLBACK_DEMO_PRODUCTS: Product[] = [
     image: 'https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=600&auto=format&fit=crop&q=80',
     rating: 4.8,
     reviews: 94,
+<<<<<<< HEAD
     reviewsCount: 94,
     description: 'Handstitched full-grain Italian leather tote.',
     specifications: { Material: 'Italian Leather' },
+=======
+>>>>>>> 3f5a3a1673ff92fe6382280c2d42a734871e72c8
     stock: 22,
   },
   {
@@ -357,9 +363,12 @@ const FALLBACK_DEMO_PRODUCTS: Product[] = [
     image: 'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=600&auto=format&fit=crop&q=80',
     rating: 4.9,
     reviews: 76,
+<<<<<<< HEAD
     reviewsCount: 76,
     description: 'Handcrafted 24K vermeil pendant with precision facet cuts.',
     specifications: { Metal: '24K Vermeil' },
+=======
+>>>>>>> 3f5a3a1673ff92fe6382280c2d42a734871e72c8
     stock: 19,
   },
   {
@@ -372,9 +381,12 @@ const FALLBACK_DEMO_PRODUCTS: Product[] = [
     image: 'https://images.unsplash.com/photo-1547996160-81dfa63595aa?w=600&auto=format&fit=crop&q=80',
     rating: 4.7,
     reviews: 63,
+<<<<<<< HEAD
     reviewsCount: 63,
     description: 'Ultra-thin dress watch featuring sapphire crystal glass.',
     specifications: { Crystal: 'Sapphire' },
+=======
+>>>>>>> 3f5a3a1673ff92fe6382280c2d42a734871e72c8
     stock: 11,
   },
   {
@@ -387,9 +399,12 @@ const FALLBACK_DEMO_PRODUCTS: Product[] = [
     image: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600&auto=format&fit=crop&q=80',
     rating: 4.8,
     reviews: 112,
+<<<<<<< HEAD
     reviewsCount: 112,
     description: 'Acoustic-grade studio reference wireless monitors.',
     specifications: { Connectivity: 'Bluetooth 5.3' },
+=======
+>>>>>>> 3f5a3a1673ff92fe6382280c2d42a734871e72c8
     stock: 30,
   },
   {
@@ -402,9 +417,12 @@ const FALLBACK_DEMO_PRODUCTS: Product[] = [
     image: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=600&auto=format&fit=crop&q=80',
     rating: 4.9,
     reviews: 51,
+<<<<<<< HEAD
     reviewsCount: 51,
     description: 'Cushioned luxury travel case for fine timepieces.',
     specifications: { Capacity: '3 Watches' },
+=======
+>>>>>>> 3f5a3a1673ff92fe6382280c2d42a734871e72c8
     stock: 40,
   },
 ];

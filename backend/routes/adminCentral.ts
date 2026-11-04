@@ -92,7 +92,11 @@ export interface AuditLogEntry {
   adminEmail: string;
   adminRole: string;
   action: string;
+<<<<<<< HEAD
   entityType: "order" | "ride" | "driver" | "delivery_partner" | "seller" | "customer" | "config" | "dispute" | "security";
+=======
+  entityType: "order" | "ride" | "driver" | "delivery_partner" | "seller" | "customer" | "config" | "dispute";
+>>>>>>> 3f5a3a1673ff92fe6382280c2d42a734871e72c8
   entityId: string;
   details: string;
   ipAddress?: string;

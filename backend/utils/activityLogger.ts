@@ -12,7 +12,10 @@ export interface LogActivityParams {
   browser?: string;
   os?: string;
   details?: string;
+<<<<<<< HEAD
   req?: any;
+=======
+>>>>>>> 3f5a3a1673ff92fe6382280c2d42a734871e72c8
 }
 
 export function parseClientInfo(req: Request) {
@@ -60,14 +63,22 @@ export async function logActivity(
   req?: Request
 ): Promise<any> {
   try {
+<<<<<<< HEAD
     const activeReq = req || params.req;
+=======
+>>>>>>> 3f5a3a1673ff92fe6382280c2d42a734871e72c8
     let ip = params.ipAddress;
     let browser = params.browser;
     let os = params.os;
     let deviceInfo = params.deviceInfo;
 
+<<<<<<< HEAD
     if (activeReq) {
       const parsed = parseClientInfo(activeReq);
+=======
+    if (req) {
+      const parsed = parseClientInfo(req);
+>>>>>>> 3f5a3a1673ff92fe6382280c2d42a734871e72c8
       if (!ip) ip = parsed.ip;
       if (!browser) browser = parsed.browser;
       if (!os) os = parsed.os;

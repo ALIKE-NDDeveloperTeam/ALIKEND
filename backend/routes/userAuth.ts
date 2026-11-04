@@ -2007,6 +2007,7 @@ router.patch(["/profile/location", "/saved-location"], async (req, res) => {
   }
 });
 
+<<<<<<< HEAD
 // =========================================================================
 // User Custom Data API Endpoints -> Direct to MongoDB 'users' Collection
 // =========================================================================
@@ -2178,3 +2179,6 @@ router.patch("/data", updateUserDataHandler);
 
 export default router;
 
+=======
+export default router;
+>>>>>>> 3f5a3a1673ff92fe6382280c2d42a734871e72c8

@@ -60,8 +60,11 @@ export interface IUser extends Document {
   restrictions?: Record<string, IUserRestriction>;
   restrictionAuditLog?: IRestrictionAuditEntry[];
   securityAuditLog?: ISecurityAuditEntry[];
+<<<<<<< HEAD
   metadata?: Record<string, any>;
   customData?: Record<string, any>;
+=======
+>>>>>>> 3f5a3a1673ff92fe6382280c2d42a734871e72c8
   createdAt: Date;
   updatedAt: Date;
 }
@@ -116,8 +119,11 @@ const UserSchema = new Schema<IUser>(
         timestamp: { type: Date, default: Date.now },
       },
     ],
+<<<<<<< HEAD
     metadata: { type: Schema.Types.Mixed, default: {} },
     customData: { type: Schema.Types.Mixed, default: {} },
+=======
+>>>>>>> 3f5a3a1673ff92fe6382280c2d42a734871e72c8
   },
   {
     timestamps: true,

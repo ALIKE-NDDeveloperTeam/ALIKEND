@@ -9,7 +9,10 @@ import Seller, {
   SellerVerificationStatus,
   SellerIdentityVerification,
   SellerNotificationEntry,
+<<<<<<< HEAD
   SellerVerificationHistoryEntry,
+=======
+>>>>>>> 3f5a3a1673ff92fe6382280c2d42a734871e72c8
 } from "../models/Seller";
 import Product from "../models/Product";
 import Order from "../models/Order";
@@ -70,10 +73,13 @@ export interface SellerAuthedRequest extends Request {
     shippingPolicy?: string;
     returnPolicyText?: string;
     coupons?: any[];
+<<<<<<< HEAD
     bundleOffers?: any[];
     warehouses?: any[];
     reviewReplies?: any[];
     staffMembers?: any[];
+=======
+>>>>>>> 3f5a3a1673ff92fe6382280c2d42a734871e72c8
     campaignNominations?: any[];
     notificationPreferences?: any;
     panNumber?: string;
@@ -101,7 +107,10 @@ export interface SellerAuthedRequest extends Request {
     lastLoginAt?: Date;
     lastPasswordResetAt?: Date;
     createdAt?: Date;
+<<<<<<< HEAD
     [key: string]: any;
+=======
+>>>>>>> 3f5a3a1673ff92fe6382280c2d42a734871e72c8
   };
 }
 
@@ -344,15 +353,25 @@ export async function requireSellerSession(req: SellerAuthedRequest, res: Respon
   }
 
   const isSettingsHubRoute = req.path.startsWith("/settings-hub") || req.path.startsWith("/commission");
+<<<<<<< HEAD
   const fallbackToDemoSeller = (): boolean => {
+=======
+  const fallbackToDemoSeller = () => {
+>>>>>>> 3f5a3a1673ff92fe6382280c2d42a734871e72c8
     const demoSeller = (memoryStore.sellers || []).find((s) => s.status === "approved") || (memoryStore.sellers || [])[0];
     if (demoSeller) {
       req.sellerId = String(demoSeller._id);
       req.seller = formatSellerProfile(demoSeller);
+<<<<<<< HEAD
       next();
       return true;
     }
     return false;
+=======
+      return next();
+    }
+    return null;
+>>>>>>> 3f5a3a1673ff92fe6382280c2d42a734871e72c8
   };
 
   const header = req.headers.authorization;
@@ -3178,12 +3197,21 @@ router.post("/verification/submit", requireSellerSession, async (req: SellerAuth
       ? seller.identityVerification!.history!
       : [];
 
+<<<<<<< HEAD
     const historyEntry: SellerVerificationHistoryEntry = {
       id: `vh_${Date.now()}_${Math.random().toString(36).slice(2, 6)}`,
       action: "Seller Submitted NID & Face Verification",
       previousStatus: (seller.identityVerification?.status as SellerVerificationStatus) || "not_submitted",
       newStatus: "pending_admin_review",
       reason: `NID (${cleanNidNumber.slice(0, 3)}•••${cleanNidNumber.slice(-2)}) and live face selfie submitted with explicit biometric review consent.`,
+=======
+    const historyEntry = {
+      status: "pending_admin_review" as SellerVerificationStatus,
+      action: "Seller Submitted NID & Face Verification",
+      note: `NID (${cleanNidNumber.slice(0, 3)}•••${cleanNidNumber.slice(-2)}) and live face selfie submitted with explicit biometric review consent.`,
+      actedBy: `${seller.ownerName} (${seller.shopName})`,
+      actedByAdminId: "",
+>>>>>>> 3f5a3a1673ff92fe6382280c2d42a734871e72c8
       createdAt: now,
     };
 
@@ -3300,6 +3328,7 @@ router.delete("/verification/documents", requireSellerSession, async (req: Selle
       ? seller.identityVerification!.history!
       : [];
 
+<<<<<<< HEAD
     const currentStatus = (seller.identityVerification?.status as SellerVerificationStatus) || "not_submitted";
     const historyEntry: SellerVerificationHistoryEntry = {
       id: `vh_${Date.now()}_${Math.random().toString(36).slice(2, 6)}`,
@@ -3307,6 +3336,14 @@ router.delete("/verification/documents", requireSellerSession, async (req: Selle
       previousStatus: currentStatus,
       newStatus: "not_submitted",
       reason: "Seller exercised right to delete stored NID front/back and face images. Verification status reset to Not Submitted.",
+=======
+    const historyEntry = {
+      status: "not_submitted" as SellerVerificationStatus,
+      action: "Seller Purged Stored NID & Biometric Documents",
+      note: "Seller exercised right to delete stored NID front/back and face images. Verification status reset to Not Submitted.",
+      actedBy: `${seller.ownerName} (${seller.shopName})`,
+      actedByAdminId: "",
+>>>>>>> 3f5a3a1673ff92fe6382280c2d42a734871e72c8
       createdAt: now,
     };
 
@@ -5017,11 +5054,18 @@ export let platformApprovalRequiredFields: string[] = [
   "gstNumber",
 ];
 
+<<<<<<< HEAD
 export function setPlatformApprovalRequiredFields(fields: string[]): string[] {
   if (Array.isArray(fields) && fields.length > 0) {
     platformApprovalRequiredFields = fields.map((f) => String(f).trim()).filter(Boolean);
   }
   return platformApprovalRequiredFields;
+=======
+export function setPlatformApprovalRequiredFields(fields: string[]) {
+  if (Array.isArray(fields) && fields.length > 0) {
+    platformApprovalRequiredFields = fields.map((f) => String(f).trim()).filter(Boolean);
+  }
+>>>>>>> 3f5a3a1673ff92fe6382280c2d42a734871e72c8
 }
 
 function buildDefaultSellerSettingsHub(sellerDoc: any) {
@@ -6567,6 +6611,7 @@ router.put("/settings-hub/:cardId", requireSellerSession, async (req: SellerAuth
       recordFieldDiff("bankName", "Financial Institution / Bank Name", currentHub.bank_account.bankName, nextBankName, false);
       recordFieldDiff("bankAccountNumber", "Bank Account / Wallet Number", currentHub.bank_account.accountNumber, rawAcc, false);
 
+<<<<<<< HEAD
       const prevBank = (currentHub.bank_account || {}) as any;
       const updatedBank = {
         ...currentHub.bank_account,
@@ -6583,6 +6628,23 @@ router.put("/settings-hub/:cardId", requireSellerSession, async (req: SellerAuth
         officialWebsite: matchedInstitution ? matchedInstitution.officialWebsite : String(payload.officialWebsite || prevBank.officialWebsite || ""),
         verificationSource: matchedInstitution ? matchedInstitution.verificationSource : String(payload.verificationSource || prevBank.verificationSource || ""),
         routingCodeType: matchedInstitution ? matchedInstitution.routingCodeType : String(payload.routingCodeType || prevBank.routingCodeType || "Routing / IFSC / SWIFT"),
+=======
+      const updatedBank = {
+        ...currentHub.bank_account,
+        ...payload,
+        institutionId: matchedInstitution ? matchedInstitution.institutionId : String(payload.institutionId || currentHub.bank_account.institutionId || ""),
+        accountHolderName: String(payload.accountHolderName || payload.bankAccountHolderName || currentHub.bank_account.accountHolderName).trim(),
+        bankAccountHolderName: String(payload.accountHolderName || payload.bankAccountHolderName || currentHub.bank_account.accountHolderName).trim(),
+        bankName: nextBankName,
+        bankCountry: matchedInstitution ? matchedInstitution.country : String(payload.bankCountry || currentHub.bank_account.bankCountry || "Bangladesh"),
+        bankCategory: matchedInstitution ? matchedInstitution.category : String(payload.bankCategory || currentHub.bank_account.bankCategory || "Commercial Bank"),
+        supportedCurrency: matchedInstitution
+          ? matchedInstitution.supportedCurrencies[0] || "BDT"
+          : String(payload.supportedCurrency || currentHub.bank_account.supportedCurrency || "BDT"),
+        officialWebsite: matchedInstitution ? matchedInstitution.officialWebsite : String(payload.officialWebsite || currentHub.bank_account.officialWebsite || ""),
+        verificationSource: matchedInstitution ? matchedInstitution.verificationSource : String(payload.verificationSource || currentHub.bank_account.verificationSource || ""),
+        routingCodeType: matchedInstitution ? matchedInstitution.routingCodeType : String(payload.routingCodeType || currentHub.bank_account.routingCodeType || "Routing / IFSC / SWIFT"),
+>>>>>>> 3f5a3a1673ff92fe6382280c2d42a734871e72c8
         accountNumber: rawAcc,
         bankAccountNumber: rawAcc,
         maskedAccountNumber: `•••• •••• ${rawAcc.slice(-4)}`,
