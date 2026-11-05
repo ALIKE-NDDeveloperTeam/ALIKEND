@@ -416,6 +416,7 @@ export default function SearchPage({
                     <ProductCard
                       key={product.id}
                       product={product}
+                      className="w-full"
                       onAddToCart={(p) => onAddToCart(p, 1)}
                       onToggleWishlist={onToggleWishlist}
                       onSelectProduct={onSelectProduct}

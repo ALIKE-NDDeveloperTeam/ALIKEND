@@ -1,8 +1,0 @@
-{
-  "name": "Alikendshop - Luxury Ecommerce & Multi-Seller Platform",
-  "description": "Premium e-commerce platform with multi-seller support, dynamic product catalog, and comprehensive admin dashboard",
-  "requestFramePermissions": [],
-  "majorCapabilities": [
-    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
-  ]
-}

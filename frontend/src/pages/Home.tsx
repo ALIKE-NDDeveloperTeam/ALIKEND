@@ -39,6 +39,7 @@ import {
 import { Product, Job, Testimonial, Banner } from '../types';
 import { CATEGORIES } from '../data/mockData';
 import ProductCard from '../components/ProductCard';
+import ProductRow from '../components/home/ProductRow';
 import AllCategoriesModal from '../components/AllCategoriesModal';
 import HeroBanners from '../components/HeroBanners';
 import FlashCountdown from '../components/FlashCountdown';
@@ -323,23 +324,17 @@ export function CategorySection({
         </button>
       </div>
 
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2.5 sm:gap-4 items-stretch">
-        {products.slice(0, 5).map((p) => {
-          const isWishlisted = wishlistedIds.includes(p.id);
-          return (
-            <ProductCard
-              key={p.id}
-              product={p}
-              onAddToCart={onAddToCart}
-              onToggleWishlist={onToggleWishlist}
-              onSelectProduct={onSelectProduct}
-              onCompare={onCompare}
-              onQuickView={onQuickView}
-              isWishlisted={isWishlisted}
-            />
-          );
-        })}
-      </div>
+      <ProductRow
+        products={products}
+        onAddToCart={onAddToCart}
+        onToggleWishlist={onToggleWishlist}
+        onSelectProduct={onSelectProduct}
+        onCompare={onCompare}
+        onQuickView={onQuickView}
+        wishlistedIds={wishlistedIds}
+        isLightMode={isLightMode}
+        autoScroll={category.id === 'luxury'}
+      />
     </section>
   );
 }
@@ -929,24 +924,18 @@ export default function Home({
             </div>
           </div>
 
-          {/* Dynamic products in grid (2 on mobile, 5 in a row on PC) */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2.5 sm:gap-4 items-stretch">
-            {flashSaleProducts.map((p) => {
-              const isWishlisted = wishlistedIds.includes(p.id);
-              return (
-                <ProductCard
-                  key={p.id}
-                  product={p}
-                  onAddToCart={onAddToCart}
-                  onToggleWishlist={onToggleWishlist}
-                  onSelectProduct={onSelectProduct}
-                  onCompare={onCompare}
-                  onQuickView={onQuickView}
-                  isWishlisted={isWishlisted}
-                />
-              );
-            })}
-          </div>
+          {/* Single horizontal row of Flash Sale products */}
+          <ProductRow
+            products={activeFlashCatalog.length > 0 ? activeFlashCatalog : flashSaleProducts}
+            onAddToCart={onAddToCart}
+            onToggleWishlist={onToggleWishlist}
+            onSelectProduct={onSelectProduct}
+            onCompare={onCompare}
+            onQuickView={onQuickView}
+            wishlistedIds={wishlistedIds}
+            isLightMode={isLightMode}
+            autoScroll={true}
+          />
         </section>
       </div>
 

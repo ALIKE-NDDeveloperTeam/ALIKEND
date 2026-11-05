@@ -583,6 +583,7 @@ export default function CategorySearch({
                     <ProductCard
                       key={p.id}
                       product={p}
+                      className="w-full"
                       onAddToCart={onAddToCart}
                       onToggleWishlist={onToggleWishlist}
                       onSelectProduct={onSelectProduct}
