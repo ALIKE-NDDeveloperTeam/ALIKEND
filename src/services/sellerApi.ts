@@ -244,13 +244,8 @@ export const sellerApi = {
 
   updateSellerOrderStatus: (
     id: string,
-<<<<<<< HEAD
     statusOrPayload: string | { status: string; trackingNumber?: string; courierName?: string; courierPartner?: string },
     extra?: { trackingNumber?: string; courierName?: string; courierPartner?: string }
-=======
-    statusOrPayload: string | { status: string; trackingNumber?: string; courierName?: string },
-    extra?: { trackingNumber?: string; courierName?: string }
->>>>>>> 3f5a3a1673ff92fe6382280c2d42a734871e72c8
   ) => {
     const payload =
       typeof statusOrPayload === "string"
@@ -259,11 +254,7 @@ export const sellerApi = {
     return request(`/orders/${id}/status`, { method: "PATCH", body: JSON.stringify(payload) });
   },
 
-<<<<<<< HEAD
   bulkUpdateOrderStatus: (data: { orderIds: string[]; status: string; courierName?: string; courierPartner?: string }) =>
-=======
-  bulkUpdateOrderStatus: (data: { orderIds: string[]; status: string; courierName?: string }) =>
->>>>>>> 3f5a3a1673ff92fe6382280c2d42a734871e72c8
     request("/orders/bulk-status", { method: "POST", body: JSON.stringify(data) }),
 
   getSellerReturns: () => request("/returns"),

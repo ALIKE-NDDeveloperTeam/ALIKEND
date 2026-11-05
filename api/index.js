@@ -115,13 +115,9 @@ var init_User = __esm({
             details: String,
             timestamp: { type: Date, default: Date.now }
           }
-<<<<<<< HEAD
         ],
         metadata: { type: Schema2.Types.Mixed, default: {} },
         customData: { type: Schema2.Types.Mixed, default: {} }
-=======
-        ]
->>>>>>> 3f5a3a1673ff92fe6382280c2d42a734871e72c8
       },
       {
         timestamps: true,
@@ -3142,11 +3138,7 @@ var init_store = __esm({
 // backend/app.ts
 import express2 from "express";
 import cors from "cors";
-<<<<<<< HEAD
 import crypto10 from "crypto";
-=======
-import crypto8 from "crypto";
->>>>>>> 3f5a3a1673ff92fe6382280c2d42a734871e72c8
 import dotenv from "dotenv";
 import rateLimit5 from "express-rate-limit";
 import { GoogleGenAI } from "@google/genai";
@@ -18332,7 +18324,6 @@ router4.patch(["/profile/location", "/saved-location"], async (req, res) => {
     return res.status(500).json({ error: err.message || "Failed to update saved location" });
   }
 });
-<<<<<<< HEAD
 router4.get("/data", async (req, res) => {
   try {
     const secret = getJwtSecret();
@@ -18471,8 +18462,6 @@ var updateUserDataHandler = async (req, res) => {
 };
 router4.post("/data", updateUserDataHandler);
 router4.patch("/data", updateUserDataHandler);
-=======
->>>>>>> 3f5a3a1673ff92fe6382280c2d42a734871e72c8
 var userAuth_default = router4;
 
 // backend/routes/products.ts
@@ -34542,7 +34531,6 @@ router22.patch(
 );
 var orderTracking_default = router22;
 
-<<<<<<< HEAD
 // backend/routes/projects.ts
 import { Router as Router23 } from "express";
 import crypto9 from "crypto";
@@ -35447,10 +35435,6 @@ apiDataRouter.delete("/:id", async (req, res) => {
 
 // backend/app.ts
 import jwt10 from "jsonwebtoken";
-=======
-// backend/app.ts
-import jwt8 from "jsonwebtoken";
->>>>>>> 3f5a3a1673ff92fe6382280c2d42a734871e72c8
 init_store();
 init_Product();
 init_Order();
@@ -36247,12 +36231,9 @@ app2.post("/api/admin/db-sync", requireAdmin, async (_req, res) => {
   }
 });
 app2.use("/api/auth", userAuth_default);
-<<<<<<< HEAD
 app2.use(["/api/better-auth", "/api/auth/better"], betterAuthRouter);
 app2.use("/api/projects", projectsRouter);
 app2.use("/api/data", apiDataRouter);
-=======
->>>>>>> 3f5a3a1673ff92fe6382280c2d42a734871e72c8
 app2.use(["/api/sellers", "/api/seller"], sellerPortal_default);
 app2.get("/api/products", async (req, res) => {
   try {
@@ -36262,11 +36243,7 @@ app2.get("/api/products", async (req, res) => {
       try {
         const secret = getJwtSecret();
         if (secret) {
-<<<<<<< HEAD
           const payload = jwt10.verify(header.slice(7), secret);
-=======
-          const payload = jwt8.verify(header.slice(7), secret);
->>>>>>> 3f5a3a1673ff92fe6382280c2d42a734871e72c8
           if (payload && payload.adminId && ALL_ADMIN_ROLES.includes(payload.role)) {
             isAdmin = true;
           }
@@ -36426,11 +36403,7 @@ app2.post("/api/orders", orderRateLimiter, async (req, res) => {
         address: String(deliveryLocation.address || `${address.street}, ${address.city}`).slice(0, 250)
       };
     }
-<<<<<<< HEAD
     const orderNumber = `ALK-${Date.now().toString().slice(-6)}${crypto10.randomInt(100, 999)}`;
-=======
-    const orderNumber = `ALK-${Date.now().toString().slice(-6)}${crypto8.randomInt(100, 999)}`;
->>>>>>> 3f5a3a1673ff92fe6382280c2d42a734871e72c8
     const memberName = String(address.name || "Valued Client").trim();
     const memberEmail = String(address.email || rawMemberEmail || "").trim().toLowerCase();
     if (memberEmail) {

@@ -12,10 +12,7 @@ import {
   AdminStats, 
   AdminProfile, 
   ActivityLogEvent,
-<<<<<<< HEAD
   ActivityLogItem,
-=======
->>>>>>> 3f5a3a1673ff92fe6382280c2d42a734871e72c8
   AdminAccount,
   SalesReport,
   Banner,

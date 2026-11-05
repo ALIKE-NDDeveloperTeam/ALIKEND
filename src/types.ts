@@ -143,10 +143,7 @@ export interface Product {
     returnEligible?: boolean;
     returnWindowDays?: number;
     dangerousGoods?: 'none' | 'battery' | 'flammable' | 'liquid' | 'fragile' | string;
-<<<<<<< HEAD
     shippingClass?: string;
-=======
->>>>>>> 3f5a3a1673ff92fe6382280c2d42a734871e72c8
   };
   warrantyConfig?: {
     warrantyType?: 'manufacturer' | 'seller' | 'no_warranty' | string;
@@ -180,13 +177,10 @@ export interface Product {
   etaMin?: number;
   etaMax?: number;
   deliveryEtaText?: string;
-<<<<<<< HEAD
   originalPrice?: number;
   inStock?: boolean;
   reviews?: number | any[];
   scheduledPublishAt?: string;
-=======
->>>>>>> 3f5a3a1673ff92fe6382280c2d42a734871e72c8
 }
 
 export interface CategoryItem {
@@ -299,10 +293,7 @@ export interface SellerWarehouseNode {
   contactPhone: string;
   email?: string;
   countryRegion?: string;
-<<<<<<< HEAD
   region?: string;
-=======
->>>>>>> 3f5a3a1673ff92fe6382280c2d42a734871e72c8
   city: string;
   address: string;
   addressLine?: string;
@@ -381,7 +372,6 @@ export interface SellerProfile {
   mobileNumber: string;
   businessAddress: string;
   shopAddress?: string;
-<<<<<<< HEAD
   addressLine1?: string;
   city?: string;
   state?: string;
@@ -390,23 +380,15 @@ export interface SellerProfile {
   shopLogo?: string;
   bannerUrl?: string;
   shopBanner?: string;
-=======
-  category?: string;
-  logo?: string;
-  bannerUrl?: string;
->>>>>>> 3f5a3a1673ff92fe6382280c2d42a734871e72c8
   tagline?: string;
   storeDescription?: string;
   seoTitle?: string;
   seoDescription?: string;
-<<<<<<< HEAD
   phone?: string;
   country?: string;
   pincode?: string;
   postalCode?: string;
   gstNumber?: string;
-=======
->>>>>>> 3f5a3a1673ff92fe6382280c2d42a734871e72c8
   freeShippingThreshold?: number;
   fulfillmentMode?: 'seller_managed' | 'marketplace_fulfilled';
   affiliateEnabled?: boolean;

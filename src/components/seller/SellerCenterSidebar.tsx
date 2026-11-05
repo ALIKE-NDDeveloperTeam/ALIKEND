@@ -811,18 +811,11 @@ export const SellerCenterTopbar: React.FC<SellerCenterTopbarProps> = ({
                       {sellerProfile.shopName}
                     </span>
                     {isVerifiedBadge && (
-<<<<<<< HEAD
                       <span title="Verified Seller" className="inline-flex items-center">
                         <ShieldCheck
                           className="w-3.5 h-3.5 text-emerald-500 shrink-0"
                         />
                       </span>
-=======
-                      <ShieldCheck
-                        className="w-3.5 h-3.5 text-emerald-500 shrink-0"
-                        title="Verified Seller"
-                      />
->>>>>>> 3f5a3a1673ff92fe6382280c2d42a734871e72c8
                     )}
                   </div>
                   <span className="block text-[10px] text-neutral-400 truncate">

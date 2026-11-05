@@ -235,13 +235,8 @@ export default function SellerDashboard({
   const [storeSeoTitle, setStoreSeoTitle] = useState(sellerProfile?.seoTitle || '');
   const [storeSeoDescription, setStoreSeoDescription] = useState(sellerProfile?.seoDescription || '');
   const [decoThemeColor, setDecoThemeColor] = useState(sellerProfile?.storeDecoration?.themeColor || '#F5A623');
-<<<<<<< HEAD
   const [decoLayoutStyle, setDecoLayoutStyle] = useState<'luxury_grid' | 'minimal_editorial' | 'boutique_showcase' | 'editorial' | 'grid' | 'boutique'>(
     (sellerProfile?.storeDecoration?.layoutStyle as any) || 'luxury_grid'
-=======
-  const [decoLayoutStyle, setDecoLayoutStyle] = useState<'luxury_grid' | 'minimal_editorial' | 'boutique_showcase'>(
-    sellerProfile?.storeDecoration?.layoutStyle || 'luxury_grid'
->>>>>>> 3f5a3a1673ff92fe6382280c2d42a734871e72c8
   );
   const [decoAnnouncement, setDecoAnnouncement] = useState(
     sellerProfile?.storeDecoration?.announcementText || 'Complimentary insured shipping on all orders above ₹2,999.'
@@ -1345,7 +1340,6 @@ export default function SellerDashboard({
         .map((s) => s.trim())
         .filter(Boolean);
 
-<<<<<<< HEAD
       const specsMap: Record<string, string> = {};
       parsedSpecs.forEach((item, index) => {
         if (item.includes(':')) {
@@ -1356,8 +1350,6 @@ export default function SellerDashboard({
         }
       });
 
-=======
->>>>>>> 3f5a3a1673ff92fe6382280c2d42a734871e72c8
       const payload: SellerProductPayload & Record<string, any> = {
         name: formName.trim(),
         brand: formBrand.trim() || sellerProfile?.shopName || 'Official Merchant',
@@ -1373,11 +1365,7 @@ export default function SellerDashboard({
         description: formDescription.trim(),
         colors: parsedColors.length > 0 ? parsedColors : undefined,
         sizes: parsedSizes.length > 0 ? parsedSizes : undefined,
-<<<<<<< HEAD
         specifications: Object.keys(specsMap).length > 0 ? specsMap : undefined,
-=======
-        specifications: parsedSpecs.length > 0 ? parsedSpecs : undefined,
->>>>>>> 3f5a3a1673ff92fe6382280c2d42a734871e72c8
         isVisible: !formIsDraft,
         hsnCode: formHsnCode.trim() || undefined,
         gstRate: Number(formGstRate) || 18,
